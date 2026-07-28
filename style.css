@@ -1,0 +1,147 @@
+/* provemark — shared styles */
+:root {
+  --maxw: 44rem;
+  --bg: #ffffff;
+  --surface: #fafafa;
+  --fg: #18181b;
+  --muted: #6b7280;
+  --rule: #e6e7ea;
+  --accent: #0f766e;        /* teal-700 */
+  --accent-fg: #0b5e57;
+  --link: #0f766e;
+  --code-bg: #f5f5f7;
+  --shadow: 0 1px 2px rgba(16,24,40,.05), 0 12px 30px rgba(16,24,40,.06);
+  --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --serif: 'Source Serif 4', Georgia, Cambria, 'Times New Roman', serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0b0c0e;
+    --surface: #131519;
+    --fg: #e9e9ec;
+    --muted: #9aa1ab;
+    --rule: #262a30;
+    --accent: #2dd4bf;      /* teal-400 */
+    --accent-fg: #5eead4;
+    --link: #2dd4bf;
+    --code-bg: #15181d;
+    --shadow: 0 1px 2px rgba(0,0,0,.4), 0 14px 40px rgba(0,0,0,.42);
+  }
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0; background: var(--bg); color: var(--fg);
+  font-family: var(--sans); font-size: 17px; line-height: 1.6;
+  -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+}
+::selection { background: var(--accent); color: #fff; }
+a { color: var(--link); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 3px; }
+img, svg { max-width: 100%; }
+
+/* ---- header ---- */
+.site-header { border-bottom: 1px solid var(--rule); }
+.site-header .inner {
+  max-width: var(--maxw); margin: 0 auto; padding: .9rem 1.25rem;
+  display: flex; align-items: center; gap: 1rem;
+}
+.brand {
+  display: inline-flex; align-items: center; gap: .55rem;
+  font-weight: 600; letter-spacing: -0.01em; font-size: 1.05rem; color: var(--fg);
+}
+.brand:hover { text-decoration: none; }
+.brand .mark { width: 22px; height: 22px; border-radius: 6px; display: block; box-shadow: var(--shadow); }
+.header-nav { margin-left: auto; display: flex; gap: 1.15rem; font-size: .92rem; }
+.header-nav a { color: var(--muted); }
+.header-nav a:hover { color: var(--fg); text-decoration: none; }
+
+/* ---- layout ---- */
+.container { max-width: var(--maxw); margin: 0 auto; padding: 3rem 1.25rem 4rem; }
+.eyebrow {
+  font-size: .78rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--accent); margin: 0 0 .7rem;
+}
+h1 { font-size: 2.3rem; line-height: 1.12; letter-spacing: -0.022em; margin: 0 0 .6rem; font-weight: 700; }
+h2 { font-size: 1.4rem; line-height: 1.25; letter-spacing: -0.014em; margin: 2.6rem 0 .8rem; font-weight: 650; }
+h3 { font-size: 1.1rem; margin: 1.9rem 0 .5rem; font-weight: 600; }
+p, ul, ol { margin: 0 0 1.05rem; }
+ul, ol { padding-left: 1.35rem; } li { margin: .35rem 0; }
+hr { border: 0; border-top: 1px solid var(--rule); margin: 2.6rem 0; }
+.muted { color: var(--muted); }
+
+code {
+  font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+  font-size: .86em; background: var(--code-bg); border: 1px solid var(--rule);
+  padding: .1em .38em; border-radius: 5px;
+}
+pre {
+  background: var(--code-bg); border: 1px solid var(--rule); border-radius: 10px;
+  padding: 1rem 1.1rem; overflow-x: auto; font-size: .84rem; line-height: 1.55; box-shadow: var(--shadow);
+}
+pre code { background: none; border: 0; padding: 0; font-size: inherit; }
+
+/* ---- home ---- */
+.hero { padding: 1.5rem 0 .5rem; }
+.hero .lede { font-size: 1.24rem; line-height: 1.5; color: var(--fg); max-width: 34rem; }
+.card {
+  background: var(--surface); border: 1px solid var(--rule); border-radius: 14px;
+  padding: 1.25rem 1.35rem; margin: 1rem 0; box-shadow: var(--shadow);
+}
+.card h3 { margin-top: 0; }
+.card .install { margin: .7rem 0 0; }
+.post-list { list-style: none; padding: 0; margin: .4rem 0 0; }
+.post-list li { border-top: 1px solid var(--rule); padding: .9rem 0; margin: 0; }
+.post-list li:first-child { border-top: 0; }
+.post-list a { font-weight: 600; font-size: 1.06rem; letter-spacing: -0.01em; }
+.post-list .date { display: block; color: var(--muted); font-size: .86rem; margin-top: .15rem; }
+
+/* ---- article ---- */
+.post .post-header { margin-bottom: 2rem; }
+.post .post-meta { color: var(--muted); font-size: .92rem; margin: .1rem 0 0; }
+.post .lead {
+  font-family: var(--serif); font-size: 1.28rem; line-height: 1.55; margin: 1.4rem 0 1.6rem;
+}
+.post .body { font-family: var(--serif); font-size: 1.14rem; line-height: 1.72; }
+.post .body h2, .post .body h3 { font-family: var(--sans); }
+.post .body code, .post .body pre { font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace; }
+.post .body a { text-decoration: underline; text-underline-offset: 2px; text-decoration-thickness: 1px; text-decoration-color: color-mix(in srgb, var(--link) 45%, transparent); }
+.post .body a:hover { text-decoration-color: var(--link); }
+
+blockquote {
+  margin: 1.4rem 0; padding: .3rem 0 .3rem 1.15rem;
+  border-left: 3px solid var(--accent); color: var(--fg); font-style: italic;
+}
+.callout {
+  background: var(--surface); border: 1px solid var(--rule); border-left: 3px solid var(--accent);
+  border-radius: 12px; padding: 1rem 1.2rem; margin: 1.5rem 0; font-family: var(--sans); font-size: .98rem;
+  box-shadow: var(--shadow);
+}
+.callout strong { color: var(--accent-fg); }
+
+table { border-collapse: collapse; width: 100%; margin: 1.3rem 0; font-family: var(--sans); font-size: .95rem; }
+.table-wrap { overflow-x: auto; }
+th, td { border: 1px solid var(--rule); padding: .55rem .75rem; text-align: left; vertical-align: top; }
+th { background: var(--surface); font-weight: 600; }
+
+.cta {
+  background: var(--surface); border: 1px solid var(--rule); border-radius: 14px;
+  padding: 1.3rem 1.4rem; margin: 2.2rem 0 0; box-shadow: var(--shadow); font-family: var(--sans); font-size: 1rem;
+}
+
+/* ---- footer ---- */
+.site-footer {
+  border-top: 1px solid var(--rule); margin-top: 3rem;
+  color: var(--muted); font-size: .9rem;
+}
+.site-footer .inner { max-width: var(--maxw); margin: 0 auto; padding: 1.6rem 1.25rem 2.4rem; }
+.site-footer a { color: var(--muted); }
+.site-footer a:hover { color: var(--fg); }
+
+@media (max-width: 34rem) {
+  h1 { font-size: 1.85rem; }
+  .hero .lede { font-size: 1.12rem; }
+  .post .body { font-size: 1.08rem; }
+}

@@ -3,55 +3,62 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>provemark</title>
-<meta name="description" content="Content provenance and authenticity — verifiable C2PA Content Credentials for the PHP ecosystem.">
-<style>
-  :root { --bg:#fff; --fg:#1a1a1a; --muted:#5a5a5a; --rule:#e5e5e5; --link:#0a58ca; --code-bg:#f5f5f7; }
-  @media (prefers-color-scheme: dark) {
-    :root { --bg:#16171a; --fg:#e6e6e6; --muted:#9aa0a6; --rule:#2c2e33; --link:#8ab4f8; --code-bg:#1e2024; }
-  }
-  * { box-sizing: border-box; }
-  body { background:var(--bg); color:var(--fg); margin:0;
-    font:17px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; }
-  .wrap { max-width:40rem; margin:0 auto; padding:3rem 1.25rem 4rem; }
-  a { color:var(--link); text-decoration:none; } a:hover { text-decoration:underline; }
-  h1 { font-size:2rem; margin:0 0 .4rem; letter-spacing:-0.01em; }
-  h2 { font-size:1.15rem; margin:2.2rem 0 .6rem; }
-  p, ul { margin:0 0 1rem; } ul { padding-left:1.3rem; } li { margin:.35rem 0; }
-  .tag { font-size:1.12rem; color:var(--fg); }
-  .muted, .date { color:var(--muted); }
-  .date { font-size:.9rem; }
-  code { font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; font-size:.86em;
-    background:var(--code-bg); padding:.12em .38em; border-radius:4px; }
-  footer { margin-top:3rem; padding-top:1.4rem; border-top:1px solid var(--rule); color:var(--muted); font-size:.9rem; }
-</style>
+<title>provemark — content provenance &amp; authenticity</title>
+<meta name="description" content="Content provenance and authenticity — verifiable C2PA Content Credentials for the PHP ecosystem, including EU AI Act (Article 50) marking of AI-generated content.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
 </head>
 <body>
-<div class="wrap">
 
-<h1>provemark</h1>
-<p class="tag">Content provenance &amp; authenticity — verifiable
-<a href="https://c2pa.org">C2PA</a> Content Credentials for the PHP ecosystem,
-including machine-readable marking of AI-generated content under the EU AI Act,
-Article&nbsp;50.</p>
+<header class="site-header">
+  <div class="inner">
+    <a class="brand" href="/">
+      <svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#0f766e"/><path d="M9 16.4l4.6 4.6L23 11.2" fill="none" stroke="#fff" stroke-width="3.1" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      provemark
+    </a>
+    <nav class="header-nav">
+      <a href="https://github.com/provemark/content-credentials">GitHub</a>
+      <a href="https://packagist.org/packages/provemark/content-credentials">Packagist</a>
+    </nav>
+  </div>
+</header>
 
-<h2>Projects</h2>
-<p><a href="https://github.com/provemark/content-credentials">content-credentials</a>
-— a PHP library to build, sign, read and verify C2PA manifests (framework-agnostic
-core + Laravel integration), keeping the signing key isolated behind a service.</p>
-<p><code>composer require provemark/content-credentials</code></p>
+<main class="container">
+  <section class="hero">
+    <p class="eyebrow">Content provenance &amp; authenticity</p>
+    <h1>provemark</h1>
+    <p class="lede">Verifiable <a href="https://c2pa.org">C2PA</a> Content Credentials for the
+    PHP ecosystem — including machine-readable marking of AI-generated content under the
+    EU&nbsp;AI&nbsp;Act, Article&nbsp;50.</p>
+  </section>
 
-<h2>Writing</h2>
-<ul>
-  <li><a href="/articles/c2pa-certificates/">Valid&nbsp;≠&nbsp;trusted: a practical
-  guide to C2PA signing certificates</a> <span class="date">· 28 Jul 2026</span></li>
-</ul>
+  <h2>Projects</h2>
+  <div class="card">
+    <h3><a href="https://github.com/provemark/content-credentials">content-credentials</a></h3>
+    <p class="muted" style="margin:.35rem 0 0">A PHP library to build, sign, read and verify C2PA
+    manifests — a framework-agnostic core plus a Laravel integration, keeping the signing key
+    isolated behind a service.</p>
+    <pre class="install"><code>composer require provemark/content-credentials</code></pre>
+  </div>
 
-<footer>
-<a href="https://github.com/provemark">GitHub</a> ·
-<a href="https://packagist.org/packages/provemark/content-credentials">Packagist</a>
+  <h2>Writing</h2>
+  <ul class="post-list">
+    <li>
+      <a href="/articles/c2pa-certificates/">Valid&nbsp;≠&nbsp;trusted: a practical guide to C2PA signing certificates</a>
+      <span class="date">28 July 2026</span>
+    </li>
+  </ul>
+</main>
+
+<footer class="site-footer">
+  <div class="inner">© 2026 provemark ·
+    <a href="https://github.com/provemark">GitHub</a> ·
+    <a href="https://packagist.org/packages/provemark/content-credentials">Packagist</a>
+  </div>
 </footer>
 
-</div>
 </body>
 </html>

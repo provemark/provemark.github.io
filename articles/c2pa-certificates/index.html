@@ -6,281 +6,248 @@
 <title>Valid ≠ trusted: a practical guide to C2PA signing certificates — provemark</title>
 <meta name="description" content="A hands-on guide to C2PA signing certificates from a working PHP implementation: test certs, the valid-vs-trusted distinction, trust lists, key isolation, and getting a production certificate.">
 <link rel="canonical" href="https://provemark.github.io/articles/c2pa-certificates/">
-<style>
-  :root {
-    --bg: #ffffff; --fg: #1a1a1a; --muted: #5a5a5a; --rule: #e5e5e5;
-    --link: #0a58ca; --code-bg: #f5f5f7; --accent: #b45309;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root { --bg: #16171a; --fg: #e6e6e6; --muted: #9aa0a6; --rule: #2c2e33;
-            --link: #8ab4f8; --code-bg: #1e2024; --accent: #f0a44a; }
-  }
-  * { box-sizing: border-box; }
-  html { -webkit-text-size-adjust: 100%; }
-  body {
-    background: var(--bg); color: var(--fg);
-    font: 17px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    margin: 0; padding: 0;
-  }
-  .wrap { max-width: 44rem; margin: 0 auto; padding: 2.5rem 1.25rem 4rem; }
-  a { color: var(--link); text-decoration: none; }
-  a:hover { text-decoration: underline; }
-  h1 { font-size: 2rem; line-height: 1.2; margin: 0 0 .5rem; letter-spacing: -0.01em; }
-  h2 { font-size: 1.35rem; margin: 2.4rem 0 .8rem; letter-spacing: -0.01em; }
-  h3 { font-size: 1.08rem; margin: 1.8rem 0 .5rem; }
-  p, ul, ol { margin: 0 0 1rem; }
-  ul, ol { padding-left: 1.4rem; }
-  li { margin: .3rem 0; }
-  .meta { color: var(--muted); font-size: .92rem; margin-bottom: 2rem; }
-  .lead { font-size: 1.15rem; color: var(--fg); }
-  code {
-    font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
-    font-size: .88em; background: var(--code-bg); padding: .12em .38em; border-radius: 4px;
-  }
-  pre {
-    background: var(--code-bg); border: 1px solid var(--rule); border-radius: 8px;
-    padding: .9rem 1rem; overflow-x: auto; font-size: .84rem; line-height: 1.5;
-  }
-  pre code { background: none; padding: 0; font-size: inherit; }
-  blockquote {
-    margin: 1.2rem 0; padding: .2rem 0 .2rem 1rem; border-left: 3px solid var(--accent);
-    color: var(--fg);
-  }
-  .callout {
-    background: var(--code-bg); border: 1px solid var(--rule); border-left: 3px solid var(--accent);
-    border-radius: 8px; padding: .9rem 1.1rem; margin: 1.3rem 0;
-  }
-  .callout strong { color: var(--accent); }
-  hr { border: 0; border-top: 1px solid var(--rule); margin: 2.5rem 0; }
-  .backlink { color: var(--muted); font-size: .92rem; }
-  footer { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--rule); color: var(--muted); font-size: .9rem; }
-  table { border-collapse: collapse; width: 100%; font-size: .92rem; margin: 1rem 0; display: block; overflow-x: auto; }
-  th, td { border: 1px solid var(--rule); padding: .5rem .7rem; text-align: left; vertical-align: top; }
-  th { background: var(--code-bg); }
-</style>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
 </head>
 <body>
-<div class="wrap">
 
-<p class="backlink"><a href="/">← provemark</a></p>
+<header class="site-header">
+  <div class="inner">
+    <a class="brand" href="/">
+      <svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#0f766e"/><path d="M9 16.4l4.6 4.6L23 11.2" fill="none" stroke="#fff" stroke-width="3.1" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      provemark
+    </a>
+    <nav class="header-nav">
+      <a href="https://github.com/provemark/content-credentials">GitHub</a>
+      <a href="https://packagist.org/packages/provemark/content-credentials">Packagist</a>
+    </nav>
+  </div>
+</header>
 
-<h1>Valid ≠ trusted: a practical guide to C2PA signing certificates</h1>
-<p class="meta">28 July 2026 · Maurice van Loon</p>
+<main class="container post">
 
-<p class="lead">Building a manifest is the easy part of C2PA. Signing it — and being
-<em>trusted</em> — is where everyone gets stuck. This is what I learned about
-certificates while getting the whole chain working in PHP, from the c2pa-rs test
-certificates through to a production trust list.</p>
+  <div class="post-header">
+    <p class="eyebrow">Article</p>
+    <h1>Valid ≠ trusted: a practical guide to C2PA signing certificates</h1>
+    <p class="post-meta">28 July 2026 · Maurice van Loon</p>
+  </div>
 
-<p>Most "what is C2PA / Content Credentials" explainers stop before the hard part.
-This one starts there. Every claim below comes from a working implementation:
-build → sign → read → verify, with a real signature that <code>c2patool</code>
-accepts. If you're implementing Content Credentials — especially outside the
-Rust/JavaScript mainstream — the certificate and trust story is the part that
-will cost you a day. Here it is up front.</p>
+  <p class="lead">Building a manifest is the easy part of C2PA. Signing it — and being
+  <em>trusted</em> — is where everyone gets stuck. This is what I learned about certificates
+  while getting the whole chain working in PHP, from the c2pa-rs test certificates through to
+  a production trust list.</p>
 
-<h2>The one distinction that explains everything</h2>
+  <div class="body">
 
-<p>A C2PA verifier answers two <em>separate</em> questions, and conflating them is
-the single most common mistake:</p>
+  <p>Most "what is C2PA / Content Credentials" explainers stop before the hard part. This one
+  starts there. Every claim below comes from a working implementation: build → sign → read →
+  verify, with a real signature that <code>c2patool</code> accepts. If you're implementing
+  Content Credentials — especially outside the Rust/JavaScript mainstream — the certificate and
+  trust story is the part that will cost you a day. Here it is up front.</p>
 
-<ol>
-  <li><strong>Is the signature valid?</strong> Was the content signed, and is it
-  intact — nothing tampered since signing?</li>
-  <li><strong>Is the certificate trusted?</strong> Was it issued by a certificate
-  authority on a trust list the verifier recognises?</li>
-</ol>
+  <h2>The one distinction that explains everything</h2>
 
-<p>These are independent. A signature can be perfectly <em>valid</em> while the
-certificate is <em>untrusted</em> — which is exactly what happens with test
-certificates. c2pa-rs makes this explicit with a top-level
-<code>validation_state</code>:</p>
+  <p>A C2PA verifier answers two <em>separate</em> questions, and conflating them is the single
+  most common mistake:</p>
 
-<table>
-<tr><th><code>validation_state</code></th><th>Meaning</th></tr>
-<tr><td><code>Valid</code></td><td>Signature and content-integrity checks passed. The certificate is <em>not</em> on a trust list.</td></tr>
-<tr><td><code>Trusted</code></td><td>All of the above <em>and</em> the certificate chains to a trusted CA.</td></tr>
-<tr><td><code>Invalid</code></td><td>Something failed — e.g. the asset was modified after signing.</td></tr>
-</table>
+  <ol>
+    <li><strong>Is the signature valid?</strong> Was the content signed, and is it intact —
+    nothing tampered since signing?</li>
+    <li><strong>Is the certificate trusted?</strong> Was it issued by a certificate authority on
+    a trust list the verifier recognises?</li>
+  </ol>
 
-<p>"Valid but untrusted" is not a bug. It's the normal state during development,
-and it's the state you'll ship in until you have a production certificate.</p>
+  <p>These are independent. A signature can be perfectly <em>valid</em> while the certificate is
+  <em>untrusted</em> — which is exactly what happens with test certificates. c2pa-rs makes this
+  explicit with a top-level <code>validation_state</code>:</p>
 
-<h2>A subtlety that will bite you</h2>
+  <div class="table-wrap">
+  <table>
+    <tr><th><code>validation_state</code></th><th>Meaning</th></tr>
+    <tr><td><code>Valid</code></td><td>Signature and content-integrity checks passed. The certificate is <em>not</em> on a trust list.</td></tr>
+    <tr><td><code>Trusted</code></td><td>All of the above <em>and</em> the certificate chains to a trusted CA.</td></tr>
+    <tr><td><code>Invalid</code></td><td>Something failed — e.g. the asset was modified after signing.</td></tr>
+  </table>
+  </div>
 
-<p>You might reach for a single success code to decide "is it valid?" — for example
-<code>claimSignature.validated</code>. Don't. Here's a result that surprised me:
-I signed a PNG, flipped a single byte in the middle of the file, and re-read it.</p>
+  <p>"Valid but untrusted" is not a bug. It's the normal state during development, and it's the
+  state you'll ship in until you have a production certificate.</p>
 
-<pre><code>validation_state: "Invalid"
+  <h2>A subtlety that will bite you</h2>
+
+  <p>You might reach for a single success code to decide "is it valid?" — for example
+  <code>claimSignature.validated</code>. Don't. Here's a result that surprised me: I signed a
+  PNG, flipped a single byte in the middle of the file, and re-read it.</p>
+
+  <pre><code>validation_state: "Invalid"
 success: [ ..., "claimSignature.validated", "assertion.hashedURI.match", ... ]
 failure: [ "signingCredential.untrusted", "assertion.hashedURI.mismatch" ]</code></pre>
 
-<p>The tampered file is <code>Invalid</code> — correctly — but
-<code>claimSignature.validated</code> is <em>still present</em> in the success
-list. That's because the <em>claim signature</em> covers the claim, and the claim
-is intact; the asset is bound to the claim through separate <em>hash
-assertions</em>, and it's those that fail (<code>assertion.hashedURI.mismatch</code>).</p>
+  <p>The tampered file is <code>Invalid</code> — correctly — but <code>claimSignature.validated</code>
+  is <em>still present</em> in the success list. That's because the <em>claim signature</em> covers
+  the claim, and the claim is intact; the asset is bound to the claim through separate <em>hash
+  assertions</em>, and it's those that fail (<code>assertion.hashedURI.mismatch</code>).</p>
 
-<div class="callout">
-<strong>Takeaway:</strong> use the aggregate <code>validation_state</code>
-(<code>Valid</code>/<code>Trusted</code>), not one hand-picked code, to decide
-whether a signature holds over <em>this</em> asset.
-</div>
+  <div class="callout">
+  <strong>Takeaway:</strong> use the aggregate <code>validation_state</code>
+  (<code>Valid</code>/<code>Trusted</code>), not one hand-picked code, to decide whether a
+  signature holds over <em>this</em> asset.
+  </div>
 
-<h2>Anatomy of a signing setup</h2>
+  <h2>Anatomy of a signing setup</h2>
 
-<p>To produce a Content Credential you need three things that all have to agree:</p>
+  <p>To produce a Content Credential you need three things that all have to agree:</p>
 
-<ul>
-  <li>a <strong>certificate chain</strong> — leaf → intermediate → root;</li>
-  <li>the corresponding <strong>private key</strong>;</li>
-  <li>a <strong>signing algorithm that matches the key type</strong> — ES256 for an
-  EC key, PS256 for RSA. Mismatch the two and signing fails immediately.</li>
-</ul>
+  <ul>
+    <li>a <strong>certificate chain</strong> — leaf → intermediate → root;</li>
+    <li>the corresponding <strong>private key</strong>;</li>
+    <li>a <strong>signing algorithm that matches the key type</strong> — ES256 for an EC key,
+    PS256 for RSA. Mismatch the two and signing fails immediately.</li>
+  </ul>
 
-<p>There's a fourth, quieter requirement: the certificate's <strong>Extended Key
-Usage</strong> (EKU) must be one C2PA permits for claim signing. More on that
-below — it's a classic silent failure.</p>
+  <p>There's a fourth, quieter requirement: the certificate's <strong>Extended Key Usage</strong>
+  (EKU) must be one C2PA permits for claim signing. More on that below — it's a classic silent
+  failure.</p>
 
-<h2>Getting started without a real certificate</h2>
+  <h2>Getting started without a real certificate</h2>
 
-<p>You do not need a production certificate to build and test the whole chain.
-c2pa-rs ships test material in <code>cli/sample/</code>:</p>
+  <p>You do not need a production certificate to build and test the whole chain. c2pa-rs ships
+  test material in <code>cli/sample/</code>:</p>
 
-<ul>
-  <li><code>es256_certs.pem</code> — a two-certificate chain (leaf + intermediate);</li>
-  <li><code>es256_private.key</code> — the matching ES256 key (so
-  <code>alg = es256</code>);</li>
-  <li><code>trust_anchors.pem</code>, <code>allowed_list.pem</code>,
-  <code>store.cfg</code> — the pieces you need to make trust <em>pass</em> locally.</li>
-</ul>
+  <ul>
+    <li><code>es256_certs.pem</code> — a two-certificate chain (leaf + intermediate);</li>
+    <li><code>es256_private.key</code> — the matching ES256 key (so <code>alg = es256</code>);</li>
+    <li><code>trust_anchors.pem</code>, <code>allowed_list.pem</code>, <code>store.cfg</code> —
+    the pieces you need to make trust <em>pass</em> locally.</li>
+  </ul>
 
-<div class="callout">
-<strong>Never commit a private key.</strong> Even a test key stays out of version
-control. Fetch it at setup time instead:
-<pre style="margin:.6rem 0 0"><code>curl -sfSL https://raw.githubusercontent.com/contentauth/c2pa-rs/main/cli/sample/es256_private.key \
+  <div class="callout">
+  <strong>Never commit a private key.</strong> Even a test key stays out of version control.
+  Fetch it at setup time instead:
+  <pre style="margin:.6rem 0 0"><code>curl -sfSL https://raw.githubusercontent.com/contentauth/c2pa-rs/main/cli/sample/es256_private.key \
   -o certs/es256_private.key</code></pre>
-Public test CA certs are fine to keep; private keys never are.
-</div>
+  Public test CA certs are fine to keep; private keys never are.
+  </div>
 
-<h2>Making trust actually pass (and the traps)</h2>
+  <h2>Making trust actually pass (and the traps)</h2>
 
-<p>With the test certs, a default verification reports the signature as valid but
-the certificate as <code>signingCredential.untrusted</code>. To get to
-<code>Trusted</code> locally you need <strong>two</strong> things together — people
-usually set one and wonder why nothing changes:</p>
+  <p>With the test certs, a default verification reports the signature as valid but the
+  certificate as <code>signingCredential.untrusted</code>. To get to <code>Trusted</code> locally
+  you need <strong>two</strong> things together — people usually set one and wonder why nothing
+  changes:</p>
 
-<ol>
-  <li><code>verify.verify_trust = true</code>, <em>and</em></li>
-  <li>the trust material: trust anchors <em>plus</em> the allowed signing EKUs
-  (a <code>trust_config</code> of OID dot-notation), <em>or</em> an
-  <code>allowed_list</code> of specific signing certificates.</li>
-</ol>
+  <ol>
+    <li><code>verify.verify_trust = true</code>, <em>and</em></li>
+    <li>the trust material: trust anchors <em>plus</em> the allowed signing EKUs (a
+    <code>trust_config</code> of OID dot-notation), <em>or</em> an <code>allowed_list</code> of
+    specific signing certificates.</li>
+  </ol>
 
-<p>Three traps I hit, so you don't have to:</p>
+  <p>Three traps I hit, so you don't have to:</p>
 
-<ul>
-  <li><strong>The settings fields take file <em>contents</em>, not paths.</strong>
-  In a <code>c2pa</code> settings file, <code>trust.trust_anchors</code> and
-  <code>trust.trust_config</code> expect the PEM / EKU text as strings — passing a
-  filename silently gives you nothing.</li>
-  <li><strong>EKU matters.</strong> The test leaf's EKU is <em>E-mail Protection</em>
-  (<code>1.3.6.1.5.5.7.3.4</code>). The sample <code>store.cfg</code> lists exactly
-  the OIDs C2PA allows for signing, so the chain passes; get the EKU config wrong
-  and a perfectly valid cert is rejected.</li>
-  <li><strong>Never run <code>c2patool init trust</code> in a test project.</strong>
-  It fetches the <em>production</em> trust list, which correctly rejects your test
-  certificate — and then you're debugging the wrong thing.</li>
-</ul>
+  <ul>
+    <li><strong>The settings fields take file <em>contents</em>, not paths.</strong> In a
+    <code>c2pa</code> settings file, <code>trust.trust_anchors</code> and
+    <code>trust.trust_config</code> expect the PEM / EKU text as strings — passing a filename
+    silently gives you nothing.</li>
+    <li><strong>EKU matters.</strong> The test leaf's EKU is <em>E-mail Protection</em>
+    (<code>1.3.6.1.5.5.7.3.4</code>). The sample <code>store.cfg</code> lists exactly the OIDs
+    C2PA allows for signing, so the chain passes; get the EKU config wrong and a perfectly valid
+    cert is rejected.</li>
+    <li><strong>Never run <code>c2patool init trust</code> in a test project.</strong> It fetches
+    the <em>production</em> trust list, which correctly rejects your test certificate — and then
+    you're debugging the wrong thing.</li>
+  </ul>
 
-<p>Wire those up and an honest end-to-end verify looks like this:</p>
+  <p>Wire those up and an honest end-to-end verify looks like this:</p>
 
-<pre><code>Signed by      : C2PA Test Signing Cert / CN=C2PA Signer [Es256]
+  <pre><code>Signed by      : C2PA Test Signing Cert / CN=C2PA Signer [Es256]
 Signature valid: PASS (claimSignature.validated)
 Cert trusted   : PASS (signingCredential.trusted)
 AI Art.50 mark : PASS (digitalSourceType=trainedAlgorithmicMedia)</code></pre>
 
-<h2>Where the private key lives is an architecture decision</h2>
+  <h2>Where the private key lives is an architecture decision</h2>
 
-<p>Certificates force a design choice most tutorials skip: <em>where does the
-private key live at signing time?</em> There are two models.</p>
+  <p>Certificates force a design choice most tutorials skip: <em>where does the private key live
+  at signing time?</em> There are two models.</p>
 
-<ul>
-  <li><strong>In-process</strong> — a native library/extension signs inside your
-  application process. Simple, but the private key sits on your web server.</li>
-  <li><strong>Isolated signing service</strong> — signing is delegated to a
-  separate service that holds the key, off the application host. This is the
-  pattern the CAI's own tooling uses.</li>
-</ul>
+  <ul>
+    <li><strong>In-process</strong> — a native library/extension signs inside your application
+    process. Simple, but the private key sits on your web server.</li>
+    <li><strong>Isolated signing service</strong> — signing is delegated to a separate service
+    that holds the key, off the application host. This is the pattern the CAI's own tooling uses.</li>
+  </ul>
 
-<p>For anything handling real signing keys, isolation is the defensible choice:
-<em>the signing key never touches your web application.</em> A compromised web
-process can request a signature; it can't walk away with the key. That's a
-sentence any security-minded reviewer understands, and it's the model I built
-around.</p>
+  <p>For anything handling real signing keys, isolation is the defensible choice: <em>the signing
+  key never touches your web application.</em> A compromised web process can request a signature;
+  it can't walk away with the key. That's a sentence any security-minded reviewer understands, and
+  it's the model I built around.</p>
 
-<h2>Going to production: a real, trusted certificate</h2>
+  <h2>Going to production: a real, trusted certificate</h2>
 
-<p>Test certs get you a valid signature, never a trusted one. To be
-<code>Trusted</code> in the wild, your certificate must come from a CA on the
-<strong>C2PA trust list</strong>, which runs through the
-<a href="https://opensource.contentauthenticity.org/docs/conformance/">C2PA
-conformance program</a>: an expression of interest, then a conformance and
-security evaluation before certificates are issued
-(<a href="https://opensource.contentauthenticity.org/docs/signing/get-cert/">CAI:
-getting a signing certificate</a>).</p>
+  <p>Test certs get you a valid signature, never a trusted one. To be <code>Trusted</code> in the
+  wild, your certificate must come from a CA on the <strong>C2PA trust list</strong>, which runs
+  through the <a href="https://opensource.contentauthenticity.org/docs/conformance/">C2PA
+  conformance program</a>: an expression of interest, then a conformance and security evaluation
+  before certificates are issued
+  (<a href="https://opensource.contentauthenticity.org/docs/signing/get-cert/">CAI: getting a
+  signing certificate</a>).</p>
 
-<p>As of 2026 this stopped being theoretical:
-<a href="https://www.ssl.com/products/content-authenticity/content-credentials/c2pa/">SSL.com</a>
-became the first publicly-trusted CA to issue production C2PA-conformant
-certificates, and its
-<a href="https://www.ssl.com/article/press-release-ssl-begins-issuing-production-ready-c2pa-conformant-certificates/">free
-tier</a> now includes a Level&nbsp;1 Claim Signing Certificate (valid one year)
-plus 10,000 trusted timestamps per year — enough to take a project from test certs
-to a genuinely trusted signature.</p>
+  <p>As of 2026 this stopped being theoretical:
+  <a href="https://www.ssl.com/products/content-authenticity/content-credentials/c2pa/">SSL.com</a>
+  became the first publicly-trusted CA to issue production C2PA-conformant certificates, and its
+  <a href="https://www.ssl.com/article/press-release-ssl-begins-issuing-production-ready-c2pa-conformant-certificates/">free
+  tier</a> now includes a Level&nbsp;1 Claim Signing Certificate (valid one year) plus 10,000
+  trusted timestamps per year — enough to take a project from test certs to a genuinely trusted
+  signature.</p>
 
-<p>Which brings up <strong>timestamping</strong>. A trusted timestamp (RFC&nbsp;3161,
-from a TSA) records <em>when</em> a signature was made, so a credential stays
-verifiable even after the signing certificate expires. For anything you want to
-outlive a one-year certificate, wire in a TSA URL when you sign.</p>
+  <p>Which brings up <strong>timestamping</strong>. A trusted timestamp (RFC&nbsp;3161, from a TSA)
+  records <em>when</em> a signature was made, so a credential stays verifiable even after the
+  signing certificate expires. For anything you want to outlive a one-year certificate, wire in a
+  TSA URL when you sign.</p>
 
-<div class="callout">
-The trust-list and CA landscape moves quickly — SSL.com is first, not last.
-Check the current C2PA trust list when you're ready to buy.
-</div>
+  <div class="callout">
+  The trust-list and CA landscape moves quickly — SSL.com is first, not last. Check the current
+  C2PA trust list when you're ready to buy.
+  </div>
 
-<h2>A checklist to keep straight</h2>
+  <h2>A checklist to keep straight</h2>
 
-<ol>
-  <li><strong>Test</strong>: c2pa-rs es256 sample certs; algorithm matches the key;
-  private key never committed.</li>
-  <li><strong>Valid vs trusted</strong>: expect <code>Valid</code> +
-  <code>signingCredential.untrusted</code> with test certs; judge integrity by
-  <code>validation_state</code>, not a single code.</li>
-  <li><strong>Trusted locally</strong>: <code>verify_trust=true</code> <em>and</em>
-  trust anchors + EKU config (or an allowed-list); mind the contents-not-paths
-  trap; never <code>init trust</code>.</li>
-  <li><strong>Architecture</strong>: keep the key off the web server — delegate to
-  an isolated signing service.</li>
-  <li><strong>Production</strong>: a CA on the C2PA trust list (conformance
-  program); add TSA timestamping for longevity.</li>
-</ol>
+  <ol>
+    <li><strong>Test</strong>: c2pa-rs es256 sample certs; algorithm matches the key; private key
+    never committed.</li>
+    <li><strong>Valid vs trusted</strong>: expect <code>Valid</code> +
+    <code>signingCredential.untrusted</code> with test certs; judge integrity by
+    <code>validation_state</code>, not a single code.</li>
+    <li><strong>Trusted locally</strong>: <code>verify_trust=true</code> <em>and</em> trust anchors
+    + EKU config (or an allowed-list); mind the contents-not-paths trap; never <code>init trust</code>.</li>
+    <li><strong>Architecture</strong>: keep the key off the web server — delegate to an isolated
+    signing service.</li>
+    <li><strong>Production</strong>: a CA on the C2PA trust list (conformance program); add TSA
+    timestamping for longevity.</li>
+  </ol>
 
-<hr>
+  </div><!-- /.body -->
 
-<p>I put all of this into a small open-source PHP library —
-<a href="https://github.com/provemark/content-credentials">provemark/content-credentials</a>
-— that builds, signs, reads and verifies C2PA manifests (framework-agnostic core
-plus a Laravel integration), keeping the signing key isolated behind a service.
-It ships the exact trust-verification tooling the examples above come from.</p>
+  <div class="cta">
+    I put all of this into a small open-source PHP library —
+    <a href="https://github.com/provemark/content-credentials">provemark/content-credentials</a> —
+    that builds, signs, reads and verifies C2PA manifests (framework-agnostic core plus a Laravel
+    integration), keeping the signing key isolated behind a service. It ships the exact
+    trust-verification tooling the examples above come from.
+  </div>
 
-<footer>
-provemark — content provenance &amp; authenticity ·
-<a href="https://github.com/provemark">GitHub</a> ·
-<a href="https://packagist.org/packages/provemark/content-credentials">Packagist</a>
+</main>
+
+<footer class="site-footer">
+  <div class="inner">© 2026 provemark ·
+    <a href="https://github.com/provemark">GitHub</a> ·
+    <a href="https://packagist.org/packages/provemark/content-credentials">Packagist</a>
+  </div>
 </footer>
 
-</div>
 </body>
 </html>
