@@ -53,7 +53,7 @@ img, svg { max-width: 100%; }
   font-weight: 600; letter-spacing: -0.01em; font-size: 1.05rem; color: var(--fg);
 }
 .brand:hover { text-decoration: none; }
-.brand .mark { width: 22px; height: 22px; border-radius: 6px; display: block; box-shadow: var(--shadow); }
+.brand .mark { width: 22px; height: 22px; border-radius: 6px; display: block; object-fit: cover; box-shadow: var(--shadow); }
 .header-nav { margin-left: auto; display: flex; gap: 1.15rem; font-size: .92rem; }
 .header-nav a { color: var(--muted); }
 .header-nav a:hover { color: var(--fg); text-decoration: none; }
