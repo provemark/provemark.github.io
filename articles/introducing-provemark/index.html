@@ -118,16 +118,6 @@
   provenance tooling is exactly the kind of software where "it seemed to work" is not good enough,
   and where a reader needs to trust that behaviour is pinned down, not incidental.</p>
 
-  <h2>A note on where this came from</h2>
-
-  <p>The reference signing service began as an attempt to run the Content Authenticity Initiative's
-  own WordPress-plugin signing service standalone. It turned out that service could not build or run
-  as published — it was pinned to a version of the native library that never existed, among other
-  blockers. Rather than quietly work around it, I
-  <a href="https://github.com/contentauth/wp-plugin/issues/1">reported the blockers upstream</a>
-  and built a minimal service on the maintained library instead. That service — proven against a
-  real PHP&nbsp;→&nbsp;HTTP&nbsp;→&nbsp;sign&nbsp;→&nbsp;verify round trip — is what ships here.</p>
-
   <h2>Where to start</h2>
 
   <ul>
