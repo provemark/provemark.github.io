@@ -75,7 +75,7 @@
   <div class="table-wrap">
   <table>
     <tr><th><code>validation_state</code></th><th>Meaning</th></tr>
-    <tr><td><code>Valid</code></td><td>Signature and content-integrity checks passed. The certificate is <em>not</em> on a trust list.</td></tr>
+    <tr><td><code>Valid</code></td><td>Signature and content-integrity checks passed, but the certificate is <em>not</em> on a trust list (or trust checking was disabled).</td></tr>
     <tr><td><code>Trusted</code></td><td>All of the above <em>and</em> the certificate chains to a trusted CA.</td></tr>
     <tr><td><code>Invalid</code></td><td>Something failed — e.g. the asset was modified after signing.</td></tr>
   </table>
@@ -209,8 +209,9 @@ AI Art.50 mark : PASS (digitalSourceType=trainedAlgorithmicMedia)</code></pre>
   became the first publicly-trusted CA to issue production C2PA-conformant certificates, and its
   <a href="https://www.ssl.com/article/press-release-ssl-begins-issuing-production-ready-c2pa-conformant-certificates/">free
   tier</a> now includes a Level&nbsp;1 Claim Signing Certificate (valid one year) plus 10,000
-  trusted timestamps per year — enough to take a project from test certs to a genuinely trusted
-  signature.</p>
+  trusted timestamps per year. "Free" is not a shortcut around the gate, though: the free tier
+  still requires a valid C2PA conformance record ID at application — you pass conformance first,
+  then the certificate itself is free.</p>
 
   <p>Which brings up <strong>timestamping</strong>. A trusted timestamp (RFC&nbsp;3161, from a TSA)
   records <em>when</em> a signature was made, so a credential stays verifiable even after the
