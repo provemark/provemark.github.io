@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Introducing provemark: C2PA Content Credentials for PHP — provemark</title>
+<meta name="description" content="A framework-agnostic PHP library to build, sign, read and verify C2PA Content Credentials — with first-class marking of AI-generated content under the EU AI Act, Article 50, and a Laravel integration.">
+<link rel="canonical" href="https://provemark.github.io/articles/introducing-provemark/">
+<link rel="icon" type="image/png" sizes="64x64" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="provemark">
+<meta property="og:title" content="Introducing provemark: C2PA Content Credentials for PHP">
+<meta property="og:description" content="A framework-agnostic PHP library to build, sign, read and verify C2PA Content Credentials — with first-class EU AI Act (Article 50) marking of AI-generated content, and a Laravel integration.">
+<meta property="og:url" content="https://provemark.github.io/articles/introducing-provemark/">
+<meta property="og:image" content="https://provemark.github.io/provemark-icon.png">
+<meta name="twitter:card" content="summary">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="inner">
+    <a class="brand" href="/">
+      <img class="mark" src="/favicon.png" alt="" width="22" height="22">
+      provemark
+    </a>
+    <nav class="header-nav">
+      <a href="https://github.com/provemark/content-credentials">GitHub</a>
+      <a href="https://packagist.org/packages/provemark/content-credentials">Packagist</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container post">
+
+  <div class="post-header">
+    <p class="eyebrow">Announcement</p>
+    <h1>Introducing provemark: C2PA Content Credentials for PHP</h1>
+    <p class="post-meta">28 July 2026 · Maurice van Loon</p>
+  </div>
+
+  <p class="lead">PHP finally has a first-class way to build, sign, read and verify
+  <a href="https://c2pa.org">C2PA</a> Content Credentials — including the machine-readable
+  marking of AI-generated content that the EU AI Act, Article&nbsp;50, will require. It is open
+  source, framework-agnostic, and ships with a working signing service so you can prove the whole
+  chain on your own machine today.</p>
+
+  <div class="body">
+
+  <h2>The gap</h2>
+
+  <p>Content Credentials — the C2PA standard behind the "CR" pin you now see on images from Adobe,
+  Leica, and a growing list of cameras and generators — is how a piece of media carries a signed,
+  tamper-evident record of where it came from. The tooling around it is real and maturing fast, but
+  it grew up in JavaScript, Rust and Python. If your application is written in PHP — and a large
+  share of the web's publishing, CMS and media platforms are — there was no maintained, idiomatic
+  way in.</p>
+
+  <p>That gap is about to matter to a lot of people. The <strong>EU AI Act, Article&nbsp;50</strong>
+  requires providers of generative-AI systems to mark their output as artificially generated in a
+  machine-readable way. C2PA is the mechanism the industry is converging on to do exactly that.
+  A PHP shop that needs to comply shouldn't have to shell out to a foreign runtime or reverse-engineer
+  a manifest format to get there.</p>
+
+  <div class="callout">
+    <strong>provemark/content-credentials</strong> is a small, spec-driven PHP library that closes
+    that gap: build a manifest, sign it, read it back, and verify it — with the AI-generated marking
+    as a first-class feature, not an afterthought.
+  </div>
+
+  <h2>What it does</h2>
+
+  <p>The library is built around the full lifecycle, verified end-to-end against a real signature
+  that <code>c2patool</code> accepts:</p>
+
+  <ul>
+    <li><strong>Build</strong> a C2PA claim-v2 manifest, including the Article&nbsp;50 AI marking.</li>
+    <li><strong>Sign</strong> it — the signing key stays isolated behind a service, never on your
+    web server (more on why below).</li>
+    <li><strong>Read</strong> the manifest back out of a signed asset.</li>
+    <li><strong>Verify</strong> both the signature <em>and</em> whether the certificate is trusted —
+    two very different questions, as the <a href="/articles/c2pa-certificates/">certificates
+    guide</a> explains.</li>
+  </ul>
+
+  <p>A framework-agnostic core does the work; a thin Laravel integration (service provider, facade,
+  queued jobs, artisan commands) wires it into an app with a config file and nothing else. The core
+  has no framework dependency at all — the boundary is enforced in CI, not just by convention.</p>
+
+  <pre class="install"><code>composer require provemark/content-credentials</code></pre>
+
+  <h2>The Article 50 marking, done right</h2>
+
+  <p>Marking content as AI-generated in C2PA is deceptively subtle. It is a single actions assertion
+  whose first action is <code>c2pa.created</code>, carrying a <code>digitalSourceType</code> set to
+  the full IPTC URI for algorithmically-generated media, plus the name of the tool that made it.
+  Get the label or the URI slightly wrong and the manifest is either malformed or silently fails to
+  say what you meant.</p>
+
+  <p>provemark treats that assertion as the core use case and gets it right by construction — one
+  correct actions assertion, no duplicates, well-formed under claim v2. That is the difference
+  between "we embedded some metadata" and "a verifier will actually report this as AI-generated."</p>
+
+  <h2>Two decisions worth knowing about</h2>
+
+  <p><strong>The signing key is isolated.</strong> Signing happens behind a small HTTP service that
+  holds the private key; the PHP application talks to it over a narrow, authenticated contract and
+  never touches key material itself. This is the single most important architectural property for a
+  credential system — it means a compromise of your web tier does not hand an attacker your signing
+  identity. The library ships that service as a working reference implementation.</p>
+
+  <p><strong>It is spec-driven.</strong> Every feature exists as a written specification with tests
+  before a line of implementation. That is unusual for a young open-source library, and deliberate:
+  provenance tooling is exactly the kind of software where "it seemed to work" is not good enough,
+  and where a reader needs to trust that behaviour is pinned down, not incidental.</p>
+
+  <h2>A note on where this came from</h2>
+
+  <p>The reference signing service began as an attempt to run the Content Authenticity Initiative's
+  own WordPress-plugin signing service standalone. It turned out that service could not build or run
+  as published — it was pinned to a version of the native library that never existed, among other
+  blockers. Rather than quietly work around it, I
+  <a href="https://github.com/contentauth/wp-plugin/issues/1">reported the blockers upstream</a>
+  and built a minimal service on the maintained library instead. That service — proven against a
+  real PHP&nbsp;→&nbsp;HTTP&nbsp;→&nbsp;sign&nbsp;→&nbsp;verify round trip — is what ships here.</p>
+
+  <h2>Where to start</h2>
+
+  <ul>
+    <li><strong>Install it:</strong> <code>composer require provemark/content-credentials</code>
+    (<a href="https://packagist.org/packages/provemark/content-credentials">Packagist</a>).</li>
+    <li><strong>Read the code:</strong>
+    <a href="https://github.com/provemark/content-credentials">github.com/provemark/content-credentials</a>
+    — specs, ADRs and all.</li>
+    <li><strong>Understand certificates first:</strong> the
+    <a href="/articles/c2pa-certificates/">valid&nbsp;≠&nbsp;trusted guide</a> covers the part of
+    C2PA where everyone gets stuck.</li>
+  </ul>
+
+  <p>It is early — <code>v0.2.0</code> — and I would rather have a handful of careful users than a
+  splash. If you work with media provenance, AI-generated-content compliance, or just want C2PA in
+  a PHP stack, I would genuinely like to hear what breaks and what is missing.</p>
+
+  </div><!-- /.body -->
+
+  <div class="cta">
+    Try it, read the specs, and tell me where it falls short —
+    <a href="https://github.com/provemark/content-credentials">provemark/content-credentials</a>
+    on GitHub, <a href="https://packagist.org/packages/provemark/content-credentials">provemark/content-credentials</a>
+    on Packagist. Issues and discussions are open.
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="inner">© 2026 provemark ·
+    <a href="https://github.com/provemark">GitHub</a> ·
+    <a href="https://packagist.org/packages/provemark/content-credentials">Packagist</a>
+  </div>
+</footer>
+
+</body>
+</html>
