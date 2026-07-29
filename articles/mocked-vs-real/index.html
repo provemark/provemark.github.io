@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mocked ≠ real: the bug my unit tests were hiding — provemark</title>
+<meta name="description" content="A green unit test hid a broken read path, because the mock was more forgiving than the real C2PA signing service. How a stateful property test caught it, and why mocks encode assumptions the code shares.">
+<link rel="canonical" href="https://provemark.github.io/articles/mocked-vs-real/">
+<link rel="icon" type="image/png" sizes="64x64" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="provemark">
+<meta property="og:title" content="Mocked ≠ real: the bug my unit tests were hiding">
+<meta property="og:description" content="A green unit test hid a broken read path: the mock was more forgiving than the real signing service. How a stateful property test caught it, and why mocks encode the same assumptions as the code.">
+<meta property="og:url" content="https://provemark.github.io/articles/mocked-vs-real/">
+<meta property="og:image" content="https://provemark.github.io/provemark-icon.png">
+<meta name="twitter:card" content="summary">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="inner">
+    <a class="brand" href="/">
+      <img class="mark" src="/favicon.png" alt="" width="22" height="22">
+      provemark
+    </a>
+    <nav class="header-nav">
+      <a href="https://github.com/provemark/content-credentials">GitHub</a>
+      <a href="https://packagist.org/packages/provemark/content-credentials">Packagist</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container post">
+
+  <div class="post-header">
+    <p class="eyebrow">Article</p>
+    <h1>Mocked ≠ real: the bug my unit tests were hiding</h1>
+    <p class="post-meta">29 July 2026 · Maurice van Loon</p>
+  </div>
+
+  <p class="lead">My read path had a test. The test was green. The path was broken.</p>
+
+  <div class="body">
+
+  <p>The library is
+  <a href="https://github.com/provemark/content-credentials">content-credentials</a>: a PHP
+  client for C2PA Content Credentials, built to mark AI-generated media the way the EU AI Act,
+  Article&nbsp;50 requires. It builds a manifest, hands it to a small Node signing service that
+  holds the key, and reads credentials back out of an asset. Framework-agnostic core, optional
+  Laravel layer, PHPStan at max, Deptrac enforcing the boundary. Spec-driven throughout: nothing
+  gets built before a spec is approved, and every acceptance criterion maps to a test.</p>
+
+  <p>None of that caught it.</p>
+
+  <h2>The contract</h2>
+
+  <p>Reading an asset with no C2PA data has to report <em>absence</em>, not failure. A caller
+  checks whether an image is marked before deciding what to do with it; most images aren't. If
+  that path throws, every consumer has to wrap every read in a try/catch for the ordinary case.</p>
+
+  <p>SPEC-003 says so, and <code>ManifestReport</code> implements it. There's a unit test pinning
+  it:</p>
+
+  <pre><code>// tests/Unit/Reading/SigningServiceReaderTest.php
+$client-&gt;addResponse(readStoreResponse([]));   // HTTP 200, empty manifest store
+
+$report = $reader-&gt;read(new Asset($bytes, MediaType::Png));
+
+expect($report-&gt;hasManifest())-&gt;toBeFalse();
+expect($report-&gt;isAiGenerated())-&gt;toBeFalse();</code></pre>
+
+  <p>That test is correct. It has been green since the day I wrote it. It tests the PHP client's
+  handling of an empty manifest store, and the PHP client handles an empty manifest store
+  correctly.</p>
+
+  <p>It just never asked whether the service actually sends one.</p>
+
+  <h2>What the property test did differently</h2>
+
+  <p>I'd been adding property-based tests with
+  <a href="https://github.com/giorgiosironi/eris">Eris</a> — not to replace the example tests, but
+  to quantify over the input space instead of picking points in it. Most of them are stateless: for
+  every media type and every non-blank agent name, whatever the builder marks as AI-generated, the
+  reader reads back as AI-generated.</p>
+
+  <p>The interesting one is stateful, and it runs against the real service. C2PA manifests stack:
+  sign an already-signed asset and the new manifest goes on top, the old one becomes an ingredient.
+  That's genuine state, so the test generates <em>sequences</em> of commands rather than single
+  calls:</p>
+
+  <pre><code>function pbtProvenanceCommand(): Eris\Generator
+{
+    return Generators::associative([
+        'op'      =&gt; Generators::elements(['sign', 'sign', 'read']),
+        'agent'   =&gt; Generators::elements(['ACME GenAI Image Model', 'agent-2', 'x']),
+        'version' =&gt; Generators::elements([null, '1.0.0', '3.1.0']),
+    ]);
+}</code></pre>
+
+  <p>A shadow model tracks what should be true — how many signings have happened, therefore whether
+  a manifest should be present — and after every command the test compares the real report against
+  it. The invariant I cared about was that the Article&nbsp;50 marking survives an arbitrary chain
+  of re-signings.</p>
+
+  <p>That's not the invariant that broke.</p>
+
+  <h2>The sequence that failed</h2>
+
+  <p>Generated sequences start wherever the generator says. Some of them start with
+  <code>read</code>.</p>
+
+  <p>Reading the unsigned fixture returned HTTP 500:</p>
+
+  <pre><code>{"error":"Cannot read properties of null (reading 'json')"}</code></pre>
+
+  <p>Which the PHP client faithfully turned into a <code>ReadFailedException</code>, exactly as
+  designed. The client was fine. The service was not:</p>
+
+  <pre><code>// service/server.js — POST /v1/read
+const reader = await Reader.fromAsset({ buffer: fileBuffer, mimeType: mime_type });
+const json   = reader.json();</code></pre>
+
+  <p><code>Reader.fromAsset()</code> resolves to <code>null</code> when the asset carries no C2PA
+  data. Not an empty reader — <code>null</code>. So <code>reader.json()</code> throws, the handler
+  500s, and the contract SPEC-003 spells out is violated by the one component the unit tests never
+  touch.</p>
+
+  <p>The fix is three lines:</p>
+
+  <pre><code>if (!reader) {
+    return res.json({});   // no C2PA data → empty manifest store, HTTP 200
+}</code></pre>
+
+  <p><code>{}</code> because that's precisely what <code>SigningServiceReader::parse()</code>
+  already treats as "no active manifest" — the same shape the unit test mocks with
+  <code>readStoreResponse([])</code>. Service and client now agree on the wire format instead of
+  each being separately correct about a different one.</p>
+
+  <h2>Why the mock hid it</h2>
+
+  <p>Here's the part worth generalising, and it isn't really about property testing.</p>
+
+  <p>A mock encodes your assumption about how the other side behaves. When you assert against it,
+  you're testing that assumption, not the world. My mock returned a well-formed empty store for a
+  manifest-less asset, because that's what I believed <code>c2pa-node</code> would produce. It
+  produces <code>null</code>. The mock was more forgiving than the real thing, so the suite stayed
+  green while the path stayed broken.</p>
+
+  <p>That's a quiet failure mode. Nothing warns you. Coverage looks fine — the line is exercised.
+  The test name even reads correctly: <em>reads an asset with no manifest as an empty report</em>.
+  It does. Against a fiction.</p>
+
+  <p>Property testing found it not because properties are magic, but because the stateful test ran
+  against the real service and the generator had no idea which orderings were "normal". I wouldn't
+  have written <code>read</code> before <code>sign</code> by hand. Why would I? You sign, then you
+  read. The generator doesn't know that's the story, so it tried the other order, and the other
+  order was the bug.</p>
+
+  <h2>What I changed, beyond the fix</h2>
+
+  <p>SPEC-010 now covers it, with the regression guard and the error path alongside — a
+  manifest-less read must be 200, a signed read must still return its marking, and malformed input
+  must still be 400 and not accidentally swallowed by the new empty path. There's an integration
+  test per criterion.</p>
+
+  <p>I also added an example test for the specific case. That's standard practice when a property
+  test fires: the property prevents the whole class from coming back, the example documents what
+  actually went wrong and reads well in review. Keep both.</p>
+
+  <p>The structural change I'm working on is less obvious. The read contract shouldn't be verified
+  twice, separately, in two places that can drift. It should be one set of properties driven against
+  both implementations of <code>ReaderInterface</code> — the mock in the unit group, the real
+  service in the integration group. If they ever diverge again, something goes red the day the drift
+  appears rather than months later. Same properties, two drivers.</p>
+
+  <h2>The part about AI-generated code</h2>
+
+  <p>This library was built spec-driven with heavy assistant involvement, and I'll be straight about
+  what that changes here: not much, and that's the point.</p>
+
+  <p>The code an assistant writes is plausible. That's its defining property. <code>reader.json()</code>
+  is exactly what you write if you assume <code>fromAsset</code> returns a reader, and nothing about
+  the line looks wrong. It reviews clean. It passes a mocked test, because the mock was written under
+  the same assumption as the code.</p>
+
+  <p>So the leverage isn't in reviewing generated code harder. It's in writing the specification
+  separately from the implementation, and then checking the implementation against it with something
+  that doesn't share its assumptions. Properties written against what the spec <em>says</em> —
+  absence is an empty report, never an error — rather than against what the code happens to do.
+  That's a discipline, not a tool, and it survives whoever or whatever writes the code.</p>
+
+  <h2>If you want to try this</h2>
+
+  <p>Eris is the property-based testing library for PHP. It's stateless-only, so the
+  command-sequence pattern above is hand-rolled on top of its sequence generator and a small shadow
+  model. Pest needs <code>uses(\Eris\TestTrait::class)</code> to make <code>$this-&gt;forAll()</code>
+  available inside the closures. Integration properties are slow — every command is an HTTP
+  round-trip — so cap the sequence length, cap the case count, and keep them out of the default
+  suite.</p>
+
+  <p>Start with a round-trip invariant if you have two halves that must agree. Mine is: whatever the
+  builder marks as AI-generated, the reader must read back as AI-generated. It's one property, it
+  covers the whole input space, and it's the test that will fail loudest when someone changes the
+  marking on one side only.</p>
+
+  <p>The manifest-less read is now green for the right reason.</p>
+
+  </div><!-- /.body -->
+
+  <div class="cta">
+    I build this in the open in
+    <a href="https://github.com/provemark/content-credentials">provemark/content-credentials</a> —
+    a PHP library that builds, signs, reads and verifies C2PA manifests (framework-agnostic core
+    plus a Laravel integration), keeping the signing key isolated behind a service. The
+    property-based suite and SPEC-010 described here are in the repo.
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="inner">© 2026 provemark ·
+    <a href="https://github.com/provemark">GitHub</a> ·
+    <a href="https://packagist.org/packages/provemark/content-credentials">Packagist</a>
+  </div>
+</footer>
+
+</body>
+</html>
