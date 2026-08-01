@@ -210,6 +210,64 @@ const json   = reader.json();</code></pre>
 
   <p>The manifest-less read is now green for the right reason.</p>
 
+  <hr>
+
+  <h2>Update — 1 August 2026</h2>
+
+  <p>Two things in this article have moved since it was written. Rather than quietly rewriting the
+  text, here is what changed.</p>
+
+  <h3>The structural change still is not built</h3>
+
+  <p>The article ends on a plan: one set of properties driven against both implementations of
+  <code>ReaderInterface</code>, so a mock and the real service cannot drift apart unnoticed. It is
+  not in the repo, and saying so is more useful than leaving the sentence in the future tense.</p>
+
+  <p>The reason is worth stating, because it is the same reason the drift happened in the first
+  place. Nothing forces it. The mocked unit tests are green, the integration tests are green, and
+  the two sets agree today — so there is never a day on which building the shared harness is the most
+  urgent thing. It only pays off on the day they diverge, and that day announces itself by a
+  production bug rather than by a red test.</p>
+
+  <p>That is the honest state: a known, unmitigated gap, kept visible here instead of in a private
+  list. It remains the right fix, and I would still recommend it to anyone who verifies one contract
+  in two places.</p>
+
+  <h3>Eris is no longer what I would reach for</h3>
+
+  <p>The closing section says Eris is the property-based testing library for PHP, that it is
+  stateless-only, and that the command-sequence pattern has to be hand-rolled on top of it. That was
+  accurate in July. It is no longer what I would advise.</p>
+
+  <p>Hand-rolling that pattern twice made the gap obvious: PHP had no model-based (stateful) property
+  testing at all. Erlang, Clojure, Python and TypeScript have had it for years; the technique
+  generates <em>sequences</em> of operations, runs them against a system and a shadow model in
+  lockstep, and — the part that actually matters — reduces a failing twelve-command sequence to the
+  two commands that carry the bug.</p>
+
+  <p>So I wrote one, for my own use and not yet public. It owns its generation (PHP 8.2's
+  <code>Random</code> extension, seeded and reproducible across processes), has no runtime
+  dependencies, and does real sequence shrinking — including the <em>values inside</em> a command, so
+  a counterexample reports <code>deposit(52)</code> rather than the <code>deposit(9999)</code> that
+  happened to be drawn.</p>
+
+  <p>The limits are as interesting as the capability: no parallel execution or race detection (PHP is
+  share-nothing and request-scoped), no simplification of which command was chosen, and a
+  <em>local</em> minimum rather than a global one — no single further reduction fails, which is a
+  weaker claim than it sounds and worth stating plainly.</p>
+
+  <p>None of that helps you today. What does: the hand-rolled suite described in this article still
+  exists and still passes, and the pattern is portable — a command alphabet, a shadow model, a
+  transition, a postcondition. That is fifty lines on top of any value generator. The hard part is
+  not the loop; it is reducing a failing twelve-command sequence to the two that matter, and that is
+  what nobody in PHP has yet.</p>
+
+  <h3>What has not changed</h3>
+
+  <p>The bug, the fix, and the reason the mock hid it. A mock encodes your assumption about the other
+  side; asserting against it tests the assumption, not the world. That was the point of the article
+  and it has not aged.</p>
+
   </div><!-- /.body -->
 
   <div class="cta">
