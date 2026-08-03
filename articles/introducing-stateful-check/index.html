@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Introducing stateful-check: generate programs, not values — provemark</title>
+<meta name="description" content="A whole class of bugs lives not in a single input but in the order of operations. stateful-check generates command sequences, checks them against a shadow model, and shrinks a failure to a minimal counterexample. Model-based property testing for PHP.">
+<link rel="canonical" href="https://provemark.github.io/articles/introducing-stateful-check/">
+<link rel="icon" type="image/png" sizes="64x64" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="provemark">
+<meta property="og:title" content="Introducing stateful-check: generate programs, not values">
+<meta property="og:description" content="A whole class of bugs lives in the order of operations, not a single input. stateful-check generates command sequences, checks them against a shadow model, and shrinks a failure to a minimal counterexample.">
+<meta property="og:url" content="https://provemark.github.io/articles/introducing-stateful-check/">
+<meta property="og:image" content="https://provemark.github.io/provemark-icon.png">
+<meta name="twitter:card" content="summary">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="inner">
+    <a class="brand" href="/">
+      <img class="mark" src="/favicon.png" alt="" width="22" height="22">
+      provemark
+    </a>
+    <nav class="header-nav">
+      <a href="https://github.com/provemark">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container post">
+
+  <div class="post-header">
+    <p class="eyebrow">Article</p>
+    <h1>Introducing stateful-check: generate programs, not values</h1>
+    <p class="post-meta">3 August 2026 · Maurice van Loon</p>
+  </div>
+
+  <p class="lead">Most property-based tests generate a value and check that a rule holds. The
+  bugs I keep chasing aren't in a value. They're in an order.</p>
+
+  <div class="body">
+
+  <p>A stateless property looks for an <em>input</em> that breaks an invariant: a string the
+  parser chokes on, a number that overflows. Generate enough inputs and you find it. But a whole
+  class of bugs never shows up in a single input — it lives in the <em>sequence</em> of
+  operations. The read that runs before the write. The setter that quietly clobbers an unrelated
+  field. The retry that applies the same change twice. You can't reach those by generating more
+  values. You have to generate programs.</p>
+
+  <p>I ran into this building
+  <a href="https://github.com/provemark/content-credentials">content-credentials</a>. I'd
+  hand-rolled a few stateful tests there — draw a sequence of operations, run them against the
+  real thing and against a simple model of what should happen, and compare after every step. One
+  of them caught a bug that a green unit test had hidden (that's
+  <a href="/articles/mocked-vs-real/">its own story</a>). The tests worked. But they were
+  hand-rolled: no shrinking, no reuse, tangled into that one project.</p>
+
+  <p>Erlang has had this properly since 2006; Clojure, Python and TypeScript followed. PHP hadn't.
+  So I pulled the pattern out into its own package.</p>
+
+  <h2>How it works</h2>
+
+  <p>You describe each operation as a <em>command</em> with four methods: when it may run, how to
+  run it against the real system, how it advances a <em>shadow model</em> of the expected state,
+  and whether the system still agrees with the model afterwards. The model is the oracle —
+  deliberately simpler than the system, so it can't hide the same bug the system has.</p>
+
+  <pre><code>$deposit  = Gen::map(fn (int $n) =&gt; new Deposit($n),  Gen::integers(1, 100));
+$withdraw = Gen::map(fn (int $n) =&gt; new Withdraw($n), Gen::integers(1, 100));
+
+$result = (new StatefulProperty(
+    alphabet: [$deposit, $withdraw],
+    initial: Gen::integers(0, 1000),          // a starting balance, drawn per run
+    setup: fn (int $opening) =&gt; new Setup(
+        model:  new LedgerModel($opening),    // the shadow model
+        system: new Account($opening),        // the real thing
+    ),
+))-&gt;check();</code></pre>
+
+  <p>stateful-check generates sequences of these commands, runs them, and checks the model after
+  every step. When it finds a failure, the part that earns its keep is the shrinker: it takes a
+  twelve-command sequence that fails and reduces it to the two commands that actually matter — and
+  the smallest arguments that still break it. You get a minimal reproduction, not a haystack. And
+  because generation is seeded, that reproduction is deterministic: same seed, same failure.</p>
+
+  <h2>What it doesn't do</h2>
+
+  <p>I'd rather say this up front than have you find it out.</p>
+
+  <ul>
+    <li><strong>No parallelism, no race detection.</strong> PHP is share-nothing and
+    request-scoped. The Erlang original's headline feature — finding races — isn't available here,
+    and I won't pretend otherwise.</li>
+    <li><strong>A local minimum, not a global one.</strong> The shrinker guarantees that no single
+    further reduction still fails. It does not search exhaustively for the smallest possible
+    counterexample.</li>
+    <li><strong>Command choice isn't shrunk.</strong> It drops commands and shrinks their
+    arguments, but won't swap a complex command for a simpler one that would have failed too.</li>
+  </ul>
+
+  <p>There's also a stateless runner for ordinary one-value properties, and an opt-in edge bias
+  that makes generation hit the boundaries — <code>0</code>, the minimum, the maximum — where
+  off-by-one bugs cluster and uniform random almost never lands. Both are in the README.</p>
+
+  <h2>Where it is</h2>
+
+  <p><a href="https://github.com/provemark/stateful-check">provemark/stateful-check</a> on GitHub.
+  No runtime dependencies beyond PHP&nbsp;8.2 — generation is built on the Random extension, which
+  is what makes shrinking reproducible. Spec-driven throughout: every change starts from an
+  approved spec, every acceptance criterion maps to a test, and every one of those tests is proven
+  to fail when the behaviour it checks is broken.</p>
+
+  <p>If you've ever watched a green suite sail past an ordering bug, this is the shape of test that
+  catches it.</p>
+
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="inner">© 2026 provemark ·
+    <a href="https://github.com/provemark">GitHub</a>
+  </div>
+</footer>
+
+</body>
+</html>
