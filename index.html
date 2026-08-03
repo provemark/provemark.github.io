@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>provemark — content provenance &amp; authenticity</title>
-<meta name="description" content="Content provenance and authenticity — verifiable C2PA Content Credentials for the PHP ecosystem, including EU AI Act (Article 50) marking of AI-generated content.">
+<title>provemark — verifiable trust for PHP</title>
+<meta name="description" content="Open-source PHP tooling for verifiable trust: C2PA Content Credentials (content provenance, EU AI Act Article 50) and model-based property testing.">
 <link rel="icon" type="image/png" sizes="64x64" href="/favicon.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="provemark">
-<meta property="og:title" content="provemark — content provenance & authenticity">
-<meta property="og:description" content="Verifiable C2PA Content Credentials for the PHP ecosystem, including EU AI Act (Article 50) marking of AI-generated content.">
+<meta property="og:title" content="provemark — verifiable trust for PHP">
+<meta property="og:description" content="Open-source PHP tooling for verifiable trust: C2PA Content Credentials (content provenance, EU AI Act) and model-based property testing.">
 <meta property="og:url" content="https://provemark.github.io/">
 <meta property="og:image" content="https://provemark.github.io/provemark-icon.png">
 <meta name="twitter:card" content="summary">
@@ -28,28 +28,34 @@
       provemark
     </a>
     <nav class="header-nav">
-      <a href="https://github.com/provemark/content-credentials">GitHub</a>
-      <a href="https://packagist.org/packages/provemark/content-credentials">Packagist</a>
+      <a href="https://github.com/provemark">GitHub</a>
     </nav>
   </div>
 </header>
 
 <main class="container">
   <section class="hero">
-    <p class="eyebrow">Content provenance &amp; authenticity</p>
+    <p class="eyebrow">Verifiable trust for PHP</p>
     <h1>provemark</h1>
-    <p class="lede">Verifiable <a href="https://c2pa.org">C2PA</a> Content Credentials for the
-    PHP ecosystem — including machine-readable marking of AI-generated content under the
-    EU&nbsp;AI&nbsp;Act, Article&nbsp;50.</p>
+    <p class="lede">Open-source PHP tooling for provenance and correctness — from
+    <a href="https://c2pa.org">C2PA</a> Content Credentials to model-based property testing.</p>
   </section>
 
   <h2>Projects</h2>
   <div class="card">
     <h3><a href="https://github.com/provemark/content-credentials">content-credentials</a></h3>
     <p class="muted" style="margin:.35rem 0 0">A PHP library to build, sign, read and verify C2PA
-    manifests — a framework-agnostic core plus a Laravel integration, keeping the signing key
+    manifests, with machine-readable marking of AI-generated content under the EU&nbsp;AI&nbsp;Act,
+    Article&nbsp;50 — a framework-agnostic core plus a Laravel integration, keeping the signing key
     isolated behind a service.</p>
     <pre class="install"><code>composer require provemark/content-credentials</code></pre>
+  </div>
+
+  <div class="card">
+    <h3><a href="https://github.com/provemark/stateful-check">stateful-check</a></h3>
+    <p class="muted" style="margin:.35rem 0 0">Model-based (stateful) property testing for PHP:
+    generate sequences of commands, check them against a shadow model, and shrink a failure to a
+    minimal counterexample. Also a stateless property runner and opt-in edge-biased generation.</p>
   </div>
 
   <h2>Writing</h2>
