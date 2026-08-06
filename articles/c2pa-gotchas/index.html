@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Three things that will cost you a day with C2PA — provemark</title>
+<meta name="description" content="Article 50 of the EU AI Act applies since 2 August 2026. Three C2PA implementation traps found the hard way: sign() does not return your file, re-encoding silently destroys credentials, and trust verification can verify nothing without telling you.">
+<link rel="canonical" href="https://provemark.github.io/articles/c2pa-gotchas/">
+<link rel="icon" type="image/png" sizes="64x64" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="provemark">
+<meta property="og:title" content="Three things that will cost you a day with C2PA">
+<meta property="og:description" content="Three C2PA implementation traps found the hard way: sign() does not return your file, re-encoding silently destroys credentials, and trust verification can verify nothing without telling you.">
+<meta property="og:url" content="https://provemark.github.io/articles/c2pa-gotchas/">
+<meta property="og:image" content="https://provemark.github.io/provemark-icon.png">
+<meta name="twitter:card" content="summary">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="inner">
+    <a class="brand" href="/">
+      <img class="mark" src="/favicon.png" alt="" width="22" height="22">
+      provemark
+    </a>
+    <nav class="header-nav">
+      <a href="https://github.com/provemark">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container post">
+
+  <div class="post-header">
+    <p class="eyebrow">Article</p>
+    <h1>Three things that will cost you a day with C2PA</h1>
+    <p class="post-meta">6 August 2026 · Maurice van Loon</p>
+  </div>
+
+  <p class="lead">Article 50 of the EU AI&nbsp;Act has applied since 2 August 2026, so a lot of
+  people are about to implement Content Credentials for the first time. These are the three traps
+  that cost me the most time — none of them are in the documentation, and two of them fail
+  quietly enough that you will ship before you notice.</p>
+
+  <div class="body">
+
+  <p>I have written elsewhere about
+  <a href="/articles/introducing-provemark/">what the Article 50 marking looks like</a> and about
+  <a href="/articles/c2pa-certificates/">certificates and the valid-versus-trusted distinction</a>.
+  This is the other half: the things that go wrong between "I understand the format" and "a
+  verifier accepts my file". Everything below comes from a working chain — build, sign, read,
+  verify — against <code>c2patool</code>.</p>
+
+  <p>The examples are Node, because that is where the C2PA bindings live even when your
+  application is PHP. The failure modes are not language-specific.</p>
+
+  <h2>1. <code>sign()</code> does not return the signed file</h2>
+
+  <p>In <code>@contentauth/c2pa-node</code>, <code>builder.sign(signer, source, dest)</code>
+  returns the <strong>C2PA manifest-store bytes</strong> — the JUMBF blob. Your signed asset is
+  written to <code>dest</code>.</p>
+
+  <p>Treat the return value as your image and you write a file that is not an image at all.
+  Reading it back fails with an invalid header: the bytes <code>6A 75 6D 62</code>, which is
+  ASCII for <code>jumb</code>. Once you know that, the error is obvious. Before you know it, you
+  are debugging your reader.</p>
+
+  <p>What makes this easy to walk into is that the library's own example asserts only that the
+  returned buffer is non-empty. It is non-empty. It is also not your image.</p>
+
+  <h2>2. Any re-encode destroys the credential</h2>
+
+  <p>The signature covers the file's bytes through a hash binding. Re-encode, resize, optimise,
+  rewrite metadata, strip EXIF — the manifest no longer matches and the credential is invalid.</p>
+
+  <p>This is the one that actually breaks working integrations, because it fails <em>silently</em>
+  in the worst way: the image still displays perfectly. Nothing errors. You only find out when
+  someone verifies the file and gets nothing.</p>
+
+  <p>And a typical web stack is full of offenders. Image optimisers. Thumbnail generation. A CDN
+  that recompresses on delivery — Cloudflare Polish, imgix, Fastly image optimisation. Any of them
+  will quietly undo your signing.</p>
+
+  <div class="callout">
+  <p>If you take one thing from this article: <strong>audit your image pipeline before you write
+  any signing code.</strong> Find every place bytes get rewritten between generation and delivery,
+  and decide which of them must stop. That is a bigger conversation than the signing itself, and
+  discovering it afterwards means unpicking work you have already done.</p>
+  </div>
+
+  <p>There is a subtler consequence. Some upstream providers already attach Content Credentials to
+  their output. If your application downloads such an image and runs it through a thumbnailer, you
+  have destroyed a credential somebody else created — and you may not have known it was there. You
+  then have two options: preserve the original bytes untouched, or re-sign under your own identity.
+  The second is a different and arguably stronger statement. <em>We</em> stand behind this file,
+  not just our supplier.</p>
+
+  <h2>3. Trust verification that verifies nothing, silently</h2>
+
+  <p>I have <a href="/articles/c2pa-certificates/">written before</a> about the trap where trust
+  settings take PEM <em>contents</em> rather than file paths. Here is the one underneath it, which
+  is worse.</p>
+
+  <p>Enable <code>verify_trust</code> but supply no trust material — no anchors, no allowed list —
+  and nothing complains. No exception, no warning, no startup error. Every read comes back
+  <em>valid</em> with <code>signingCredential.untrusted</code>.</p>
+
+  <p>Which is byte-for-byte what a <em>correctly</em> configured verifier reports for a genuinely
+  untrusted certificate.</p>
+
+  <p>That is the whole problem. From the outside, "trust verification is on and this certificate
+  failed it" and "trust verification is not actually running" produce identical output. An
+  operator who believes verification is enabled has no way to discover that it is not. Note the
+  asymmetry: malformed trust material <em>does</em> throw. It is the <em>absent</em> case that
+  passes quietly — so validating that your settings parse proves nothing at all.</p>
+
+  <p>The only defence I found is to refuse to start. If a settings document could never verify
+  anything — <code>verify_trust</code> missing, or no non-empty anchors or allowed list — the
+  service should exit rather than run. A configuration error at startup is loud. A verifier that
+  silently verifies nothing is not.</p>
+
+  <h2>The shape these share</h2>
+
+  <p>Two of the three fail without telling you. The signed file that is not an image is the
+  polite one — it errors immediately, and you fix it the same afternoon. The other two let you
+  ship: a credential quietly destroyed by your CDN, a trust check that was never actually
+  running.</p>
+
+  <p>That shaped how I built the library this comes from. Anything that can fail quietly gets a
+  loud failure instead — the service refuses to start on unusable trust settings, and reading a
+  credential distinguishes what a file <em>claims</em> from what actually <em>verified</em>:</p>
+
+<pre><code>$report-&gt;isAiGenerated();          // what the manifest CLAIMS
+$report-&gt;isVerifiedAiGenerated();  // marked AND the signature checked out</code></pre>
+
+  <p>The first answers just as confidently for a manifest that failed every validation check.
+  Before you act on a credential — showing a badge, allowing an upload, filing a compliance
+  record — gate on the verdict, not the claim.</p>
+
+  </div><!-- /.body -->
+
+  <div class="cta">
+    All three are pinned by tests in
+    <a href="https://github.com/provemark/content-credentials">provemark/content-credentials</a>,
+    an open-source PHP library for building, signing, reading and verifying C2PA manifests —
+    framework-agnostic core, Laravel integration, and a signing service that keeps the private key
+    out of your web application. Its <code>NOTES.md</code> is the full log these came from.
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="inner">© 2026 provemark ·
+    <a href="https://github.com/provemark">GitHub</a> ·
+    <a href="https://packagist.org/packages/provemark/content-credentials">Packagist</a>
+  </div>
+</footer>
+
+</body>
+</html>
