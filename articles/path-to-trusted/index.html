@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>From valid to trusted: the PHP route to production Content Credentials — provemark</title>
+<meta name="description" content="PHP now has a Content Credentials library the Content Authenticity Initiative points at. Here is the rest of the map: how a deployment becomes a Conforming Product, what it costs, and what the security requirements ask of your architecture.">
+<link rel="canonical" href="https://provemark.github.io/articles/path-to-trusted/">
+<link rel="icon" type="image/png" sizes="64x64" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="provemark">
+<meta property="og:title" content="From valid to trusted: the PHP route to production Content Credentials">
+<meta property="og:description" content="The CAI now lists a PHP library for Content Credentials. Here is the rest of the map: how your deployment becomes a Conforming Product, what it costs, and what the security requirements ask of your architecture.">
+<meta property="og:url" content="https://provemark.github.io/articles/path-to-trusted/">
+<meta property="og:image" content="https://provemark.github.io/provemark-icon.png">
+<meta name="twitter:card" content="summary">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="inner">
+    <a class="brand" href="/">
+      <img class="mark" src="/favicon.png" alt="" width="22" height="22">
+      provemark
+    </a>
+    <nav class="header-nav">
+      <a href="https://github.com/provemark">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container post">
+
+  <div class="post-header">
+    <p class="eyebrow">Article</p>
+    <h1>From valid to trusted: the PHP route to production Content Credentials</h1>
+    <p class="post-meta">8 August 2026 · Maurice van Loon</p>
+  </div>
+
+  <p class="lead">The Content Authenticity Initiative now points at a PHP library for Content
+  Credentials from its own documentation. So the tooling question is settled: you can build, sign,
+  read and verify from PHP today. This article is about what comes after that, namely how a
+  signature stops being merely valid and starts being trusted. That route is open to anyone, it
+  costs nothing, and it is documented better than I expected.</p>
+
+  <div class="body">
+
+  <h2>PHP is on the map</h2>
+
+  <p>The CAI's <a href="https://opensource.contentauthenticity.org/docs/community-resources/">community
+  resources</a> page carries an entry under <em>Related projects</em>:</p>
+
+  <blockquote>
+  <p><strong>PHP library</strong>: Builds, signs, reads and verifies Content Credentials from PHP,
+  with a framework-agnostic core and a Laravel integration. Signing is delegated to a small Node
+  service built on c2pa-node, so the private key stays out of the web application.</p>
+  </blockquote>
+
+  <p>The CAI maintains implementations in Rust, JavaScript and Python. PHP was not one of them.
+  For a language that runs a large part of the web, including plenty of applications that now
+  generate images through an API, that was a real gap. It is currently the only PHP entry on the
+  page, which mostly tells you how new this is for the PHP world.</p>
+
+  <h2>Your deployment is the product</h2>
+
+  <p>The C2PA runs a <a href="https://github.com/c2pa-org/conformance-public">Conformance
+  Program</a> with a public Conforming Products List. What goes on that list is not a package you
+  install. The programme's glossary defines a <em>Generator Product</em> as:</p>
+
+  <blockquote>
+  <p>The set of software, hardware, and platform configurations created by an Applicant that work
+  together as a system to produce digital Assets with C2PA manifests.</p>
+  </blockquote>
+
+  <p>That means your application, the service that signs, your certificate, and the configuration
+  holding them together. The programme also says that such a system may "rely on a discrete Claim
+  Generator service available either locally […] or remotely", and that the service "may be created
+  by the Applicant <strong>or by a different entity</strong>".</p>
+
+  <p>That second clause is worth reading twice, because it is what makes this practical. You do not
+  have to wait for a vendor to certify a library for you, and you are not shut out because your
+  language lacks an official SDK. You assemble a system from components you choose, you describe
+  it, and you apply. The library is one of the components you name, in the same role c2pa-node
+  plays for a Node shop.</p>
+
+  <h2>The route, and what it costs</h2>
+
+  <p>One sentence in the certificate policy explains why this matters on a project plan:</p>
+
+  <blockquote>
+  <p>C2PA Claim Signing Certificates under this policy SHALL only be issued to instances of
+  Generator Products that have successfully passed the C2PA Conformance Program.</p>
+  </blockquote>
+
+  <p>Production certificates come through the programme. I have <a href="/articles/c2pa-certificates/">written
+  before</a> about how a test certificate gives you a perfectly valid signature that every verifier
+  still reports as untrusted. This is the step that closes that gap.</p>
+
+  <p><strong>There is no fee.</strong> The programme states plainly that there is no application fee
+  for Generator Product companies, and no fee for adding records to the Conforming Products List.
+  There is no external audit at the entry level either. The administrator reviews the evidence you
+  submit, and a second person has to approve any record before it is published. What you supply is
+  a Generator Product Security Architecture document on their template, sample output for every
+  media type you claim to support, and a signed legal agreement.</p>
+
+  <div class="callout">
+  <p><strong>Start the conformance conversation early, in parallel with the engineering.</strong>
+  Signing works on day one with test certificates, so nobody is blocked while the paperwork moves.
+  The part that takes calendar time is finding someone who can sign a legal agreement on behalf of
+  the company.</p>
+  </div>
+
+  <h2>What Level 1 asks, and why you would want it anyway</h2>
+
+  <p>Assurance Level 1 is the entry bar. I read the requirements expecting a compliance chore and
+  came away with a design checklist worth following whether or not you ever apply. Three things
+  stood out.</p>
+
+  <p><strong>1. The scope is the whole pipeline.</strong> What gets evaluated runs "from the initial
+  capture or upload of assets through to a signing operation and delivery or persistence of a signed
+  asset". That covers your uploader, your queue and your storage, which is wider than most people
+  picture. It is also the same boundary you need in your head anyway, because
+  <a href="/articles/c2pa-gotchas/">any re-encode along that path destroys the credential</a>. You
+  map the pipeline once and it serves both purposes.</p>
+
+  <p><strong>2. Treat the signing key like a secret with a custodian.</strong> Level 1 wants the key
+  stored encrypted, kept encrypted in memory except while it is actually signing, and reachable only
+  under least privilege with time-bound permissions. The requirement names the kinds of component
+  that satisfy this: a kernel keyring, a platform keychain, Vault, a cloud secrets manager. So it is
+  something you wire up rather than something you invent. If you already run a secrets manager, most
+  of the work is done.</p>
+
+  <p>It also asks that you be capable of rotating the key, which is a lower bar than it sounds:
+  replace the material and restart. The thing worth building past the requirement is a way to
+  confirm the rotation actually landed. A mount that did not take, or a stale image layer, leaves
+  you signing with the old key while everything looks fine from outside. That is why the signing
+  service behind this library reports the fingerprint and expiry of the certificate it really
+  loaded on its health endpoint. You compare one line and you know.</p>
+
+  <p><strong>3. If the signer is a separate service, authenticate in both directions.</strong> For a
+  distributed implementation, Level 1 asks that the edge and backend subsystems be mutually
+  authenticated, and that the signing backend "securely authenticate the calling client, positively
+  confirming that the calling client is a valid instance of the Edge subsystem" before it signs.</p>
+
+  <p>I find this one encouraging, because it treats a separate signing backend as a normal way to
+  build rather than as an exotic case. A bearer token over a private network covers it for a
+  deployment with one caller. When a second caller appears, give it its own credential, since that
+  is what makes an audit log attributable and a rate limit fair. It is the next thing on my own
+  roadmap for that reason.</p>
+
+  <h2>What to do with this</h2>
+
+  <p>If Article 50 is on your roadmap and PHP is your stack, the work has a clear shape and none of
+  it is speculative:</p>
+
+  <ul>
+    <li>Build against test certificates now. The full chain works, and none of the signing code
+    changes when the real certificate arrives.</li>
+    <li>Audit the byte path from upload to delivery once, for both reasons above.</li>
+    <li>Put the signing key somewhere with a custodian, and make the loaded certificate
+    observable.</li>
+    <li>Open the conformance conversation with whoever signs contracts, in parallel.</li>
+  </ul>
+
+  <p>Do that and the security architecture document describes a system you designed on purpose,
+  instead of one you have to reconstruct afterwards. That is what this library's architecture is
+  for: the private key in one isolated place you can point at, a clear boundary between the
+  application and the signing operation, and a signer that can tell you which certificate it is
+  holding.</p>
+
+  </div><!-- /.body -->
+
+  <div class="cta">
+    The library described here is
+    <a href="https://github.com/provemark/content-credentials">provemark/content-credentials</a>,
+    open-source PHP for building, signing, reading and verifying C2PA manifests, with a
+    framework-agnostic core, a Laravel integration, and a signing service that keeps the private key
+    out of your web application. Its
+    <a href="https://github.com/provemark/content-credentials/blob/main/docs/production.md">Going to
+    production</a> page maps the service onto the Level 1 requirements discussed above, so you can
+    describe it rather than reverse engineer it.
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="inner">© 2026 provemark ·
+    <a href="https://github.com/provemark">GitHub</a> ·
+    <a href="https://packagist.org/packages/provemark/content-credentials">Packagist</a>
+  </div>
+</footer>
+
+</body>
+</html>
