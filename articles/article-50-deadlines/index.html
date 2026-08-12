@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Two Article 50 deadlines, and which one is yours — provemark</title>
+<meta name="description" content="Article 50(2) of the EU AI Act has applied since 2 August 2026, but the Digital Omnibus gave systems already on the market until 2 December 2026. Which date binds you depends on when your system was placed on the market — and the certificate, not the code, is the critical path.">
+<link rel="canonical" href="https://provemark.github.io/articles/article-50-deadlines/">
+<link rel="icon" type="image/png" sizes="64x64" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="provemark">
+<meta property="og:title" content="Two Article 50 deadlines, and which one is yours">
+<meta property="og:description" content="Article 50(2) has applied since 2 August 2026, but systems already on the market have until 2 December. Which date binds you, and why the certificate is the critical path.">
+<meta property="og:url" content="https://provemark.github.io/articles/article-50-deadlines/">
+<meta property="og:image" content="https://provemark.github.io/provemark-icon.png">
+<meta name="twitter:card" content="summary">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="inner">
+    <a class="brand" href="/">
+      <img class="mark" src="/favicon.png" alt="" width="22" height="22">
+      provemark
+    </a>
+    <nav class="header-nav">
+      <a href="https://github.com/provemark">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container post">
+
+  <div class="post-header">
+    <p class="eyebrow">Article</p>
+    <h1>Two Article 50 deadlines, and which one is yours</h1>
+    <p class="post-meta">12 August 2026 · Maurice van Loon</p>
+  </div>
+
+  <p class="lead">The machine-readable marking obligation in Article&nbsp;50(2) of the EU
+  AI&nbsp;Act has applied since 2&nbsp;August&nbsp;2026. The Digital Omnibus gave part of the
+  market until 2&nbsp;December. Which of those two dates binds you depends on one question —
+  and if you answer it wrong in your own favour, you are already late.</p>
+
+  <div class="body">
+
+  <p>Most of what has been written about this describes the obligation. This piece is about the
+  calendar, because the calendar is where the decisions are. I have written separately about
+  <a href="/articles/introducing-provemark/">what the marking actually looks like</a>,
+  <a href="/articles/c2pa-certificates/">certificates and the valid-versus-trusted
+  distinction</a>, and <a href="/articles/c2pa-gotchas/">the traps that cost me the most
+  time</a>. Assume the engineering is solved and read on.</p>
+
+  <h2>The line that decides your date</h2>
+
+  <p>The question is <strong>when your generative system was placed on the market</strong>, not
+  when your content was produced and not when you started building.</p>
+
+  <div class="table-wrap">
+  <table>
+    <thead>
+      <tr><th>Your system was placed on the market…</th><th>Article 50(2) marking is due…</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>before 2 August 2026</td><td><strong>2 December 2026</strong> — a transitional period from the Digital Omnibus</td></tr>
+      <tr><td>on or after 2 August 2026</td><td><strong>from the moment it is placed on the market</strong> — no grace period at all</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>The asymmetry is the part people miss. The transitional period is a concession to systems
+  that already existed; anything you launch now inherits none of it. A feature that ships in
+  September owes the marking in September.</p>
+
+  <p>There is one relief that runs the other way, and it is worth knowing because it removes a
+  frightening amount of imagined work: <strong>content that entered circulation before
+  2&nbsp;August 2026 does not have to be marked retroactively.</strong> The Commission recommends
+  doing it where technically feasible, but your archive is not a compliance emergency. Your
+  pipeline is.</p>
+
+  <h2>What "machine-readable" rules out</h2>
+
+  <p>A visible "AI-generated" badge in your interface is not what 50(2) asks for. The obligation
+  is that the output itself carries a marking that a machine can detect — a property of the file,
+  travelling with the file, surviving the trip to somewhere you do not control.</p>
+
+  <p>In practice that means embedded provenance, and in practice that means C2PA. Concretely it
+  is one assertion: a <code>c2pa.created</code> action carrying the full IPTC
+  <code>digitalSourceType</code> URI for trained algorithmic media, signed into the asset. That
+  single assertion is what a verifier reads. The
+  <a href="/articles/introducing-provemark/">marking article</a> shows the exact shape, including
+  the two ways it is commonly written wrong.</p>
+
+  <div class="callout">
+  <p>Watch the boundary between obligations. Article&nbsp;50(2) is about machine-readable marking
+  of synthetic output. The duty to <em>disclose</em> to a person that they are looking at
+  AI-generated content is a different paragraph with a different test. Solving one does not
+  discharge the other, and a vendor who tells you it does is selling you half a control.</p>
+  </div>
+
+  <h2>The certificate is the critical path, not the code</h2>
+
+  <p>This is the part that reorders a project plan, and it is the reason I would not wait until
+  October.</p>
+
+  <p>Signing works on day one with test certificates. What test certificates do not give you is
+  <em>trust</em>: every verifier will report the signature as valid and the signing credential as
+  untrusted, which is a distinction I have
+  <a href="/articles/c2pa-certificates/">written about at length</a>. Closing that gap needs a
+  production Claim Signing Certificate, and the C2PA certificate policy says those are issued only
+  to Generator Products that have passed the Conformance Program.</p>
+
+  <p>There is no application fee and no external audit at the entry level. What there is, is
+  calendar time. You supply a security architecture document on their template, sample output for
+  every media type you claim, and <strong>a legal agreement signed on behalf of the company</strong>.
+  In my experience that last item — finding the person with signing authority and getting it
+  through them — is the step that consumes weeks, and it is entirely unaffected by how fast your
+  engineers are. <a href="/articles/path-to-trusted/">The route and what it costs</a> has the
+  detail.</p>
+
+  <p>Count backwards from 2&nbsp;December and that is roughly sixteen weeks. The engineering is
+  days. The paperwork is the long pole. Start them in parallel, today, in that order of worry.</p>
+
+  <h2>What I would do this month</h2>
+
+  <ol>
+    <li><strong>Establish which date binds you</strong>, in writing, with the market-placement
+    date of each generative feature you ship. If you have several, they may not share a date.</li>
+    <li><strong>Start the conformance conversation now</strong>, before the implementation is
+    finished. Nothing about it is blocked by unfinished code, and the legal signature is not
+    something you can compress later.</li>
+    <li><strong>Get marking working end to end with test certificates.</strong> Build, sign, read
+    back, verify. Prove the chain, then swap the certificate when it arrives.</li>
+    <li><strong>Audit what happens to your files after signing.</strong> This is where most
+    implementations quietly fail: any re-encode, resize or metadata rewrite downstream invalidates
+    the manifest, and your CDN or image pipeline may be doing it without anyone deciding to.</li>
+    <li><strong>Decide where the signing key lives</strong> before you are in a hurry. A key
+    inside the web application is a different risk profile than a key in an isolated signing
+    service, and that decision is expensive to revisit once it ships.</li>
+  </ol>
+
+  <h2>What this article is not</h2>
+
+  <p>It is not legal advice, and I am not your lawyer. Dates, scope and the exact reach of the
+  transitional period are questions for counsel who can look at your specific system and how it
+  is placed on the market. What I can tell you with confidence is the technical shape of the
+  obligation and where the schedule risk actually sits, because that is the part I have built.</p>
+
+  <p>Marking your output does not make you compliant. It implements one control that the
+  obligation requires. The obligation stays with you.</p>
+
+  </div>
+
+  <div class="cta">
+    The marking described here is implemented in
+    <a href="https://github.com/provemark/content-credentials">provemark/content-credentials</a>,
+    an open-source PHP library for building, signing, reading and verifying C2PA manifests —
+    framework-agnostic core, Laravel integration, and a signing service that keeps the private key
+    out of your web application. If you are working to one of these two dates and want a second
+    pair of eyes on the chain, the issue tracker is open.
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="inner">© 2026 provemark ·
+    <a href="https://github.com/provemark">GitHub</a> ·
+    <a href="https://packagist.org/packages/provemark/content-credentials">Packagist</a>
+  </div>
+</footer>
+
+</body>
+</html>
