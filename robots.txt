@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://provemark.github.io/sitemap.xml

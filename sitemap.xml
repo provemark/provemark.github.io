@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://provemark.github.io/</loc>
+    <lastmod>2026-08-13</lastmod>
+  </url>
+  <url>
+    <loc>https://provemark.github.io/articles/path-to-trusted/</loc>
+    <lastmod>2026-08-13</lastmod>
+  </url>
+  <url>
+    <loc>https://provemark.github.io/articles/article-50-deadlines/</loc>
+    <lastmod>2026-08-12</lastmod>
+  </url>
+  <url>
+    <loc>https://provemark.github.io/articles/c2pa-gotchas/</loc>
+    <lastmod>2026-08-06</lastmod>
+  </url>
+  <url>
+    <loc>https://provemark.github.io/articles/c2pa-certificates/</loc>
+    <lastmod>2026-08-03</lastmod>
+  </url>
+  <url>
+    <loc>https://provemark.github.io/articles/mocked-vs-real/</loc>
+    <lastmod>2026-08-03</lastmod>
+  </url>
+  <url>
+    <loc>https://provemark.github.io/articles/introducing-stateful-check/</loc>
+    <lastmod>2026-08-03</lastmod>
+  </url>
+  <url>
+    <loc>https://provemark.github.io/articles/introducing-provemark/</loc>
+    <lastmod>2026-08-03</lastmod>
+  </url>
+</urlset>
