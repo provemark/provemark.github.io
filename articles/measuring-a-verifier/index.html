@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How do you know a C2PA verifier is right? — provemark</title>
+<meta name="description" content="A verifier that wrongly says Valid is worse than none. How c2pa-verifier, a C2PA verifier in pure PHP for hosts that can't run c2patool, is measured against the reference instead of trusted on its own tests — and the time the reference itself was wrong.">
+<link rel="canonical" href="https://provemark.github.io/articles/measuring-a-verifier/">
+<link rel="icon" type="image/png" sizes="64x64" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="provemark">
+<meta property="og:title" content="How do you know a C2PA verifier is right?">
+<meta property="og:description" content="A C2PA verifier in pure PHP, measured against c2patool instead of trusted on its own tests — and the time the reference itself was wrong.">
+<meta property="og:url" content="https://provemark.github.io/articles/measuring-a-verifier/">
+<meta property="og:image" content="https://provemark.github.io/provemark-icon.png">
+<meta name="twitter:card" content="summary">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="inner">
+    <a class="brand" href="/">
+      <img class="mark" src="/favicon.png" alt="" width="22" height="22">
+      provemark
+    </a>
+    <nav class="header-nav">
+      <a href="https://github.com/provemark">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container post">
+
+  <div class="post-header">
+    <p class="eyebrow">Article</p>
+    <h1>How do you know a C2PA verifier is right?</h1>
+    <p class="post-meta">24 September 2026 · Maurice van Loon</p>
+  </div>
+
+  <p class="lead">A verifier that wrongly says <code>Valid</code> is worse than no verifier at
+  all. So "it passes its own tests" can't be the bar. This is how I've tried to earn the other
+  kind of confidence for a new C2PA verifier in PHP, and what turned up when I did.</p>
+
+  <div class="body">
+
+  <p>My <a href="/articles/introducing-provemark/">first library</a> signs through a separate
+  service, which is the right call for the private key. It also means most WordPress sites can't
+  read a credential at all. Shared hosting runs no second process, no PHP extension and no
+  binary, so no <code>c2patool</code>, no <code>ext-c2pa</code> and no Docker. The PHP plugins
+  that exist today find the manifest in the file and read a string out of it. Finding a manifest
+  isn't verifying it.</p>
+
+  <p>So there is now a second library that only verifies, and runs anywhere PHP 8.3 runs:
+  <a href="https://github.com/provemark/c2pa-verifier">c2pa-verifier</a>. It checks the
+  signature, the hash binding to the actual bytes of a JPEG, PNG, WebP, MP4, MOV, AVIF or HEIC
+  file, the certificate chain against a trust list you supply, the timestamp, and the earlier
+  manifests a file carries as ingredients. It makes no network connection and holds no keys.</p>
+
+<pre><code>$report = (new Verifier)-&gt;verify($stream, $settings);
+$report-&gt;result-&gt;state;   // Trusted, Valid or Invalid</code></pre>
+
+  <h2>Same answer as the reference</h2>
+
+  <p>The bar I picked is simple to state: it should give the same answer as
+  <code>c2patool</code>, the reference tool built on <code>c2pa-rs</code>. Same verdict, same
+  status codes, file by file. Every fixture in the repository is compared with what
+  <code>c2patool</code> says, and those comparisons run again on every commit. Every rule added
+  since <code>c2patool</code> 0.28 came out was first measured on signed test files under both
+  0.27 and 0.28, then written down as a specification, then built.</p>
+
+  <p>Agreeing with one oracle twice isn't independence, though. A mistake <code>c2pa-rs</code>
+  and I happened to share would stay invisible. So I also ran an independently written verifier
+  in Go over the same 257 files. Where we differed, it was either one of us being deliberately
+  stricter, or, once, a real mistake. That one turned out to be on their side, in how an appended
+  update manifest shifts the data hash. It's
+  <a href="https://github.com/richardwooding/c2pa/issues/72">reported now</a>.</p>
+
+  <p>The last part is being honest about what isn't done. C2PA 2.4 has 111 obligations that
+  apply to these formats. <code>docs/conformance.md</code> goes through them one by one, and
+  names the 11 this verifier doesn't meet yet and what each would cost. Every place it answers
+  differently from <code>c2patool</code> is listed, with the reason, in
+  <code>docs/comparison.md</code>.</p>
+
+  <h2>The time the reference was wrong</h2>
+
+  <p>It has said <code>Valid</code> when it shouldn't three times, all found here, before anyone
+  used it. The third one is the instructive one.</p>
+
+  <p>A C2PA data hash covers the whole file except the bytes where the manifest itself lives. That
+  gap is declared as an exclusion. Three of the official test files, from Truepic, declare an
+  exclusion that holds the manifest <em>and</em> the whole EXIF block next to it. My verifier
+  accepted that, because the exclusion covered the manifest. So did <code>c2patool</code> 0.27.
+  I took a copy, changed the capture date in the EXIF, and the file stayed <code>Trusted</code>.
+  The date a photo was taken, changed, with a green check next to it.</p>
+
+  <p>The specification says an exclusion that holds the manifest may hold nothing else, and
+  <code>c2patool</code> 0.28 had started enforcing that. Measuring the whole corpus against the
+  new version is how the difference showed up. It was fixed the same day. Over 864 runs the fix
+  changed the verdict of those three files and no others.</p>
+
+  <p>That's the point of measuring rather than believing. My own tests were green the whole time.
+  They tested what I thought the rule was.</p>
+
+  <h2>How it's built</h2>
+
+  <p>Like the first library, it's spec-driven. Every feature starts as a written specification,
+  and the tests are seen failing before any code exists. I built it with Claude Code, and the
+  repository keeps a log of what the AI produced in each step (<code>AI-LOG.md</code>). The
+  measurements against <code>c2patool</code> are what make that safe to rely on, whoever wrote
+  the code.</p>
+
+  <h2>Limits, up front</h2>
+
+  <ul>
+    <li><strong>PHP 8.3.</strong> WordPress recommends 8.3 but still supports 7.4, so this
+    belongs in a plugin, not in core.</li>
+    <li><strong>It's new.</strong> Measured on every file I have, but not yet run on anyone
+    else's.</li>
+    <li><strong>No network, by design.</strong> Revocation responses stapled into the signature
+    are checked; an online revocation check isn't made.</li>
+  </ul>
+
+  <h2>Where to start</h2>
+
+  <ul>
+    <li>Install it: <code>composer require provemark/c2pa-verifier</code>.</li>
+    <li>Read the code, the specifications and the measurements behind every step on
+    <a href="https://github.com/provemark/c2pa-verifier">GitHub</a>.</li>
+    <li>If you have a C2PA file it gets wrong, or one from a writer I haven't seen, that's the
+    most useful thing you could send me.</li>
+  </ul>
+
+  <p>As with the first library, I'd rather have a handful of careful users than a splash. If you
+  work on the WordPress side of this, there's a proposal for keeping credentials on generated
+  image sizes in
+  <a href="https://github.com/WordPress/ai/issues/1058">WordPress/ai#1058</a>.</p>
+
+  </div><!-- /.body -->
+
+  <div class="cta">
+    <a href="https://github.com/provemark/c2pa-verifier">provemark/c2pa-verifier</a> is an
+    open-source (MIT) C2PA verifier in pure PHP for JPEG, PNG, WebP and ISOBMFF, with
+    <code>c2patool</code>'s verdicts. Its <code>NOTES.md</code> is the full record of every step
+    and measurement above.
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="inner">© 2026 provemark ·
+    <a href="https://github.com/provemark">GitHub</a> ·
+    <a href="https://packagist.org/packages/provemark/c2pa-verifier">Packagist</a>
+  </div>
+</footer>
+
+</body>
+</html>
