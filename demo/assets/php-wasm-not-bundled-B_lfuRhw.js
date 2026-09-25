@@ -1,0 +1,1 @@
+import{n as e}from"./rolldown-runtime-D2aABDIb.js";e((()=>{throw Error(`This build of the demo contains PHP 8.3 only, without extensions.`)}))();
