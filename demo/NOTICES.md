@@ -20,7 +20,7 @@ and to the `intl` extension are replaced by a module that throws if loaded.
 ## c2pa-verifier (MIT)
 
 The PHP sources of [c2pa-verifier](https://github.com/provemark/c2pa-verifier)
-0.2.3, exactly as tagged `v0.2.3`, are bundled into `assets/index-*.js`.
+0.2.5, exactly as tagged `v0.2.5`, are bundled into `assets/index-*.js`.
 
 ## Sample files and trust lists
 
