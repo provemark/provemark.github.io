@@ -1,4 +1,4 @@
-const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["assets/php-wasm-not-bundled-B_lfuRhw.js","assets/rolldown-runtime-D2aABDIb.js","assets/web-8-3-RSoH5Sw-.js"])))=>i.map(i=>d[i]);
+const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["assets/php-wasm-not-bundled-B_lfuRhw.js","assets/rolldown-runtime-D2aABDIb.js","assets/web-8-3-BHxYv2nh.js"])))=>i.map(i=>d[i]);
 import{n as __esmMin,r as __toESM,t as __commonJSMin}from"./rolldown-runtime-D2aABDIb.js";(function(){let e=document.createElement(`link`).relList;if(e&&e.supports&&e.supports(`modulepreload`))return;for(let e of document.querySelectorAll(`link[rel="modulepreload"]`))r(e);new MutationObserver(e=>{for(let n of e)if(n.type===`childList`)for(let e of n.addedNodes)e.tagName===`LINK`&&e.rel===`modulepreload`&&r(e)}).observe(document,{childList:!0,subtree:!0});function n(e){let n={};return e.integrity&&(n.integrity=e.integrity),e.referrerPolicy&&(n.referrerPolicy=e.referrerPolicy),n.credentials=e.crossOrigin===`use-credentials`?`include`:e.crossOrigin===`anonymous`?`omit`:`same-origin`,n}function r(e){if(e.ep)return;e.ep=!0;let r=n(e);fetch(e.href,r)}})();var E$3,f,w$3,L$1,d,m$1,c$3,t,a,P$2,T$2,M$1,g$1,S$2,init_logger=__esmMin((()=>{E$3=`playground-log`,f=(e,...n)=>{M$1.dispatchEvent(new CustomEvent(E$3,{detail:{log:e,args:n}}))},w$3=(e,...n)=>{switch(typeof e.message==`string`?Reflect.set(e,`message`,g$1(e.message)):e.message.message&&typeof e.message.message==`string`&&Reflect.set(e.message,`message`,g$1(e.message.message)),e.severity){case t.Debug:console.debug(e.message,...n);break;case t.Info:console.info(e.message,...n);break;case t.Warn:console.warn(e.message,...n);break;case t.Error:console.error(e.message,...n);break;case t.Fatal:console.error(e.message,...n);break;default:console.log(e.message,...n)}},L$1=e=>e instanceof Error?[e.message,e.stack].join(`
 `):JSON.stringify(e,null,2),d=[],m$1=e=>{d.push(e)},c$3=e=>{if(e.raw===!0)m$1(e.message);else{let n=S$2(typeof e.message==`object`?L$1(e.message):e.message,e.severity,e.prefix??a.JS);m$1(n)}},t={Fatal:{name:`fatal`,level:0},Error:{name:`error`,level:1},Warn:{name:`warn`,level:2},Log:{name:`log`,level:3},Info:{name:`info`,level:4},Debug:{name:`debug`,level:5}},a={WASM:`Wasm Crash`,PHP:`PHP`,JS:`JavaScript`},P$2=class extends EventTarget{constructor(e=[]){super(),this.fatalErrorEvent=`playground-fatal-error`,this.severity=t.Info,this.handlers=e}getLogs(){return this.handlers.includes(c$3)?[...d]:(this.error(`Logs aren't stored because the logToMemory handler isn't registered.
 				If you're using a custom logger instance, make sure to register logToMemory handler.
@@ -98,7 +98,7 @@ CLI option:
 === Stderr ===
  ${r.errors}`,r,`request`);return r}async runStream(e){let n=await this.semaphore.acquire(),r,i=v(this,y$1,we$1).call(this,async()=>{if(u$1(this,z)||(await this[__private__dont__use].ccall(`php_wasm_init`,null,[],[],{isAsync:!0}),x$1(this,z,!0)),e.scriptPath&&!this.fileExists(e.scriptPath))throw Error(`The script path "${e.scriptPath}" does not exist.`);v(this,y$1,xe).call(this,e.relativeUri||``),v(this,y$1,be).call(this,e.method||`GET`);let n=normalizeHeaders(e.headers||{}),i=n.host||`example.com:443`,o=v(this,y$1,Fe).call(this,i,e.protocol||`http`);if(v(this,y$1,Se).call(this,i),v(this,y$1,ke).call(this,o),v(this,y$1,Re).call(this,n),e.body&&(r=v(this,y$1,He$1).call(this,e.body)),typeof e.code==`string`)this.writeFile(`/internal/eval.php`,e.code),v(this,y$1,ge$1).call(this,`/internal/eval.php`);else if(typeof e.scriptPath==`string`)v(this,y$1,ge$1).call(this,e.scriptPath||``);else throw TypeError("The request object must have either a `code` or a `scriptPath` property.");let s=v(this,y$1,Ee$1).call(this,e.$_SERVER,n,o);for(let e in s)v(this,y$1,Te$1).call(this,e,s[e]);let l=e.env||{};for(let e in l)v(this,y$1,Pe).call(this,e,l[e]);return await this[__private__dont__use].ccall(`wasm_sapi_handle_request`,NUMBER,[],[],{async:!0})}),o=()=>{if(r)try{this[__private__dont__use].free(r)}catch(e){M$1.error(e)}n(),this.dispatchEvent({type:`request.end`})};return i.then(e=>(e.finished.finally(o),e),e=>{try{o()}catch{}finally{throw e}})}defineConstant(e,n){let r={};try{r=JSON.parse(this.fileExists(`/internal/shared/consts.json`)&&this.readFileAsText(`/internal/shared/consts.json`)||`{}`)}catch{}this.writeFile(`/internal/shared/consts.json`,JSON.stringify({...r,[e]:n}))}mkdir(e){let n=FSHelpers.mkdir(this[__private__dont__use].FS,e);return this.dispatchEvent({type:`filesystem.write`}),n}mkdirTree(e){return FSHelpers.mkdir(this[__private__dont__use].FS,e)}readFileAsText(e){return FSHelpers.readFileAsText(this[__private__dont__use].FS,e)}readFileAsBuffer(e){return FSHelpers.readFileAsBuffer(this[__private__dont__use].FS,e)}writeFile(e,n){let r=FSHelpers.writeFile(this[__private__dont__use].FS,e,n);return this.dispatchEvent({type:`filesystem.write`}),r}unlink(e){let n=FSHelpers.unlink(this[__private__dont__use].FS,e);return this.dispatchEvent({type:`filesystem.write`}),n}mv(e,n){let r=FSHelpers.mv(this[__private__dont__use].FS,e,n);return this.dispatchEvent({type:`filesystem.write`}),r}cp(e,n){let r=FSHelpers.copyRecursive(this[__private__dont__use].FS,e,n);return this.dispatchEvent({type:`filesystem.write`}),r}rmdir(e,n={recursive:!0}){let r=FSHelpers.rmdir(this[__private__dont__use].FS,e,n);return this.dispatchEvent({type:`filesystem.write`}),r}listFiles(e,n={prependPath:!1}){return FSHelpers.listFiles(this[__private__dont__use].FS,e,n)}isDir(e){return FSHelpers.isDir(this[__private__dont__use].FS,e)}isFile(e){return FSHelpers.isFile(this[__private__dont__use].FS,e)}symlink(e,n){return FSHelpers.symlink(this[__private__dont__use].FS,e,n)}isSymlink(e){return FSHelpers.isSymlink(this[__private__dont__use].FS,e)}readlink(e){return FSHelpers.readlink(this[__private__dont__use].FS,e)}realpath(e){return FSHelpers.realpath(this[__private__dont__use].FS,e)}fileExists(e){return FSHelpers.fileExists(this[__private__dont__use].FS,e)}enableRuntimeRotation(e){x$1(this,k$1,{...u$1(this,k$1),enabled:!0,recreateRuntime:e.recreateRuntime,maxRequests:e.maxRequests??400})}async rotateRuntime(){if(!u$1(this,k$1).enabled)throw Error(`Runtime rotation is not enabled. Call enableRuntimeRotation() first.`);await this.hotSwapPHPRuntime(await u$1(this,k$1).recreateRuntime()),u$1(this,k$1).requestsMade=0,u$1(this,k$1).needsRotating=!1}async hotSwapPHPRuntime(e){let n=this[__private__dont__use].FS,r=this.listFiles(`/`).map(e=>`/${e}`),i=n.cwd();n.chdir(`/`);let o=Object.entries(u$1(this,$)).map(([e,r])=>({mountHandler:r.mountHandler,mountPointSnapshot:snapshotMountPoint(n,e),vfsPath:e})),s=Object.values(u$1(this,$)).reverse();for(let e of s)await e.unmount();try{this.exit()}catch{}this.initializeRuntime(e),u$1(this,Q$1)&&this.setSapiName(u$1(this,Q$1));let l=this[__private__dont__use].FS;for(let e of r)e&&e!==`/request`&&copyMEMFSNodes(n,l,e);for(let{mountHandler:e,mountPointSnapshot:n,vfsPath:r}of o)try{await this.mount(r,e)}catch(i){if(isMissingMountSourceError(i)){restoreMountPointSnapshot(l,r,n);continue}if(!isMissingMountTargetPathError(i))throw i;this.mkdir(r),await this.mount(r,e)}try{l.chdir(i)}catch(e){throw Error(`Failed to restore CWD to ${i} after PHP runtime rotation.`,{cause:e})}}async mount(e,n){let r=await n(this,this[__private__dont__use].FS,e),i={mountHandler:n,unmount:async()=>{try{await r()}catch(n){throw n instanceof MountStillActiveError||delete u$1(this,$)[e],n}delete u$1(this,$)[e]}};return u$1(this,$)[e]=i,()=>i.unmount()}async cli(e,n={}){if(j$1(e[0]??``)!==`php`)return this.subProcess(e,n);u$1(this,z)&&(u$1(this,k$1).needsRotating=!0);let r=await this.semaphore.acquire();return await v(this,y$1,we$1).call(this,()=>{let r=n.env||{};for(let[e,n]of Object.entries(r))v(this,y$1,Pe).call(this,e,n);e=[e[0],`-c`,PHP_INI_PATH,...e.slice(1)];for(let n of e)this[__private__dont__use].ccall(`wasm_add_cli_arg`,null,[STRING],[n]);return this[__private__dont__use].ccall(`run_cli`,null,[],[],{async:!0})}).then(e=>(e.exitCode.finally(r),e)).finally(()=>{u$1(this,k$1).needsRotating=!0})}async subProcess(e,n={}){let r=v(this,y$1,ye$1).call(this,e[0],e.slice(1),{env:n.env,cwd:n.cwd??this.cwd()}),i=await createInvertedReadableStream();r.on(`error`,e=>{safeStreamError$1(i.controller,e)});let o=e=>{try{i.controller.enqueue(e)}catch{r.stderr.off(`data`,o)}};r.stderr.on(`data`,o);let s=await createInvertedReadableStream(),l=e=>{try{s.controller.enqueue(e)}catch{r.stdout.off(`data`,l)}};return r.stdout.on(`data`,l),r.on(`exit`,()=>{setTimeout(()=>{try{i.controller.close()}catch{}try{s.controller.close()}catch{}},0)}),new StreamedPHPResponse(new ReadableStream({start(e){e.close()}}),s.stream,i.stream,new Promise(e=>{r.on(`exit`,n=>{e(n)})}))}setSkipShebang(e){this[__private__dont__use].ccall(`wasm_set_skip_shebang`,null,[NUMBER],[+!!e])}exit(e=0){this.dispatchEvent({type:`runtime.beforeExit`});try{this[__private__dont__use]._exit(e)}catch{}x$1(this,z,!1),x$1(this,G$1,null),this[__private__dont__use]&&(delete this[__private__dont__use].onMessage,delete this[__private__dont__use])}[Symbol.dispose](){this.exit(0)}},Q$1=new WeakMap,z=new WeakMap,G$1=new WeakMap,j=new WeakMap,J=new WeakMap,$=new WeakMap,K$1=new WeakMap,ne$1=new WeakMap,k$1=new WeakMap,y$1=new WeakSet,ye$1=function(e,n=[],r={}){let i=Array.isArray(e)?e:n.length?[e,...n]:x$2(e),o=i[0]&&u$1(this,ne$1).get(j$1(i[0]));if(o)return o(i[0],i.slice(1),r);if(u$1(this,K$1))return u$1(this,K$1).call(this,e,n,r);let s=Error(`popen(), proc_open() are unsupported on this PHP instance. Call php.setSpawnHandler()
 			and provide a callback to handle spawning processes, or disable popen(), proc_open() via php.ini.`);throw s.code=`SPAWN_UNSUPPORTED`,s},Ee$1=function(e,n,r){let i={...e||{}};i.HTTPS=i.HTTPS||r===443?`on`:`off`;for(let e in n){let r=`HTTP_`;[`content-type`,`content-length`].includes(e.toLowerCase())&&(r=``),i[`${r}${e.toUpperCase().replace(/-/g,`_`)}`]=n[e]}return i},xe=function(e){this[__private__dont__use].ccall(`wasm_set_request_uri`,null,[STRING],[e]);let n=``;e.includes(`?`)&&(n=e.substring(e.indexOf(`?`)+1)),this[__private__dont__use].ccall(`wasm_set_query_string`,null,[STRING],[n])},Se=function(e){this[__private__dont__use].ccall(`wasm_set_request_host`,null,[STRING],[e])},ke=function(e){this[__private__dont__use].ccall(`wasm_set_request_port`,null,[NUMBER],[e])},Fe=function(e,n){let r;try{r=parseInt(new URL(e).port,10)}catch{}return(!r||isNaN(r)||r===80)&&(r=n===`https`?443:80),r},be=function(e){this[__private__dont__use].ccall(`wasm_set_request_method`,null,[STRING],[e])},Re=function(e){e.cookie&&this[__private__dont__use].ccall(`wasm_set_cookies`,null,[STRING],[e.cookie]),e[`content-type`]&&this[__private__dont__use].ccall(`wasm_set_content_type`,null,[STRING],[e[`content-type`]]),e[`content-length`]&&this[__private__dont__use].ccall(`wasm_set_content_length`,null,[NUMBER],[parseInt(e[`content-length`],10)])},He$1=function(e){let n,r;typeof e==`string`?(M$1.warn(`Passing a string as the request body is deprecated. Please use a Uint8Array instead. See https://github.com/WordPress/wordpress-playground/issues/997 for more details`),r=this[__private__dont__use].lengthBytesUTF8(e),n=r+1):(r=e.byteLength,n=e.byteLength);let i=this[__private__dont__use].malloc(n);if(!i)throw Error(`Could not allocate memory for the request body.`);return typeof e==`string`?this[__private__dont__use].stringToUTF8(e,i,n+1):this[__private__dont__use].HEAPU8.set(e,i),this[__private__dont__use].ccall(`wasm_set_request_body`,null,[NUMBER],[i]),this[__private__dont__use].ccall(`wasm_set_content_length`,null,[NUMBER],[r]),i},ge$1=function(e){this[__private__dont__use].ccall(`wasm_set_path_translated`,null,[STRING],[e])},Te$1=function(e,n){this[__private__dont__use].ccall(`wasm_add_SERVER_entry`,null,[STRING,STRING],[e,n])},Pe=function(e,n){this[__private__dont__use].ccall(`wasm_add_ENV_entry`,null,[STRING,STRING],[e,n])},we$1=async function(e){u$1(this,k$1).enabled&&u$1(this,k$1).needsRotating&&await this.rotateRuntime(),++u$1(this,k$1).requestsMade,u$1(this,k$1).requestsMade>=u$1(this,k$1).maxRequests&&(u$1(this,k$1).needsRotating=!0);let n=this[__private__dont__use],r=await createInvertedReadableStream();n.onHeaders=e=>{N||i||r.controller.enqueue(e.slice())};let i=!1,o=()=>{i||(i=!0,r.controller.close())},s=await createInvertedReadableStream();n.onStdout=e=>{o(),!N&&s.controller.enqueue(e.slice())};let l=await createInvertedReadableStream();n.onStderr=e=>{N||l.controller.enqueue(e.slice())};let N=!1,ae,ce=(async()=>{var n;try{return await Promise.race([e(),new Promise((e,n)=>{var r;ae=e=>{isExitCode(e.error)||n(e.error)},(r=u$1(this,G$1))==null||r.addEventListener(`error`,ae,{once:!0})})])}catch(e){if(isExitCode(e))return e.status;safeStreamError$1(s.controller,e),safeStreamError$1(l.controller,e),safeStreamError$1(r.controller,e),N=!0;for(let e in this)typeof this[e]==`function`&&(this[e]=()=>{throw Error(`PHP runtime has crashed – see the earlier error for details.`)});throw this.functionsMaybeMissingFromAsyncify=getFunctionsMaybeMissingFromAsyncify(),e}finally{N||=(safeStreamClose$1(s.controller),safeStreamClose$1(l.controller),o(),!0),(n=u$1(this,G$1))==null||n.removeEventListener(`error`,ae)}})().then(e=>(e!==0&&this.dispatchEvent({type:`request.error`,error:Error(`PHP.run() failed with exit code ${e}.`),source:`php-wasm`}),e),e=>{let n=e.source??`php-wasm`;throw this.dispatchEvent({type:`request.error`,error:e,source:n}),e});return new StreamedPHPResponse(r.stream,s.stream,l.stream,ce)},getNodeType=(e,n)=>{try{return`contents`in e.lookupPath(n,{follow:!0}).node?`memfs`:`not-memfs`}catch{return`missing`}},HttpCookieStore=class{constructor(){this.cookies={}}rememberCookiesFromResponseHeaders(e){if(e!=null&&e[`set-cookie`])for(let n of e[`set-cookie`])try{if(!n.includes(`=`))continue;let e=n.indexOf(`=`),r=n.substring(0,e),i=n.substring(e+1).split(`;`)[0];this.cookies[r]=i}catch(e){M$1.error(e)}}getCookieRequestHeader(){let e=[];for(let n in this.cookies)e.push(`${n}=${this.cookies[n]}`);return e.join(`; `)}},SinglePHPInstanceManager=class{constructor(e){if(this.isAcquired=!1,!e.php&&!e.phpFactory)throw Error(`SinglePHPInstanceManager requires either php or phpFactory`);this.php=e.php,this.phpFactory=e.phpFactory}async getPrimaryPhp(){return this.php?this.php:(this.phpPromise||=this.phpFactory().then(e=>(this.php=e,this.phpPromise=void 0,e)),this.phpPromise)}async acquirePHPInstance(){if(this.isAcquired)throw Error(`The PHP instance already acquired. SinglePHPInstanceManager cannot spawn another PHP instance since, by definition, it only manages a single PHP instance.`);let e=await this.getPrimaryPhp();return this.isAcquired=!0,{php:e,reap:()=>{this.isAcquired=!1}}}async[Symbol.asyncDispose](){this.php&&this.php.exit()}},MaxPhpInstancesError=class extends Error{constructor(e){super(`Requested more concurrent PHP instances than the limit (${e}).`),this.name=this.constructor.name}},PHPProcessManager=class{constructor(e){this.instances=[],this.idleInstances=[],this.maxPhpInstances=e?.maxPhpInstances??2,this.phpFactory=e?.phpFactory,this.semaphore=new v$1({concurrency:this.maxPhpInstances,timeout:e?.timeout||3e4})}async getPrimaryPhp(){if(this.instances.length>0)return this.instances[0];this.primaryPhpPromise||=this.spawnInstance(!0);try{return await this.primaryPhpPromise}finally{this.primaryPhpPromise=void 0}}async acquirePHPInstance(){let e;try{e=await this.semaphore.acquire()}catch(e){throw e instanceof b$2?new MaxPhpInstancesError(this.maxPhpInstances):e}let n=await this.getOrSpawnInstance();return{php:n,reap:()=>{this.idleInstances.push(n),e()}}}async getOrSpawnInstance(){return this.instances.length===0&&await this.getPrimaryPhp(),this.idleInstances.length===0&&await this.spawnInstance(!1),this.idleInstances.pop()}async spawnInstance(e){if(!this.phpFactory)throw Error(`phpFactory must be set before spawning instances.`);let n=await this.phpFactory({isPrimary:e});return this.instances.push(n),this.idleInstances.push(n),n}async[Symbol.asyncDispose](){for(let e of this.instances)e.exit();this.instances=[],this.idleInstances=[]}},PHPNextVersion=`next`,SupportedPHPVersions=[`8.5`,`8.4`,`8.3`,`8.2`,`8.1`,`8.0`,`7.4`],LatestSupportedPHPVersion=SupportedPHPVersions[0],SupportedPHPVersionsList=SupportedPHPVersions,LegacyPHPVersions=[`5.2`],AllPHPVersions=[PHPNextVersion,...SupportedPHPVersions,...LegacyPHPVersions],LEGACY_PHP_INI_PATH=`/internal/shared/php.ini`,LEGACY_PHP_INI_CONTENT=[`auto_prepend_file=/internal/shared/auto_prepend_file.php`,`memory_limit=256M`,`ignore_repeated_errors = 1`,`error_reporting = E_ALL`,`display_errors = 1`,`html_errors = 1`,`display_startup_errors = On`,`log_errors = 1`,`always_populate_raw_post_data = -1`,`upload_max_filesize = 2000M`,`post_max_size = 2000M`,`allow_url_fopen = On`,`allow_url_include = Off`,`session.save_path = /home/web_user`,`implicit_flush = 1`,`output_buffering = 0`,`max_execution_time = 0`,`max_input_time = -1`,`disable_functions = ini_get_all`,`opcache.enable = 0`,`opcache.enable_cli = 0`].join(`
-`),DEFAULT_BASE_URL=`http://example.com`,_default=`application/octet-stream`,asx=`video/x-ms-asf`,atom=`application/atom+xml`,avi=`video/x-msvideo`,avif=`image/avif`,bin=`application/octet-stream`,bmp=`image/x-ms-bmp`,cco=`application/x-cocoa`,cjs=`application/javascript`,css=`text/css`,data=`application/octet-stream`,deb=`application/octet-stream`,der=`application/x-x509-ca-cert`,dmg=`application/octet-stream`,doc=`application/msword`,docx=`application/vnd.openxmlformats-officedocument.wordprocessingml.document`,eot=`application/vnd.ms-fontobject`,flv=`video/x-flv`,gif=`image/gif`,gz=`application/gzip`,hqx=`application/mac-binhex40`,htc=`text/x-component`,html=`text/html`,ico=`image/x-icon`,iso=`application/octet-stream`,jad=`text/vnd.sun.j2me.app-descriptor`,jar=`application/java-archive`,jardiff=`application/x-java-archive-diff`,jng=`image/x-jng`,jnlp=`application/x-java-jnlp-file`,jpg=`image/jpeg`,jpeg=`image/jpeg`,js=`application/javascript`,json=`application/json`,kml=`application/vnd.google-earth.kml+xml`,kmz=`application/vnd.google-earth.kmz`,m3u8=`application/vnd.apple.mpegurl`,m4a=`audio/x-m4a`,m4v=`video/x-m4v`,md=`text/plain`,mid=`audio/midi`,mjs=`application/javascript`,mml=`text/mathml`,mng=`video/x-mng`,mov=`video/quicktime`,mp3=`audio/mpeg`,mp4=`video/mp4`,mpeg=`video/mpeg`,msi=`application/octet-stream`,odg=`application/vnd.oasis.opendocument.graphics`,odp=`application/vnd.oasis.opendocument.presentation`,ods=`application/vnd.oasis.opendocument.spreadsheet`,odt=`application/vnd.oasis.opendocument.text`,ogg=`audio/ogg`,otf=`font/otf`,pdf=`application/pdf`,pl=`application/x-perl`,png=`image/png`,ppt=`application/vnd.ms-powerpoint`,pptx=`application/vnd.openxmlformats-officedocument.presentationml.presentation`,prc=`application/x-pilot`,ps=`application/postscript`,ra=`audio/x-realaudio`,rar=`application/x-rar-compressed`,rpm=`application/x-redhat-package-manager`,rss=`application/rss+xml`,rtf=`application/rtf`,run=`application/x-makeself`,sea=`application/x-sea`,sit=`application/x-stuffit`,svg=`image/svg+xml`,swf=`application/x-shockwave-flash`,tcl=`application/x-tcl`,tar=`application/x-tar`,tif=`image/tiff`,ts=`video/mp2t`,ttf=`font/ttf`,txt=`text/plain`,wasm=`application/wasm`,wbmp=`image/vnd.wap.wbmp`,webm=`video/webm`,webp=`image/webp`,wml=`text/vnd.wap.wml`,wmlc=`application/vnd.wap.wmlc`,wmv=`video/x-ms-wmv`,woff=`font/woff`,woff2=`font/woff2`,xhtml=`application/xhtml+xml`,xls=`application/vnd.ms-excel`,xlsx=`application/vnd.openxmlformats-officedocument.spreadsheetml.sheet`,xml=`text/xml`,xpi=`application/x-xpinstall`,xspf=`application/xspf+xml`,zip=`application/zip`,mimeTypes={_default,"3gpp":`video/3gpp`,"7z":`application/x-7z-compressed`,asx,atom,avi,avif,bin,bmp,cco,cjs,css,data,deb,der,dmg,doc,docx,eot,flv,gif,gz,hqx,htc,html,ico,iso,jad,jar,jardiff,jng,jnlp,jpg,jpeg,js,json,kml,kmz,m3u8,m4a,m4v,md,mid,mjs,mml,mng,mov,mp3,mp4,mpeg,msi,odg,odp,ods,odt,ogg,otf,pdf,pl,png,ppt,pptx,prc,ps,ra,rar,rpm,rss,rtf,run,sea,sit,svg,swf,tcl,tar,tif,ts,ttf,txt,wasm,wbmp,webm,webp,wml,wmlc,wmv,woff,woff2,xhtml,xls,xlsx,xml,xpi,xspf,zip},PHPRequestHandler=class{constructor(e){_(this,R$2),_(this,C$1),_(this,Z$1),_(this,ie$1),_(this,X$1),_(this,ee$1),_(this,I$2),_(this,te$1),_(this,V$1),_(this,oe);let{documentRoot:n=`/www/`,absoluteUrl:r=typeof location==`object`?location.href:DEFAULT_BASE_URL,rewriteRules:i=[],pathAliases:o=[],getFileNotFoundAction:s=()=>({type:`404`})}=e,l=e=>{e.isDir(n)||e.mkdir(n),e.chdir(n),e.requestHandler=this};if(e.php)l(e.php),this.instanceManager=new SinglePHPInstanceManager({php:e.php});else if(e.phpFactory)this.instanceManager=new PHPProcessManager({phpFactory:async n=>{let r=await e.phpFactory({...n,requestHandler:this});return l(r),r},maxPhpInstances:e.maxPhpInstances});else throw Error(`Either php or phpFactory must be provided in the configuration.`);x$1(this,V$1,e.cookieStore===void 0?new HttpCookieStore:e.cookieStore),x$1(this,C$1,n);let N=new URL(r);x$1(this,ie$1,N.hostname),x$1(this,X$1,N.port?Number(N.port):N.protocol===`https:`?443:80),x$1(this,Z$1,(N.protocol||``).replace(`:`,``));let ae=u$1(this,X$1)!==443&&u$1(this,X$1)!==80;x$1(this,ee$1,[u$1(this,ie$1),ae?`:${u$1(this,X$1)}`:``].join(``)),x$1(this,I$2,N.pathname.replace(/\/+$/,``)),x$1(this,te$1,[`${u$1(this,Z$1)}://`,u$1(this,ee$1),u$1(this,I$2)].join(``)),this.rewriteRules=i,x$1(this,oe,o),this.getFileNotFoundAction=s}async getPrimaryPhp(){return await this.instanceManager.getPrimaryPhp()}pathToInternalUrl(e){return e.startsWith(`/`)||(e=`/${e}`),`${this.absoluteUrl}${e}`}internalUrlToPath(e){let n=new URL(e,`https://playground.internal`);return n.pathname.startsWith(u$1(this,I$2))&&(n.pathname=n.pathname.slice(u$1(this,I$2).length)),toRelativeUrl(n)}get absoluteUrl(){return u$1(this,te$1)}get documentRoot(){return u$1(this,C$1)}async request(e){let n=await this.requestStreamed(e),r=await PHPResponse.fromStreamedResponse(n);return r.ok()&&r.exitCode!==0?new PHPResponse(500,r.headers,r.bytes,r.errors,r.exitCode):r}async requestStreamed(e){let n=looksLikeAbsoluteUrl(e.url),r=new URL(e.url.split(`#`)[0],n?void 0:DEFAULT_BASE_URL),i=v(this,R$2,Me).call(this,r),o=await this.getPrimaryPhp(),s=removePathPrefix(decodeURIComponent(i.pathname),u$1(this,I$2)),l=v(this,R$2,le).call(this,s);if(o.isDir(l)){if(!s.endsWith(`/`))return StreamedPHPResponse.fromPHPResponse(new PHPResponse(301,{location:[`${i.pathname}/`]},new Uint8Array));for(let e of[`index.php`,`index.html`]){let n=m(l,e);if(o.isFile(n)){l=n,i.pathname=m(i.pathname,e);break}}}if(!o.isFile(l)){let e=s;for(;e.startsWith(`/`)&&e!==W$1(e);){e=W$1(e);let n=v(this,R$2,le).call(this,e);if(o.isFile(n)&&n.endsWith(`.php`)){l=v(this,R$2,le).call(this,e);break}}}if(!o.isFile(l)){let e=this.getFileNotFoundAction(i.pathname);switch(e.type){case`response`:return StreamedPHPResponse.fromPHPResponse(e.response);case`internal-redirect`:l=m(u$1(this,C$1),e.uri);break;case`404`:return StreamedPHPResponse.forHttpCode(404);default:throw Error(`Unsupported file-not-found action type: '${e.type}'`)}}return o.isFile(l)?l.endsWith(`.php`)?await v(this,R$2,Ie).call(this,e,r,i,l):StreamedPHPResponse.fromPHPResponse(v(this,R$2,Le$1).call(this,o,l)):StreamedPHPResponse.forHttpCode(404)}prepare_$_SERVER_superglobal(e,n,r){let i={REMOTE_ADDR:`127.0.0.1`,DOCUMENT_ROOT:u$1(this,C$1),HTTPS:u$1(this,te$1).startsWith(`https://`)?`on`:``};return i.REQUEST_URI=e.pathname+e.search,r.startsWith(u$1(this,C$1))&&(i.SCRIPT_NAME=r.substring(u$1(this,C$1).length),i.PHP_SELF=n.pathname,i.REQUEST_URI.startsWith(i.SCRIPT_NAME)&&(i.PATH_INFO=i.REQUEST_URI.substring(i.SCRIPT_NAME.length),i.PATH_INFO.includes(`?`)&&(i.PATH_INFO=i.PATH_INFO.substring(0,i.PATH_INFO.indexOf(`?`))))),i.QUERY_STRING=n.search.substring(1),i}async[Symbol.asyncDispose](){await this.instanceManager[Symbol.asyncDispose]()}},C$1=new WeakMap,Z$1=new WeakMap,ie$1=new WeakMap,X$1=new WeakMap,ee$1=new WeakMap,I$2=new WeakMap,te$1=new WeakMap,V$1=new WeakMap,oe=new WeakMap,R$2=new WeakSet,Me=function(e){let n=applyRewriteRules(removePathPrefix(decodeURIComponent(e.pathname),u$1(this,I$2)),this.rewriteRules),r=new URL(m(u$1(this,I$2),n),e.toString());for(let[n,i]of e.searchParams.entries())r.searchParams.append(n,i);return r},le=function(e){for(let n of u$1(this,oe))if(e===n.urlPrefix||e.startsWith(n.urlPrefix+`/`)){let r=e.slice(n.urlPrefix.length);return m(n.fsPath,r)}return m(u$1(this,C$1),e)},Le$1=function(e,n){let r=e.readFileAsBuffer(n);return new PHPResponse(200,{"content-length":[`${r.byteLength}`],"content-type":[inferMimeType(n)],"accept-ranges":[`bytes`],"cache-control":[`public, max-age=0`]},r)},Ie=async function(e,n,r,i){let o;try{o=await this.instanceManager.acquirePHPInstance()}catch(e){return e instanceof MaxPhpInstancesError?StreamedPHPResponse.forHttpCode(502):StreamedPHPResponse.forHttpCode(500)}let s;try{s=await v(this,R$2,Ae).call(this,o.php,e,n,r,i)}catch(e){throw o.reap(),e}return s.finished.finally(()=>{o?.reap()}),s},Ae=async function(e,n,r,i,o){let s=`GET`,l={host:u$1(this,ee$1),...normalizeHeaders(n.headers||{})};u$1(this,V$1)&&(l.cookie=u$1(this,V$1).getCookieRequestHeader());let N=n.body;if(typeof N==`object`&&!(N instanceof Uint8Array)){s=`POST`;let{bytes:e,contentType:n}=await encodeAsMultipart(N);N=e,l[`content-type`]=n}let ae=await e.runStream({relativeUri:ensurePathPrefix(toRelativeUrl(new URL(i.toString())),u$1(this,I$2)),protocol:u$1(this,Z$1),method:n.method||s,$_SERVER:this.prepare_$_SERVER_superglobal(r,i,o),body:N,scriptPath:o,headers:l});if(u$1(this,V$1)){let e=await ae.headers;u$1(this,V$1).rememberCookiesFromResponseHeaders(e)}return ae},schema12={properties:{name:{type:`string`},version:{type:`string`},mode:{type:`string`,const:`php-extension`},loadWithIniDirective:{$ref:`#/definitions/PHPExtensionLoadDirective`,description:"The first directive of the generated startup `.ini` file. Defaults to `extension`; use `zend_extension` for Zend extensions like Xdebug. Use `false` to stage the `.so` without registering it in php.ini."},iniEntries:{type:`object`,additionalProperties:{type:`string`},description:"Additional `key=value` lines for the generated startup `.ini` file."},env:{type:`object`,additionalProperties:{type:`string`},description:`Environment variables added before the extension is loaded.`},extensionDir:{type:`string`,description:"VFS directory where PHP.wasm writes the extension `.so` file and its per-extension ini file. Defaults to `PHP_EXTENSIONS_DIR`."},artifacts:{type:`array`,items:{type:`object`,properties:{phpVersion:{type:`string`,description:"PHP major/minor version, e.g. `8.4`."},sourcePath:{type:`string`,description:`Relative to the manifest URL/base URL, or an absolute URL.`},extraFiles:{$ref:`#/definitions/PHPExtensionManifestExtraFiles`,description:`URL-backed files needed only by this artifact.`}},required:[`phpVersion`,`sourcePath`],additionalProperties:!1}},extraFiles:{$ref:`#/definitions/PHPExtensionManifestExtraFiles`,description:`URL-backed files shared by every artifact in this manifest.`}}},schema15={properties:{nodes:{items:{properties:{type:{enum:[`file`,`directory`]}}}}}},func2=Object.prototype.hasOwnProperty,schema14={enum:[`extension`,`zend_extension`]},PHP_EXTENSIONS_DIR=`/internal/shared/extensions`,MAX_EXTENSION_SIDECAR_FILE_REQUESTS=5,NodeSABSyncReceiveMessageTransport=class e{static async create(){if(!e.receiveMessageOnPort)try{e.receiveMessageOnPort=require___vite_browser_external().receiveMessageOnPort}catch{e.receiveMessageOnPort=await __vitePreload(()=>Promise.resolve().then(()=>__toESM(require___vite_browser_external(),1)).then(e=>e.receiveMessageOnPort),void 0)}return new e}constructor(){}afterResponseSent(e){let{notifyBuffer:n}=e.data;if(n){let e=new Int32Array(n);e[0]=1,Atomics.notify(e,0)}}send(n,r,i){var o;let s=new SharedArrayBuffer(4),l=new Int32Array(s);l[0]=0;let N=generateUUID();if(n.postMessage({...r,id:N,notifyBuffer:s},i),Atomics.wait(l,0,0,5e3)===`timed-out`)throw Error(`Timeout waiting for response`);for(;;){let r=e.receiveMessageOnPort(n);if(r.message?.id===N)return r.message;if(!r)throw Error(`No response received`)}}},proxyMarker=Symbol(`Comlink.proxy`),createEndpoint=Symbol(`Comlink.endpoint`),releaseProxy=Symbol(`Comlink.releaseProxy`),finalizer=Symbol(`Comlink.finalizer`),throwMarker=Symbol(`Comlink.thrown`),WireValueType={RAW:`RAW`,HANDLER:`HANDLER`},MessageType={GET:`GET`,SET:`SET`,APPLY:`APPLY`,CONSTRUCT:`CONSTRUCT`,ENDPOINT:`ENDPOINT`,RELEASE:`RELEASE`},isObject=e=>typeof e==`object`&&!!e||typeof e==`function`,proxyTransferHandler={canHandle:e=>isObject(e)&&e[proxyMarker],serialize(e){let{port1:n,port2:r}=new MessageChannel;return expose(e,n),[r,[r]]},deserialize(e){return e.start(),wrap(e)}},throwTransferHandler$1={canHandle:e=>isObject(e)&&throwMarker in e,serialize({value:e}){let n;return n=e instanceof Error?{isError:!0,value:{message:e.message,name:e.name,stack:e.stack}}:{isError:!1,value:e},[n,[]]},deserialize(e){throw e.isError?Object.assign(Error(e.value.message),e.value):e.value}},transferHandlers=new Map([[`proxy`,proxyTransferHandler],[`throw`,throwTransferHandler$1]]),proxyCounter=new WeakMap,proxyFinalizers=`FinalizationRegistry`in globalThis&&new FinalizationRegistry(e=>{let n=(proxyCounter.get(e)||0)-1;proxyCounter.set(e,n),n===0&&releaseEndpoint(e)}),transferCache=new WeakMap,proxyByListener=new WeakMap,list=[Error,EvalError,RangeError,ReferenceError,SyntaxError,TypeError,URIError,AggregateError,globalThis.DOMException,globalThis.AssertionError,globalThis.SystemError].filter(Boolean).map(e=>[e.name,e]),errorConstructors=new Map(list),NonError=class e extends Error{constructor(n){super(e._prepareSuperMessage(n)),this.name=`NonError`}static _prepareSuperMessage(e){try{return JSON.stringify(e)}catch{return String(e)}}},errorProperties=[{property:`name`,enumerable:!1},{property:`message`,enumerable:!1},{property:`stack`,enumerable:!1},{property:`code`,enumerable:!0},{property:`cause`,enumerable:!1},{property:`errors`,enumerable:!1}],toJsonWasCalled=new WeakSet,toJSON=e=>{toJsonWasCalled.add(e);let n=e.toJSON();return toJsonWasCalled.delete(e),n},newError=e=>{let n=errorConstructors.get(e)??Error;return n===AggregateError?new n([]):new n},destroyCircular=({from:e,seen:n,to:r,forceEnumerable:i,maxDepth:o,depth:s,useToJSON:l,serialize:N})=>{if(r||=Array.isArray(e)?[]:!N&&isErrorLike(e)?newError(e.name):{},n.push(e),s>=o)return r;if(l&&typeof e.toJSON==`function`&&!toJsonWasCalled.has(e))return toJSON(e);let ae=e=>destroyCircular({from:e,seen:[...n],forceEnumerable:i,maxDepth:o,depth:s,useToJSON:l,serialize:N});for(let[i,o]of Object.entries(e)){if(o&&o instanceof Uint8Array&&o.constructor.name===`Buffer`){r[i]=`[object Buffer]`;continue}if(typeof o==`object`&&o&&typeof o.pipe==`function`){r[i]=`[object Stream]`;continue}if(typeof o!=`function`){if(!o||typeof o!=`object`){try{r[i]=o}catch{}continue}if(!n.includes(e[i])){s++,r[i]=ae(e[i]);continue}r[i]=`[Circular]`}}if(N||r instanceof Error)for(let{property:n,enumerable:o}of errorProperties)e[n]!==void 0&&e[n]!==null&&Object.defineProperty(r,n,{value:isErrorLike(e[n])||Array.isArray(e[n])?ae(e[n]):e[n],enumerable:i?!0:o,configurable:!0,writable:!0});return r},releaseApiProxy=releaseProxy,isTransferHandlersSetup=!1,throwTransferHandler=transferHandlers.get(`throw`),throwTransferHandlerCustom={canHandle:throwTransferHandler.canHandle,serialize:({value:e})=>{let n;return e instanceof Error?(n={isError:!0,value:serializeError(e)},n.value.originalErrorClassName=e.constructor.name):n={isError:!1,value:e},[n,[]]},deserialize:e=>{if(e.isError){let n=deserializeError(e.value),r=Error(`Comlink method call failed`),i=n;for(;i.cause;)i=i.cause;throw i.cause=r,n}throw e.value}},transferHandlers.set(`throw`,throwTransferHandlerCustom),MAX_ADDRESSABLE_FILE_OFFSET=BigInt(2**53-1),IntervalNode=class{constructor(e){this.left=null,this.right=null,this.range=e,this.max=e.end}},FileLockIntervalTree=class{constructor(){this.root=null}isEmpty(){return this.root===null}insert(e){this.root=this.insertNode(this.root,e)}findOverlapping(e){let n=[];return this.findOverlappingRanges(this.root,e,n),n}remove(e){this.root=this.removeNode(this.root,e)}findLocksForProcess(e){let n=[];return this.findLocksForProcessInNode(this.root,e,n),n}findStrictestExistingLockType(){let e=`unlocked`,n=r=>{if(r){if(r.range.type===`exclusive`){e=`exclusive`;return}r.range.type===`shared`&&(e=`shared`),n(r.left),n(r.right)}};return n(this.root),e}insertNode(e,n){return e?(n.start<e.range.start?e.left=this.insertNode(e.left,n):e.right=this.insertNode(e.right,n),e.max=this.bigintMax(e.max,n.end),e):new IntervalNode(n)}bigintMax(...e){return e.reduce((e,n)=>n>e?n:e,e[0])}findOverlappingRanges(e,n,r){e&&(this.doRangesOverlap(e.range,n)&&r.push(e.range),e.left&&e.left.max>=n.start&&this.findOverlappingRanges(e.left,n,r),e.right&&e.range.start<=n.end&&this.findOverlappingRanges(e.right,n,r))}doRangesOverlap(e,n){return e.start<n.end&&n.start<e.end}removeNode(e,n){if(!e)return null;if(this.areRangesEqual(e.range,n)){if(!e.left)return e.right;if(!e.right)return e.left;let n=this.findMin(e.right);e.range=n.range,e.right=this.removeNode(e.right,n.range)}else n.start<e.range.start?e.left=this.removeNode(e.left,n):e.right=this.removeNode(e.right,n);return e.max=e.range.end,e.left&&(e.max=this.bigintMax(e.max,e.left.max)),e.right&&(e.max=this.bigintMax(e.max,e.right.max)),e}findMin(e){let n=e;for(;n.left;)n=n.left;return n}areRangesEqual(e,n){return e.start===n.start&&e.end===n.end&&e.pid===n.pid&&e.fd===n.fd}findLocksForProcessInNode(e,n,r){e&&(e.range.pid===n&&r.push(e.range),this.findLocksForProcessInNode(e.left,n,r),this.findLocksForProcessInNode(e.right,n,r))}},FileLockManagerInMemory=class{constructor(){this.locks=new Map}lockWholeFile(e,n){if(this.locks.get(e)===void 0){if(n.type===`unlock`)return!0;this.locks.set(e,new FileLock)}let r=this.locks.get(e).lockWholeFile(n);return this.forgetPathIfUnlocked(e),r}lockFileByteRange(e,n){if(!this.locks.has(e)){if(n.type===`unlocked`)return!0;this.locks.set(e,new FileLock)}return this.locks.get(e).lockFileByteRange(n)}findFirstConflictingByteRangeLock(e,n){let r=this.locks.get(e);if(r!==void 0)return r.findFirstConflictingByteRangeLock(n)}releaseLocksForProcess(e){for(let[n,r]of this.locks.entries())r.releaseLocksForProcess(e),this.forgetPathIfUnlocked(n)}releaseLocksOnFdClose(e,n,r){let i=this.locks.get(r);i&&(i.releaseLocksOnFdClose(e,n),this.forgetPathIfUnlocked(r))}forgetPathIfUnlocked(e){let n=this.locks.get(e);n&&n.isUnlocked()&&this.locks.delete(e)}},FileLock=class{constructor(){this.rangeLocks=new FileLockIntervalTree,this.wholeFileLock={type:`unlocked`}}lockWholeFile(e){if(e.type===`unlock`)return this.wholeFileLock.type===`unlocked`||(this.wholeFileLock.type===`exclusive`&&this.wholeFileLock.pid===e.pid&&this.wholeFileLock.fd===e.fd?this.wholeFileLock={type:`unlocked`}:this.wholeFileLock.type===`shared`&&this.wholeFileLock.pidFds.has(e.pid)&&this.wholeFileLock.pidFds.get(e.pid).has(e.fd)&&(this.wholeFileLock.pidFds.get(e.pid).delete(e.fd),this.wholeFileLock.pidFds.get(e.pid).size===0&&this.wholeFileLock.pidFds.delete(e.pid),this.wholeFileLock.pidFds.size===0&&(this.wholeFileLock={type:`unlocked`}))),!0;if(this.isThereAConflictWithRequestedWholeFileLock(e))return!1;if(e.type===`exclusive`)return this.wholeFileLock={type:`exclusive`,pid:e.pid,fd:e.fd},!0;if(e.type===`shared`){this.wholeFileLock.type!==`shared`&&(this.wholeFileLock={type:`shared`,pidFds:new Map});let n=this.wholeFileLock;return n.pidFds.has(e.pid)||n.pidFds.set(e.pid,new Set),n.pidFds.get(e.pid).add(e.fd),!0}throw Error(`Unexpected wholeFileLock() op: '${e.type}'`)}lockFileByteRange(e){if(e.start===e.end&&(e={...e,end:MAX_ADDRESSABLE_FILE_OFFSET}),e.type===`unlocked`){let n=this.rangeLocks.findOverlapping(e).filter(n=>n.pid===e.pid);for(let r of n)this.rangeLocks.remove(r),r.start<e.start&&this.rangeLocks.insert({...r,end:e.start}),r.end>e.end&&this.rangeLocks.insert({...r,start:e.end});return!0}if(this.isThereAConflictWithRequestedRangeLock(e))return!1;let n=this.rangeLocks.findOverlapping(e).filter(n=>n.pid===e.pid),r=e.start,i=e.end;for(let e of n)this.rangeLocks.remove(e),e.start<r&&(r=e.start),e.end>i&&(i=e.end);let o={...e,start:r,end:i};return this.rangeLocks.insert(o),!0}findFirstConflictingByteRangeLock(e){e.start===e.end&&(e={...e,end:MAX_ADDRESSABLE_FILE_OFFSET});let n=this.rangeLocks.findOverlapping(e).find(n=>n.pid!==e.pid&&(e.type===`exclusive`||n.type===`exclusive`));if(n)return n;if(this.wholeFileLock.type!==`unlocked`&&(this.wholeFileLock.type===`exclusive`||e.type===`exclusive`))return{type:this.wholeFileLock.type,start:0n,end:0n,pid:-1}}releaseLocksForProcess(e){for(let n of this.rangeLocks.findLocksForProcess(e))this.lockFileByteRange({...n,type:`unlocked`});if(this.wholeFileLock.type===`exclusive`&&this.wholeFileLock.pid===e)this.lockWholeFile({pid:e,fd:this.wholeFileLock.fd,type:`unlock`});else if(this.wholeFileLock.type===`shared`&&this.wholeFileLock.pidFds.has(e))for(let n of this.wholeFileLock.pidFds.get(e))this.lockWholeFile({pid:e,fd:n,type:`unlock`})}releaseLocksOnFdClose(e,n){for(let n of this.rangeLocks.findLocksForProcess(e))this.lockFileByteRange({...n,type:`unlocked`});this.lockWholeFile({pid:e,fd:n,type:`unlock`})}isUnlocked(){return this.wholeFileLock.type===`unlocked`&&this.rangeLocks.isEmpty()}isThereAConflictWithRequestedRangeLock(e){return this.findFirstConflictingByteRangeLock(e)!==void 0}isThereAConflictWithRequestedWholeFileLock(e){return e.type===`exclusive`?!!(this.wholeFileLock.type===`exclusive`&&(this.wholeFileLock.fd!==e.fd||this.wholeFileLock.pid!==e.pid)||this.wholeFileLock.type===`shared`&&Array.from(this.wholeFileLock.pidFds).some(([n])=>n!==e.pid)||this.rangeLocks.findOverlapping({start:0n,end:MAX_ADDRESSABLE_FILE_OFFSET}).length>0):e.type===`shared`?this.wholeFileLock.type===`exclusive`&&this.wholeFileLock.pid!==e.pid||this.rangeLocks.findOverlapping({start:0n,end:MAX_ADDRESSABLE_FILE_OFFSET}).filter(e=>e.type===`exclusive`).length>0:!1}},FileLockManagerComposite=class{constructor({nativeLockManager:e,wasmLockManager:n}){this.nativeLockManager=e,this.wasmLockManager=n}lockWholeFile(e,n){if(n.type!==`unlock`){let r,i;try{if(r=this.nativeLockManager.lockWholeFile(e,n),!r)return!1;i=this.wasmLockManager.lockWholeFile(e,n)}catch(e){M$1.error(`Unexpected error in lockWholeFile()`,e)}finally{r&&!i&&this.nativeLockManager.lockWholeFile(e,{...n,type:`unlock`})}return!!r&&!!i}try{this.wasmLockManager.lockWholeFile(e,n)}catch(e){M$1.error(`Unexpected error unlocking whole file with in-memory lock manager`,e)}try{this.nativeLockManager.lockWholeFile(e,n)}catch(e){M$1.error(`Unexpected error unlocking whole file with native lock manager`,e)}return!0}lockFileByteRange(e,n,r){if(n.type!==`unlocked`){let i,o;try{if(i=this.nativeLockManager.lockFileByteRange(e,n,r),!i)return!1;o=this.wasmLockManager.lockFileByteRange(e,n,r)}catch(e){M$1.error(`Unexpected error in lockFileByteRange()`,e)}finally{i&&!o&&this.nativeLockManager.lockFileByteRange(e,{...n,type:`unlocked`},!1)}return!!i&&!!o}try{this.wasmLockManager.lockFileByteRange(e,n,r)}catch(e){M$1.error(`Unexpected error unlocking byte range with in-memory lock manager`,e)}try{this.nativeLockManager.lockFileByteRange(e,n,r)}catch(e){M$1.error(`Unexpected error unlocking byte range with native lock manager`,e)}return!0}findFirstConflictingByteRangeLock(e,n){try{return this.nativeLockManager.findFirstConflictingByteRangeLock(e,n)||this.wasmLockManager.findFirstConflictingByteRangeLock(e,n)}catch(e){M$1.error(`Unexpected error in findFirstConflictingByteRangeLock()`,e);return}}releaseLocksForProcess(e){try{this.wasmLockManager.releaseLocksForProcess(e)}catch(e){M$1.error(`Unexpected error in wasmLockManager.releaseLocksForProcess()`,e)}try{this.nativeLockManager.releaseLocksForProcess(e)}catch(e){M$1.error(`Unexpected error in nativeLockManager.releaseLocksForProcess()`,e)}}releaseLocksOnFdClose(e,n,r){try{this.wasmLockManager.releaseLocksOnFdClose(e,n,r)}catch(e){M$1.error(`Unexpected error in wasmLockManager.releaseLocksOnFdClose()`,e)}try{this.nativeLockManager.releaseLocksOnFdClose(e,n,r)}catch(e){M$1.error(`Unexpected error in nativeLockManager.releaseLocksOnFdClose()`,e)}}},maxValueForSigned32BitInteger=2**31-1,ProcessIdAllocator=class{constructor(e=1,n=maxValueForSigned32BitInteger){this.claimed=new Set,this.initialId=e,this.maxId=n,this.nextId=e}claim(){let e=this.maxId-this.initialId+1;for(let n=0;n<e;n++)if(this.claimed.has(this.nextId))this.nextId++,this.nextId>this.maxId&&(this.nextId=this.initialId);else return this.claimed.add(this.nextId),this.nextId;throw Error(`Unable to find free process ID after ${e} tries.`)}release(e){return this.claimed.has(e)?(this.claimed.delete(e),!0):!1}}}));async function w$1(e,n){let r;return r=[`GET`,`HEAD`].includes(e.method)?void 0:`body`in n?n.body:!e.bodyUsed&&e.body?e.body:await e.arrayBuffer(),new Request(n.url||e.url,{body:r,method:e.method,headers:e.headers,referrer:e.referrer,referrerPolicy:e.referrerPolicy,mode:e.mode===`navigate`?`same-origin`:e.mode,credentials:e.credentials,cache:e.cache,redirect:e.redirect,integrity:e.integrity,...r instanceof ReadableStream&&{duplex:`half`},...n})}async function A$1(){if(u!==void 0)return u;try{let e=new ReadableStream({start(e){e.close()}});await fetch(`data:,`,{method:`POST`,body:e,duplex:`half`}),u=!0}catch{u=!1}return u}async function W(e,n,r,i){var o;let s=typeof e==`string`?new Request(e,n):e,l=i?new URL(i):null,N=l?new URL(s.url,l):new URL(s.url);if(B(N))return await fetch(s);if(D(N))return s=await I$1(s,N),await fetch(s);if(N.protocol===`http:`){N.protocol=`https:`;let e=N.toString();s=await w$1(s,{url:e}),N=new URL(e)}if(!r||l&&N.protocol===l.protocol&&N.hostname===l.hostname&&N.port===l.port&&N.pathname.startsWith(l.pathname))return await fetch(s);let ae=s.clone();try{return await fetch(s)}catch{let e=new Headers(s.headers),n=e.get(`x-cors-proxy-allowed-request-headers`)?.split(`,`)||[],i=n.includes(`authorization`)||n.includes(`cookie`),o=e.get(`content-type`);o&&o.toLowerCase().includes(`multipart/form-data`)&&(e.set(`x-cors-proxy-content-type`,o),e.set(`content-type`,`application/octet-stream`));let l=null,N=s.method.toUpperCase();N!==`GET`&&N!==`HEAD`&&(l=await A$1()?ae.body:await ae.arrayBuffer()),l instanceof ReadableStream&&new URL(r,import.meta.url).protocol===`http:`&&(l=await new Response(l).arrayBuffer());let ce=await w$1(s,{url:`${r}${s.url}`,headers:e,body:l,...i&&{credentials:`include`}}),ue=await fetch(ce);if(!ue.headers.has(q))throw new O(s.url,ue.status,ue.statusText);return ue}}function B(e){return e.hostname===`localhost`||e.hostname===`127.0.0.1`||e.hostname===`[::1]`||e.hostname===`::1`}function D(e){return e.protocol===`https:`&&b$1.has(e.hostname)}async function I$1(e,n){let r=b$1.get(n.hostname);if(!r)return e;let i=new Headers(e.headers);for(let[e,n]of Object.entries(r))i.has(e)||i.set(e,n);return await w$1(e,{headers:i})}var u,O,q,b$1,init_web_service_worker=__esmMin((()=>{init_universal(),O=class extends Error{constructor(e,n,r){super(`Could not fetch ${e} – your network appears to be blocking this request (HTTP ${n}). This often happens on school, university, or corporate networks. Try switching to a different network or using a VPN.`),this.name=`FirewallInterferenceError`,this.url=e,this.status=n,this.statusText=r}},q=`X-Playground-Cors-Proxy`,b$1=new Map([[`api.anthropic.com`,{"anthropic-dangerous-direct-browser-access":`true`}],[`api.openai.com`,{}],[`generativelanguage.googleapis.com`,{}]])}));function R$1(e=fetch){let n={};return async function(r,i){if(!n[r]){n[r]={responsePromise:e(r,i),async nextResponse(){let e=await n[r].responsePromise,[i,o]=n[r].unlockedBodyStream.tee();return n[r].unlockedBodyStream=i,new Response(o,{status:e.status,statusText:e.statusText,headers:e.headers})}};let o=await n[r].responsePromise;n[r].unlockedBodyStream=o.body}return n[r].nextResponse()}}var init_common=__esmMin((()=>{})),jspi,init_esm=__esmMin((()=>{jspi=()=>(async()=>`Suspending`in WebAssembly)()})),A,init_fs_journal=__esmMin((()=>{init_universal(),init_util(),init_logger(),new v$1({concurrency:15})}));async function je(){let e=$e(),n;for(let r of e)try{return await __vitePreload(()=>import(r),[])}catch(e){n=e}throw Error("PHP next assets are missing. Run `npm run sync:php-next` before using PHP next locally.",{cause:n})}function $e(){var e,n;let r=globalThis.location?.origin||``,i=(globalThis.location?.pathname||`/`).startsWith(`/website-server/`)?`/website-server/`:`/`;return Array.from(new Set([`${r}${i}php-next/index.js`,`${r}/website-server/php-next/index.js`,`${r}/php-next/index.js`]))}async function Ge(e=LatestSupportedPHPVersion,n=`asyncify`){switch(e){case`next`:return(await je()).getPHPLoaderModule(n);case`8.5`:return(await __vitePreload(async()=>{let{getPHPLoaderModule:e}=await import(`./php-wasm-not-bundled-B_lfuRhw.js`);return{getPHPLoaderModule:e}},__vite__mapDeps([0,1]))).getPHPLoaderModule();case`8.4`:return(await __vitePreload(async()=>{let{getPHPLoaderModule:e}=await import(`./php-wasm-not-bundled-B_lfuRhw.js`);return{getPHPLoaderModule:e}},__vite__mapDeps([0,1]))).getPHPLoaderModule();case`8.3`:return(await __vitePreload(async()=>{let{getPHPLoaderModule:e}=await import(`./web-8-3-RSoH5Sw-.js`);return{getPHPLoaderModule:e}},__vite__mapDeps([2,1]))).getPHPLoaderModule();case`8.2`:return(await __vitePreload(async()=>{let{getPHPLoaderModule:e}=await import(`./php-wasm-not-bundled-B_lfuRhw.js`);return{getPHPLoaderModule:e}},__vite__mapDeps([0,1]))).getPHPLoaderModule();case`8.1`:return(await __vitePreload(async()=>{let{getPHPLoaderModule:e}=await import(`./php-wasm-not-bundled-B_lfuRhw.js`);return{getPHPLoaderModule:e}},__vite__mapDeps([0,1]))).getPHPLoaderModule();case`8.0`:return(await __vitePreload(async()=>{let{getPHPLoaderModule:e}=await import(`./php-wasm-not-bundled-B_lfuRhw.js`);return{getPHPLoaderModule:e}},__vite__mapDeps([0,1]))).getPHPLoaderModule();case`7.4`:return(await __vitePreload(async()=>{let{getPHPLoaderModule:e}=await import(`./php-wasm-not-bundled-B_lfuRhw.js`);return{getPHPLoaderModule:e}},__vite__mapDeps([0,1]))).getPHPLoaderModule();case`5.2`:return(await __vitePreload(async()=>{let{getPHPLoaderModule:e}=await import(`./php-wasm-not-bundled-B_lfuRhw.js`);return{getPHPLoaderModule:e}},__vite__mapDeps([0,1]))).getPHPLoaderModule()}throw Error(`Unsupported PHP version ${e}`)}function y(e){return Object.fromEntries(Object.entries(e).map(([e,n])=>[n,e]))}function b(e){return new Uint8Array([e>>8&255,e&255])}function I(e){return new Uint8Array([e>>16&255,e>>8&255,e&255])}function X(e){let n=new ArrayBuffer(8);return new DataView(n).setBigUint64(0,BigInt(e),!1),new Uint8Array(n)}function Je(e){let n=new K(e.buffer),r=[];for(;!n.isFinished();){let i=n.offset,o=n.readUint16(),s=Ve[o],l=n.readUint16(),N=n.readUint8Array(l);if(!(s in se))continue;let ae=se[s];r.push({type:s,data:ae.decodeFromClient(N),raw:e.slice(i,i+4+l)})}return r}async function V(e,n,r,i){let o=R$3([n,r]),s=await crypto.subtle.importKey(`raw`,e,{name:`HMAC`,hash:{name:`SHA-256`}},!1,[`sign`]),l=o,N=[];for(;R$3(N).byteLength<i;){l=await ie(s,l);let e=await ie(s,R$3([l,o]));N.push(e)}return R$3(N).slice(0,i)}async function ie(e,n){return await crypto.subtle.sign({name:`HMAC`,hash:`SHA-256`},e,n)}function rt(e){return new TransformStream({transform(n,r){for(;n.length>0;)r.enqueue(n.slice(0,e)),n=n.slice(e)}})}function st(e,n){return it.generateCertificate(e,n)}function L(e){for(let[n,r]of Object.entries(at))if(r===e)return n;throw Error(`OID not found for name: ${e}`)}function _e(e){return`${e.getUTCFullYear().toString().substr(2)}${x(e.getUTCMonth()+1)}${x(e.getUTCDate())}${x(e.getUTCHours())}${x(e.getUTCMinutes())}${x(e.getUTCSeconds())}Z`}function x(e){return e.toString().padStart(2,`0`)}function _t(e,n){let r=new Date(e);return r.setUTCFullYear(r.getUTCFullYear()+n),r}function ht(e,n){if(n.length<8)return!1;if(e===443&&n[0]===C.Handshake&&n[1]===3&&n[2]>=1&&n[2]<=3)return`tls`;let r=new TextDecoder(`latin1`,{fatal:!0}).decode(n);return lt.some(e=>r.startsWith(e+` `))?`http`:`other`}function Ct(e,n){let r=e.length,i=n.length,o=r-i;for(let r=0;r<=o;r++){let o=!0;for(let s=0;s<i;s++)if(e[r+s]!==n[s]){o=!1;break}if(o)return r}return-1}async function ut(e=LatestSupportedPHPVersion){switch(e){case`8.5`:return(await __vitePreload(async()=>{let{getIntlExtensionPath:e}=await import(`./php-wasm-not-bundled-B_lfuRhw.js`);return{getIntlExtensionPath:e}},__vite__mapDeps([0,1]))).getIntlExtensionPath();case`8.4`:return(await __vitePreload(async()=>{let{getIntlExtensionPath:e}=await import(`./php-wasm-not-bundled-B_lfuRhw.js`);return{getIntlExtensionPath:e}},__vite__mapDeps([0,1]))).getIntlExtensionPath();case`8.3`:return(await __vitePreload(async()=>{let{getIntlExtensionPath:e}=await import(`./web-8-3-RSoH5Sw-.js`);return{getIntlExtensionPath:e}},__vite__mapDeps([2,1]))).getIntlExtensionPath();case`8.2`:return(await __vitePreload(async()=>{let{getIntlExtensionPath:e}=await import(`./php-wasm-not-bundled-B_lfuRhw.js`);return{getIntlExtensionPath:e}},__vite__mapDeps([0,1]))).getIntlExtensionPath();case`8.1`:return(await __vitePreload(async()=>{let{getIntlExtensionPath:e}=await import(`./php-wasm-not-bundled-B_lfuRhw.js`);return{getIntlExtensionPath:e}},__vite__mapDeps([0,1]))).getIntlExtensionPath();case`8.0`:return(await __vitePreload(async()=>{let{getIntlExtensionPath:e}=await import(`./php-wasm-not-bundled-B_lfuRhw.js`);return{getIntlExtensionPath:e}},__vite__mapDeps([0,1]))).getIntlExtensionPath();case`7.4`:return(await __vitePreload(async()=>{let{getIntlExtensionPath:e}=await import(`./php-wasm-not-bundled-B_lfuRhw.js`);return{getIntlExtensionPath:e}},__vite__mapDeps([0,1]))).getIntlExtensionPath()}throw Error(`Unsupported PHP version ${e}`)}async function At(e,n,r,i=[]){return i.length?withResolvedPHPExtensions(r,await Promise.all(i.map(r=>Ht(e,n,r)))):r}async function Ht(e,n,r){if(isLegacyPHPVersion(e))throw Error(`Extensions are not available for legacy PHP ${e}.`);if(isPHPNextVersion(e))throw Error(`Extensions are not available for PHP next.`);if(typeof r==`object`&&`source`in r){if(n===`asyncify`)throw Error(`External PHP extensions require JSPI. Asyncify is only supported for PHP.wasm bundled extensions.`);return await resolvePHPExtension({...r,phpVersion:e})}let i=typeof r==`string`?r:r.name;if(i!==`intl`)throw Error(`Unknown bundled PHP web extension: ${String(i)}.`);let o=R$1(fetch),s=await ut(e),l=(await __vitePreload(async()=>{let{default:e}=await import(`./php-wasm-not-bundled-B_lfuRhw.js`);return{default:e}},__vite__mapDeps([0,1]))).default,[N,ae]=await Promise.all([s,l].map(async e=>{let n=await o(e);if(!n.ok)throw Error(`Failed to fetch bundled PHP web extension asset: ${n.url||e} (${n.status} ${n.statusText}).`);return await n.arrayBuffer()}));return await resolvePHPExtension({source:{format:`so`,name:`intl`,bytes:new Uint8Array(N)},phpVersion:e,env:{ICU_DATA:`/internal/shared`},extraFiles:{files:{"/internal/shared/icudt74l.dat":new Uint8Array(ae)}}})}async function xt(e,n={}){var r;`setImmediate`in globalThis||(globalThis.setImmediate=e=>setTimeout(e,0));let i=await jspi()?`jspi`:`asyncify`,o={...dt(),...n.emscriptenOptions||{},phpWasmAsyncMode:i};n.tcpOverFetch&&(o=ct(o,n.tcpOverFetch));let s=isLegacyPHPVersion(e),l=[...n.extensions??[]];if(n.withIntl&&!ft(l,`intl`)&&l.push(`intl`),s){let e=await o,n=e.preRun||[];o={...e,preRun:[...n,createLegacyPhpIniPreRunStep()]}}if(s&&l.length)throw Error(`Extensions are not available for legacy PHP ${e}.`);s||(o=At(e,i,await o,l));let[N,ae]=await Promise.all([Ge(e,i),o]);return(r=n.onPhpLoaderModuleLoaded)==null||r.call(n,N),await loadPHPRuntime(N,ae)}function ft(e,n){return e.some(e=>typeof e==`string`?e===n:!(`source`in e)&&e.name===n)}var K,F,R,Ve,He,ze,de,fe,Q,Ee,Te,pe,ee,we,te,Ye,Y,ne,Z,re,Ze,se,Xe,ye,me,Le,ge,C,T,Qe,et,G,k,tt,nt,p,P,it,at,E,c,ot,ct,St,lt,w,dt,init_web=__esmMin((()=>{init_universal(),init_util(),init_logger(),init_web_service_worker(),init_common(),init_esm(),init_fs_journal(),init_preload_helper(),K=class{constructor(e){this.offset=0,this.buffer=e,this.view=new DataView(e)}readUint8(){let e=this.view.getUint8(this.offset);return this.offset+=1,e}readUint16(){let e=this.view.getUint16(this.offset);return this.offset+=2,e}readUint32(){let e=this.view.getUint32(this.offset);return this.offset+=4,e}readUint8Array(e){let n=this.buffer.slice(this.offset,this.offset+e);return this.offset+=e,new Uint8Array(n)}isFinished(){return this.offset>=this.buffer.byteLength}},F=class{constructor(e){this.offset=0,this.buffer=new ArrayBuffer(e),this.uint8Array=new Uint8Array(this.buffer),this.view=new DataView(this.buffer)}writeUint8(e){this.view.setUint8(this.offset,e),this.offset+=1}writeUint16(e){this.view.setUint16(this.offset,e),this.offset+=2}writeUint32(e){this.view.setUint32(this.offset,e),this.offset+=4}writeUint8Array(e){this.uint8Array.set(e,this.offset),this.offset+=e.length}},R={server_name:0,max_fragment_length:1,client_certificate_url:2,trusted_ca_keys:3,truncated_hmac:4,status_request:5,user_mapping:6,client_authz:7,server_authz:8,cert_type:9,supported_groups:10,ec_point_formats:11,srp:12,signature_algorithms:13,use_srtp:14,heartbeat:15,application_layer_protocol_negotiation:16,status_request_v2:17,signed_certificate_timestamp:18,client_certificate_type:19,server_certificate_type:20,padding:21,encrypt_then_mac:22,extended_master_secret:23,token_binding:24,cached_info:25,tls_its:26,compress_certificate:27,record_size_limit:28,pwd_protect:29,pwo_clear:30,password_salt:31,ticket_pinning:32,tls_cert_with_extern_psk:33,delegated_credential:34,session_ticket:35,TLMSP:36,TLMSP_proxying:37,TLMSP_delegate:38,supported_ekt_ciphers:39,pre_shared_key:41,early_data:42,supported_versions:43,cookie:44,psk_key_exchange_modes:45,reserved:46,certificate_authorities:47,oid_filters:48,post_handshake_auth:49,signature_algorithms_cert:50,key_share:51,transparency_info:52,connection_id:54,renegotiation_info:65281},Ve=y(R),He={host_name:0},ze=y(He),de=class{static decodeFromClient(e){let n=new DataView(e.buffer),r=0,i=n.getUint16(r);r+=2;let o=[];for(;r<i+2;){let i=e[r];r+=1;let s=n.getUint16(r);r+=2;let l=e.slice(r,r+s);switch(r+=s,i){case He.host_name:o.push({name_type:ze[i],name:{host_name:new TextDecoder().decode(l)}});break;default:throw Error(`Unsupported name type ${i}`)}}return{server_name_list:o}}static encodeForClient(e){if(e!=null&&e.server_name_list.length)throw Error(`Encoding non-empty lists for ClientHello is not supported yet. Only empty lists meant for ServerHello are supported today.`);let n=new F(4);return n.writeUint16(R.server_name),n.writeUint16(0),n.uint8Array}},fe={uncompressed:0,ansiX962_compressed_prime:1,ansiX962_compressed_char2:2},Q=y(fe),Ee=class{static decodeFromClient(e){let n=new K(e.buffer),r=n.readUint8(),i=[];for(let e=0;e<r;e++){let e=n.readUint8();e in Q&&i.push(Q[e])}return i}static encodeForClient(e){let n=new F(6);return n.writeUint16(R.ec_point_formats),n.writeUint16(2),n.writeUint8(1),n.writeUint8(fe[e]),n.uint8Array}},Te={decodeFromClient(e){let n=e[0]??0;return{renegotiatedConnection:e.slice(1,1+n)}},encodeForClient(){let e=R.renegotiation_info,n=new Uint8Array([0]);return new Uint8Array([e>>8&255,e&255,0,n.length,...n])}},pe={TLS1_CK_PSK_WITH_RC4_128_SHA:138,TLS1_CK_PSK_WITH_3DES_EDE_CBC_SHA:139,TLS1_CK_PSK_WITH_AES_128_CBC_SHA:140,TLS1_CK_PSK_WITH_AES_256_CBC_SHA:141,TLS1_CK_DHE_PSK_WITH_RC4_128_SHA:142,TLS1_CK_DHE_PSK_WITH_3DES_EDE_CBC_SHA:143,TLS1_CK_DHE_PSK_WITH_AES_128_CBC_SHA:144,TLS1_CK_DHE_PSK_WITH_AES_256_CBC_SHA:145,TLS1_CK_RSA_PSK_WITH_RC4_128_SHA:146,TLS1_CK_RSA_PSK_WITH_3DES_EDE_CBC_SHA:147,TLS1_CK_RSA_PSK_WITH_AES_128_CBC_SHA:148,TLS1_CK_RSA_PSK_WITH_AES_256_CBC_SHA:149,TLS1_CK_PSK_WITH_AES_128_GCM_SHA256:168,TLS1_CK_PSK_WITH_AES_256_GCM_SHA384:169,TLS1_CK_DHE_PSK_WITH_AES_128_GCM_SHA256:170,TLS1_CK_DHE_PSK_WITH_AES_256_GCM_SHA384:171,TLS1_CK_RSA_PSK_WITH_AES_128_GCM_SHA256:172,TLS1_CK_RSA_PSK_WITH_AES_256_GCM_SHA384:173,TLS1_CK_PSK_WITH_AES_128_CBC_SHA256:174,TLS1_CK_PSK_WITH_AES_256_CBC_SHA384:175,TLS1_CK_PSK_WITH_NULL_SHA256:176,TLS1_CK_PSK_WITH_NULL_SHA384:177,TLS1_CK_DHE_PSK_WITH_AES_128_CBC_SHA256:178,TLS1_CK_DHE_PSK_WITH_AES_256_CBC_SHA384:179,TLS1_CK_DHE_PSK_WITH_NULL_SHA256:180,TLS1_CK_DHE_PSK_WITH_NULL_SHA384:181,TLS1_CK_RSA_PSK_WITH_AES_128_CBC_SHA256:182,TLS1_CK_RSA_PSK_WITH_AES_256_CBC_SHA384:183,TLS1_CK_RSA_PSK_WITH_NULL_SHA256:184,TLS1_CK_RSA_PSK_WITH_NULL_SHA384:185,TLS1_CK_PSK_WITH_NULL_SHA:44,TLS1_CK_DHE_PSK_WITH_NULL_SHA:45,TLS1_CK_RSA_PSK_WITH_NULL_SHA:46,TLS1_CK_RSA_WITH_AES_128_SHA:47,TLS1_CK_DH_DSS_WITH_AES_128_SHA:48,TLS1_CK_DH_RSA_WITH_AES_128_SHA:49,TLS1_CK_DHE_DSS_WITH_AES_128_SHA:50,TLS1_CK_DHE_RSA_WITH_AES_128_SHA:51,TLS1_CK_ADH_WITH_AES_128_SHA:52,TLS1_CK_RSA_WITH_AES_256_SHA:53,TLS1_CK_DH_DSS_WITH_AES_256_SHA:54,TLS1_CK_DH_RSA_WITH_AES_256_SHA:55,TLS1_CK_DHE_DSS_WITH_AES_256_SHA:56,TLS1_CK_DHE_RSA_WITH_AES_256_SHA:57,TLS1_CK_ADH_WITH_AES_256_SHA:58,TLS1_CK_RSA_WITH_NULL_SHA256:59,TLS1_CK_RSA_WITH_AES_128_SHA256:60,TLS1_CK_RSA_WITH_AES_256_SHA256:61,TLS1_CK_DH_DSS_WITH_AES_128_SHA256:62,TLS1_CK_DH_RSA_WITH_AES_128_SHA256:63,TLS1_CK_DHE_DSS_WITH_AES_128_SHA256:64,TLS1_CK_RSA_WITH_CAMELLIA_128_CBC_SHA:65,TLS1_CK_DH_DSS_WITH_CAMELLIA_128_CBC_SHA:66,TLS1_CK_DH_RSA_WITH_CAMELLIA_128_CBC_SHA:67,TLS1_CK_DHE_DSS_WITH_CAMELLIA_128_CBC_SHA:68,TLS1_CK_DHE_RSA_WITH_CAMELLIA_128_CBC_SHA:69,TLS1_CK_ADH_WITH_CAMELLIA_128_CBC_SHA:70,TLS1_CK_DHE_RSA_WITH_AES_128_SHA256:103,TLS1_CK_DH_DSS_WITH_AES_256_SHA256:104,TLS1_CK_DH_RSA_WITH_AES_256_SHA256:105,TLS1_CK_DHE_DSS_WITH_AES_256_SHA256:106,TLS1_CK_DHE_RSA_WITH_AES_256_SHA256:107,TLS1_CK_ADH_WITH_AES_128_SHA256:108,TLS1_CK_ADH_WITH_AES_256_SHA256:109,TLS1_CK_RSA_WITH_CAMELLIA_256_CBC_SHA:132,TLS1_CK_DH_DSS_WITH_CAMELLIA_256_CBC_SHA:133,TLS1_CK_DH_RSA_WITH_CAMELLIA_256_CBC_SHA:134,TLS1_CK_DHE_DSS_WITH_CAMELLIA_256_CBC_SHA:135,TLS1_CK_DHE_RSA_WITH_CAMELLIA_256_CBC_SHA:136,TLS1_CK_ADH_WITH_CAMELLIA_256_CBC_SHA:137,TLS1_CK_RSA_WITH_SEED_SHA:150,TLS1_CK_DH_DSS_WITH_SEED_SHA:151,TLS1_CK_DH_RSA_WITH_SEED_SHA:152,TLS1_CK_DHE_DSS_WITH_SEED_SHA:153,TLS1_CK_DHE_RSA_WITH_SEED_SHA:154,TLS1_CK_ADH_WITH_SEED_SHA:155,TLS1_CK_RSA_WITH_AES_128_GCM_SHA256:156,TLS1_CK_RSA_WITH_AES_256_GCM_SHA384:157,TLS1_CK_DHE_RSA_WITH_AES_128_GCM_SHA256:158,TLS1_CK_DHE_RSA_WITH_AES_256_GCM_SHA384:159,TLS1_CK_DH_RSA_WITH_AES_128_GCM_SHA256:160,TLS1_CK_DH_RSA_WITH_AES_256_GCM_SHA384:161,TLS1_CK_DHE_DSS_WITH_AES_128_GCM_SHA256:162,TLS1_CK_DHE_DSS_WITH_AES_256_GCM_SHA384:163,TLS1_CK_DH_DSS_WITH_AES_128_GCM_SHA256:164,TLS1_CK_DH_DSS_WITH_AES_256_GCM_SHA384:165,TLS1_CK_ADH_WITH_AES_128_GCM_SHA256:166,TLS1_CK_ADH_WITH_AES_256_GCM_SHA384:167,TLS1_CK_RSA_WITH_AES_128_CCM:49308,TLS1_CK_RSA_WITH_AES_256_CCM:49309,TLS1_CK_DHE_RSA_WITH_AES_128_CCM:49310,TLS1_CK_DHE_RSA_WITH_AES_256_CCM:49311,TLS1_CK_RSA_WITH_AES_128_CCM_8:49312,TLS1_CK_RSA_WITH_AES_256_CCM_8:49313,TLS1_CK_DHE_RSA_WITH_AES_128_CCM_8:49314,TLS1_CK_DHE_RSA_WITH_AES_256_CCM_8:49315,TLS1_CK_PSK_WITH_AES_128_CCM:49316,TLS1_CK_PSK_WITH_AES_256_CCM:49317,TLS1_CK_DHE_PSK_WITH_AES_128_CCM:49318,TLS1_CK_DHE_PSK_WITH_AES_256_CCM:49319,TLS1_CK_PSK_WITH_AES_128_CCM_8:49320,TLS1_CK_PSK_WITH_AES_256_CCM_8:49321,TLS1_CK_DHE_PSK_WITH_AES_128_CCM_8:49322,TLS1_CK_DHE_PSK_WITH_AES_256_CCM_8:49323,TLS1_CK_ECDHE_ECDSA_WITH_AES_128_CCM:49324,TLS1_CK_ECDHE_ECDSA_WITH_AES_256_CCM:49325,TLS1_CK_ECDHE_ECDSA_WITH_AES_128_CCM_8:49326,TLS1_CK_ECDHE_ECDSA_WITH_AES_256_CCM_8:49327,TLS1_CK_RSA_WITH_CAMELLIA_128_CBC_SHA256:186,TLS1_CK_DH_DSS_WITH_CAMELLIA_128_CBC_SHA256:187,TLS1_CK_DH_RSA_WITH_CAMELLIA_128_CBC_SHA256:188,TLS1_CK_DHE_DSS_WITH_CAMELLIA_128_CBC_SHA256:189,TLS1_CK_DHE_RSA_WITH_CAMELLIA_128_CBC_SHA256:190,TLS1_CK_ADH_WITH_CAMELLIA_128_CBC_SHA256:191,TLS1_CK_RSA_WITH_CAMELLIA_256_CBC_SHA256:192,TLS1_CK_DH_DSS_WITH_CAMELLIA_256_CBC_SHA256:193,TLS1_CK_DH_RSA_WITH_CAMELLIA_256_CBC_SHA256:194,TLS1_CK_DHE_DSS_WITH_CAMELLIA_256_CBC_SHA256:195,TLS1_CK_DHE_RSA_WITH_CAMELLIA_256_CBC_SHA256:196,TLS1_CK_ADH_WITH_CAMELLIA_256_CBC_SHA256:197,TLS1_CK_ECDH_ECDSA_WITH_NULL_SHA:49153,TLS1_CK_ECDH_ECDSA_WITH_RC4_128_SHA:49154,TLS1_CK_ECDH_ECDSA_WITH_DES_192_CBC3_SHA:49155,TLS1_CK_ECDH_ECDSA_WITH_AES_128_CBC_SHA:49156,TLS1_CK_ECDH_ECDSA_WITH_AES_256_CBC_SHA:49157,TLS1_CK_ECDHE_ECDSA_WITH_NULL_SHA:49158,TLS1_CK_ECDHE_ECDSA_WITH_RC4_128_SHA:49159,TLS1_CK_ECDHE_ECDSA_WITH_DES_192_CBC3_SHA:49160,TLS1_CK_ECDHE_ECDSA_WITH_AES_128_CBC_SHA:49161,TLS1_CK_ECDHE_ECDSA_WITH_AES_256_CBC_SHA:49162,TLS1_CK_ECDH_RSA_WITH_NULL_SHA:49163,TLS1_CK_ECDH_RSA_WITH_RC4_128_SHA:49164,TLS1_CK_ECDH_RSA_WITH_DES_192_CBC3_SHA:49165,TLS1_CK_ECDH_RSA_WITH_AES_128_CBC_SHA:49166,TLS1_CK_ECDH_RSA_WITH_AES_256_CBC_SHA:49167,TLS1_CK_ECDHE_RSA_WITH_NULL_SHA:49168,TLS1_CK_ECDHE_RSA_WITH_RC4_128_SHA:49169,TLS1_CK_ECDHE_RSA_WITH_DES_192_CBC3_SHA:49170,TLS1_CK_ECDHE_RSA_WITH_AES_128_CBC_SHA:49171,TLS1_CK_ECDHE_RSA_WITH_AES_256_CBC_SHA:49172,TLS1_CK_ECDH_anon_WITH_NULL_SHA:49173,TLS1_CK_ECDH_anon_WITH_RC4_128_SHA:49174,TLS1_CK_ECDH_anon_WITH_DES_192_CBC3_SHA:49175,TLS1_CK_ECDH_anon_WITH_AES_128_CBC_SHA:49176,TLS1_CK_ECDH_anon_WITH_AES_256_CBC_SHA:49177,TLS1_CK_SRP_SHA_WITH_3DES_EDE_CBC_SHA:49178,TLS1_CK_SRP_SHA_RSA_WITH_3DES_EDE_CBC_SHA:49179,TLS1_CK_SRP_SHA_DSS_WITH_3DES_EDE_CBC_SHA:49180,TLS1_CK_SRP_SHA_WITH_AES_128_CBC_SHA:49181,TLS1_CK_SRP_SHA_RSA_WITH_AES_128_CBC_SHA:49182,TLS1_CK_SRP_SHA_DSS_WITH_AES_128_CBC_SHA:49183,TLS1_CK_SRP_SHA_WITH_AES_256_CBC_SHA:49184,TLS1_CK_SRP_SHA_RSA_WITH_AES_256_CBC_SHA:49185,TLS1_CK_SRP_SHA_DSS_WITH_AES_256_CBC_SHA:49186,TLS1_CK_ECDHE_ECDSA_WITH_AES_128_SHA256:49187,TLS1_CK_ECDHE_ECDSA_WITH_AES_256_SHA384:49188,TLS1_CK_ECDH_ECDSA_WITH_AES_128_SHA256:49189,TLS1_CK_ECDH_ECDSA_WITH_AES_256_SHA384:49190,TLS1_CK_ECDHE_RSA_WITH_AES_128_SHA256:49191,TLS1_CK_ECDHE_RSA_WITH_AES_256_SHA384:49192,TLS1_CK_ECDH_RSA_WITH_AES_128_SHA256:49193,TLS1_CK_ECDH_RSA_WITH_AES_256_SHA384:49194,TLS1_CK_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256:49195,TLS1_CK_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384:49196,TLS1_CK_ECDH_ECDSA_WITH_AES_128_GCM_SHA256:49197,TLS1_CK_ECDH_ECDSA_WITH_AES_256_GCM_SHA384:49198,TLS1_CK_ECDHE_RSA_WITH_AES_128_GCM_SHA256:49199,TLS1_CK_ECDHE_RSA_WITH_AES_256_GCM_SHA384:49200,TLS1_CK_ECDH_RSA_WITH_AES_128_GCM_SHA256:49201,TLS1_CK_ECDH_RSA_WITH_AES_256_GCM_SHA384:49202,TLS1_CK_ECDHE_PSK_WITH_RC4_128_SHA:49203,TLS1_CK_ECDHE_PSK_WITH_3DES_EDE_CBC_SHA:49204,TLS1_CK_ECDHE_PSK_WITH_AES_128_CBC_SHA:49205,TLS1_CK_ECDHE_PSK_WITH_AES_256_CBC_SHA:49206,TLS1_CK_ECDHE_PSK_WITH_AES_128_CBC_SHA256:49207,TLS1_CK_ECDHE_PSK_WITH_AES_256_CBC_SHA384:49208,TLS1_CK_ECDHE_PSK_WITH_NULL_SHA:49209,TLS1_CK_ECDHE_PSK_WITH_NULL_SHA256:49210,TLS1_CK_ECDHE_PSK_WITH_NULL_SHA384:49211,TLS1_CK_ECDHE_ECDSA_WITH_CAMELLIA_128_CBC_SHA256:49266,TLS1_CK_ECDHE_ECDSA_WITH_CAMELLIA_256_CBC_SHA384:49267,TLS1_CK_ECDH_ECDSA_WITH_CAMELLIA_128_CBC_SHA256:49268,TLS1_CK_ECDH_ECDSA_WITH_CAMELLIA_256_CBC_SHA384:49269,TLS1_CK_ECDHE_RSA_WITH_CAMELLIA_128_CBC_SHA256:49270,TLS1_CK_ECDHE_RSA_WITH_CAMELLIA_256_CBC_SHA384:49271,TLS1_CK_ECDH_RSA_WITH_CAMELLIA_128_CBC_SHA256:49272,TLS1_CK_ECDH_RSA_WITH_CAMELLIA_256_CBC_SHA384:49273,TLS1_CK_PSK_WITH_CAMELLIA_128_CBC_SHA256:49300,TLS1_CK_PSK_WITH_CAMELLIA_256_CBC_SHA384:49301,TLS1_CK_DHE_PSK_WITH_CAMELLIA_128_CBC_SHA256:49302,TLS1_CK_DHE_PSK_WITH_CAMELLIA_256_CBC_SHA384:49303,TLS1_CK_RSA_PSK_WITH_CAMELLIA_128_CBC_SHA256:49304,TLS1_CK_RSA_PSK_WITH_CAMELLIA_256_CBC_SHA384:49305,TLS1_CK_ECDHE_PSK_WITH_CAMELLIA_128_CBC_SHA256:49306,TLS1_CK_ECDHE_PSK_WITH_CAMELLIA_256_CBC_SHA384:49307,TLS1_CK_ECDHE_RSA_WITH_CHACHA20_POLY1305:52392,TLS1_CK_ECDHE_ECDSA_WITH_CHACHA20_POLY1305:52393,TLS1_CK_DHE_RSA_WITH_CHACHA20_POLY1305:52394,TLS1_CK_PSK_WITH_CHACHA20_POLY1305:52395,TLS1_CK_ECDHE_PSK_WITH_CHACHA20_POLY1305:52396,TLS1_CK_DHE_PSK_WITH_CHACHA20_POLY1305:52397,TLS1_CK_RSA_PSK_WITH_CHACHA20_POLY1305:52398},ee=y(pe),we={secp256r1:23,secp384r1:24,secp521r1:25,x25519:29,x448:30},te=y(we),Ye=class{static decodeFromClient(e){let n=new K(e.buffer);n.readUint16();let r=[];for(;!n.isFinished();){let e=n.readUint16();e in te&&r.push(te[e])}return r}static encodeForClient(e){let n=new F(6);return n.writeUint16(R.supported_groups),n.writeUint16(2),n.writeUint16(we[e]),n.uint8Array}},Y={anonymous:0,rsa:1,dsa:2,ecdsa:3},ne=y(Y),Z={none:0,md5:1,sha1:2,sha224:3,sha256:4,sha384:5,sha512:6},re=y(Z),Ze=class{static decodeFromClient(e){let n=new K(e.buffer);n.readUint16();let r=[];for(;!n.isFinished();){let e=n.readUint8(),i=n.readUint8();if(ne[i]){if(!re[e]){M$1.warn(`Unknown hash algorithm: ${e}`);continue}r.push({algorithm:ne[i],hash:re[e]})}}return r}static encodeforClient(e,n){let r=new F(6);return r.writeUint16(R.signature_algorithms),r.writeUint16(2),r.writeUint8(Z[e]),r.writeUint8(Y[n]),r.uint8Array}},se={server_name:de,signature_algorithms:Ze,supported_groups:Ye,ec_point_formats:Ee,renegotiation_info:Te},Xe={Null:0},ye={Warning:1,Fatal:2},me=y(ye),Le={CloseNotify:0,UnexpectedMessage:10,BadRecordMac:20,DecryptionFailed:21,RecordOverflow:22,DecompressionFailure:30,HandshakeFailure:40,NoCertificate:41,BadCertificate:42,UnsupportedCertificate:43,CertificateRevoked:44,CertificateExpired:45,CertificateUnknown:46,IllegalParameter:47,UnknownCa:48,AccessDenied:49,DecodeError:50,DecryptError:51,ExportRestriction:60,ProtocolVersion:70,InsufficientSecurity:71,InternalError:80,UserCanceled:90,NoRenegotiation:100,UnsupportedExtension:110},ge=y(Le),C={ChangeCipherSpec:20,Alert:21,Handshake:22,ApplicationData:23},T={HelloRequest:0,ClientHello:1,ServerHello:2,Certificate:11,ServerKeyExchange:12,ServerHelloDone:14,ClientKeyExchange:16,Finished:20},Qe={NamedCurve:3},et={secp256r1:23},G=class extends Error{},k=new Uint8Array([3,3]),tt=crypto.subtle.generateKey({name:`ECDH`,namedCurve:`P-256`},!0,[`deriveKey`,`deriveBits`]),nt=class{constructor(){this.receivedRecordSequenceNumber=0,this.sentRecordSequenceNumber=0,this.closed=!1,this.receivedBytesBuffer=new Uint8Array,this.receivedTLSRecords=[],this.partialTLSMessages={},this.handshakeMessages=[],this.MAX_CHUNK_SIZE=16384,this.clientEnd={upstream:new TransformStream,downstream:new TransformStream},this.clientDownstreamWriter=this.clientEnd.downstream.writable.getWriter(),this.clientUpstreamReader=this.clientEnd.upstream.readable.getReader(),this.serverEnd={upstream:new TransformStream,downstream:rt(this.MAX_CHUNK_SIZE)},this.serverUpstreamWriter=this.serverEnd.upstream.writable.getWriter();let e=this;this.serverEnd.downstream.readable.pipeTo(new WritableStream({async write(n){await e.writeTLSRecord(C.ApplicationData,n)},async abort(n){e.clientDownstreamWriter.releaseLock(),e.clientEnd.downstream.writable.abort(n),e.close()},close(){e.close()}})).catch(()=>{})}async close(){if(!this.closed){this.closed=!0;try{await this.clientDownstreamWriter.close()}catch{}try{await this.clientUpstreamReader.cancel()}catch{}try{await this.serverUpstreamWriter.close()}catch{}try{await this.clientEnd.upstream.readable.cancel()}catch{}try{await this.clientEnd.downstream.writable.close()}catch{}}}async TLSHandshake(e,n){let r=await this.readNextHandshakeMessage(T.ClientHello);if(!r.body.cipher_suites.length)throw Error(`Client did not propose any supported cipher suites.`);let i=crypto.getRandomValues(new Uint8Array(32));await this.writeTLSRecord(C.Handshake,P.serverHello(r.body,i,Xe.Null)),await this.writeTLSRecord(C.Handshake,P.certificate(n));let o=await tt,s=r.body.random,l=await P.ECDHEServerKeyExchange(s,i,o,e);await this.writeTLSRecord(C.Handshake,l),await this.writeTLSRecord(C.Handshake,P.serverHelloDone());let N=await this.readNextHandshakeMessage(T.ClientKeyExchange);await this.readNextMessage(C.ChangeCipherSpec),this.sessionKeys=await this.deriveSessionKeys({clientRandom:s,serverRandom:i,serverPrivateKey:o.privateKey,clientPublicKey:await crypto.subtle.importKey(`raw`,N.body.exchange_keys,{name:`ECDH`,namedCurve:`P-256`},!1,[])}),await this.readNextHandshakeMessage(T.Finished),await this.writeTLSRecord(C.ChangeCipherSpec,P.changeCipherSpec()),await this.writeTLSRecord(C.Handshake,await P.createFinishedMessage(this.handshakeMessages,this.sessionKeys.masterSecret)),this.handshakeMessages=[],this.pollForClientMessages()}async deriveSessionKeys({clientRandom:e,serverRandom:n,serverPrivateKey:r,clientPublicKey:i}){let o=await crypto.subtle.deriveBits({name:`ECDH`,public:i},r,256),s=new Uint8Array(await V(o,new TextEncoder().encode(`master secret`),D$2([e,n]),48)),l=await V(s,new TextEncoder().encode(`key expansion`),D$2([n,e]),40),N=new K(l),ae=N.readUint8Array(16),ce=N.readUint8Array(16),ue=N.readUint8Array(4),he=N.readUint8Array(4);return{masterSecret:s,clientWriteKey:await crypto.subtle.importKey(`raw`,ae,{name:`AES-GCM`},!1,[`encrypt`,`decrypt`]),serverWriteKey:await crypto.subtle.importKey(`raw`,ce,{name:`AES-GCM`},!1,[`encrypt`,`decrypt`]),clientIV:ue,serverIV:he}}async readNextHandshakeMessage(e){let n=await this.readNextMessage(C.Handshake);if(n.msg_type!==e)throw Error(`Expected ${e} message`);return n}async readNextMessage(e){let n,r=!1;do n=await this.readNextTLSRecord(e),r=await this.accumulateUntilMessageIsComplete(n);while(r===!1);let i=p.TLSMessage(n.type,r);return n.type===C.Handshake&&this.handshakeMessages.push(n.fragment),i}async readNextTLSRecord(e){for(;;){for(let n=0;n<this.receivedTLSRecords.length;n++){let r=this.receivedTLSRecords[n];if(r.type===e)return this.receivedTLSRecords.splice(n,1),r}let n=await this.pollBytes(5),r=n[3]<<8|n[4],i=n[0],o=await this.pollBytes(r),s={type:i,version:{major:n[1],minor:n[2]},length:r,fragment:this.sessionKeys&&i!==C.ChangeCipherSpec?await this.decryptData(i,o):o};if(s.type===C.Alert){let e=s.fragment[0],n=s.fragment[1],r=me[e],i=ge[n];throw e===ye.Warning&&n===Le.CloseNotify?new G(`TLS connection closed by peer (CloseNotify)`):Error(`TLS alert received: ${r} ${i}`)}this.receivedTLSRecords.push(s)}}async pollBytes(e){for(;this.receivedBytesBuffer.length<e;){let{value:n,done:r}=await this.clientUpstreamReader.read();if(r)throw await this.close(),new G(`TLS connection closed`);if(this.receivedBytesBuffer=D$2([this.receivedBytesBuffer,n]),this.receivedBytesBuffer.length>=e)break;await new Promise(e=>setTimeout(e,100))}let n=this.receivedBytesBuffer.slice(0,e);return this.receivedBytesBuffer=this.receivedBytesBuffer.slice(e),n}async pollForClientMessages(){try{for(;;){let e=await this.readNextMessage(C.ApplicationData);this.serverUpstreamWriter.write(e.body)}}catch(e){if(e instanceof G)return;throw e}}async decryptData(e,n){let r=this.sessionKeys.clientIV,i=n.slice(0,8),o=new Uint8Array([...r,...i]),s=await crypto.subtle.decrypt({name:`AES-GCM`,iv:o,additionalData:new Uint8Array([...X(this.receivedRecordSequenceNumber),e,...k,...b(n.length-8-16)]),tagLength:128},this.sessionKeys.clientWriteKey,n.slice(8));return++this.receivedRecordSequenceNumber,new Uint8Array(s)}async accumulateUntilMessageIsComplete(e){this.partialTLSMessages[e.type]=D$2([this.partialTLSMessages[e.type]||new Uint8Array,e.fragment]);let n=this.partialTLSMessages[e.type];switch(e.type){case C.Handshake:{if(n.length<4)return!1;let e=n[1]<<8|n[2];if(n.length<3+e)return!1;break}case C.Alert:if(n.length<2)return!1;break;case C.ChangeCipherSpec:case C.ApplicationData:break;default:throw Error(`TLS: Unsupported record type ${e.type}`)}return delete this.partialTLSMessages[e.type],n}async writeTLSRecord(e,n){e===C.Handshake&&this.handshakeMessages.push(n),this.sessionKeys&&e!==C.ChangeCipherSpec&&(n=await this.encryptData(e,n));let r=k,i=n.length,o=new Uint8Array(5);o[0]=e,o[1]=r[0],o[2]=r[1],o[3]=i>>8&255,o[4]=i&255;let s=D$2([o,n]);this.clientDownstreamWriter.write(s)}async encryptData(e,n){let r=this.sessionKeys.serverIV,i=crypto.getRandomValues(new Uint8Array(8)),o=new Uint8Array([...r,...i]),s=new Uint8Array([...X(this.sentRecordSequenceNumber),e,...k,...b(n.length)]),l=await crypto.subtle.encrypt({name:`AES-GCM`,iv:o,additionalData:s,tagLength:128},this.sessionKeys.serverWriteKey,n);return++this.sentRecordSequenceNumber,D$2([i,new Uint8Array(l)])}},p=class e{static TLSMessage(n,r){switch(n){case C.Handshake:return e.clientHandshake(r);case C.Alert:return e.alert(r);case C.ChangeCipherSpec:return e.changeCipherSpec();case C.ApplicationData:return e.applicationData(r);default:throw Error(`TLS: Unsupported TLS record type ${n}`)}}static parseCipherSuites(e){let n=new K(e);n.readUint16();let r=[];for(;!n.isFinished();){let e=n.readUint16();e in ee&&r.push(ee[e])}return r}static applicationData(e){return{type:C.ApplicationData,body:e}}static changeCipherSpec(){return{type:C.ChangeCipherSpec,body:new Uint8Array}}static alert(e){return{type:C.Alert,level:me[e[0]],description:ge[e[1]]}}static clientHandshake(n){let r=n[0],i=n[1]<<16|n[2]<<8|n[3],o=n.slice(4),s;switch(r){case T.HelloRequest:s=e.clientHelloRequestPayload();break;case T.ClientHello:s=e.clientHelloPayload(o);break;case T.ClientKeyExchange:s=e.clientKeyExchangePayload(o);break;case T.Finished:s=e.clientFinishedPayload(o);break;default:throw Error(`Invalid handshake type ${r}`)}return{type:C.Handshake,msg_type:r,length:i,body:s}}static clientHelloRequestPayload(){return{}}static clientHelloPayload(n){let r=new K(n.buffer),i={client_version:r.readUint8Array(2),random:r.readUint8Array(32)},o=r.readUint8();i.session_id=r.readUint8Array(o);let s=r.readUint16();i.cipher_suites=e.parseCipherSuites(r.readUint8Array(s).buffer);let l=r.readUint8();i.compression_methods=r.readUint8Array(l);let N=r.readUint16();return i.extensions=Je(r.readUint8Array(N)),i}static clientKeyExchangePayload(e){return{exchange_keys:e.slice(1,e.length)}}static clientFinishedPayload(e){return{verify_data:e}}},P=class{static certificate(e){let n=[];for(let r of e)n.push(I(r.byteLength)),n.push(new Uint8Array(r));let r=D$2(n),i=new Uint8Array([...I(r.byteLength),...r]);return new Uint8Array([T.Certificate,...I(i.length),...i])}static async ECDHEServerKeyExchange(e,n,r,i){let o=new Uint8Array(await crypto.subtle.exportKey(`raw`,r.publicKey)),s=new Uint8Array([Qe.NamedCurve,...b(et.secp256r1),o.byteLength,...o]),l=await crypto.subtle.sign({name:`RSASSA-PKCS1-v1_5`,hash:`SHA-256`},i,new Uint8Array([...e,...n,...s])),N=new Uint8Array(l),ae=new Uint8Array([Z.sha256,Y.rsa]),ce=new Uint8Array([...s,...ae,...b(N.length),...N]);return new Uint8Array([T.ServerKeyExchange,...I(ce.length),...ce])}static serverHello(e,n,r){let i=D$2(e.extensions.map(e=>{switch(e.type){case`server_name`:return de.encodeForClient();case`ec_point_formats`:return Ee.encodeForClient(`uncompressed`);case`renegotiation_info`:return Te.encodeForClient()}}).filter(e=>e!==void 0)),o=new Uint8Array,s=new Uint8Array([...k,...n,o.length,...o,...b(pe.TLS1_CK_ECDHE_RSA_WITH_AES_128_GCM_SHA256),r,...b(i.length),...i]);return new Uint8Array([T.ServerHello,...I(s.length),...s])}static serverHelloDone(){return new Uint8Array([T.ServerHelloDone,...I(0)])}static async createFinishedMessage(e,n){let r=await crypto.subtle.digest(`SHA-256`,D$2(e)),i=new Uint8Array(await V(n,new TextEncoder().encode(`server finished`),r,12));return new Uint8Array([T.Finished,...I(i.length),...i])}static changeCipherSpec(){return new Uint8Array([1])}},it=class{static async generateCertificate(e,n){let r=await crypto.subtle.generateKey({name:`RSASSA-PKCS1-v1_5`,hash:`SHA-256`,modulusLength:2048,publicExponent:new Uint8Array([1,0,1])},!0,[`sign`,`verify`]),i=await this.signingRequest(e,r.publicKey);return{keyPair:r,certificate:await this.sign(i,n?.privateKey??r.privateKey),tbsCertificate:i,tbsDescription:e}}static async sign(e,n){let r=await crypto.subtle.sign({name:`RSASSA-PKCS1-v1_5`,hash:`SHA-256`},n,e.buffer);return c.sequence([new Uint8Array(e.buffer),this.signatureAlgorithm(`sha256WithRSAEncryption`),c.bitString(new Uint8Array(r))])}static async signingRequest(e,n){let r=[];return e.keyUsage&&r.push(this.keyUsage(e.keyUsage)),e.extKeyUsage&&r.push(this.extKeyUsage(e.extKeyUsage)),e.subjectAltNames&&r.push(this.subjectAltName(e.subjectAltNames)),e.nsCertType&&r.push(this.nsCertType(e.nsCertType)),e.basicConstraints&&r.push(this.basicConstraints(e.basicConstraints)),c.sequence([this.version(e.version),this.serialNumber(e.serialNumber),this.signatureAlgorithm(e.signatureAlgorithm),this.distinguishedName(e.issuer??e.subject),this.validity(e.validity),this.distinguishedName(e.subject),await this.subjectPublicKeyInfo(n),this.extensions(r)])}static version(e=2){return c.ASN1(160,c.integer(new Uint8Array([e])))}static serialNumber(e=crypto.getRandomValues(new Uint8Array(4))){return c.integer(e)}static signatureAlgorithm(e=`sha256WithRSAEncryption`){return c.sequence([c.objectIdentifier(L(e)),c.null()])}static async subjectPublicKeyInfo(e){return new Uint8Array(await crypto.subtle.exportKey(`spki`,e))}static extensions(e){return c.ASN1(163,c.sequence(e))}static distinguishedName(e){let n=[];for(let[r,i]of Object.entries(e)){let e=[c.objectIdentifier(L(r))];switch(r){case`countryName`:e.push(c.printableString(i));break;default:e.push(c.utf8String(i))}n.push(c.set([c.sequence(e)]))}return c.sequence(n)}static validity(e){return c.sequence([c.ASN1(E.UTCTime,new TextEncoder().encode(_e(e?.notBefore??new Date))),c.ASN1(E.UTCTime,new TextEncoder().encode(_e(e?.notAfter??_t(new Date,10))))])}static basicConstraints({ca:e=!0,pathLenConstraint:n=void 0}){let r=[c.boolean(e)];return n!==void 0&&r.push(c.integer(new Uint8Array([n]))),c.sequence([c.objectIdentifier(L(`basicConstraints`)),c.octetString(c.sequence(r))])}static keyUsage(e){let n=new Uint8Array([0]);return e!=null&&e.digitalSignature&&(n[0]|=1),e!=null&&e.nonRepudiation&&(n[0]|=2),e!=null&&e.keyEncipherment&&(n[0]|=4),e!=null&&e.dataEncipherment&&(n[0]|=8),e!=null&&e.keyAgreement&&(n[0]|=16),e!=null&&e.keyCertSign&&(n[0]|=32),e!=null&&e.cRLSign&&(n[0]|=64),e!=null&&e.encipherOnly&&(n[0]|=128),e!=null&&e.decipherOnly&&(n[0]|=64),c.sequence([c.objectIdentifier(L(`keyUsage`)),c.boolean(!0),c.octetString(c.bitString(n))])}static extKeyUsage(e={}){return c.sequence([c.objectIdentifier(L(`extKeyUsage`)),c.boolean(!0),c.octetString(c.sequence(Object.entries(e).map(([e,n])=>n?c.objectIdentifier(L(e)):c.null())))])}static nsCertType(e){let n=new Uint8Array([0]);return e.client&&(n[0]|=1),e.server&&(n[0]|=2),e.email&&(n[0]|=4),e.objsign&&(n[0]|=8),e.sslCA&&(n[0]|=16),e.emailCA&&(n[0]|=32),e.objCA&&(n[0]|=64),c.sequence([c.objectIdentifier(L(`nsCertType`)),c.octetString(n)])}static subjectAltName(e){var n,r;let i=e.dnsNames?.map(e=>{let n=c.ia5String(e);return c.contextSpecific(2,n)})||[],o=e.ipAddresses?.map(e=>{let n=c.ia5String(e);return c.contextSpecific(7,n)})||[],s=c.octetString(c.sequence([...i,...o]));return c.sequence([c.objectIdentifier(L(`subjectAltName`)),c.boolean(!0),s])}},at={"1.2.840.113549.1.1.1":`rsaEncryption`,"1.2.840.113549.1.1.4":`md5WithRSAEncryption`,"1.2.840.113549.1.1.5":`sha1WithRSAEncryption`,"1.2.840.113549.1.1.7":`RSAES-OAEP`,"1.2.840.113549.1.1.8":`mgf1`,"1.2.840.113549.1.1.9":`pSpecified`,"1.2.840.113549.1.1.10":`RSASSA-PSS`,"1.2.840.113549.1.1.11":`sha256WithRSAEncryption`,"1.2.840.113549.1.1.12":`sha384WithRSAEncryption`,"1.2.840.113549.1.1.13":`sha512WithRSAEncryption`,"1.3.101.112":`EdDSA25519`,"1.2.840.10040.4.3":`dsa-with-sha1`,"1.3.14.3.2.7":`desCBC`,"1.3.14.3.2.26":`sha1`,"1.3.14.3.2.29":`sha1WithRSASignature`,"2.16.840.1.101.3.4.2.1":`sha256`,"2.16.840.1.101.3.4.2.2":`sha384`,"2.16.840.1.101.3.4.2.3":`sha512`,"2.16.840.1.101.3.4.2.4":`sha224`,"2.16.840.1.101.3.4.2.5":`sha512-224`,"2.16.840.1.101.3.4.2.6":`sha512-256`,"1.2.840.113549.2.2":`md2`,"1.2.840.113549.2.5":`md5`,"1.2.840.113549.1.7.1":`data`,"1.2.840.113549.1.7.2":`signedData`,"1.2.840.113549.1.7.3":`envelopedData`,"1.2.840.113549.1.7.4":`signedAndEnvelopedData`,"1.2.840.113549.1.7.5":`digestedData`,"1.2.840.113549.1.7.6":`encryptedData`,"1.2.840.113549.1.9.1":`emailAddress`,"1.2.840.113549.1.9.2":`unstructuredName`,"1.2.840.113549.1.9.3":`contentType`,"1.2.840.113549.1.9.4":`messageDigest`,"1.2.840.113549.1.9.5":`signingTime`,"1.2.840.113549.1.9.6":`counterSignature`,"1.2.840.113549.1.9.7":`challengePassword`,"1.2.840.113549.1.9.8":`unstructuredAddress`,"1.2.840.113549.1.9.14":`extensionRequest`,"1.2.840.113549.1.9.20":`friendlyName`,"1.2.840.113549.1.9.21":`localKeyId`,"1.2.840.113549.1.9.22.1":`x509Certificate`,"1.2.840.113549.1.12.10.1.1":`keyBag`,"1.2.840.113549.1.12.10.1.2":`pkcs8ShroudedKeyBag`,"1.2.840.113549.1.12.10.1.3":`certBag`,"1.2.840.113549.1.12.10.1.4":`crlBag`,"1.2.840.113549.1.12.10.1.5":`secretBag`,"1.2.840.113549.1.12.10.1.6":`safeContentsBag`,"1.2.840.113549.1.5.13":`pkcs5PBES2`,"1.2.840.113549.1.5.12":`pkcs5PBKDF2`,"1.2.840.113549.1.12.1.1":`pbeWithSHAAnd128BitRC4`,"1.2.840.113549.1.12.1.2":`pbeWithSHAAnd40BitRC4`,"1.2.840.113549.1.12.1.3":`pbeWithSHAAnd3-KeyTripleDES-CBC`,"1.2.840.113549.1.12.1.4":`pbeWithSHAAnd2-KeyTripleDES-CBC`,"1.2.840.113549.1.12.1.5":`pbeWithSHAAnd128BitRC2-CBC`,"1.2.840.113549.1.12.1.6":`pbewithSHAAnd40BitRC2-CBC`,"1.2.840.113549.2.7":`hmacWithSHA1`,"1.2.840.113549.2.8":`hmacWithSHA224`,"1.2.840.113549.2.9":`hmacWithSHA256`,"1.2.840.113549.2.10":`hmacWithSHA384`,"1.2.840.113549.2.11":`hmacWithSHA512`,"1.2.840.113549.3.7":`des-EDE3-CBC`,"2.16.840.1.101.3.4.1.2":`aes128-CBC`,"2.16.840.1.101.3.4.1.22":`aes192-CBC`,"2.16.840.1.101.3.4.1.42":`aes256-CBC`,"2.5.4.3":`commonName`,"2.5.4.4":`surname`,"2.5.4.5":`serialNumber`,"2.5.4.6":`countryName`,"2.5.4.7":`localityName`,"2.5.4.8":`stateOrProvinceName`,"2.5.4.9":`streetAddress`,"2.5.4.10":`organizationName`,"2.5.4.11":`organizationalUnitName`,"2.5.4.12":`title`,"2.5.4.13":`description`,"2.5.4.15":`businessCategory`,"2.5.4.17":`postalCode`,"2.5.4.42":`givenName`,"1.3.6.1.4.1.311.60.2.1.2":`jurisdictionOfIncorporationStateOrProvinceName`,"1.3.6.1.4.1.311.60.2.1.3":`jurisdictionOfIncorporationCountryName`,"2.16.840.1.113730.1.1":`nsCertType`,"2.16.840.1.113730.1.13":`nsComment`,"2.5.29.14":`subjectKeyIdentifier`,"2.5.29.15":`keyUsage`,"2.5.29.17":`subjectAltName`,"2.5.29.18":`issuerAltName`,"2.5.29.19":`basicConstraints`,"2.5.29.31":`cRLDistributionPoints`,"2.5.29.32":`certificatePolicies`,"2.5.29.35":`authorityKeyIdentifier`,"2.5.29.37":`extKeyUsage`,"1.3.6.1.4.1.11129.2.4.2":`timestampList`,"1.3.6.1.5.5.7.1.1":`authorityInfoAccess`,"1.3.6.1.5.5.7.3.1":`serverAuth`,"1.3.6.1.5.5.7.3.2":`clientAuth`,"1.3.6.1.5.5.7.3.3":`codeSigning`,"1.3.6.1.5.5.7.3.4":`emailProtection`,"1.3.6.1.5.5.7.3.8":`timeStamping`},E={Boolean:1,Integer:2,BitString:3,OctetString:4,Null:5,OID:6,Utf8String:12,Sequence:48,Set:49,PrintableString:19,IA5String:22,UTCTime:23},c=class e{static length_(e){if(e<128)return new Uint8Array([e]);{let n=e,r=[];for(;n>0;)r.unshift(n&255),n>>=8;let i=r.length,o=new Uint8Array(1+i);o[0]=128|i;for(let e=0;e<i;e++)o[e+1]=r[e];return o}}static ASN1(n,r){let i=e.length_(r.length),o=new Uint8Array(1+i.length+r.length);return o[0]=n,o.set(i,1),o.set(r,1+i.length),o}static integer(n){let r=0;for(;r<n.length-1&&n[r]===0&&n[r+1]<128;)r++;if(r>0&&(n=n.subarray(r)),n[0]>127){let e=new Uint8Array(n.length+1);e[0]=0,e.set(n,1),n=e}return e.ASN1(E.Integer,n)}static bitString(n){let r=new Uint8Array([0]),i=new Uint8Array(r.length+n.length);return i.set(r),i.set(n,r.length),e.ASN1(E.BitString,i)}static octetString(n){return e.ASN1(E.OctetString,n)}static null(){return e.ASN1(E.Null,new Uint8Array)}static objectIdentifier(n){let r=n.split(`.`).map(Number),i=[r[0]*40+r[1]];for(let e=2;e<r.length;e++){let n=r[e],o=[];do o.unshift(n&127),n>>=7;while(n>0);for(let e=0;e<o.length-1;e++)o[e]|=128;i.push(...o)}return e.ASN1(E.OID,new Uint8Array(i))}static utf8String(n){let r=new TextEncoder().encode(n);return e.ASN1(E.Utf8String,r)}static printableString(n){let r=new TextEncoder().encode(n);return e.ASN1(E.PrintableString,r)}static sequence(n){return e.ASN1(E.Sequence,D$2(n))}static set(n){return e.ASN1(E.Set,D$2(n))}static ia5String(n){let r=new TextEncoder().encode(n);return e.ASN1(E.IA5String,r)}static contextSpecific(n,r,i=!1){let o=(i?160:128)|n;return e.ASN1(o,r)}static boolean(n){return e.ASN1(E.Boolean,new Uint8Array([n?255:0]))}},ot=class extends TransformStream{constructor(){let e=new Uint8Array,n=`SCAN_CHUNK_SIZE`,r=0;super({transform(i,o){for(e=D$2([e,i]);e.length>0;)if(n===`SCAN_CHUNK_SIZE`){if(e.length<3)return;let i=0;for(;i<e.length;){let n=e[i];if(!(n>=48&&n<=57||n>=97&&n<=102||n>=65&&n<=70))break;i++}if(i===0)throw Error(`Invalid chunk size format`);if(e.length<i+2)return;if(e[i]!==13||e[i+1]!==10)throw Error(`Invalid chunk size format. Expected CRLF after chunk size`);let s=new TextDecoder().decode(e.slice(0,i)),l=parseInt(s,16);if(e=e.slice(i+2),l===0){n=`SCAN_FINAL_CHUNK`,o.terminate();return}r=l,n=`SCAN_CHUNK_DATA`}else if(n===`SCAN_CHUNK_DATA`){let i=Math.min(r,e.length),s=e.slice(0,i);e=e.slice(i),r-=i,o.enqueue(s),r===0&&(n=`SCAN_CHUNK_TRAILER`)}else if(n===`SCAN_CHUNK_TRAILER`){if(e.length<2)return;if(e[0]!==13||e[1]!==10)throw Error(`Invalid chunk trailer format. Expected CRLF after chunk data`);e=e.slice(2),n=`SCAN_CHUNK_SIZE`}}})}},ct=(e,n)=>({...e,websocket:{url:(e,n,r)=>`ws://playground.internal/?${new URLSearchParams({host:n,port:r}).toString()}`,subprotocol:`binary`,decorator:()=>class extends St{constructor(e,r){super(e,r,{CAroot:n.CAroot,corsProxyUrl:n.corsProxyUrl})}}}}),St=class{constructor(e,n,{CAroot:r,corsProxyUrl:i,outputType:o=`messages`}={}){this.CONNECTING=0,this.OPEN=1,this.CLOSING=2,this.CLOSED=3,this.readyState=this.CONNECTING,this.binaryType=`blob`,this.bufferedAmount=0,this.extensions=``,this.protocol=`ws`,this.host=``,this.port=0,this.listeners=new Map,this.clientUpstream=new TransformStream,this.clientUpstreamWriter=this.clientUpstream.writable.getWriter(),this.clientDownstream=new TransformStream,this.fetchInitiated=!1,this.bufferedBytesFromClient=new Uint8Array,this.url=e,this.options=n;let s=new URL(e);this.host=s.searchParams.get(`host`),this.port=parseInt(s.searchParams.get(`port`),10),this.binaryType=`arraybuffer`,this.corsProxyUrl=i,this.CAroot=r,o===`messages`&&this.clientDownstream.readable.pipeTo(new WritableStream({write:e=>{this.emit(`message`,{data:e})},abort:()=>{this.emit(`error`,Error(`ECONNREFUSED`)),this.close()},close:()=>{this.close()}})).catch(()=>{}),this.readyState=this.OPEN,this.emit(`open`)}on(e,n){this.addEventListener(e,n)}once(e,n){let r=i=>{n(i),this.removeEventListener(e,r)};this.addEventListener(e,r)}addEventListener(e,n){this.listeners.has(e)||this.listeners.set(e,new Set),this.listeners.get(e).add(n)}removeListener(e,n){this.removeEventListener(e,n)}removeEventListener(e,n){let r=this.listeners.get(e);r&&r.delete(n)}emit(e,n={}){e===`message`?this.onmessage(n):e===`close`?this.onclose(n):e===`error`?this.onerror(n):e===`open`&&this.onopen(n);let r=this.listeners.get(e);if(r)for(let e of r)e(n)}onclose(e){}onerror(e){}onmessage(e){}onopen(e){}send(e){if(this.readyState!==this.CLOSING&&this.readyState!==this.CLOSED&&(this.clientUpstreamWriter.write(new Uint8Array(e)),!this.fetchInitiated))switch(this.bufferedBytesFromClient=D$2([this.bufferedBytesFromClient,new Uint8Array(e)]),ht(this.port,this.bufferedBytesFromClient)){case!1:return;case`other`:this.emit(`error`,Error(`Unsupported protocol`)),this.close();break;case`tls`:this.fetchOverTLS(),this.fetchInitiated=!0;break;case`http`:this.fetchOverHTTP(),this.fetchInitiated=!0}}async fetchOverTLS(){if(!this.CAroot)throw Error(`TLS protocol is only supported when the TCPOverFetchWebsocket is instantiated with a CAroot`);let e=await st({subject:{commonName:this.host,organizationName:this.host,countryName:`US`},issuer:this.CAroot.tbsDescription.subject},this.CAroot.keyPair),n=new nt;this.clientUpstream.readable.pipeTo(n.clientEnd.upstream.writable).catch(()=>{}),n.clientEnd.downstream.readable.pipeTo(this.clientDownstream.writable).catch(()=>{}),await n.TLSHandshake(e.keyPair.privateKey,[e.certificate,this.CAroot.certificate]);let{request:r,expectsContinue:i}=await w.parseHttpRequest(n.serverEnd.upstream.readable,this.host,`https`);if(i){let e=n.serverEnd.downstream.writable.getWriter();await e.write(new TextEncoder().encode(`HTTP/1.1 100 Continue\r
+`),DEFAULT_BASE_URL=`http://example.com`,_default=`application/octet-stream`,asx=`video/x-ms-asf`,atom=`application/atom+xml`,avi=`video/x-msvideo`,avif=`image/avif`,bin=`application/octet-stream`,bmp=`image/x-ms-bmp`,cco=`application/x-cocoa`,cjs=`application/javascript`,css=`text/css`,data=`application/octet-stream`,deb=`application/octet-stream`,der=`application/x-x509-ca-cert`,dmg=`application/octet-stream`,doc=`application/msword`,docx=`application/vnd.openxmlformats-officedocument.wordprocessingml.document`,eot=`application/vnd.ms-fontobject`,flv=`video/x-flv`,gif=`image/gif`,gz=`application/gzip`,hqx=`application/mac-binhex40`,htc=`text/x-component`,html=`text/html`,ico=`image/x-icon`,iso=`application/octet-stream`,jad=`text/vnd.sun.j2me.app-descriptor`,jar=`application/java-archive`,jardiff=`application/x-java-archive-diff`,jng=`image/x-jng`,jnlp=`application/x-java-jnlp-file`,jpg=`image/jpeg`,jpeg=`image/jpeg`,js=`application/javascript`,json=`application/json`,kml=`application/vnd.google-earth.kml+xml`,kmz=`application/vnd.google-earth.kmz`,m3u8=`application/vnd.apple.mpegurl`,m4a=`audio/x-m4a`,m4v=`video/x-m4v`,md=`text/plain`,mid=`audio/midi`,mjs=`application/javascript`,mml=`text/mathml`,mng=`video/x-mng`,mov=`video/quicktime`,mp3=`audio/mpeg`,mp4=`video/mp4`,mpeg=`video/mpeg`,msi=`application/octet-stream`,odg=`application/vnd.oasis.opendocument.graphics`,odp=`application/vnd.oasis.opendocument.presentation`,ods=`application/vnd.oasis.opendocument.spreadsheet`,odt=`application/vnd.oasis.opendocument.text`,ogg=`audio/ogg`,otf=`font/otf`,pdf=`application/pdf`,pl=`application/x-perl`,png=`image/png`,ppt=`application/vnd.ms-powerpoint`,pptx=`application/vnd.openxmlformats-officedocument.presentationml.presentation`,prc=`application/x-pilot`,ps=`application/postscript`,ra=`audio/x-realaudio`,rar=`application/x-rar-compressed`,rpm=`application/x-redhat-package-manager`,rss=`application/rss+xml`,rtf=`application/rtf`,run=`application/x-makeself`,sea=`application/x-sea`,sit=`application/x-stuffit`,svg=`image/svg+xml`,swf=`application/x-shockwave-flash`,tcl=`application/x-tcl`,tar=`application/x-tar`,tif=`image/tiff`,ts=`video/mp2t`,ttf=`font/ttf`,txt=`text/plain`,wasm=`application/wasm`,wbmp=`image/vnd.wap.wbmp`,webm=`video/webm`,webp=`image/webp`,wml=`text/vnd.wap.wml`,wmlc=`application/vnd.wap.wmlc`,wmv=`video/x-ms-wmv`,woff=`font/woff`,woff2=`font/woff2`,xhtml=`application/xhtml+xml`,xls=`application/vnd.ms-excel`,xlsx=`application/vnd.openxmlformats-officedocument.spreadsheetml.sheet`,xml=`text/xml`,xpi=`application/x-xpinstall`,xspf=`application/xspf+xml`,zip=`application/zip`,mimeTypes={_default,"3gpp":`video/3gpp`,"7z":`application/x-7z-compressed`,asx,atom,avi,avif,bin,bmp,cco,cjs,css,data,deb,der,dmg,doc,docx,eot,flv,gif,gz,hqx,htc,html,ico,iso,jad,jar,jardiff,jng,jnlp,jpg,jpeg,js,json,kml,kmz,m3u8,m4a,m4v,md,mid,mjs,mml,mng,mov,mp3,mp4,mpeg,msi,odg,odp,ods,odt,ogg,otf,pdf,pl,png,ppt,pptx,prc,ps,ra,rar,rpm,rss,rtf,run,sea,sit,svg,swf,tcl,tar,tif,ts,ttf,txt,wasm,wbmp,webm,webp,wml,wmlc,wmv,woff,woff2,xhtml,xls,xlsx,xml,xpi,xspf,zip},PHPRequestHandler=class{constructor(e){_(this,R$2),_(this,C$1),_(this,Z$1),_(this,ie$1),_(this,X$1),_(this,ee$1),_(this,I$2),_(this,te$1),_(this,V$1),_(this,oe);let{documentRoot:n=`/www/`,absoluteUrl:r=typeof location==`object`?location.href:DEFAULT_BASE_URL,rewriteRules:i=[],pathAliases:o=[],getFileNotFoundAction:s=()=>({type:`404`})}=e,l=e=>{e.isDir(n)||e.mkdir(n),e.chdir(n),e.requestHandler=this};if(e.php)l(e.php),this.instanceManager=new SinglePHPInstanceManager({php:e.php});else if(e.phpFactory)this.instanceManager=new PHPProcessManager({phpFactory:async n=>{let r=await e.phpFactory({...n,requestHandler:this});return l(r),r},maxPhpInstances:e.maxPhpInstances});else throw Error(`Either php or phpFactory must be provided in the configuration.`);x$1(this,V$1,e.cookieStore===void 0?new HttpCookieStore:e.cookieStore),x$1(this,C$1,n);let N=new URL(r);x$1(this,ie$1,N.hostname),x$1(this,X$1,N.port?Number(N.port):N.protocol===`https:`?443:80),x$1(this,Z$1,(N.protocol||``).replace(`:`,``));let ae=u$1(this,X$1)!==443&&u$1(this,X$1)!==80;x$1(this,ee$1,[u$1(this,ie$1),ae?`:${u$1(this,X$1)}`:``].join(``)),x$1(this,I$2,N.pathname.replace(/\/+$/,``)),x$1(this,te$1,[`${u$1(this,Z$1)}://`,u$1(this,ee$1),u$1(this,I$2)].join(``)),this.rewriteRules=i,x$1(this,oe,o),this.getFileNotFoundAction=s}async getPrimaryPhp(){return await this.instanceManager.getPrimaryPhp()}pathToInternalUrl(e){return e.startsWith(`/`)||(e=`/${e}`),`${this.absoluteUrl}${e}`}internalUrlToPath(e){let n=new URL(e,`https://playground.internal`);return n.pathname.startsWith(u$1(this,I$2))&&(n.pathname=n.pathname.slice(u$1(this,I$2).length)),toRelativeUrl(n)}get absoluteUrl(){return u$1(this,te$1)}get documentRoot(){return u$1(this,C$1)}async request(e){let n=await this.requestStreamed(e),r=await PHPResponse.fromStreamedResponse(n);return r.ok()&&r.exitCode!==0?new PHPResponse(500,r.headers,r.bytes,r.errors,r.exitCode):r}async requestStreamed(e){let n=looksLikeAbsoluteUrl(e.url),r=new URL(e.url.split(`#`)[0],n?void 0:DEFAULT_BASE_URL),i=v(this,R$2,Me).call(this,r),o=await this.getPrimaryPhp(),s=removePathPrefix(decodeURIComponent(i.pathname),u$1(this,I$2)),l=v(this,R$2,le).call(this,s);if(o.isDir(l)){if(!s.endsWith(`/`))return StreamedPHPResponse.fromPHPResponse(new PHPResponse(301,{location:[`${i.pathname}/`]},new Uint8Array));for(let e of[`index.php`,`index.html`]){let n=m(l,e);if(o.isFile(n)){l=n,i.pathname=m(i.pathname,e);break}}}if(!o.isFile(l)){let e=s;for(;e.startsWith(`/`)&&e!==W$1(e);){e=W$1(e);let n=v(this,R$2,le).call(this,e);if(o.isFile(n)&&n.endsWith(`.php`)){l=v(this,R$2,le).call(this,e);break}}}if(!o.isFile(l)){let e=this.getFileNotFoundAction(i.pathname);switch(e.type){case`response`:return StreamedPHPResponse.fromPHPResponse(e.response);case`internal-redirect`:l=m(u$1(this,C$1),e.uri);break;case`404`:return StreamedPHPResponse.forHttpCode(404);default:throw Error(`Unsupported file-not-found action type: '${e.type}'`)}}return o.isFile(l)?l.endsWith(`.php`)?await v(this,R$2,Ie).call(this,e,r,i,l):StreamedPHPResponse.fromPHPResponse(v(this,R$2,Le$1).call(this,o,l)):StreamedPHPResponse.forHttpCode(404)}prepare_$_SERVER_superglobal(e,n,r){let i={REMOTE_ADDR:`127.0.0.1`,DOCUMENT_ROOT:u$1(this,C$1),HTTPS:u$1(this,te$1).startsWith(`https://`)?`on`:``};return i.REQUEST_URI=e.pathname+e.search,r.startsWith(u$1(this,C$1))&&(i.SCRIPT_NAME=r.substring(u$1(this,C$1).length),i.PHP_SELF=n.pathname,i.REQUEST_URI.startsWith(i.SCRIPT_NAME)&&(i.PATH_INFO=i.REQUEST_URI.substring(i.SCRIPT_NAME.length),i.PATH_INFO.includes(`?`)&&(i.PATH_INFO=i.PATH_INFO.substring(0,i.PATH_INFO.indexOf(`?`))))),i.QUERY_STRING=n.search.substring(1),i}async[Symbol.asyncDispose](){await this.instanceManager[Symbol.asyncDispose]()}},C$1=new WeakMap,Z$1=new WeakMap,ie$1=new WeakMap,X$1=new WeakMap,ee$1=new WeakMap,I$2=new WeakMap,te$1=new WeakMap,V$1=new WeakMap,oe=new WeakMap,R$2=new WeakSet,Me=function(e){let n=applyRewriteRules(removePathPrefix(decodeURIComponent(e.pathname),u$1(this,I$2)),this.rewriteRules),r=new URL(m(u$1(this,I$2),n),e.toString());for(let[n,i]of e.searchParams.entries())r.searchParams.append(n,i);return r},le=function(e){for(let n of u$1(this,oe))if(e===n.urlPrefix||e.startsWith(n.urlPrefix+`/`)){let r=e.slice(n.urlPrefix.length);return m(n.fsPath,r)}return m(u$1(this,C$1),e)},Le$1=function(e,n){let r=e.readFileAsBuffer(n);return new PHPResponse(200,{"content-length":[`${r.byteLength}`],"content-type":[inferMimeType(n)],"accept-ranges":[`bytes`],"cache-control":[`public, max-age=0`]},r)},Ie=async function(e,n,r,i){let o;try{o=await this.instanceManager.acquirePHPInstance()}catch(e){return e instanceof MaxPhpInstancesError?StreamedPHPResponse.forHttpCode(502):StreamedPHPResponse.forHttpCode(500)}let s;try{s=await v(this,R$2,Ae).call(this,o.php,e,n,r,i)}catch(e){throw o.reap(),e}return s.finished.finally(()=>{o?.reap()}),s},Ae=async function(e,n,r,i,o){let s=`GET`,l={host:u$1(this,ee$1),...normalizeHeaders(n.headers||{})};u$1(this,V$1)&&(l.cookie=u$1(this,V$1).getCookieRequestHeader());let N=n.body;if(typeof N==`object`&&!(N instanceof Uint8Array)){s=`POST`;let{bytes:e,contentType:n}=await encodeAsMultipart(N);N=e,l[`content-type`]=n}let ae=await e.runStream({relativeUri:ensurePathPrefix(toRelativeUrl(new URL(i.toString())),u$1(this,I$2)),protocol:u$1(this,Z$1),method:n.method||s,$_SERVER:this.prepare_$_SERVER_superglobal(r,i,o),body:N,scriptPath:o,headers:l});if(u$1(this,V$1)){let e=await ae.headers;u$1(this,V$1).rememberCookiesFromResponseHeaders(e)}return ae},schema12={properties:{name:{type:`string`},version:{type:`string`},mode:{type:`string`,const:`php-extension`},loadWithIniDirective:{$ref:`#/definitions/PHPExtensionLoadDirective`,description:"The first directive of the generated startup `.ini` file. Defaults to `extension`; use `zend_extension` for Zend extensions like Xdebug. Use `false` to stage the `.so` without registering it in php.ini."},iniEntries:{type:`object`,additionalProperties:{type:`string`},description:"Additional `key=value` lines for the generated startup `.ini` file."},env:{type:`object`,additionalProperties:{type:`string`},description:`Environment variables added before the extension is loaded.`},extensionDir:{type:`string`,description:"VFS directory where PHP.wasm writes the extension `.so` file and its per-extension ini file. Defaults to `PHP_EXTENSIONS_DIR`."},artifacts:{type:`array`,items:{type:`object`,properties:{phpVersion:{type:`string`,description:"PHP major/minor version, e.g. `8.4`."},sourcePath:{type:`string`,description:`Relative to the manifest URL/base URL, or an absolute URL.`},extraFiles:{$ref:`#/definitions/PHPExtensionManifestExtraFiles`,description:`URL-backed files needed only by this artifact.`}},required:[`phpVersion`,`sourcePath`],additionalProperties:!1}},extraFiles:{$ref:`#/definitions/PHPExtensionManifestExtraFiles`,description:`URL-backed files shared by every artifact in this manifest.`}}},schema15={properties:{nodes:{items:{properties:{type:{enum:[`file`,`directory`]}}}}}},func2=Object.prototype.hasOwnProperty,schema14={enum:[`extension`,`zend_extension`]},PHP_EXTENSIONS_DIR=`/internal/shared/extensions`,MAX_EXTENSION_SIDECAR_FILE_REQUESTS=5,NodeSABSyncReceiveMessageTransport=class e{static async create(){if(!e.receiveMessageOnPort)try{e.receiveMessageOnPort=require___vite_browser_external().receiveMessageOnPort}catch{e.receiveMessageOnPort=await __vitePreload(()=>Promise.resolve().then(()=>__toESM(require___vite_browser_external(),1)).then(e=>e.receiveMessageOnPort),void 0)}return new e}constructor(){}afterResponseSent(e){let{notifyBuffer:n}=e.data;if(n){let e=new Int32Array(n);e[0]=1,Atomics.notify(e,0)}}send(n,r,i){var o;let s=new SharedArrayBuffer(4),l=new Int32Array(s);l[0]=0;let N=generateUUID();if(n.postMessage({...r,id:N,notifyBuffer:s},i),Atomics.wait(l,0,0,5e3)===`timed-out`)throw Error(`Timeout waiting for response`);for(;;){let r=e.receiveMessageOnPort(n);if(r.message?.id===N)return r.message;if(!r)throw Error(`No response received`)}}},proxyMarker=Symbol(`Comlink.proxy`),createEndpoint=Symbol(`Comlink.endpoint`),releaseProxy=Symbol(`Comlink.releaseProxy`),finalizer=Symbol(`Comlink.finalizer`),throwMarker=Symbol(`Comlink.thrown`),WireValueType={RAW:`RAW`,HANDLER:`HANDLER`},MessageType={GET:`GET`,SET:`SET`,APPLY:`APPLY`,CONSTRUCT:`CONSTRUCT`,ENDPOINT:`ENDPOINT`,RELEASE:`RELEASE`},isObject=e=>typeof e==`object`&&!!e||typeof e==`function`,proxyTransferHandler={canHandle:e=>isObject(e)&&e[proxyMarker],serialize(e){let{port1:n,port2:r}=new MessageChannel;return expose(e,n),[r,[r]]},deserialize(e){return e.start(),wrap(e)}},throwTransferHandler$1={canHandle:e=>isObject(e)&&throwMarker in e,serialize({value:e}){let n;return n=e instanceof Error?{isError:!0,value:{message:e.message,name:e.name,stack:e.stack}}:{isError:!1,value:e},[n,[]]},deserialize(e){throw e.isError?Object.assign(Error(e.value.message),e.value):e.value}},transferHandlers=new Map([[`proxy`,proxyTransferHandler],[`throw`,throwTransferHandler$1]]),proxyCounter=new WeakMap,proxyFinalizers=`FinalizationRegistry`in globalThis&&new FinalizationRegistry(e=>{let n=(proxyCounter.get(e)||0)-1;proxyCounter.set(e,n),n===0&&releaseEndpoint(e)}),transferCache=new WeakMap,proxyByListener=new WeakMap,list=[Error,EvalError,RangeError,ReferenceError,SyntaxError,TypeError,URIError,AggregateError,globalThis.DOMException,globalThis.AssertionError,globalThis.SystemError].filter(Boolean).map(e=>[e.name,e]),errorConstructors=new Map(list),NonError=class e extends Error{constructor(n){super(e._prepareSuperMessage(n)),this.name=`NonError`}static _prepareSuperMessage(e){try{return JSON.stringify(e)}catch{return String(e)}}},errorProperties=[{property:`name`,enumerable:!1},{property:`message`,enumerable:!1},{property:`stack`,enumerable:!1},{property:`code`,enumerable:!0},{property:`cause`,enumerable:!1},{property:`errors`,enumerable:!1}],toJsonWasCalled=new WeakSet,toJSON=e=>{toJsonWasCalled.add(e);let n=e.toJSON();return toJsonWasCalled.delete(e),n},newError=e=>{let n=errorConstructors.get(e)??Error;return n===AggregateError?new n([]):new n},destroyCircular=({from:e,seen:n,to:r,forceEnumerable:i,maxDepth:o,depth:s,useToJSON:l,serialize:N})=>{if(r||=Array.isArray(e)?[]:!N&&isErrorLike(e)?newError(e.name):{},n.push(e),s>=o)return r;if(l&&typeof e.toJSON==`function`&&!toJsonWasCalled.has(e))return toJSON(e);let ae=e=>destroyCircular({from:e,seen:[...n],forceEnumerable:i,maxDepth:o,depth:s,useToJSON:l,serialize:N});for(let[i,o]of Object.entries(e)){if(o&&o instanceof Uint8Array&&o.constructor.name===`Buffer`){r[i]=`[object Buffer]`;continue}if(typeof o==`object`&&o&&typeof o.pipe==`function`){r[i]=`[object Stream]`;continue}if(typeof o!=`function`){if(!o||typeof o!=`object`){try{r[i]=o}catch{}continue}if(!n.includes(e[i])){s++,r[i]=ae(e[i]);continue}r[i]=`[Circular]`}}if(N||r instanceof Error)for(let{property:n,enumerable:o}of errorProperties)e[n]!==void 0&&e[n]!==null&&Object.defineProperty(r,n,{value:isErrorLike(e[n])||Array.isArray(e[n])?ae(e[n]):e[n],enumerable:i?!0:o,configurable:!0,writable:!0});return r},releaseApiProxy=releaseProxy,isTransferHandlersSetup=!1,throwTransferHandler=transferHandlers.get(`throw`),throwTransferHandlerCustom={canHandle:throwTransferHandler.canHandle,serialize:({value:e})=>{let n;return e instanceof Error?(n={isError:!0,value:serializeError(e)},n.value.originalErrorClassName=e.constructor.name):n={isError:!1,value:e},[n,[]]},deserialize:e=>{if(e.isError){let n=deserializeError(e.value),r=Error(`Comlink method call failed`),i=n;for(;i.cause;)i=i.cause;throw i.cause=r,n}throw e.value}},transferHandlers.set(`throw`,throwTransferHandlerCustom),MAX_ADDRESSABLE_FILE_OFFSET=BigInt(2**53-1),IntervalNode=class{constructor(e){this.left=null,this.right=null,this.range=e,this.max=e.end}},FileLockIntervalTree=class{constructor(){this.root=null}isEmpty(){return this.root===null}insert(e){this.root=this.insertNode(this.root,e)}findOverlapping(e){let n=[];return this.findOverlappingRanges(this.root,e,n),n}remove(e){this.root=this.removeNode(this.root,e)}findLocksForProcess(e){let n=[];return this.findLocksForProcessInNode(this.root,e,n),n}findStrictestExistingLockType(){let e=`unlocked`,n=r=>{if(r){if(r.range.type===`exclusive`){e=`exclusive`;return}r.range.type===`shared`&&(e=`shared`),n(r.left),n(r.right)}};return n(this.root),e}insertNode(e,n){return e?(n.start<e.range.start?e.left=this.insertNode(e.left,n):e.right=this.insertNode(e.right,n),e.max=this.bigintMax(e.max,n.end),e):new IntervalNode(n)}bigintMax(...e){return e.reduce((e,n)=>n>e?n:e,e[0])}findOverlappingRanges(e,n,r){e&&(this.doRangesOverlap(e.range,n)&&r.push(e.range),e.left&&e.left.max>=n.start&&this.findOverlappingRanges(e.left,n,r),e.right&&e.range.start<=n.end&&this.findOverlappingRanges(e.right,n,r))}doRangesOverlap(e,n){return e.start<n.end&&n.start<e.end}removeNode(e,n){if(!e)return null;if(this.areRangesEqual(e.range,n)){if(!e.left)return e.right;if(!e.right)return e.left;let n=this.findMin(e.right);e.range=n.range,e.right=this.removeNode(e.right,n.range)}else n.start<e.range.start?e.left=this.removeNode(e.left,n):e.right=this.removeNode(e.right,n);return e.max=e.range.end,e.left&&(e.max=this.bigintMax(e.max,e.left.max)),e.right&&(e.max=this.bigintMax(e.max,e.right.max)),e}findMin(e){let n=e;for(;n.left;)n=n.left;return n}areRangesEqual(e,n){return e.start===n.start&&e.end===n.end&&e.pid===n.pid&&e.fd===n.fd}findLocksForProcessInNode(e,n,r){e&&(e.range.pid===n&&r.push(e.range),this.findLocksForProcessInNode(e.left,n,r),this.findLocksForProcessInNode(e.right,n,r))}},FileLockManagerInMemory=class{constructor(){this.locks=new Map}lockWholeFile(e,n){if(this.locks.get(e)===void 0){if(n.type===`unlock`)return!0;this.locks.set(e,new FileLock)}let r=this.locks.get(e).lockWholeFile(n);return this.forgetPathIfUnlocked(e),r}lockFileByteRange(e,n){if(!this.locks.has(e)){if(n.type===`unlocked`)return!0;this.locks.set(e,new FileLock)}return this.locks.get(e).lockFileByteRange(n)}findFirstConflictingByteRangeLock(e,n){let r=this.locks.get(e);if(r!==void 0)return r.findFirstConflictingByteRangeLock(n)}releaseLocksForProcess(e){for(let[n,r]of this.locks.entries())r.releaseLocksForProcess(e),this.forgetPathIfUnlocked(n)}releaseLocksOnFdClose(e,n,r){let i=this.locks.get(r);i&&(i.releaseLocksOnFdClose(e,n),this.forgetPathIfUnlocked(r))}forgetPathIfUnlocked(e){let n=this.locks.get(e);n&&n.isUnlocked()&&this.locks.delete(e)}},FileLock=class{constructor(){this.rangeLocks=new FileLockIntervalTree,this.wholeFileLock={type:`unlocked`}}lockWholeFile(e){if(e.type===`unlock`)return this.wholeFileLock.type===`unlocked`||(this.wholeFileLock.type===`exclusive`&&this.wholeFileLock.pid===e.pid&&this.wholeFileLock.fd===e.fd?this.wholeFileLock={type:`unlocked`}:this.wholeFileLock.type===`shared`&&this.wholeFileLock.pidFds.has(e.pid)&&this.wholeFileLock.pidFds.get(e.pid).has(e.fd)&&(this.wholeFileLock.pidFds.get(e.pid).delete(e.fd),this.wholeFileLock.pidFds.get(e.pid).size===0&&this.wholeFileLock.pidFds.delete(e.pid),this.wholeFileLock.pidFds.size===0&&(this.wholeFileLock={type:`unlocked`}))),!0;if(this.isThereAConflictWithRequestedWholeFileLock(e))return!1;if(e.type===`exclusive`)return this.wholeFileLock={type:`exclusive`,pid:e.pid,fd:e.fd},!0;if(e.type===`shared`){this.wholeFileLock.type!==`shared`&&(this.wholeFileLock={type:`shared`,pidFds:new Map});let n=this.wholeFileLock;return n.pidFds.has(e.pid)||n.pidFds.set(e.pid,new Set),n.pidFds.get(e.pid).add(e.fd),!0}throw Error(`Unexpected wholeFileLock() op: '${e.type}'`)}lockFileByteRange(e){if(e.start===e.end&&(e={...e,end:MAX_ADDRESSABLE_FILE_OFFSET}),e.type===`unlocked`){let n=this.rangeLocks.findOverlapping(e).filter(n=>n.pid===e.pid);for(let r of n)this.rangeLocks.remove(r),r.start<e.start&&this.rangeLocks.insert({...r,end:e.start}),r.end>e.end&&this.rangeLocks.insert({...r,start:e.end});return!0}if(this.isThereAConflictWithRequestedRangeLock(e))return!1;let n=this.rangeLocks.findOverlapping(e).filter(n=>n.pid===e.pid),r=e.start,i=e.end;for(let e of n)this.rangeLocks.remove(e),e.start<r&&(r=e.start),e.end>i&&(i=e.end);let o={...e,start:r,end:i};return this.rangeLocks.insert(o),!0}findFirstConflictingByteRangeLock(e){e.start===e.end&&(e={...e,end:MAX_ADDRESSABLE_FILE_OFFSET});let n=this.rangeLocks.findOverlapping(e).find(n=>n.pid!==e.pid&&(e.type===`exclusive`||n.type===`exclusive`));if(n)return n;if(this.wholeFileLock.type!==`unlocked`&&(this.wholeFileLock.type===`exclusive`||e.type===`exclusive`))return{type:this.wholeFileLock.type,start:0n,end:0n,pid:-1}}releaseLocksForProcess(e){for(let n of this.rangeLocks.findLocksForProcess(e))this.lockFileByteRange({...n,type:`unlocked`});if(this.wholeFileLock.type===`exclusive`&&this.wholeFileLock.pid===e)this.lockWholeFile({pid:e,fd:this.wholeFileLock.fd,type:`unlock`});else if(this.wholeFileLock.type===`shared`&&this.wholeFileLock.pidFds.has(e))for(let n of this.wholeFileLock.pidFds.get(e))this.lockWholeFile({pid:e,fd:n,type:`unlock`})}releaseLocksOnFdClose(e,n){for(let n of this.rangeLocks.findLocksForProcess(e))this.lockFileByteRange({...n,type:`unlocked`});this.lockWholeFile({pid:e,fd:n,type:`unlock`})}isUnlocked(){return this.wholeFileLock.type===`unlocked`&&this.rangeLocks.isEmpty()}isThereAConflictWithRequestedRangeLock(e){return this.findFirstConflictingByteRangeLock(e)!==void 0}isThereAConflictWithRequestedWholeFileLock(e){return e.type===`exclusive`?!!(this.wholeFileLock.type===`exclusive`&&(this.wholeFileLock.fd!==e.fd||this.wholeFileLock.pid!==e.pid)||this.wholeFileLock.type===`shared`&&Array.from(this.wholeFileLock.pidFds).some(([n])=>n!==e.pid)||this.rangeLocks.findOverlapping({start:0n,end:MAX_ADDRESSABLE_FILE_OFFSET}).length>0):e.type===`shared`?this.wholeFileLock.type===`exclusive`&&this.wholeFileLock.pid!==e.pid||this.rangeLocks.findOverlapping({start:0n,end:MAX_ADDRESSABLE_FILE_OFFSET}).filter(e=>e.type===`exclusive`).length>0:!1}},FileLockManagerComposite=class{constructor({nativeLockManager:e,wasmLockManager:n}){this.nativeLockManager=e,this.wasmLockManager=n}lockWholeFile(e,n){if(n.type!==`unlock`){let r,i;try{if(r=this.nativeLockManager.lockWholeFile(e,n),!r)return!1;i=this.wasmLockManager.lockWholeFile(e,n)}catch(e){M$1.error(`Unexpected error in lockWholeFile()`,e)}finally{r&&!i&&this.nativeLockManager.lockWholeFile(e,{...n,type:`unlock`})}return!!r&&!!i}try{this.wasmLockManager.lockWholeFile(e,n)}catch(e){M$1.error(`Unexpected error unlocking whole file with in-memory lock manager`,e)}try{this.nativeLockManager.lockWholeFile(e,n)}catch(e){M$1.error(`Unexpected error unlocking whole file with native lock manager`,e)}return!0}lockFileByteRange(e,n,r){if(n.type!==`unlocked`){let i,o;try{if(i=this.nativeLockManager.lockFileByteRange(e,n,r),!i)return!1;o=this.wasmLockManager.lockFileByteRange(e,n,r)}catch(e){M$1.error(`Unexpected error in lockFileByteRange()`,e)}finally{i&&!o&&this.nativeLockManager.lockFileByteRange(e,{...n,type:`unlocked`},!1)}return!!i&&!!o}try{this.wasmLockManager.lockFileByteRange(e,n,r)}catch(e){M$1.error(`Unexpected error unlocking byte range with in-memory lock manager`,e)}try{this.nativeLockManager.lockFileByteRange(e,n,r)}catch(e){M$1.error(`Unexpected error unlocking byte range with native lock manager`,e)}return!0}findFirstConflictingByteRangeLock(e,n){try{return this.nativeLockManager.findFirstConflictingByteRangeLock(e,n)||this.wasmLockManager.findFirstConflictingByteRangeLock(e,n)}catch(e){M$1.error(`Unexpected error in findFirstConflictingByteRangeLock()`,e);return}}releaseLocksForProcess(e){try{this.wasmLockManager.releaseLocksForProcess(e)}catch(e){M$1.error(`Unexpected error in wasmLockManager.releaseLocksForProcess()`,e)}try{this.nativeLockManager.releaseLocksForProcess(e)}catch(e){M$1.error(`Unexpected error in nativeLockManager.releaseLocksForProcess()`,e)}}releaseLocksOnFdClose(e,n,r){try{this.wasmLockManager.releaseLocksOnFdClose(e,n,r)}catch(e){M$1.error(`Unexpected error in wasmLockManager.releaseLocksOnFdClose()`,e)}try{this.nativeLockManager.releaseLocksOnFdClose(e,n,r)}catch(e){M$1.error(`Unexpected error in nativeLockManager.releaseLocksOnFdClose()`,e)}}},maxValueForSigned32BitInteger=2**31-1,ProcessIdAllocator=class{constructor(e=1,n=maxValueForSigned32BitInteger){this.claimed=new Set,this.initialId=e,this.maxId=n,this.nextId=e}claim(){let e=this.maxId-this.initialId+1;for(let n=0;n<e;n++)if(this.claimed.has(this.nextId))this.nextId++,this.nextId>this.maxId&&(this.nextId=this.initialId);else return this.claimed.add(this.nextId),this.nextId;throw Error(`Unable to find free process ID after ${e} tries.`)}release(e){return this.claimed.has(e)?(this.claimed.delete(e),!0):!1}}}));async function w$1(e,n){let r;return r=[`GET`,`HEAD`].includes(e.method)?void 0:`body`in n?n.body:!e.bodyUsed&&e.body?e.body:await e.arrayBuffer(),new Request(n.url||e.url,{body:r,method:e.method,headers:e.headers,referrer:e.referrer,referrerPolicy:e.referrerPolicy,mode:e.mode===`navigate`?`same-origin`:e.mode,credentials:e.credentials,cache:e.cache,redirect:e.redirect,integrity:e.integrity,...r instanceof ReadableStream&&{duplex:`half`},...n})}async function A$1(){if(u!==void 0)return u;try{let e=new ReadableStream({start(e){e.close()}});await fetch(`data:,`,{method:`POST`,body:e,duplex:`half`}),u=!0}catch{u=!1}return u}async function W(e,n,r,i){var o;let s=typeof e==`string`?new Request(e,n):e,l=i?new URL(i):null,N=l?new URL(s.url,l):new URL(s.url);if(B(N))return await fetch(s);if(D(N))return s=await I$1(s,N),await fetch(s);if(N.protocol===`http:`){N.protocol=`https:`;let e=N.toString();s=await w$1(s,{url:e}),N=new URL(e)}if(!r||l&&N.protocol===l.protocol&&N.hostname===l.hostname&&N.port===l.port&&N.pathname.startsWith(l.pathname))return await fetch(s);let ae=s.clone();try{return await fetch(s)}catch{let e=new Headers(s.headers),n=e.get(`x-cors-proxy-allowed-request-headers`)?.split(`,`)||[],i=n.includes(`authorization`)||n.includes(`cookie`),o=e.get(`content-type`);o&&o.toLowerCase().includes(`multipart/form-data`)&&(e.set(`x-cors-proxy-content-type`,o),e.set(`content-type`,`application/octet-stream`));let l=null,N=s.method.toUpperCase();N!==`GET`&&N!==`HEAD`&&(l=await A$1()?ae.body:await ae.arrayBuffer()),l instanceof ReadableStream&&new URL(r,import.meta.url).protocol===`http:`&&(l=await new Response(l).arrayBuffer());let ce=await w$1(s,{url:`${r}${s.url}`,headers:e,body:l,...i&&{credentials:`include`}}),ue=await fetch(ce);if(!ue.headers.has(q))throw new O(s.url,ue.status,ue.statusText);return ue}}function B(e){return e.hostname===`localhost`||e.hostname===`127.0.0.1`||e.hostname===`[::1]`||e.hostname===`::1`}function D(e){return e.protocol===`https:`&&b$1.has(e.hostname)}async function I$1(e,n){let r=b$1.get(n.hostname);if(!r)return e;let i=new Headers(e.headers);for(let[e,n]of Object.entries(r))i.has(e)||i.set(e,n);return await w$1(e,{headers:i})}var u,O,q,b$1,init_web_service_worker=__esmMin((()=>{init_universal(),O=class extends Error{constructor(e,n,r){super(`Could not fetch ${e} – your network appears to be blocking this request (HTTP ${n}). This often happens on school, university, or corporate networks. Try switching to a different network or using a VPN.`),this.name=`FirewallInterferenceError`,this.url=e,this.status=n,this.statusText=r}},q=`X-Playground-Cors-Proxy`,b$1=new Map([[`api.anthropic.com`,{"anthropic-dangerous-direct-browser-access":`true`}],[`api.openai.com`,{}],[`generativelanguage.googleapis.com`,{}]])}));function R$1(e=fetch){let n={};return async function(r,i){if(!n[r]){n[r]={responsePromise:e(r,i),async nextResponse(){let e=await n[r].responsePromise,[i,o]=n[r].unlockedBodyStream.tee();return n[r].unlockedBodyStream=i,new Response(o,{status:e.status,statusText:e.statusText,headers:e.headers})}};let o=await n[r].responsePromise;n[r].unlockedBodyStream=o.body}return n[r].nextResponse()}}var init_common=__esmMin((()=>{})),jspi,init_esm=__esmMin((()=>{jspi=()=>(async()=>`Suspending`in WebAssembly)()})),A,init_fs_journal=__esmMin((()=>{init_universal(),init_util(),init_logger(),new v$1({concurrency:15})}));async function je(){let e=$e(),n;for(let r of e)try{return await __vitePreload(()=>import(r),[])}catch(e){n=e}throw Error("PHP next assets are missing. Run `npm run sync:php-next` before using PHP next locally.",{cause:n})}function $e(){var e,n;let r=globalThis.location?.origin||``,i=(globalThis.location?.pathname||`/`).startsWith(`/website-server/`)?`/website-server/`:`/`;return Array.from(new Set([`${r}${i}php-next/index.js`,`${r}/website-server/php-next/index.js`,`${r}/php-next/index.js`]))}async function Ge(e=LatestSupportedPHPVersion,n=`asyncify`){switch(e){case`next`:return(await je()).getPHPLoaderModule(n);case`8.5`:return(await __vitePreload(async()=>{let{getPHPLoaderModule:e}=await import(`./php-wasm-not-bundled-B_lfuRhw.js`);return{getPHPLoaderModule:e}},__vite__mapDeps([0,1]))).getPHPLoaderModule();case`8.4`:return(await __vitePreload(async()=>{let{getPHPLoaderModule:e}=await import(`./php-wasm-not-bundled-B_lfuRhw.js`);return{getPHPLoaderModule:e}},__vite__mapDeps([0,1]))).getPHPLoaderModule();case`8.3`:return(await __vitePreload(async()=>{let{getPHPLoaderModule:e}=await import(`./web-8-3-BHxYv2nh.js`);return{getPHPLoaderModule:e}},__vite__mapDeps([2,1]))).getPHPLoaderModule();case`8.2`:return(await __vitePreload(async()=>{let{getPHPLoaderModule:e}=await import(`./php-wasm-not-bundled-B_lfuRhw.js`);return{getPHPLoaderModule:e}},__vite__mapDeps([0,1]))).getPHPLoaderModule();case`8.1`:return(await __vitePreload(async()=>{let{getPHPLoaderModule:e}=await import(`./php-wasm-not-bundled-B_lfuRhw.js`);return{getPHPLoaderModule:e}},__vite__mapDeps([0,1]))).getPHPLoaderModule();case`8.0`:return(await __vitePreload(async()=>{let{getPHPLoaderModule:e}=await import(`./php-wasm-not-bundled-B_lfuRhw.js`);return{getPHPLoaderModule:e}},__vite__mapDeps([0,1]))).getPHPLoaderModule();case`7.4`:return(await __vitePreload(async()=>{let{getPHPLoaderModule:e}=await import(`./php-wasm-not-bundled-B_lfuRhw.js`);return{getPHPLoaderModule:e}},__vite__mapDeps([0,1]))).getPHPLoaderModule();case`5.2`:return(await __vitePreload(async()=>{let{getPHPLoaderModule:e}=await import(`./php-wasm-not-bundled-B_lfuRhw.js`);return{getPHPLoaderModule:e}},__vite__mapDeps([0,1]))).getPHPLoaderModule()}throw Error(`Unsupported PHP version ${e}`)}function y(e){return Object.fromEntries(Object.entries(e).map(([e,n])=>[n,e]))}function b(e){return new Uint8Array([e>>8&255,e&255])}function I(e){return new Uint8Array([e>>16&255,e>>8&255,e&255])}function X(e){let n=new ArrayBuffer(8);return new DataView(n).setBigUint64(0,BigInt(e),!1),new Uint8Array(n)}function Je(e){let n=new K(e.buffer),r=[];for(;!n.isFinished();){let i=n.offset,o=n.readUint16(),s=Ve[o],l=n.readUint16(),N=n.readUint8Array(l);if(!(s in se))continue;let ae=se[s];r.push({type:s,data:ae.decodeFromClient(N),raw:e.slice(i,i+4+l)})}return r}async function V(e,n,r,i){let o=R$3([n,r]),s=await crypto.subtle.importKey(`raw`,e,{name:`HMAC`,hash:{name:`SHA-256`}},!1,[`sign`]),l=o,N=[];for(;R$3(N).byteLength<i;){l=await ie(s,l);let e=await ie(s,R$3([l,o]));N.push(e)}return R$3(N).slice(0,i)}async function ie(e,n){return await crypto.subtle.sign({name:`HMAC`,hash:`SHA-256`},e,n)}function rt(e){return new TransformStream({transform(n,r){for(;n.length>0;)r.enqueue(n.slice(0,e)),n=n.slice(e)}})}function st(e,n){return it.generateCertificate(e,n)}function L(e){for(let[n,r]of Object.entries(at))if(r===e)return n;throw Error(`OID not found for name: ${e}`)}function _e(e){return`${e.getUTCFullYear().toString().substr(2)}${x(e.getUTCMonth()+1)}${x(e.getUTCDate())}${x(e.getUTCHours())}${x(e.getUTCMinutes())}${x(e.getUTCSeconds())}Z`}function x(e){return e.toString().padStart(2,`0`)}function _t(e,n){let r=new Date(e);return r.setUTCFullYear(r.getUTCFullYear()+n),r}function ht(e,n){if(n.length<8)return!1;if(e===443&&n[0]===C.Handshake&&n[1]===3&&n[2]>=1&&n[2]<=3)return`tls`;let r=new TextDecoder(`latin1`,{fatal:!0}).decode(n);return lt.some(e=>r.startsWith(e+` `))?`http`:`other`}function Ct(e,n){let r=e.length,i=n.length,o=r-i;for(let r=0;r<=o;r++){let o=!0;for(let s=0;s<i;s++)if(e[r+s]!==n[s]){o=!1;break}if(o)return r}return-1}async function ut(e=LatestSupportedPHPVersion){switch(e){case`8.5`:return(await __vitePreload(async()=>{let{getIntlExtensionPath:e}=await import(`./php-wasm-not-bundled-B_lfuRhw.js`);return{getIntlExtensionPath:e}},__vite__mapDeps([0,1]))).getIntlExtensionPath();case`8.4`:return(await __vitePreload(async()=>{let{getIntlExtensionPath:e}=await import(`./php-wasm-not-bundled-B_lfuRhw.js`);return{getIntlExtensionPath:e}},__vite__mapDeps([0,1]))).getIntlExtensionPath();case`8.3`:return(await __vitePreload(async()=>{let{getIntlExtensionPath:e}=await import(`./web-8-3-BHxYv2nh.js`);return{getIntlExtensionPath:e}},__vite__mapDeps([2,1]))).getIntlExtensionPath();case`8.2`:return(await __vitePreload(async()=>{let{getIntlExtensionPath:e}=await import(`./php-wasm-not-bundled-B_lfuRhw.js`);return{getIntlExtensionPath:e}},__vite__mapDeps([0,1]))).getIntlExtensionPath();case`8.1`:return(await __vitePreload(async()=>{let{getIntlExtensionPath:e}=await import(`./php-wasm-not-bundled-B_lfuRhw.js`);return{getIntlExtensionPath:e}},__vite__mapDeps([0,1]))).getIntlExtensionPath();case`8.0`:return(await __vitePreload(async()=>{let{getIntlExtensionPath:e}=await import(`./php-wasm-not-bundled-B_lfuRhw.js`);return{getIntlExtensionPath:e}},__vite__mapDeps([0,1]))).getIntlExtensionPath();case`7.4`:return(await __vitePreload(async()=>{let{getIntlExtensionPath:e}=await import(`./php-wasm-not-bundled-B_lfuRhw.js`);return{getIntlExtensionPath:e}},__vite__mapDeps([0,1]))).getIntlExtensionPath()}throw Error(`Unsupported PHP version ${e}`)}async function At(e,n,r,i=[]){return i.length?withResolvedPHPExtensions(r,await Promise.all(i.map(r=>Ht(e,n,r)))):r}async function Ht(e,n,r){if(isLegacyPHPVersion(e))throw Error(`Extensions are not available for legacy PHP ${e}.`);if(isPHPNextVersion(e))throw Error(`Extensions are not available for PHP next.`);if(typeof r==`object`&&`source`in r){if(n===`asyncify`)throw Error(`External PHP extensions require JSPI. Asyncify is only supported for PHP.wasm bundled extensions.`);return await resolvePHPExtension({...r,phpVersion:e})}let i=typeof r==`string`?r:r.name;if(i!==`intl`)throw Error(`Unknown bundled PHP web extension: ${String(i)}.`);let o=R$1(fetch),s=await ut(e),l=(await __vitePreload(async()=>{let{default:e}=await import(`./php-wasm-not-bundled-B_lfuRhw.js`);return{default:e}},__vite__mapDeps([0,1]))).default,[N,ae]=await Promise.all([s,l].map(async e=>{let n=await o(e);if(!n.ok)throw Error(`Failed to fetch bundled PHP web extension asset: ${n.url||e} (${n.status} ${n.statusText}).`);return await n.arrayBuffer()}));return await resolvePHPExtension({source:{format:`so`,name:`intl`,bytes:new Uint8Array(N)},phpVersion:e,env:{ICU_DATA:`/internal/shared`},extraFiles:{files:{"/internal/shared/icudt74l.dat":new Uint8Array(ae)}}})}async function xt(e,n={}){var r;`setImmediate`in globalThis||(globalThis.setImmediate=e=>setTimeout(e,0));let i=await jspi()?`jspi`:`asyncify`,o={...dt(),...n.emscriptenOptions||{},phpWasmAsyncMode:i};n.tcpOverFetch&&(o=ct(o,n.tcpOverFetch));let s=isLegacyPHPVersion(e),l=[...n.extensions??[]];if(n.withIntl&&!ft(l,`intl`)&&l.push(`intl`),s){let e=await o,n=e.preRun||[];o={...e,preRun:[...n,createLegacyPhpIniPreRunStep()]}}if(s&&l.length)throw Error(`Extensions are not available for legacy PHP ${e}.`);s||(o=At(e,i,await o,l));let[N,ae]=await Promise.all([Ge(e,i),o]);return(r=n.onPhpLoaderModuleLoaded)==null||r.call(n,N),await loadPHPRuntime(N,ae)}function ft(e,n){return e.some(e=>typeof e==`string`?e===n:!(`source`in e)&&e.name===n)}var K,F,R,Ve,He,ze,de,fe,Q,Ee,Te,pe,ee,we,te,Ye,Y,ne,Z,re,Ze,se,Xe,ye,me,Le,ge,C,T,Qe,et,G,k,tt,nt,p,P,it,at,E,c,ot,ct,St,lt,w,dt,init_web=__esmMin((()=>{init_universal(),init_util(),init_logger(),init_web_service_worker(),init_common(),init_esm(),init_fs_journal(),init_preload_helper(),K=class{constructor(e){this.offset=0,this.buffer=e,this.view=new DataView(e)}readUint8(){let e=this.view.getUint8(this.offset);return this.offset+=1,e}readUint16(){let e=this.view.getUint16(this.offset);return this.offset+=2,e}readUint32(){let e=this.view.getUint32(this.offset);return this.offset+=4,e}readUint8Array(e){let n=this.buffer.slice(this.offset,this.offset+e);return this.offset+=e,new Uint8Array(n)}isFinished(){return this.offset>=this.buffer.byteLength}},F=class{constructor(e){this.offset=0,this.buffer=new ArrayBuffer(e),this.uint8Array=new Uint8Array(this.buffer),this.view=new DataView(this.buffer)}writeUint8(e){this.view.setUint8(this.offset,e),this.offset+=1}writeUint16(e){this.view.setUint16(this.offset,e),this.offset+=2}writeUint32(e){this.view.setUint32(this.offset,e),this.offset+=4}writeUint8Array(e){this.uint8Array.set(e,this.offset),this.offset+=e.length}},R={server_name:0,max_fragment_length:1,client_certificate_url:2,trusted_ca_keys:3,truncated_hmac:4,status_request:5,user_mapping:6,client_authz:7,server_authz:8,cert_type:9,supported_groups:10,ec_point_formats:11,srp:12,signature_algorithms:13,use_srtp:14,heartbeat:15,application_layer_protocol_negotiation:16,status_request_v2:17,signed_certificate_timestamp:18,client_certificate_type:19,server_certificate_type:20,padding:21,encrypt_then_mac:22,extended_master_secret:23,token_binding:24,cached_info:25,tls_its:26,compress_certificate:27,record_size_limit:28,pwd_protect:29,pwo_clear:30,password_salt:31,ticket_pinning:32,tls_cert_with_extern_psk:33,delegated_credential:34,session_ticket:35,TLMSP:36,TLMSP_proxying:37,TLMSP_delegate:38,supported_ekt_ciphers:39,pre_shared_key:41,early_data:42,supported_versions:43,cookie:44,psk_key_exchange_modes:45,reserved:46,certificate_authorities:47,oid_filters:48,post_handshake_auth:49,signature_algorithms_cert:50,key_share:51,transparency_info:52,connection_id:54,renegotiation_info:65281},Ve=y(R),He={host_name:0},ze=y(He),de=class{static decodeFromClient(e){let n=new DataView(e.buffer),r=0,i=n.getUint16(r);r+=2;let o=[];for(;r<i+2;){let i=e[r];r+=1;let s=n.getUint16(r);r+=2;let l=e.slice(r,r+s);switch(r+=s,i){case He.host_name:o.push({name_type:ze[i],name:{host_name:new TextDecoder().decode(l)}});break;default:throw Error(`Unsupported name type ${i}`)}}return{server_name_list:o}}static encodeForClient(e){if(e!=null&&e.server_name_list.length)throw Error(`Encoding non-empty lists for ClientHello is not supported yet. Only empty lists meant for ServerHello are supported today.`);let n=new F(4);return n.writeUint16(R.server_name),n.writeUint16(0),n.uint8Array}},fe={uncompressed:0,ansiX962_compressed_prime:1,ansiX962_compressed_char2:2},Q=y(fe),Ee=class{static decodeFromClient(e){let n=new K(e.buffer),r=n.readUint8(),i=[];for(let e=0;e<r;e++){let e=n.readUint8();e in Q&&i.push(Q[e])}return i}static encodeForClient(e){let n=new F(6);return n.writeUint16(R.ec_point_formats),n.writeUint16(2),n.writeUint8(1),n.writeUint8(fe[e]),n.uint8Array}},Te={decodeFromClient(e){let n=e[0]??0;return{renegotiatedConnection:e.slice(1,1+n)}},encodeForClient(){let e=R.renegotiation_info,n=new Uint8Array([0]);return new Uint8Array([e>>8&255,e&255,0,n.length,...n])}},pe={TLS1_CK_PSK_WITH_RC4_128_SHA:138,TLS1_CK_PSK_WITH_3DES_EDE_CBC_SHA:139,TLS1_CK_PSK_WITH_AES_128_CBC_SHA:140,TLS1_CK_PSK_WITH_AES_256_CBC_SHA:141,TLS1_CK_DHE_PSK_WITH_RC4_128_SHA:142,TLS1_CK_DHE_PSK_WITH_3DES_EDE_CBC_SHA:143,TLS1_CK_DHE_PSK_WITH_AES_128_CBC_SHA:144,TLS1_CK_DHE_PSK_WITH_AES_256_CBC_SHA:145,TLS1_CK_RSA_PSK_WITH_RC4_128_SHA:146,TLS1_CK_RSA_PSK_WITH_3DES_EDE_CBC_SHA:147,TLS1_CK_RSA_PSK_WITH_AES_128_CBC_SHA:148,TLS1_CK_RSA_PSK_WITH_AES_256_CBC_SHA:149,TLS1_CK_PSK_WITH_AES_128_GCM_SHA256:168,TLS1_CK_PSK_WITH_AES_256_GCM_SHA384:169,TLS1_CK_DHE_PSK_WITH_AES_128_GCM_SHA256:170,TLS1_CK_DHE_PSK_WITH_AES_256_GCM_SHA384:171,TLS1_CK_RSA_PSK_WITH_AES_128_GCM_SHA256:172,TLS1_CK_RSA_PSK_WITH_AES_256_GCM_SHA384:173,TLS1_CK_PSK_WITH_AES_128_CBC_SHA256:174,TLS1_CK_PSK_WITH_AES_256_CBC_SHA384:175,TLS1_CK_PSK_WITH_NULL_SHA256:176,TLS1_CK_PSK_WITH_NULL_SHA384:177,TLS1_CK_DHE_PSK_WITH_AES_128_CBC_SHA256:178,TLS1_CK_DHE_PSK_WITH_AES_256_CBC_SHA384:179,TLS1_CK_DHE_PSK_WITH_NULL_SHA256:180,TLS1_CK_DHE_PSK_WITH_NULL_SHA384:181,TLS1_CK_RSA_PSK_WITH_AES_128_CBC_SHA256:182,TLS1_CK_RSA_PSK_WITH_AES_256_CBC_SHA384:183,TLS1_CK_RSA_PSK_WITH_NULL_SHA256:184,TLS1_CK_RSA_PSK_WITH_NULL_SHA384:185,TLS1_CK_PSK_WITH_NULL_SHA:44,TLS1_CK_DHE_PSK_WITH_NULL_SHA:45,TLS1_CK_RSA_PSK_WITH_NULL_SHA:46,TLS1_CK_RSA_WITH_AES_128_SHA:47,TLS1_CK_DH_DSS_WITH_AES_128_SHA:48,TLS1_CK_DH_RSA_WITH_AES_128_SHA:49,TLS1_CK_DHE_DSS_WITH_AES_128_SHA:50,TLS1_CK_DHE_RSA_WITH_AES_128_SHA:51,TLS1_CK_ADH_WITH_AES_128_SHA:52,TLS1_CK_RSA_WITH_AES_256_SHA:53,TLS1_CK_DH_DSS_WITH_AES_256_SHA:54,TLS1_CK_DH_RSA_WITH_AES_256_SHA:55,TLS1_CK_DHE_DSS_WITH_AES_256_SHA:56,TLS1_CK_DHE_RSA_WITH_AES_256_SHA:57,TLS1_CK_ADH_WITH_AES_256_SHA:58,TLS1_CK_RSA_WITH_NULL_SHA256:59,TLS1_CK_RSA_WITH_AES_128_SHA256:60,TLS1_CK_RSA_WITH_AES_256_SHA256:61,TLS1_CK_DH_DSS_WITH_AES_128_SHA256:62,TLS1_CK_DH_RSA_WITH_AES_128_SHA256:63,TLS1_CK_DHE_DSS_WITH_AES_128_SHA256:64,TLS1_CK_RSA_WITH_CAMELLIA_128_CBC_SHA:65,TLS1_CK_DH_DSS_WITH_CAMELLIA_128_CBC_SHA:66,TLS1_CK_DH_RSA_WITH_CAMELLIA_128_CBC_SHA:67,TLS1_CK_DHE_DSS_WITH_CAMELLIA_128_CBC_SHA:68,TLS1_CK_DHE_RSA_WITH_CAMELLIA_128_CBC_SHA:69,TLS1_CK_ADH_WITH_CAMELLIA_128_CBC_SHA:70,TLS1_CK_DHE_RSA_WITH_AES_128_SHA256:103,TLS1_CK_DH_DSS_WITH_AES_256_SHA256:104,TLS1_CK_DH_RSA_WITH_AES_256_SHA256:105,TLS1_CK_DHE_DSS_WITH_AES_256_SHA256:106,TLS1_CK_DHE_RSA_WITH_AES_256_SHA256:107,TLS1_CK_ADH_WITH_AES_128_SHA256:108,TLS1_CK_ADH_WITH_AES_256_SHA256:109,TLS1_CK_RSA_WITH_CAMELLIA_256_CBC_SHA:132,TLS1_CK_DH_DSS_WITH_CAMELLIA_256_CBC_SHA:133,TLS1_CK_DH_RSA_WITH_CAMELLIA_256_CBC_SHA:134,TLS1_CK_DHE_DSS_WITH_CAMELLIA_256_CBC_SHA:135,TLS1_CK_DHE_RSA_WITH_CAMELLIA_256_CBC_SHA:136,TLS1_CK_ADH_WITH_CAMELLIA_256_CBC_SHA:137,TLS1_CK_RSA_WITH_SEED_SHA:150,TLS1_CK_DH_DSS_WITH_SEED_SHA:151,TLS1_CK_DH_RSA_WITH_SEED_SHA:152,TLS1_CK_DHE_DSS_WITH_SEED_SHA:153,TLS1_CK_DHE_RSA_WITH_SEED_SHA:154,TLS1_CK_ADH_WITH_SEED_SHA:155,TLS1_CK_RSA_WITH_AES_128_GCM_SHA256:156,TLS1_CK_RSA_WITH_AES_256_GCM_SHA384:157,TLS1_CK_DHE_RSA_WITH_AES_128_GCM_SHA256:158,TLS1_CK_DHE_RSA_WITH_AES_256_GCM_SHA384:159,TLS1_CK_DH_RSA_WITH_AES_128_GCM_SHA256:160,TLS1_CK_DH_RSA_WITH_AES_256_GCM_SHA384:161,TLS1_CK_DHE_DSS_WITH_AES_128_GCM_SHA256:162,TLS1_CK_DHE_DSS_WITH_AES_256_GCM_SHA384:163,TLS1_CK_DH_DSS_WITH_AES_128_GCM_SHA256:164,TLS1_CK_DH_DSS_WITH_AES_256_GCM_SHA384:165,TLS1_CK_ADH_WITH_AES_128_GCM_SHA256:166,TLS1_CK_ADH_WITH_AES_256_GCM_SHA384:167,TLS1_CK_RSA_WITH_AES_128_CCM:49308,TLS1_CK_RSA_WITH_AES_256_CCM:49309,TLS1_CK_DHE_RSA_WITH_AES_128_CCM:49310,TLS1_CK_DHE_RSA_WITH_AES_256_CCM:49311,TLS1_CK_RSA_WITH_AES_128_CCM_8:49312,TLS1_CK_RSA_WITH_AES_256_CCM_8:49313,TLS1_CK_DHE_RSA_WITH_AES_128_CCM_8:49314,TLS1_CK_DHE_RSA_WITH_AES_256_CCM_8:49315,TLS1_CK_PSK_WITH_AES_128_CCM:49316,TLS1_CK_PSK_WITH_AES_256_CCM:49317,TLS1_CK_DHE_PSK_WITH_AES_128_CCM:49318,TLS1_CK_DHE_PSK_WITH_AES_256_CCM:49319,TLS1_CK_PSK_WITH_AES_128_CCM_8:49320,TLS1_CK_PSK_WITH_AES_256_CCM_8:49321,TLS1_CK_DHE_PSK_WITH_AES_128_CCM_8:49322,TLS1_CK_DHE_PSK_WITH_AES_256_CCM_8:49323,TLS1_CK_ECDHE_ECDSA_WITH_AES_128_CCM:49324,TLS1_CK_ECDHE_ECDSA_WITH_AES_256_CCM:49325,TLS1_CK_ECDHE_ECDSA_WITH_AES_128_CCM_8:49326,TLS1_CK_ECDHE_ECDSA_WITH_AES_256_CCM_8:49327,TLS1_CK_RSA_WITH_CAMELLIA_128_CBC_SHA256:186,TLS1_CK_DH_DSS_WITH_CAMELLIA_128_CBC_SHA256:187,TLS1_CK_DH_RSA_WITH_CAMELLIA_128_CBC_SHA256:188,TLS1_CK_DHE_DSS_WITH_CAMELLIA_128_CBC_SHA256:189,TLS1_CK_DHE_RSA_WITH_CAMELLIA_128_CBC_SHA256:190,TLS1_CK_ADH_WITH_CAMELLIA_128_CBC_SHA256:191,TLS1_CK_RSA_WITH_CAMELLIA_256_CBC_SHA256:192,TLS1_CK_DH_DSS_WITH_CAMELLIA_256_CBC_SHA256:193,TLS1_CK_DH_RSA_WITH_CAMELLIA_256_CBC_SHA256:194,TLS1_CK_DHE_DSS_WITH_CAMELLIA_256_CBC_SHA256:195,TLS1_CK_DHE_RSA_WITH_CAMELLIA_256_CBC_SHA256:196,TLS1_CK_ADH_WITH_CAMELLIA_256_CBC_SHA256:197,TLS1_CK_ECDH_ECDSA_WITH_NULL_SHA:49153,TLS1_CK_ECDH_ECDSA_WITH_RC4_128_SHA:49154,TLS1_CK_ECDH_ECDSA_WITH_DES_192_CBC3_SHA:49155,TLS1_CK_ECDH_ECDSA_WITH_AES_128_CBC_SHA:49156,TLS1_CK_ECDH_ECDSA_WITH_AES_256_CBC_SHA:49157,TLS1_CK_ECDHE_ECDSA_WITH_NULL_SHA:49158,TLS1_CK_ECDHE_ECDSA_WITH_RC4_128_SHA:49159,TLS1_CK_ECDHE_ECDSA_WITH_DES_192_CBC3_SHA:49160,TLS1_CK_ECDHE_ECDSA_WITH_AES_128_CBC_SHA:49161,TLS1_CK_ECDHE_ECDSA_WITH_AES_256_CBC_SHA:49162,TLS1_CK_ECDH_RSA_WITH_NULL_SHA:49163,TLS1_CK_ECDH_RSA_WITH_RC4_128_SHA:49164,TLS1_CK_ECDH_RSA_WITH_DES_192_CBC3_SHA:49165,TLS1_CK_ECDH_RSA_WITH_AES_128_CBC_SHA:49166,TLS1_CK_ECDH_RSA_WITH_AES_256_CBC_SHA:49167,TLS1_CK_ECDHE_RSA_WITH_NULL_SHA:49168,TLS1_CK_ECDHE_RSA_WITH_RC4_128_SHA:49169,TLS1_CK_ECDHE_RSA_WITH_DES_192_CBC3_SHA:49170,TLS1_CK_ECDHE_RSA_WITH_AES_128_CBC_SHA:49171,TLS1_CK_ECDHE_RSA_WITH_AES_256_CBC_SHA:49172,TLS1_CK_ECDH_anon_WITH_NULL_SHA:49173,TLS1_CK_ECDH_anon_WITH_RC4_128_SHA:49174,TLS1_CK_ECDH_anon_WITH_DES_192_CBC3_SHA:49175,TLS1_CK_ECDH_anon_WITH_AES_128_CBC_SHA:49176,TLS1_CK_ECDH_anon_WITH_AES_256_CBC_SHA:49177,TLS1_CK_SRP_SHA_WITH_3DES_EDE_CBC_SHA:49178,TLS1_CK_SRP_SHA_RSA_WITH_3DES_EDE_CBC_SHA:49179,TLS1_CK_SRP_SHA_DSS_WITH_3DES_EDE_CBC_SHA:49180,TLS1_CK_SRP_SHA_WITH_AES_128_CBC_SHA:49181,TLS1_CK_SRP_SHA_RSA_WITH_AES_128_CBC_SHA:49182,TLS1_CK_SRP_SHA_DSS_WITH_AES_128_CBC_SHA:49183,TLS1_CK_SRP_SHA_WITH_AES_256_CBC_SHA:49184,TLS1_CK_SRP_SHA_RSA_WITH_AES_256_CBC_SHA:49185,TLS1_CK_SRP_SHA_DSS_WITH_AES_256_CBC_SHA:49186,TLS1_CK_ECDHE_ECDSA_WITH_AES_128_SHA256:49187,TLS1_CK_ECDHE_ECDSA_WITH_AES_256_SHA384:49188,TLS1_CK_ECDH_ECDSA_WITH_AES_128_SHA256:49189,TLS1_CK_ECDH_ECDSA_WITH_AES_256_SHA384:49190,TLS1_CK_ECDHE_RSA_WITH_AES_128_SHA256:49191,TLS1_CK_ECDHE_RSA_WITH_AES_256_SHA384:49192,TLS1_CK_ECDH_RSA_WITH_AES_128_SHA256:49193,TLS1_CK_ECDH_RSA_WITH_AES_256_SHA384:49194,TLS1_CK_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256:49195,TLS1_CK_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384:49196,TLS1_CK_ECDH_ECDSA_WITH_AES_128_GCM_SHA256:49197,TLS1_CK_ECDH_ECDSA_WITH_AES_256_GCM_SHA384:49198,TLS1_CK_ECDHE_RSA_WITH_AES_128_GCM_SHA256:49199,TLS1_CK_ECDHE_RSA_WITH_AES_256_GCM_SHA384:49200,TLS1_CK_ECDH_RSA_WITH_AES_128_GCM_SHA256:49201,TLS1_CK_ECDH_RSA_WITH_AES_256_GCM_SHA384:49202,TLS1_CK_ECDHE_PSK_WITH_RC4_128_SHA:49203,TLS1_CK_ECDHE_PSK_WITH_3DES_EDE_CBC_SHA:49204,TLS1_CK_ECDHE_PSK_WITH_AES_128_CBC_SHA:49205,TLS1_CK_ECDHE_PSK_WITH_AES_256_CBC_SHA:49206,TLS1_CK_ECDHE_PSK_WITH_AES_128_CBC_SHA256:49207,TLS1_CK_ECDHE_PSK_WITH_AES_256_CBC_SHA384:49208,TLS1_CK_ECDHE_PSK_WITH_NULL_SHA:49209,TLS1_CK_ECDHE_PSK_WITH_NULL_SHA256:49210,TLS1_CK_ECDHE_PSK_WITH_NULL_SHA384:49211,TLS1_CK_ECDHE_ECDSA_WITH_CAMELLIA_128_CBC_SHA256:49266,TLS1_CK_ECDHE_ECDSA_WITH_CAMELLIA_256_CBC_SHA384:49267,TLS1_CK_ECDH_ECDSA_WITH_CAMELLIA_128_CBC_SHA256:49268,TLS1_CK_ECDH_ECDSA_WITH_CAMELLIA_256_CBC_SHA384:49269,TLS1_CK_ECDHE_RSA_WITH_CAMELLIA_128_CBC_SHA256:49270,TLS1_CK_ECDHE_RSA_WITH_CAMELLIA_256_CBC_SHA384:49271,TLS1_CK_ECDH_RSA_WITH_CAMELLIA_128_CBC_SHA256:49272,TLS1_CK_ECDH_RSA_WITH_CAMELLIA_256_CBC_SHA384:49273,TLS1_CK_PSK_WITH_CAMELLIA_128_CBC_SHA256:49300,TLS1_CK_PSK_WITH_CAMELLIA_256_CBC_SHA384:49301,TLS1_CK_DHE_PSK_WITH_CAMELLIA_128_CBC_SHA256:49302,TLS1_CK_DHE_PSK_WITH_CAMELLIA_256_CBC_SHA384:49303,TLS1_CK_RSA_PSK_WITH_CAMELLIA_128_CBC_SHA256:49304,TLS1_CK_RSA_PSK_WITH_CAMELLIA_256_CBC_SHA384:49305,TLS1_CK_ECDHE_PSK_WITH_CAMELLIA_128_CBC_SHA256:49306,TLS1_CK_ECDHE_PSK_WITH_CAMELLIA_256_CBC_SHA384:49307,TLS1_CK_ECDHE_RSA_WITH_CHACHA20_POLY1305:52392,TLS1_CK_ECDHE_ECDSA_WITH_CHACHA20_POLY1305:52393,TLS1_CK_DHE_RSA_WITH_CHACHA20_POLY1305:52394,TLS1_CK_PSK_WITH_CHACHA20_POLY1305:52395,TLS1_CK_ECDHE_PSK_WITH_CHACHA20_POLY1305:52396,TLS1_CK_DHE_PSK_WITH_CHACHA20_POLY1305:52397,TLS1_CK_RSA_PSK_WITH_CHACHA20_POLY1305:52398},ee=y(pe),we={secp256r1:23,secp384r1:24,secp521r1:25,x25519:29,x448:30},te=y(we),Ye=class{static decodeFromClient(e){let n=new K(e.buffer);n.readUint16();let r=[];for(;!n.isFinished();){let e=n.readUint16();e in te&&r.push(te[e])}return r}static encodeForClient(e){let n=new F(6);return n.writeUint16(R.supported_groups),n.writeUint16(2),n.writeUint16(we[e]),n.uint8Array}},Y={anonymous:0,rsa:1,dsa:2,ecdsa:3},ne=y(Y),Z={none:0,md5:1,sha1:2,sha224:3,sha256:4,sha384:5,sha512:6},re=y(Z),Ze=class{static decodeFromClient(e){let n=new K(e.buffer);n.readUint16();let r=[];for(;!n.isFinished();){let e=n.readUint8(),i=n.readUint8();if(ne[i]){if(!re[e]){M$1.warn(`Unknown hash algorithm: ${e}`);continue}r.push({algorithm:ne[i],hash:re[e]})}}return r}static encodeforClient(e,n){let r=new F(6);return r.writeUint16(R.signature_algorithms),r.writeUint16(2),r.writeUint8(Z[e]),r.writeUint8(Y[n]),r.uint8Array}},se={server_name:de,signature_algorithms:Ze,supported_groups:Ye,ec_point_formats:Ee,renegotiation_info:Te},Xe={Null:0},ye={Warning:1,Fatal:2},me=y(ye),Le={CloseNotify:0,UnexpectedMessage:10,BadRecordMac:20,DecryptionFailed:21,RecordOverflow:22,DecompressionFailure:30,HandshakeFailure:40,NoCertificate:41,BadCertificate:42,UnsupportedCertificate:43,CertificateRevoked:44,CertificateExpired:45,CertificateUnknown:46,IllegalParameter:47,UnknownCa:48,AccessDenied:49,DecodeError:50,DecryptError:51,ExportRestriction:60,ProtocolVersion:70,InsufficientSecurity:71,InternalError:80,UserCanceled:90,NoRenegotiation:100,UnsupportedExtension:110},ge=y(Le),C={ChangeCipherSpec:20,Alert:21,Handshake:22,ApplicationData:23},T={HelloRequest:0,ClientHello:1,ServerHello:2,Certificate:11,ServerKeyExchange:12,ServerHelloDone:14,ClientKeyExchange:16,Finished:20},Qe={NamedCurve:3},et={secp256r1:23},G=class extends Error{},k=new Uint8Array([3,3]),tt=crypto.subtle.generateKey({name:`ECDH`,namedCurve:`P-256`},!0,[`deriveKey`,`deriveBits`]),nt=class{constructor(){this.receivedRecordSequenceNumber=0,this.sentRecordSequenceNumber=0,this.closed=!1,this.receivedBytesBuffer=new Uint8Array,this.receivedTLSRecords=[],this.partialTLSMessages={},this.handshakeMessages=[],this.MAX_CHUNK_SIZE=16384,this.clientEnd={upstream:new TransformStream,downstream:new TransformStream},this.clientDownstreamWriter=this.clientEnd.downstream.writable.getWriter(),this.clientUpstreamReader=this.clientEnd.upstream.readable.getReader(),this.serverEnd={upstream:new TransformStream,downstream:rt(this.MAX_CHUNK_SIZE)},this.serverUpstreamWriter=this.serverEnd.upstream.writable.getWriter();let e=this;this.serverEnd.downstream.readable.pipeTo(new WritableStream({async write(n){await e.writeTLSRecord(C.ApplicationData,n)},async abort(n){e.clientDownstreamWriter.releaseLock(),e.clientEnd.downstream.writable.abort(n),e.close()},close(){e.close()}})).catch(()=>{})}async close(){if(!this.closed){this.closed=!0;try{await this.clientDownstreamWriter.close()}catch{}try{await this.clientUpstreamReader.cancel()}catch{}try{await this.serverUpstreamWriter.close()}catch{}try{await this.clientEnd.upstream.readable.cancel()}catch{}try{await this.clientEnd.downstream.writable.close()}catch{}}}async TLSHandshake(e,n){let r=await this.readNextHandshakeMessage(T.ClientHello);if(!r.body.cipher_suites.length)throw Error(`Client did not propose any supported cipher suites.`);let i=crypto.getRandomValues(new Uint8Array(32));await this.writeTLSRecord(C.Handshake,P.serverHello(r.body,i,Xe.Null)),await this.writeTLSRecord(C.Handshake,P.certificate(n));let o=await tt,s=r.body.random,l=await P.ECDHEServerKeyExchange(s,i,o,e);await this.writeTLSRecord(C.Handshake,l),await this.writeTLSRecord(C.Handshake,P.serverHelloDone());let N=await this.readNextHandshakeMessage(T.ClientKeyExchange);await this.readNextMessage(C.ChangeCipherSpec),this.sessionKeys=await this.deriveSessionKeys({clientRandom:s,serverRandom:i,serverPrivateKey:o.privateKey,clientPublicKey:await crypto.subtle.importKey(`raw`,N.body.exchange_keys,{name:`ECDH`,namedCurve:`P-256`},!1,[])}),await this.readNextHandshakeMessage(T.Finished),await this.writeTLSRecord(C.ChangeCipherSpec,P.changeCipherSpec()),await this.writeTLSRecord(C.Handshake,await P.createFinishedMessage(this.handshakeMessages,this.sessionKeys.masterSecret)),this.handshakeMessages=[],this.pollForClientMessages()}async deriveSessionKeys({clientRandom:e,serverRandom:n,serverPrivateKey:r,clientPublicKey:i}){let o=await crypto.subtle.deriveBits({name:`ECDH`,public:i},r,256),s=new Uint8Array(await V(o,new TextEncoder().encode(`master secret`),D$2([e,n]),48)),l=await V(s,new TextEncoder().encode(`key expansion`),D$2([n,e]),40),N=new K(l),ae=N.readUint8Array(16),ce=N.readUint8Array(16),ue=N.readUint8Array(4),he=N.readUint8Array(4);return{masterSecret:s,clientWriteKey:await crypto.subtle.importKey(`raw`,ae,{name:`AES-GCM`},!1,[`encrypt`,`decrypt`]),serverWriteKey:await crypto.subtle.importKey(`raw`,ce,{name:`AES-GCM`},!1,[`encrypt`,`decrypt`]),clientIV:ue,serverIV:he}}async readNextHandshakeMessage(e){let n=await this.readNextMessage(C.Handshake);if(n.msg_type!==e)throw Error(`Expected ${e} message`);return n}async readNextMessage(e){let n,r=!1;do n=await this.readNextTLSRecord(e),r=await this.accumulateUntilMessageIsComplete(n);while(r===!1);let i=p.TLSMessage(n.type,r);return n.type===C.Handshake&&this.handshakeMessages.push(n.fragment),i}async readNextTLSRecord(e){for(;;){for(let n=0;n<this.receivedTLSRecords.length;n++){let r=this.receivedTLSRecords[n];if(r.type===e)return this.receivedTLSRecords.splice(n,1),r}let n=await this.pollBytes(5),r=n[3]<<8|n[4],i=n[0],o=await this.pollBytes(r),s={type:i,version:{major:n[1],minor:n[2]},length:r,fragment:this.sessionKeys&&i!==C.ChangeCipherSpec?await this.decryptData(i,o):o};if(s.type===C.Alert){let e=s.fragment[0],n=s.fragment[1],r=me[e],i=ge[n];throw e===ye.Warning&&n===Le.CloseNotify?new G(`TLS connection closed by peer (CloseNotify)`):Error(`TLS alert received: ${r} ${i}`)}this.receivedTLSRecords.push(s)}}async pollBytes(e){for(;this.receivedBytesBuffer.length<e;){let{value:n,done:r}=await this.clientUpstreamReader.read();if(r)throw await this.close(),new G(`TLS connection closed`);if(this.receivedBytesBuffer=D$2([this.receivedBytesBuffer,n]),this.receivedBytesBuffer.length>=e)break;await new Promise(e=>setTimeout(e,100))}let n=this.receivedBytesBuffer.slice(0,e);return this.receivedBytesBuffer=this.receivedBytesBuffer.slice(e),n}async pollForClientMessages(){try{for(;;){let e=await this.readNextMessage(C.ApplicationData);this.serverUpstreamWriter.write(e.body)}}catch(e){if(e instanceof G)return;throw e}}async decryptData(e,n){let r=this.sessionKeys.clientIV,i=n.slice(0,8),o=new Uint8Array([...r,...i]),s=await crypto.subtle.decrypt({name:`AES-GCM`,iv:o,additionalData:new Uint8Array([...X(this.receivedRecordSequenceNumber),e,...k,...b(n.length-8-16)]),tagLength:128},this.sessionKeys.clientWriteKey,n.slice(8));return++this.receivedRecordSequenceNumber,new Uint8Array(s)}async accumulateUntilMessageIsComplete(e){this.partialTLSMessages[e.type]=D$2([this.partialTLSMessages[e.type]||new Uint8Array,e.fragment]);let n=this.partialTLSMessages[e.type];switch(e.type){case C.Handshake:{if(n.length<4)return!1;let e=n[1]<<8|n[2];if(n.length<3+e)return!1;break}case C.Alert:if(n.length<2)return!1;break;case C.ChangeCipherSpec:case C.ApplicationData:break;default:throw Error(`TLS: Unsupported record type ${e.type}`)}return delete this.partialTLSMessages[e.type],n}async writeTLSRecord(e,n){e===C.Handshake&&this.handshakeMessages.push(n),this.sessionKeys&&e!==C.ChangeCipherSpec&&(n=await this.encryptData(e,n));let r=k,i=n.length,o=new Uint8Array(5);o[0]=e,o[1]=r[0],o[2]=r[1],o[3]=i>>8&255,o[4]=i&255;let s=D$2([o,n]);this.clientDownstreamWriter.write(s)}async encryptData(e,n){let r=this.sessionKeys.serverIV,i=crypto.getRandomValues(new Uint8Array(8)),o=new Uint8Array([...r,...i]),s=new Uint8Array([...X(this.sentRecordSequenceNumber),e,...k,...b(n.length)]),l=await crypto.subtle.encrypt({name:`AES-GCM`,iv:o,additionalData:s,tagLength:128},this.sessionKeys.serverWriteKey,n);return++this.sentRecordSequenceNumber,D$2([i,new Uint8Array(l)])}},p=class e{static TLSMessage(n,r){switch(n){case C.Handshake:return e.clientHandshake(r);case C.Alert:return e.alert(r);case C.ChangeCipherSpec:return e.changeCipherSpec();case C.ApplicationData:return e.applicationData(r);default:throw Error(`TLS: Unsupported TLS record type ${n}`)}}static parseCipherSuites(e){let n=new K(e);n.readUint16();let r=[];for(;!n.isFinished();){let e=n.readUint16();e in ee&&r.push(ee[e])}return r}static applicationData(e){return{type:C.ApplicationData,body:e}}static changeCipherSpec(){return{type:C.ChangeCipherSpec,body:new Uint8Array}}static alert(e){return{type:C.Alert,level:me[e[0]],description:ge[e[1]]}}static clientHandshake(n){let r=n[0],i=n[1]<<16|n[2]<<8|n[3],o=n.slice(4),s;switch(r){case T.HelloRequest:s=e.clientHelloRequestPayload();break;case T.ClientHello:s=e.clientHelloPayload(o);break;case T.ClientKeyExchange:s=e.clientKeyExchangePayload(o);break;case T.Finished:s=e.clientFinishedPayload(o);break;default:throw Error(`Invalid handshake type ${r}`)}return{type:C.Handshake,msg_type:r,length:i,body:s}}static clientHelloRequestPayload(){return{}}static clientHelloPayload(n){let r=new K(n.buffer),i={client_version:r.readUint8Array(2),random:r.readUint8Array(32)},o=r.readUint8();i.session_id=r.readUint8Array(o);let s=r.readUint16();i.cipher_suites=e.parseCipherSuites(r.readUint8Array(s).buffer);let l=r.readUint8();i.compression_methods=r.readUint8Array(l);let N=r.readUint16();return i.extensions=Je(r.readUint8Array(N)),i}static clientKeyExchangePayload(e){return{exchange_keys:e.slice(1,e.length)}}static clientFinishedPayload(e){return{verify_data:e}}},P=class{static certificate(e){let n=[];for(let r of e)n.push(I(r.byteLength)),n.push(new Uint8Array(r));let r=D$2(n),i=new Uint8Array([...I(r.byteLength),...r]);return new Uint8Array([T.Certificate,...I(i.length),...i])}static async ECDHEServerKeyExchange(e,n,r,i){let o=new Uint8Array(await crypto.subtle.exportKey(`raw`,r.publicKey)),s=new Uint8Array([Qe.NamedCurve,...b(et.secp256r1),o.byteLength,...o]),l=await crypto.subtle.sign({name:`RSASSA-PKCS1-v1_5`,hash:`SHA-256`},i,new Uint8Array([...e,...n,...s])),N=new Uint8Array(l),ae=new Uint8Array([Z.sha256,Y.rsa]),ce=new Uint8Array([...s,...ae,...b(N.length),...N]);return new Uint8Array([T.ServerKeyExchange,...I(ce.length),...ce])}static serverHello(e,n,r){let i=D$2(e.extensions.map(e=>{switch(e.type){case`server_name`:return de.encodeForClient();case`ec_point_formats`:return Ee.encodeForClient(`uncompressed`);case`renegotiation_info`:return Te.encodeForClient()}}).filter(e=>e!==void 0)),o=new Uint8Array,s=new Uint8Array([...k,...n,o.length,...o,...b(pe.TLS1_CK_ECDHE_RSA_WITH_AES_128_GCM_SHA256),r,...b(i.length),...i]);return new Uint8Array([T.ServerHello,...I(s.length),...s])}static serverHelloDone(){return new Uint8Array([T.ServerHelloDone,...I(0)])}static async createFinishedMessage(e,n){let r=await crypto.subtle.digest(`SHA-256`,D$2(e)),i=new Uint8Array(await V(n,new TextEncoder().encode(`server finished`),r,12));return new Uint8Array([T.Finished,...I(i.length),...i])}static changeCipherSpec(){return new Uint8Array([1])}},it=class{static async generateCertificate(e,n){let r=await crypto.subtle.generateKey({name:`RSASSA-PKCS1-v1_5`,hash:`SHA-256`,modulusLength:2048,publicExponent:new Uint8Array([1,0,1])},!0,[`sign`,`verify`]),i=await this.signingRequest(e,r.publicKey);return{keyPair:r,certificate:await this.sign(i,n?.privateKey??r.privateKey),tbsCertificate:i,tbsDescription:e}}static async sign(e,n){let r=await crypto.subtle.sign({name:`RSASSA-PKCS1-v1_5`,hash:`SHA-256`},n,e.buffer);return c.sequence([new Uint8Array(e.buffer),this.signatureAlgorithm(`sha256WithRSAEncryption`),c.bitString(new Uint8Array(r))])}static async signingRequest(e,n){let r=[];return e.keyUsage&&r.push(this.keyUsage(e.keyUsage)),e.extKeyUsage&&r.push(this.extKeyUsage(e.extKeyUsage)),e.subjectAltNames&&r.push(this.subjectAltName(e.subjectAltNames)),e.nsCertType&&r.push(this.nsCertType(e.nsCertType)),e.basicConstraints&&r.push(this.basicConstraints(e.basicConstraints)),c.sequence([this.version(e.version),this.serialNumber(e.serialNumber),this.signatureAlgorithm(e.signatureAlgorithm),this.distinguishedName(e.issuer??e.subject),this.validity(e.validity),this.distinguishedName(e.subject),await this.subjectPublicKeyInfo(n),this.extensions(r)])}static version(e=2){return c.ASN1(160,c.integer(new Uint8Array([e])))}static serialNumber(e=crypto.getRandomValues(new Uint8Array(4))){return c.integer(e)}static signatureAlgorithm(e=`sha256WithRSAEncryption`){return c.sequence([c.objectIdentifier(L(e)),c.null()])}static async subjectPublicKeyInfo(e){return new Uint8Array(await crypto.subtle.exportKey(`spki`,e))}static extensions(e){return c.ASN1(163,c.sequence(e))}static distinguishedName(e){let n=[];for(let[r,i]of Object.entries(e)){let e=[c.objectIdentifier(L(r))];switch(r){case`countryName`:e.push(c.printableString(i));break;default:e.push(c.utf8String(i))}n.push(c.set([c.sequence(e)]))}return c.sequence(n)}static validity(e){return c.sequence([c.ASN1(E.UTCTime,new TextEncoder().encode(_e(e?.notBefore??new Date))),c.ASN1(E.UTCTime,new TextEncoder().encode(_e(e?.notAfter??_t(new Date,10))))])}static basicConstraints({ca:e=!0,pathLenConstraint:n=void 0}){let r=[c.boolean(e)];return n!==void 0&&r.push(c.integer(new Uint8Array([n]))),c.sequence([c.objectIdentifier(L(`basicConstraints`)),c.octetString(c.sequence(r))])}static keyUsage(e){let n=new Uint8Array([0]);return e!=null&&e.digitalSignature&&(n[0]|=1),e!=null&&e.nonRepudiation&&(n[0]|=2),e!=null&&e.keyEncipherment&&(n[0]|=4),e!=null&&e.dataEncipherment&&(n[0]|=8),e!=null&&e.keyAgreement&&(n[0]|=16),e!=null&&e.keyCertSign&&(n[0]|=32),e!=null&&e.cRLSign&&(n[0]|=64),e!=null&&e.encipherOnly&&(n[0]|=128),e!=null&&e.decipherOnly&&(n[0]|=64),c.sequence([c.objectIdentifier(L(`keyUsage`)),c.boolean(!0),c.octetString(c.bitString(n))])}static extKeyUsage(e={}){return c.sequence([c.objectIdentifier(L(`extKeyUsage`)),c.boolean(!0),c.octetString(c.sequence(Object.entries(e).map(([e,n])=>n?c.objectIdentifier(L(e)):c.null())))])}static nsCertType(e){let n=new Uint8Array([0]);return e.client&&(n[0]|=1),e.server&&(n[0]|=2),e.email&&(n[0]|=4),e.objsign&&(n[0]|=8),e.sslCA&&(n[0]|=16),e.emailCA&&(n[0]|=32),e.objCA&&(n[0]|=64),c.sequence([c.objectIdentifier(L(`nsCertType`)),c.octetString(n)])}static subjectAltName(e){var n,r;let i=e.dnsNames?.map(e=>{let n=c.ia5String(e);return c.contextSpecific(2,n)})||[],o=e.ipAddresses?.map(e=>{let n=c.ia5String(e);return c.contextSpecific(7,n)})||[],s=c.octetString(c.sequence([...i,...o]));return c.sequence([c.objectIdentifier(L(`subjectAltName`)),c.boolean(!0),s])}},at={"1.2.840.113549.1.1.1":`rsaEncryption`,"1.2.840.113549.1.1.4":`md5WithRSAEncryption`,"1.2.840.113549.1.1.5":`sha1WithRSAEncryption`,"1.2.840.113549.1.1.7":`RSAES-OAEP`,"1.2.840.113549.1.1.8":`mgf1`,"1.2.840.113549.1.1.9":`pSpecified`,"1.2.840.113549.1.1.10":`RSASSA-PSS`,"1.2.840.113549.1.1.11":`sha256WithRSAEncryption`,"1.2.840.113549.1.1.12":`sha384WithRSAEncryption`,"1.2.840.113549.1.1.13":`sha512WithRSAEncryption`,"1.3.101.112":`EdDSA25519`,"1.2.840.10040.4.3":`dsa-with-sha1`,"1.3.14.3.2.7":`desCBC`,"1.3.14.3.2.26":`sha1`,"1.3.14.3.2.29":`sha1WithRSASignature`,"2.16.840.1.101.3.4.2.1":`sha256`,"2.16.840.1.101.3.4.2.2":`sha384`,"2.16.840.1.101.3.4.2.3":`sha512`,"2.16.840.1.101.3.4.2.4":`sha224`,"2.16.840.1.101.3.4.2.5":`sha512-224`,"2.16.840.1.101.3.4.2.6":`sha512-256`,"1.2.840.113549.2.2":`md2`,"1.2.840.113549.2.5":`md5`,"1.2.840.113549.1.7.1":`data`,"1.2.840.113549.1.7.2":`signedData`,"1.2.840.113549.1.7.3":`envelopedData`,"1.2.840.113549.1.7.4":`signedAndEnvelopedData`,"1.2.840.113549.1.7.5":`digestedData`,"1.2.840.113549.1.7.6":`encryptedData`,"1.2.840.113549.1.9.1":`emailAddress`,"1.2.840.113549.1.9.2":`unstructuredName`,"1.2.840.113549.1.9.3":`contentType`,"1.2.840.113549.1.9.4":`messageDigest`,"1.2.840.113549.1.9.5":`signingTime`,"1.2.840.113549.1.9.6":`counterSignature`,"1.2.840.113549.1.9.7":`challengePassword`,"1.2.840.113549.1.9.8":`unstructuredAddress`,"1.2.840.113549.1.9.14":`extensionRequest`,"1.2.840.113549.1.9.20":`friendlyName`,"1.2.840.113549.1.9.21":`localKeyId`,"1.2.840.113549.1.9.22.1":`x509Certificate`,"1.2.840.113549.1.12.10.1.1":`keyBag`,"1.2.840.113549.1.12.10.1.2":`pkcs8ShroudedKeyBag`,"1.2.840.113549.1.12.10.1.3":`certBag`,"1.2.840.113549.1.12.10.1.4":`crlBag`,"1.2.840.113549.1.12.10.1.5":`secretBag`,"1.2.840.113549.1.12.10.1.6":`safeContentsBag`,"1.2.840.113549.1.5.13":`pkcs5PBES2`,"1.2.840.113549.1.5.12":`pkcs5PBKDF2`,"1.2.840.113549.1.12.1.1":`pbeWithSHAAnd128BitRC4`,"1.2.840.113549.1.12.1.2":`pbeWithSHAAnd40BitRC4`,"1.2.840.113549.1.12.1.3":`pbeWithSHAAnd3-KeyTripleDES-CBC`,"1.2.840.113549.1.12.1.4":`pbeWithSHAAnd2-KeyTripleDES-CBC`,"1.2.840.113549.1.12.1.5":`pbeWithSHAAnd128BitRC2-CBC`,"1.2.840.113549.1.12.1.6":`pbewithSHAAnd40BitRC2-CBC`,"1.2.840.113549.2.7":`hmacWithSHA1`,"1.2.840.113549.2.8":`hmacWithSHA224`,"1.2.840.113549.2.9":`hmacWithSHA256`,"1.2.840.113549.2.10":`hmacWithSHA384`,"1.2.840.113549.2.11":`hmacWithSHA512`,"1.2.840.113549.3.7":`des-EDE3-CBC`,"2.16.840.1.101.3.4.1.2":`aes128-CBC`,"2.16.840.1.101.3.4.1.22":`aes192-CBC`,"2.16.840.1.101.3.4.1.42":`aes256-CBC`,"2.5.4.3":`commonName`,"2.5.4.4":`surname`,"2.5.4.5":`serialNumber`,"2.5.4.6":`countryName`,"2.5.4.7":`localityName`,"2.5.4.8":`stateOrProvinceName`,"2.5.4.9":`streetAddress`,"2.5.4.10":`organizationName`,"2.5.4.11":`organizationalUnitName`,"2.5.4.12":`title`,"2.5.4.13":`description`,"2.5.4.15":`businessCategory`,"2.5.4.17":`postalCode`,"2.5.4.42":`givenName`,"1.3.6.1.4.1.311.60.2.1.2":`jurisdictionOfIncorporationStateOrProvinceName`,"1.3.6.1.4.1.311.60.2.1.3":`jurisdictionOfIncorporationCountryName`,"2.16.840.1.113730.1.1":`nsCertType`,"2.16.840.1.113730.1.13":`nsComment`,"2.5.29.14":`subjectKeyIdentifier`,"2.5.29.15":`keyUsage`,"2.5.29.17":`subjectAltName`,"2.5.29.18":`issuerAltName`,"2.5.29.19":`basicConstraints`,"2.5.29.31":`cRLDistributionPoints`,"2.5.29.32":`certificatePolicies`,"2.5.29.35":`authorityKeyIdentifier`,"2.5.29.37":`extKeyUsage`,"1.3.6.1.4.1.11129.2.4.2":`timestampList`,"1.3.6.1.5.5.7.1.1":`authorityInfoAccess`,"1.3.6.1.5.5.7.3.1":`serverAuth`,"1.3.6.1.5.5.7.3.2":`clientAuth`,"1.3.6.1.5.5.7.3.3":`codeSigning`,"1.3.6.1.5.5.7.3.4":`emailProtection`,"1.3.6.1.5.5.7.3.8":`timeStamping`},E={Boolean:1,Integer:2,BitString:3,OctetString:4,Null:5,OID:6,Utf8String:12,Sequence:48,Set:49,PrintableString:19,IA5String:22,UTCTime:23},c=class e{static length_(e){if(e<128)return new Uint8Array([e]);{let n=e,r=[];for(;n>0;)r.unshift(n&255),n>>=8;let i=r.length,o=new Uint8Array(1+i);o[0]=128|i;for(let e=0;e<i;e++)o[e+1]=r[e];return o}}static ASN1(n,r){let i=e.length_(r.length),o=new Uint8Array(1+i.length+r.length);return o[0]=n,o.set(i,1),o.set(r,1+i.length),o}static integer(n){let r=0;for(;r<n.length-1&&n[r]===0&&n[r+1]<128;)r++;if(r>0&&(n=n.subarray(r)),n[0]>127){let e=new Uint8Array(n.length+1);e[0]=0,e.set(n,1),n=e}return e.ASN1(E.Integer,n)}static bitString(n){let r=new Uint8Array([0]),i=new Uint8Array(r.length+n.length);return i.set(r),i.set(n,r.length),e.ASN1(E.BitString,i)}static octetString(n){return e.ASN1(E.OctetString,n)}static null(){return e.ASN1(E.Null,new Uint8Array)}static objectIdentifier(n){let r=n.split(`.`).map(Number),i=[r[0]*40+r[1]];for(let e=2;e<r.length;e++){let n=r[e],o=[];do o.unshift(n&127),n>>=7;while(n>0);for(let e=0;e<o.length-1;e++)o[e]|=128;i.push(...o)}return e.ASN1(E.OID,new Uint8Array(i))}static utf8String(n){let r=new TextEncoder().encode(n);return e.ASN1(E.Utf8String,r)}static printableString(n){let r=new TextEncoder().encode(n);return e.ASN1(E.PrintableString,r)}static sequence(n){return e.ASN1(E.Sequence,D$2(n))}static set(n){return e.ASN1(E.Set,D$2(n))}static ia5String(n){let r=new TextEncoder().encode(n);return e.ASN1(E.IA5String,r)}static contextSpecific(n,r,i=!1){let o=(i?160:128)|n;return e.ASN1(o,r)}static boolean(n){return e.ASN1(E.Boolean,new Uint8Array([n?255:0]))}},ot=class extends TransformStream{constructor(){let e=new Uint8Array,n=`SCAN_CHUNK_SIZE`,r=0;super({transform(i,o){for(e=D$2([e,i]);e.length>0;)if(n===`SCAN_CHUNK_SIZE`){if(e.length<3)return;let i=0;for(;i<e.length;){let n=e[i];if(!(n>=48&&n<=57||n>=97&&n<=102||n>=65&&n<=70))break;i++}if(i===0)throw Error(`Invalid chunk size format`);if(e.length<i+2)return;if(e[i]!==13||e[i+1]!==10)throw Error(`Invalid chunk size format. Expected CRLF after chunk size`);let s=new TextDecoder().decode(e.slice(0,i)),l=parseInt(s,16);if(e=e.slice(i+2),l===0){n=`SCAN_FINAL_CHUNK`,o.terminate();return}r=l,n=`SCAN_CHUNK_DATA`}else if(n===`SCAN_CHUNK_DATA`){let i=Math.min(r,e.length),s=e.slice(0,i);e=e.slice(i),r-=i,o.enqueue(s),r===0&&(n=`SCAN_CHUNK_TRAILER`)}else if(n===`SCAN_CHUNK_TRAILER`){if(e.length<2)return;if(e[0]!==13||e[1]!==10)throw Error(`Invalid chunk trailer format. Expected CRLF after chunk data`);e=e.slice(2),n=`SCAN_CHUNK_SIZE`}}})}},ct=(e,n)=>({...e,websocket:{url:(e,n,r)=>`ws://playground.internal/?${new URLSearchParams({host:n,port:r}).toString()}`,subprotocol:`binary`,decorator:()=>class extends St{constructor(e,r){super(e,r,{CAroot:n.CAroot,corsProxyUrl:n.corsProxyUrl})}}}}),St=class{constructor(e,n,{CAroot:r,corsProxyUrl:i,outputType:o=`messages`}={}){this.CONNECTING=0,this.OPEN=1,this.CLOSING=2,this.CLOSED=3,this.readyState=this.CONNECTING,this.binaryType=`blob`,this.bufferedAmount=0,this.extensions=``,this.protocol=`ws`,this.host=``,this.port=0,this.listeners=new Map,this.clientUpstream=new TransformStream,this.clientUpstreamWriter=this.clientUpstream.writable.getWriter(),this.clientDownstream=new TransformStream,this.fetchInitiated=!1,this.bufferedBytesFromClient=new Uint8Array,this.url=e,this.options=n;let s=new URL(e);this.host=s.searchParams.get(`host`),this.port=parseInt(s.searchParams.get(`port`),10),this.binaryType=`arraybuffer`,this.corsProxyUrl=i,this.CAroot=r,o===`messages`&&this.clientDownstream.readable.pipeTo(new WritableStream({write:e=>{this.emit(`message`,{data:e})},abort:()=>{this.emit(`error`,Error(`ECONNREFUSED`)),this.close()},close:()=>{this.close()}})).catch(()=>{}),this.readyState=this.OPEN,this.emit(`open`)}on(e,n){this.addEventListener(e,n)}once(e,n){let r=i=>{n(i),this.removeEventListener(e,r)};this.addEventListener(e,r)}addEventListener(e,n){this.listeners.has(e)||this.listeners.set(e,new Set),this.listeners.get(e).add(n)}removeListener(e,n){this.removeEventListener(e,n)}removeEventListener(e,n){let r=this.listeners.get(e);r&&r.delete(n)}emit(e,n={}){e===`message`?this.onmessage(n):e===`close`?this.onclose(n):e===`error`?this.onerror(n):e===`open`&&this.onopen(n);let r=this.listeners.get(e);if(r)for(let e of r)e(n)}onclose(e){}onerror(e){}onmessage(e){}onopen(e){}send(e){if(this.readyState!==this.CLOSING&&this.readyState!==this.CLOSED&&(this.clientUpstreamWriter.write(new Uint8Array(e)),!this.fetchInitiated))switch(this.bufferedBytesFromClient=D$2([this.bufferedBytesFromClient,new Uint8Array(e)]),ht(this.port,this.bufferedBytesFromClient)){case!1:return;case`other`:this.emit(`error`,Error(`Unsupported protocol`)),this.close();break;case`tls`:this.fetchOverTLS(),this.fetchInitiated=!0;break;case`http`:this.fetchOverHTTP(),this.fetchInitiated=!0}}async fetchOverTLS(){if(!this.CAroot)throw Error(`TLS protocol is only supported when the TCPOverFetchWebsocket is instantiated with a CAroot`);let e=await st({subject:{commonName:this.host,organizationName:this.host,countryName:`US`},issuer:this.CAroot.tbsDescription.subject},this.CAroot.keyPair),n=new nt;this.clientUpstream.readable.pipeTo(n.clientEnd.upstream.writable).catch(()=>{}),n.clientEnd.downstream.readable.pipeTo(this.clientDownstream.writable).catch(()=>{}),await n.TLSHandshake(e.keyPair.privateKey,[e.certificate,this.CAroot.certificate]);let{request:r,expectsContinue:i}=await w.parseHttpRequest(n.serverEnd.upstream.readable,this.host,`https`);if(i){let e=n.serverEnd.downstream.writable.getWriter();await e.write(new TextEncoder().encode(`HTTP/1.1 100 Continue\r
 \r
 `)),e.releaseLock()}try{await w.fetchRawResponseBytes(r,this.corsProxyUrl).pipeTo(n.serverEnd.downstream.writable)}catch{}}async fetchOverHTTP(){let{request:e,expectsContinue:n}=await w.parseHttpRequest(this.clientUpstream.readable,this.host,`http`);if(n){let e=this.clientDownstream.writable.getWriter();await e.write(new TextEncoder().encode(`HTTP/1.1 100 Continue\r
 \r
@@ -1275,7 +1275,16 @@ final readonly class Command
         } finally {
             fclose($stream);
         }
-        fwrite($stdout, $report->toJson()."\\n");
+        try {
+            $json = $report->toJson();
+        } catch (\\JsonException $e) {
+            // SPEC-019 AC13: no input is known to reach this since SPEC-007 AC15; should one, it is
+            // the command's own failure, one line and exit 2, never PHP's fatal error and its trace
+            fwrite($stderr, sprintf("Error: the report cannot be written as JSON: %s\\n", $e->getMessage()));
+
+            return 2;
+        }
+        fwrite($stdout, $json."\\n");
 
         return $report->result->state === ValidationState::Invalid ? 1 : 0;
     }
@@ -1383,6 +1392,50 @@ final readonly class Command
         return $at === false ? $message : substr($message, $at + strlen($marker));
     }
 }
+`,"src/Container/AviManifestStoreExtractor.php":`<?php
+
+declare(strict_types=1);
+
+namespace Provemark\\C2paVerifier\\Container;
+
+use Provemark\\C2paVerifier\\Support\\MemoryBudget;
+
+/**
+ * AVI RIFF \`C2PA\` → manifest store bytes (SPEC-058; C2PA 2.4 §A.3.7).
+ *
+ * SPEC-003's walk with the form type \`AVI \`: the same chunk, the same checks,
+ * the same bounds. The store is looked for in the first RIFF chunk only; an
+ * OpenDML file's further RIFF chunks (\`AVIX\`) follow it and are left to the
+ * data hash, which covers them (SPEC-003 amendments 3 and 4). The AVI
+ * structure itself is not read.
+ *
+ * @internal SPEC-025: not part of the public API. It may change, move or be
+ * removed in any release; the contract is the nine classes named in the README.
+ */
+final readonly class AviManifestStoreExtractor
+{
+    public const DEFAULT_MAX_CHUNK_LENGTH = RiffManifestStoreExtractor::DEFAULT_MAX_CHUNK_LENGTH;
+
+    private RiffManifestStoreExtractor $riff;
+
+    public function __construct(
+        public int $maxChunkLength = self::DEFAULT_MAX_CHUNK_LENGTH,
+        MemoryBudget $budget = new MemoryBudget,
+    ) {
+        $this->riff = new RiffManifestStoreExtractor('AVI ', 'AVI', $maxChunkLength, $budget);
+    }
+
+    /**
+     * @param  resource  $stream  a readable, seekable stream positioned at 0
+     * @return ManifestStoreBytes|null null when the first RIFF chunk has no C2PA chunk (AC2)
+     *
+     * @throws ContainerException on every malformed case
+     */
+    public function extract($stream): ?ManifestStoreBytes
+    {
+        return $this->riff->extract($stream);
+    }
+}
 `,"src/Container/ContainerException.php":`<?php
 
 declare(strict_types=1);
@@ -1394,10 +1447,28 @@ namespace Provemark\\C2paVerifier\\Container;
  * AC3, AC5–AC7, AC9–AC11). There is never a partial result: an extractor
  * either returns the whole store, null, or throws.
  *
+ * \`$storeReached\` says whether the extractor had come to the manifest
+ * store when the container failed (SPEC-003 amendment 3, AC18). The
+ * verifier reports a manifest only then (SPEC-013 amendment 16). Every
+ * extractor sets it, JPEG, PNG, ISOBMFF, RIFF and ID3 alike (SPEC-013
+ * amendments 16 to 18); the default \`true\` is what a fault outside an
+ * extractor's walk reports.
+ *
  * @internal SPEC-025: not part of the public API. It may change, move or be
  * removed in any release; the contract is the nine classes named in the README.
  */
-final class ContainerException extends \\RuntimeException {}
+final class ContainerException extends \\RuntimeException
+{
+    /** The first three parameters are RuntimeException's, in its order; \`$storeReached\` comes last (step 217). */
+    public function __construct(
+        string $message = '',
+        int $code = 0,
+        ?\\Throwable $previous = null,
+        public readonly bool $storeReached = true,
+    ) {
+        parent::__construct($message, $code, $previous);
+    }
+}
 `,"src/Container/FormatDetector.php":`<?php
 
 declare(strict_types=1);
@@ -1405,10 +1476,15 @@ declare(strict_types=1);
 namespace Provemark\\C2paVerifier\\Container;
 
 /**
- * The container format from the first twelve bytes, nothing else read
- * (SPEC-013): JPEG's SOI, PNG's signature, RIFF's header with the WEBP form
- * type. Anything else is null — an unknown format is an error for the
- * caller, never a guess. The stream is rewound afterwards.
+ * The container format from the first bytes of the stream (SPEC-013): JPEG's
+ * SOI, PNG's signature, RIFF's header with the WEBP or WAVE form type
+ * (SPEC-055), ISOBMFF's \`ftyp\`, MP3 (SPEC-056) and FLAC (SPEC-057). For MP3 and FLAC the detector reads
+ * past the twelve-byte probe: for a tagless file the second MPEG frame header,
+ * where the first frame's length says; for a tagged one each tag header, a
+ * small probe for zero padding after it, and four bytes where the audio should
+ * begin. Anything else is null — an unknown format is an error for the caller,
+ * never a guess; RF64 and every other RIFF form included. The stream is rewound
+ * afterwards.
  *
  * @internal SPEC-025: not part of the public API. It may change, move or be
  * removed in any release; the contract is the nine classes named in the README.
@@ -1419,7 +1495,7 @@ final readonly class FormatDetector
 
     /**
      * @param  resource  $stream  readable and seekable
-     * @return 'jpeg'|'png'|'webp'|'isobmff'|null
+     * @return 'jpeg'|'png'|'webp'|'wav'|'avi'|'isobmff'|'mp3'|'flac'|null
      */
     public function detect($stream): ?string
     {
@@ -1433,14 +1509,188 @@ final readonly class FormatDetector
         if (strlen($head) === self::PROBE_LENGTH && str_starts_with($head, 'RIFF') && substr($head, 8, 4) === 'WEBP') {
             return 'webp';
         }
+        if (strlen($head) === self::PROBE_LENGTH && str_starts_with($head, 'RIFF') && substr($head, 8, 4) === 'WAVE') {
+            return 'wav';   // SPEC-055; RF64 (\`RF64\`, files over 4 GB) is not read, as c2patool does not
+        }
+        if (strlen($head) === self::PROBE_LENGTH && str_starts_with($head, 'RIFF') && substr($head, 8, 4) === 'AVI ') {
+            return 'avi';   // SPEC-058
+        }
         // ISOBMFF (SPEC-026): MP4, MOV, AVIF and HEIC all open with a \`ftyp\` box, and
         // the brand that follows is not read — a file that declares \`ftyp\` and carries
         // a C2PA \`uuid\` box is one this verifier can read whatever its brand says.
         if (strlen($head) === self::PROBE_LENGTH && substr($head, 4, 4) === 'ftyp') {
             return 'isobmff';
         }
+        // MP3 (SPEC-056): MPEG audio from the first byte, two frame headers in a row
+        // (amendment 2: one header alone matched a UTF-16 text file); or an ID3v2 tag,
+        // then zero padding and further tags, then MPEG audio. ID3 alone is not enough:
+        // FLAC and AAC carry the same tag.
+        if (self::isMpegFrame($head)) {
+            $mp3 = self::mpegAudioAt($stream, 0);
+            rewind($stream);
+
+            return $mp3 ? 'mp3' : null;
+        }
+        // FLAC (SPEC-057): the stream marker at the start, or after the ID3 tag(s) C2PA puts in front
+        if (str_starts_with($head, 'fLaC')) {
+            return 'flac';
+        }
+        if (Id3ManifestStoreExtractor::header($head, alsoVersion2: true) !== null) {
+            $audio = self::audioAfterTags($stream);
+            rewind($stream);
+
+            return $audio;
+        }
 
         return null;
+    }
+
+    /** How far zero padding after an ID3 tag is skipped, and how many further tags (amendment 2). */
+    private const MAX_PADDING = 65536;
+
+    private const MAX_TAGS = 8;
+
+    /**
+     * What follows the ID3 tag at offset 0, after any zero padding and further
+     * ID3v2 tags (SPEC-056 AC16): MPEG audio is \`mp3\`, a FLAC stream marker is
+     * \`flac\` (SPEC-057 AC4), anything else null.
+     *
+     * @param  resource  $stream
+     * @return 'mp3'|'flac'|null
+     */
+    private static function audioAfterTags($stream): ?string
+    {
+        if (fseek($stream, 0, SEEK_END) !== 0) {
+            return null;
+        }
+        $fileEnd = (int) ftell($stream);
+        $position = 0;
+        for ($tags = 0; $tags <= self::MAX_TAGS; $tags++) {
+            if (fseek($stream, $position) !== 0) {
+                return null;
+            }
+            $header = Id3ManifestStoreExtractor::header(Read::upTo($stream, 10), alsoVersion2: true);
+            if ($header === null) {
+                break;
+            }
+            $position += $header['next'];   // relative to the tag's own start
+            if ($position > $fileEnd) {
+                return 'mp3';   // a tag that runs past the end of the file: the extractor says why (SPEC-056 AC23)
+            }
+            $position += self::zeroPadding($stream, $position);
+        }
+
+        // after a tag one frame header is enough (AC13); two are asked only of a file with no tag (AC17)
+        $next = fseek($stream, $position) === 0 ? Read::upTo($stream, 4) : '';
+
+        return match (true) {
+            self::isMpegFrame($next) => 'mp3',
+            $next === 'fLaC' => 'flac',
+            default => null,
+        };
+    }
+
+    /**
+     * How many zero bytes follow $position, up to MAX_PADDING: a small probe first,
+     * read further only while it is all zeros.
+     *
+     * @param  resource  $stream
+     */
+    private static function zeroPadding($stream, int $position): int
+    {
+        $zeros = 0;
+        $probe = 16;
+        while ($zeros < self::MAX_PADDING && fseek($stream, $position + $zeros) === 0) {
+            $chunk = Read::upTo($stream, min($probe, self::MAX_PADDING - $zeros));
+            $run = strspn($chunk, "\\0");
+            $zeros += $run;
+            if ($chunk === '' || $run < strlen($chunk)) {
+                break;
+            }
+            $probe = min($probe * 16, 16384);
+        }
+
+        return $zeros;
+    }
+
+    /**
+     * Whether two MPEG audio frame headers follow each other at $position: the
+     * second where the first frame's length says (SPEC-056 AC17).
+     *
+     * @param  resource  $stream
+     */
+    private static function mpegAudioAt($stream, int $position): bool
+    {
+        if (fseek($stream, $position) !== 0) {
+            return false;
+        }
+        $first = Read::upTo($stream, 4);
+        $length = self::isMpegFrame($first) ? self::mpegFrameLength($first) : null;
+        if ($length === null || fseek($stream, $position + $length) !== 0) {
+            return false;
+        }
+
+        return self::isMpegFrame(Read::upTo($stream, 4));
+    }
+
+    /**
+     * The length of an MPEG audio frame from its header (ISO/IEC 11172-3, 13818-3,
+     * and MPEG 2.5); null for the free-format bitrate, whose length the header does
+     * not give.
+     */
+    private static function mpegFrameLength(string $header): ?int
+    {
+        $b1 = ord($header[1]);
+        $b2 = ord($header[2]);
+        $version = ($b1 >> 3) & 0x03;   // 0: 2.5, 2: 2, 3: 1
+        $layer = 4 - (($b1 >> 1) & 0x03);   // 1, 2 or 3
+        $bitrateIndex = $b2 >> 4;
+        $rateIndex = ($b2 >> 2) & 0x03;
+        if ($bitrateIndex === 0 || $bitrateIndex === 15 || $rateIndex === 3) {
+            return null;   // free format gives no length; 15 and 3 are reserved (isMpegFrame refuses them too)
+        }
+        $mpeg1 = $version === 3;
+        $bitrates = match (true) {
+            $mpeg1 && $layer === 1 => [32, 64, 96, 128, 160, 192, 224, 256, 288, 320, 352, 384, 416, 448],
+            $mpeg1 && $layer === 2 => [32, 48, 56, 64, 80, 96, 112, 128, 160, 192, 224, 256, 320, 384],
+            $mpeg1 => [32, 40, 48, 56, 64, 80, 96, 112, 128, 160, 192, 224, 256, 320],
+            $layer === 1 => [32, 48, 56, 64, 80, 96, 112, 128, 144, 160, 176, 192, 224, 256],
+            default => [8, 16, 24, 32, 40, 48, 56, 64, 80, 96, 112, 128, 144, 160],
+        };
+        $rates = match ($version) {
+            3 => [44100, 48000, 32000],
+            2 => [22050, 24000, 16000],
+            default => [11025, 12000, 8000],
+        };
+        $bitrate = $bitrates[$bitrateIndex - 1] * 1000;
+        $rate = $rates[$rateIndex];
+        $padding = ($b2 >> 1) & 0x01;
+
+        return match (true) {
+            $layer === 1 => (intdiv(12 * $bitrate, $rate) + $padding) * 4,
+            $layer === 3 && ! $mpeg1 => intdiv(72 * $bitrate, $rate) + $padding,
+            default => intdiv(144 * $bitrate, $rate) + $padding,
+        };
+    }
+
+    /**
+     * An MPEG audio frame header (ISO/IEC 11172-3): eleven sync bits, then a
+     * version, layer, bitrate and sample rate that are not reserved. JPEG's
+     * FF D8 is not one: D8 lacks the three high bits.
+     */
+    public static function isMpegFrame(string $bytes): bool
+    {
+        if (strlen($bytes) < 3 || $bytes[0] !== "\\xFF") {
+            return false;
+        }
+        $b1 = ord($bytes[1]);
+        $b2 = ord($bytes[2]);
+
+        return ($b1 & 0xE0) === 0xE0
+            && (($b1 >> 3) & 0x03) !== 0x01   // version 01 is reserved
+            && (($b1 >> 1) & 0x03) !== 0x00   // layer 00 is reserved
+            && ($b2 >> 4) !== 0x0F            // bitrate index 1111 is bad
+            && (($b2 >> 2) & 0x03) !== 0x03;  // sample rate 11 is reserved
     }
 
     /**
@@ -1450,13 +1700,423 @@ final readonly class FormatDetector
      */
     public function head($stream): string
     {
-        if (! is_resource($stream) || ! rewind($stream)) {
+        // the seekable flag first: rewind() on a pipe prints a PHP warning before it fails (SPEC-043 AC12)
+        if (! is_resource($stream) || ! stream_get_meta_data($stream)['seekable'] || ! rewind($stream)) {
             throw new \\InvalidArgumentException('FormatDetector needs a seekable stream resource');
         }
         $head = Read::upTo($stream, self::PROBE_LENGTH);
         rewind($stream);
 
         return $head;
+    }
+}
+`,"src/Container/Id3ManifestStoreExtractor.php":`<?php
+
+declare(strict_types=1);
+
+namespace Provemark\\C2paVerifier\\Container;
+
+use Provemark\\C2paVerifier\\Support\\Bytes;
+use Provemark\\C2paVerifier\\Support\\MemoryBudget;
+
+/**
+ * An ID3v2 tag at offset 0 → the C2PA GEOB frame's object (SPEC-056; C2PA 2.4
+ * §A.3.4). Written for MP3; FLAC carries the same tag and will reuse it.
+ *
+ * Reads the 10-byte header (version 3 or 4, a syncsafe size), skips an
+ * extended header, then walks the frames to the end of the tag — v2.3 sizes
+ * plain, v2.4 sizes syncsafe unless a byte says otherwise (iTunes) — until
+ * padding. The C2PA GEOB is a GEOB whose MIME type is exactly one of the two
+ * c2patool accepts. Strict about it: at most one, inside the tag, not
+ * compressed, encrypted or unsynchronised, its object at least a box header
+ * and its LBox equal to the object's length. As lenient as c2patool about the
+ * rest: other frames are skipped unread, a frame other than the C2PA GEOB that
+ * runs past the tag ends the walk, and what follows the tag is left to the data
+ * hash, which covers it. A frame id that is not four capitals or digits, and
+ * unsynchronisation that changes bytes, are faults: the walk could no longer
+ * be trusted to have seen every frame (SPEC-056 amendment 2). Every fault says
+ * whether a C2PA GEOB had been reached; nothing escapes but ContainerException.
+ *
+ * @internal SPEC-025: not part of the public API. It may change, move or be
+ * removed in any release; the contract is the nine classes named in the README.
+ */
+final readonly class Id3ManifestStoreExtractor
+{
+    // SPEC-024: the bound every extractor carries.
+    public const DEFAULT_MAX_OBJECT_LENGTH = 16 * 1024 * 1024;
+
+    /** A tag of more frames than this is refused (AC12). */
+    public const MAX_FRAMES = 4096;
+
+    /** The JUMBF media types c2patool accepts for the GEOB, exactly (C2PA 2.4 §11.4; the legacy one since amendment 2). */
+    public const MIME_TYPES = ['application/c2pa', 'application/x-c2pa-manifest-store'];
+
+    private const HEADER_LENGTH = 10;
+
+    /** LBox (4) + TBox (4): the least a JUMBF box can be. */
+    private const BOX_HEADER_LENGTH = 8;
+
+    /** The GEOB's first read: encoding, MIME type and, nearly always, both text fields. */
+    private const FIRST_READ = 4096;
+
+    /** Further reads while the text fields have not ended. */
+    private const CHUNK = 65536;
+
+    public function __construct(
+        public int $maxObjectLength = self::DEFAULT_MAX_OBJECT_LENGTH,
+        private MemoryBudget $budget = new MemoryBudget,
+    ) {}
+
+    /**
+     * The shape of an ID3v2.3 or v2.4 tag header: its version, flags, where the
+     * frames end, and where the tag ends with its footer (v2.4 only), both counted
+     * from the tag's own first byte. Null for
+     * anything else, a size that is not syncsafe included. Shared with
+     * FormatDetector, so that the two never disagree about a tag's end; the
+     * detector also passes version 2, whose header has the same shape and no
+     * footer, so that an ID3v2.2 file reaches the extractor and is refused there
+     * by name (SPEC-056 amendment 3, AC24).
+     *
+     * @return array{version: int, flags: int, end: int, next: int}|null
+     */
+    public static function header(string $bytes, bool $alsoVersion2 = false): ?array
+    {
+        if (strlen($bytes) < self::HEADER_LENGTH || ! str_starts_with($bytes, 'ID3')) {
+            return null;
+        }
+        $version = ord($bytes[3]);
+        $sizeBytes = substr($bytes, 6, 4);
+        $known = $version === 3 || $version === 4 || ($alsoVersion2 && $version === 2);
+        if (! $known || preg_match('/[\\x80-\\xFF]/', $sizeBytes) === 1) {
+            return null;
+        }
+        $flags = ord($bytes[5]);
+        $end = self::HEADER_LENGTH + self::syncsafe($sizeBytes);
+
+        return ['version' => $version, 'flags' => $flags, 'end' => $end, 'next' => $end + ($version === 4 && ($flags & 0x10) !== 0 ? self::HEADER_LENGTH : 0)];
+    }
+
+    /**
+     * @param  resource  $stream  a readable, seekable stream positioned at 0
+     * @return ManifestStoreBytes|null null when the tag carries no C2PA GEOB (AC2)
+     *
+     * @throws ContainerException on every malformed case
+     */
+    public function extract($stream): ?ManifestStoreBytes
+    {
+        // whether a C2PA GEOB had been reached when a fault was thrown (SPEC-013 amendment 18)
+        $reached = false;
+        try {
+            return $this->walk($stream, $reached);
+        } catch (ContainerException $e) {
+            throw $e->storeReached === $reached ? $e : new ContainerException($e->getMessage(), previous: $e, storeReached: $reached);
+        }
+    }
+
+    /**
+     * @param  resource  $stream
+     */
+    private function walk($stream, bool &$reached): ?ManifestStoreBytes
+    {
+        $reader = new StreamReader($stream, 'frame');
+        $first = $reader->readUpTo(self::HEADER_LENGTH);
+        if (FormatDetector::isMpegFrame($first) || str_starts_with($first, 'fLaC')) {
+            return null;   // MPEG audio or a FLAC stream from the first byte: no tag, so no store (AC13; SPEC-057 AC2)
+        }
+        if (strlen($first) !== self::HEADER_LENGTH || ! str_starts_with($first, 'ID3')) {
+            throw new ContainerException(sprintf('not an ID3v2 tag: expected ID3 at offset 0, found %s', Bytes::hex(substr($first, 0, 3))));
+        }
+        $version = ord($first[3]);
+        if ($version !== 3 && $version !== 4) {
+            throw new ContainerException(sprintf('ID3v2.%d is not read: only versions 3 and 4 (AC4)', $version));
+        }
+        $header = self::header($first);
+        if ($header === null) {
+            throw new ContainerException(sprintf('the ID3 tag size %s at offset 6 is not syncsafe (AC4)', Bytes::hex(substr($first, 6, 4))));
+        }
+        $tagEnd = $header['end'];
+        $fileEnd = $reader->end();
+        if ($tagEnd > $fileEnd) {
+            // a fault, but one that says whether the store was there (AC5, as SPEC-003 amendment 4)
+            $reached = $this->scanForStore($reader, $version, $header['flags'], $fileEnd);
+            throw new ContainerException(sprintf('the ID3 tag ends at %d, past the end of the file at %d', $tagEnd, $fileEnd));
+        }
+        $unsynchronised = ($header['flags'] & 0x80) !== 0;
+        if ($unsynchronised && ($at = $this->unsynchronisedBytesAt($stream, $tagEnd)) !== null) {
+            throw new ContainerException(sprintf('the ID3 tag has the unsynchronisation flag and FF 00 at offset %d: its frames cannot be read as they stand (AC19)', $at));
+        }
+        $offset = self::HEADER_LENGTH;
+        if (($header['flags'] & 0x40) !== 0) {
+            $offset += $this->extendedHeaderLength($reader, $version, $tagEnd);
+        }
+
+        $store = null;
+        $storeOffset = null;
+        $storeAt = null;
+        $frames = 0;
+        while ($offset + self::HEADER_LENGTH <= $tagEnd) {
+            $frameHeader = $reader->readExactly(self::HEADER_LENGTH, $offset, 'the frame header');
+            if ($frameHeader[0] === "\\0") {
+                break;   // padding: the frames have ended
+            }
+            if (++$frames > self::MAX_FRAMES) {
+                throw new ContainerException(sprintf('more than %d frames in the ID3 tag (offset %d)', self::MAX_FRAMES, $offset));
+            }
+            ['id' => $id, 'size' => $size, 'flags' => $frameFlags] = self::frameHeader($frameHeader, $version, $offset);
+            $bodyEnd = $offset + self::HEADER_LENGTH + $size;
+
+            $body = '';
+            $isStore = false;
+            if ($id === 'GEOB') {
+                $body = $reader->readExactly(max(0, min($size, self::FIRST_READ, $fileEnd - $offset - self::HEADER_LENGTH)), $offset, 'the GEOB frame');
+                $isStore = in_array(self::mime($body), self::MIME_TYPES, true);
+            }
+            if (! $isStore) {
+                if ($bodyEnd > $tagEnd) {
+                    break;   // a frame other than the C2PA GEOB runs past the tag: the walk stops, as c2patool's does, keeping a store already read (step 245)
+                }
+                $reader->skip($size - strlen($body), $offset);
+                $offset = $bodyEnd;
+
+                continue;
+            }
+
+            $reached = true;
+            if ($storeOffset !== null) {
+                throw new ContainerException(sprintf('two C2PA GEOB frames at offsets %d and %d; a tag carries at most one manifest store', $storeOffset, $offset));
+            }
+            if ($bodyEnd > $tagEnd) {
+                throw new ContainerException(sprintf('the C2PA GEOB frame at offset %d declares %d bytes, past the end of the tag at %d (AC8)', $offset, $size, $tagEnd));
+            }
+            // v2.4: data length 0x01, unsynchronisation 0x02, encryption 0x04, compression 0x08,
+            // grouping 0x40; v2.3: compression 0x80, encryption 0x40, grouping 0x20. A GEOB whose
+            // group byte is really there does not match the MIME type and never reaches here
+            // (AC20); one that still reads as C2PA under the flag has bytes the flag says are
+            // something else, and is refused (AC22).
+            $formatFlags = $version === 4 ? $frameFlags & 0x4F : $frameFlags & 0xE0;
+            if ($formatFlags !== 0) {
+                throw new ContainerException(sprintf('the C2PA GEOB frame at offset %d has format flags %02X: compressed, encrypted, unsynchronised or with a data length, it is not read (AC10)', $offset, $formatFlags));
+            }
+            if ($unsynchronised) {
+                throw new ContainerException(sprintf('the ID3 tag\\'s unsynchronisation flag is set: the C2PA GEOB frame at offset %d is not read (AC10)', $offset));
+            }
+
+            // the text fields may be of any length within the frame (AC20): read on until they end,
+            // each search continuing where the last one stopped (amendment 3: linear, not quadratic)
+            $scan = ['from' => (int) strpos($body, "\\0", 1) + 1, 'field' => 0];
+            while (($objectAt = self::objectStart($body, $offset, $scan)) === null) {
+                if (strlen($body) >= $size || strlen($body) > $this->maxObjectLength) {
+                    throw new ContainerException(sprintf('the C2PA GEOB frame at offset %d: its text fields do not end within the frame', $offset));
+                }
+                $body .= $reader->readExactly(min(self::CHUNK, $size - strlen($body)), $offset, 'the GEOB text fields');
+            }
+            $length = $size - $objectAt;
+            if ($length < self::BOX_HEADER_LENGTH) {
+                throw new ContainerException(sprintf('the C2PA GEOB object length %d is shorter than the %d-byte box header (offset %d)', $length, self::BOX_HEADER_LENGTH, $offset));
+            }
+            if ($length > $this->maxObjectLength) {
+                throw new ContainerException(sprintf('the C2PA GEOB object length %d exceeds the limit of %d bytes (offset %d)', $length, $this->maxObjectLength, $offset));
+            }
+            if (! $this->budget->allows($length)) {
+                throw new ContainerException(sprintf(
+                    'the C2PA GEOB object length %d does not fit this host: %d bytes of memory remain. '
+                    .'The file was not examined, so this is not a judgement about it (offset %d)',
+                    $length,
+                    $this->budget->remainingBytes() ?? 0,
+                    $offset,
+                ));
+            }
+            $object = substr($body, $objectAt);
+            unset($body);   // the text fields are not needed beside the store (step 245)
+            if (strlen($object) < 4) {
+                $object .= $reader->readExactly(4 - strlen($object), $offset, 'LBox');
+            }
+            /** @var array{1: int} $lBox */
+            $lBox = unpack('N', $object);
+            if ($lBox[1] !== $length) {
+                throw new ContainerException(sprintf('LBox %d differs from the object length %d (C2PA GEOB frame at offset %d)', $lBox[1], $length, $offset));
+            }
+            $store = $object.$reader->readExactly($length - strlen($object), $offset, 'the GEOB object');
+            $storeOffset = $offset;
+            $storeAt = $offset + self::HEADER_LENGTH + $objectAt;
+            $offset = $bodyEnd;
+        }
+
+        if ($store === null || $storeAt === null) {
+            return null;
+        }
+
+        return new ManifestStoreBytes($store, [['start' => $storeAt, 'length' => strlen($store)]]);   // the object alone, as c2patool excludes it
+    }
+
+    /**
+     * A frame header's id, body size and format-flags byte. The id must be four
+     * capitals or digits (AC18): anything else means the walk has lost its place.
+     * A v2.4 size with a byte above 7F is not syncsafe and is read as a plain
+     * integer, as iTunes writes it and c2patool reads it (AC18).
+     *
+     * @return array{id: string, size: int, flags: int}
+     */
+    private static function frameHeader(string $bytes, int $version, int $offset): array
+    {
+        $id = substr($bytes, 0, 4);
+        if (preg_match('/\\A[A-Z0-9]{4}\\z/', $id) !== 1) {
+            throw new ContainerException(sprintf('the frame id %s at offset %d is not four capitals or digits (AC18)', Bytes::hex($id), $offset));
+        }
+        $sizeBytes = substr($bytes, 4, 4);
+        $size = $version === 4 && preg_match('/[\\x80-\\xFF]/', $sizeBytes) !== 1 ? self::syncsafe($sizeBytes) : self::uint32($sizeBytes);
+
+        return ['id' => $id, 'size' => $size, 'flags' => ord($bytes[9])];
+    }
+
+    /**
+     * The offset of the first FF 00 between offset 10 and the tag's end, read
+     * straight from the stream in chunks; null when there is none, in which case
+     * unsynchronisation changed nothing (AC19). The stream is left at offset 10.
+     *
+     * @param  resource  $stream
+     */
+    private function unsynchronisedBytesAt($stream, int $tagEnd): ?int
+    {
+        $position = self::HEADER_LENGTH;
+        $carry = '';
+        while ($position < $tagEnd) {
+            $wanted = min(self::CHUNK, $tagEnd - $position);
+            $chunk = fseek($stream, $position) === 0 ? Read::upTo($stream, max(1, $wanted)) : '';
+            if (strlen($chunk) !== $wanted) {
+                throw new ContainerException(sprintf('the ID3 tag could not be read at offset %d to look for unsynchronised bytes', $position));
+            }
+            $found = strpos($carry.$chunk, "\\xFF\\x00");
+            if ($found !== false) {
+                fseek($stream, self::HEADER_LENGTH);
+
+                return $position - strlen($carry) + $found;
+            }
+            $carry = substr($chunk, -1);
+            $position += strlen($chunk);
+        }
+        fseek($stream, self::HEADER_LENGTH);
+
+        return null;
+    }
+
+    /** The length of an extended header, which is skipped (v2.4: syncsafe and counting itself; v2.3: plain, not counting its 4-byte size). */
+    private function extendedHeaderLength(StreamReader $reader, int $version, int $tagEnd): int
+    {
+        $sizeBytes = $reader->readExactly(4, self::HEADER_LENGTH, 'the extended header size');
+        $length = $version === 4 ? self::syncsafe($sizeBytes) : 4 + self::uint32($sizeBytes);
+        if ($length < 4 || self::HEADER_LENGTH + $length > $tagEnd) {
+            throw new ContainerException(sprintf('the ID3 extended header declares %d bytes, which do not fit the tag ending at %d', $length, $tagEnd));
+        }
+        $reader->skip($length - 4, self::HEADER_LENGTH);
+
+        return $length;
+    }
+
+    /**
+     * Whether a C2PA GEOB's header and MIME type lie between offset 10 and
+     * $end, read with the walk's own frame reading, never a frame's object (AC5).
+     */
+    private function scanForStore(StreamReader $reader, int $version, int $flags, int $end): bool
+    {
+        try {
+            $offset = self::HEADER_LENGTH;
+            if (($flags & 0x40) !== 0) {
+                $offset += $this->extendedHeaderLength($reader, $version, $end);   // as the walk does (amendment 3)
+            }
+            $frames = 0;
+            while ($offset + self::HEADER_LENGTH <= $end && ++$frames <= self::MAX_FRAMES) {
+                $frameHeader = $reader->readExactly(self::HEADER_LENGTH, $offset, 'the frame header');
+                if ($frameHeader[0] === "\\0") {
+                    return false;
+                }
+                ['id' => $id, 'size' => $size] = self::frameHeader($frameHeader, $version, $offset);
+                $prefix = $reader->readExactly(max(0, min($size, self::FIRST_READ, $end - $offset - self::HEADER_LENGTH)), $offset, 'the frame');
+                if ($id === 'GEOB' && in_array(self::mime($prefix), self::MIME_TYPES, true)) {
+                    return true;
+                }
+                $next = $offset + self::HEADER_LENGTH + $size;
+                if ($next >= $end) {
+                    return false;
+                }
+                $reader->skip($size - strlen($prefix), $offset);
+                $offset = $next;
+            }
+        } catch (ContainerException) {
+            return false;
+        }
+
+        return false;
+    }
+
+    /** The MIME type of a GEOB body: ISO-8859-1 after the encoding byte, up to its NUL; null when it does not end inside $body. */
+    private static function mime(string $body): ?string
+    {
+        if (strlen($body) < 2) {
+            return null;   // no MIME type can end here (AC21: strpos() past the end raised a ValueError)
+        }
+        $end = strpos($body, "\\0", 1);
+
+        return $end === false ? null : substr($body, 1, $end - 1);
+    }
+
+    /**
+     * Where the object begins in a GEOB body: after the MIME type and the file name
+     * and description in the body's text encoding (0 and 3: one NUL; 1 and 2: two,
+     * on a two-byte boundary from the field's start). Null when the text fields have
+     * not ended within $body; $scan then holds where to go on, so that a body read
+     * in chunks is searched once in all (amendment 3).
+     *
+     * @param  array{from: int, field: int}  $scan  the next field's start and how many fields have ended
+     */
+    private static function objectStart(string $body, int $offset, array &$scan): ?int
+    {
+        $encoding = ord($body[0]);
+        if ($encoding > 3) {
+            throw new ContainerException(sprintf('the C2PA GEOB frame at offset %d has text encoding %d; only 0 to 3 exist', $offset, $encoding));
+        }
+        $wide = $encoding === 1 || $encoding === 2;
+        while ($scan['field'] < 2) {
+            $end = $wide ? self::wideNul($body, $scan['from']) : strpos($body, "\\0", $scan['from']);
+            if ($end === false) {
+                return null;
+            }
+            $scan = ['from' => $end + ($wide ? 2 : 1), 'field' => $scan['field'] + 1];
+        }
+
+        return $scan['from'];
+    }
+
+    /** The first two-byte NUL at or after $from, on a two-byte boundary from $from: strpos(), then the boundary checked. */
+    private static function wideNul(string $body, int $from): int|false
+    {
+        $at = $from;
+        while (($at = strpos($body, "\\0\\0", $at)) !== false) {
+            if (($at - $from) % 2 === 0) {
+                return $at;
+            }
+            $at++;
+        }
+
+        return false;
+    }
+
+    private static function syncsafe(string $bytes): int
+    {
+        $value = 0;
+        foreach (str_split($bytes) as $byte) {
+            $value = ($value << 7) | (ord($byte) & 0x7F);
+        }
+
+        return $value;
+    }
+
+    private static function uint32(string $bytes): int
+    {
+        /** @var array{1: int} $value */
+        $value = unpack('N', $bytes);
+
+        return $value[1];
     }
 }
 `,"src/Container/IsobmffManifestStoreExtractor.php":`<?php
@@ -1714,6 +2374,21 @@ final readonly class IsobmffManifestStoreExtractor
      */
     public function extract($stream): ?ManifestStoreBytes
     {
+        // whether the store had been reached when a fault was thrown (SPEC-026 amendment 3,
+        // AC10): a fault before it is not a fault in a manifest (SPEC-013 amendment 18)
+        $reached = false;
+        try {
+            return $this->walk($stream, $reached);
+        } catch (ContainerException $e) {
+            throw $e->storeReached === $reached ? $e : new ContainerException($e->getMessage(), previous: $e, storeReached: $reached);
+        }
+    }
+
+    /**
+     * @param  resource  $stream
+     */
+    private function walk($stream, bool &$reached): ?ManifestStoreBytes
+    {
         $reader = new StreamReader($stream, 'box');
         $end = $reader->end();
 
@@ -1731,7 +2406,14 @@ final readonly class IsobmffManifestStoreExtractor
                     $offset,
                 ));
             }
-            [$size, $header, $type] = $this->boxHeader($reader, $offset, $end);
+            try {
+                [$size, $header, $type] = $this->boxHeader($reader, $offset, $end);
+            } catch (ContainerException $e) {
+                // a C2PA box whose size is broken still reached the store (SPEC-026 amendment 3)
+                $reached = $reached || $this->carriesC2paUuid($stream, $offset, $end);
+
+                throw $e;
+            }
             $read = $header;   // bytes of this box already consumed
 
             $isC2pa = false;
@@ -1748,6 +2430,7 @@ final readonly class IsobmffManifestStoreExtractor
             }
 
             if ($isC2pa) {
+                $reached = true;   // a C2PA uuid box: the store is reached (amendment 3)
                 if ($storeOffset !== null) {
                     throw new ContainerException(sprintf(
                         'two C2PA uuid boxes at offsets %d and %d; a file carries at most one manifest store',
@@ -1823,6 +2506,30 @@ final readonly class IsobmffManifestStoreExtractor
         }
 
         return [$size, $header, $type];
+    }
+
+    /**
+     * Whether the box at $offset is a \`uuid\` box carrying the C2PA UUID, its 16 bytes
+     * inside the file: read straight from the stream, for a box whose size field has
+     * already failed (SPEC-026 amendment 3, AC10).
+     *
+     * @param  resource  $stream
+     */
+    private function carriesC2paUuid($stream, int $offset, int $end): bool
+    {
+        if ($offset + 8 > $end || fseek($stream, $offset) !== 0) {
+            return false;
+        }
+        $head = Read::upTo($stream, 8);   // SPEC-050: every read through Read::upTo (step 245)
+        if (strlen($head) !== 8 || substr($head, 4, 4) !== self::TYPE_UUID) {
+            return false;
+        }
+        $at = $offset + (substr($head, 0, 4) === "\\0\\0\\0\\1" ? self::LARGE_BOX_HEADER_LENGTH : self::BOX_HEADER_LENGTH);
+        if ($at + 16 > $end || fseek($stream, $at) !== 0) {
+            return false;
+        }
+
+        return Read::upTo($stream, 16) === self::C2PA_UUID;
     }
 
     /** The JUMBF bytes of a C2PA box, after its twenty-one bytes of preamble. */
@@ -1957,6 +2664,21 @@ final readonly class JpegManifestStoreExtractor
      */
     public function extract($stream): ?ManifestStoreBytes
     {
+        // whether the store had been reached when a fault was thrown (SPEC-001 amendment 5, AC17): a fault before
+        // it is not a fault in a manifest (SPEC-013 amendment 18)
+        $reached = false;
+        try {
+            return $this->walk($stream, $reached);
+        } catch (ContainerException $e) {
+            throw $e->storeReached === $reached ? $e : new ContainerException($e->getMessage(), previous: $e, storeReached: $reached);
+        }
+    }
+
+    /**
+     * @param  resource  $stream
+     */
+    private function walk($stream, bool &$reached): ?ManifestStoreBytes
+    {
         $reader = new StreamReader($stream, 'segment');
         $soi = $reader->readExactly(2, 0, 'SOI');
         if ($soi !== "\\xFF\\xD8") {
@@ -2010,6 +2732,7 @@ final readonly class JpegManifestStoreExtractor
 
                 continue;
             }
+            $reached = true;   // an APP11 JUMBF piece: the store is reached (amendment 5)
 
             /** @var array{en: int, z: int, lbox: int} $fields */
             $fields = unpack('nen/Nz/Nlbox', $header, 2);
@@ -2245,6 +2968,21 @@ final readonly class PngManifestStoreExtractor
      */
     public function extract($stream): ?ManifestStoreBytes
     {
+        // whether the store had been reached when a fault was thrown (SPEC-002 amendment 3, AC15): a fault before
+        // it is not a fault in a manifest (SPEC-013 amendment 18)
+        $reached = false;
+        try {
+            return $this->walk($stream, $reached);
+        } catch (ContainerException $e) {
+            throw $e->storeReached === $reached ? $e : new ContainerException($e->getMessage(), previous: $e, storeReached: $reached);
+        }
+    }
+
+    /**
+     * @param  resource  $stream
+     */
+    private function walk($stream, bool &$reached): ?ManifestStoreBytes
+    {
         $reader = new StreamReader($stream, 'chunk');
         $signature = $reader->readExactly(8, 0, 'the signature');
         if ($signature !== self::SIGNATURE) {
@@ -2281,6 +3019,7 @@ final readonly class PngManifestStoreExtractor
 
                 continue;
             }
+            $reached = true;   // a caBX chunk header: the store is reached (amendment 3)
 
             if ($storeOffset !== null) {
                 throw new ContainerException(sprintf(
@@ -2439,6 +3178,311 @@ final readonly class RemoteManifestDetector
         return $url;
     }
 }
+`,"src/Container/RiffManifestStoreExtractor.php":`<?php
+
+declare(strict_types=1);
+
+namespace Provemark\\C2paVerifier\\Container;
+
+use Provemark\\C2paVerifier\\Support\\Bytes;
+use Provemark\\C2paVerifier\\Support\\MemoryBudget;
+
+/**
+ * RIFF \`C2PA\` → manifest store bytes: the walk shared by every RIFF form this
+ * verifier reads (SPEC-003 for WebP, SPEC-055 for WAV; C2PA 2.4 §A.3.7 puts
+ * every RIFF form's store in the same chunk). The form type and its name are
+ * given by the caller.
+ *
+ * Strict about the \`C2PA\` chunk, as lenient as c2patool about the rest
+ * (SPEC-003 amendments 3 and 4). A header size below 4 is refused. One
+ * larger than the file is refused too, after a scan of the chunk headers
+ * that says whether the store was there; a smaller one ends the walk where
+ * the RIFF chunk ends, and the bytes after it are left to the data hash,
+ * which covers them. Where the RIFF chunk cannot hold another whole chunk
+ * other than \`C2PA\`, the walk stops, as c2patool's does.
+ * Every chunk but \`C2PA\` is skipped unread, its pad byte too, unchecked, and
+ * missing where the RIFF chunk ends. The one \`C2PA\` chunk is checked before
+ * its data is read (limit, minimum, overrun), then its LBox against the chunk
+ * length, then its own pad byte, which must be there and zero; the pad byte
+ * is not part of the store. The walk continues past it so that a second
+ * \`C2PA\` is seen and refused — c2patool takes the first silently; this
+ * verifier does not choose. Every fault says whether a \`C2PA\` chunk header
+ * had been read (\`ContainerException::$storeReached\`).
+ *
+ * @internal SPEC-025: not part of the public API. It may change, move or be
+ * removed in any release; the contract is the nine classes named in the README.
+ */
+final readonly class RiffManifestStoreExtractor
+{
+    // SPEC-024: 16 MiB, not 64. Measured in step 66 over 212 corpus stores: median
+    // 45 kB, p90 241 kB, largest ever met 3.36 MB. A store at this bound peaks at
+    // 38 MB (step 67b), which a 64 MB host survives; the old 64 MiB needed 132 MB and
+    // ended a 128 MB host with a fatal error. Same figure in SPEC-001 and SPEC-002.
+    public const DEFAULT_MAX_CHUNK_LENGTH = 16 * 1024 * 1024;
+
+    private const RIFF = 'RIFF';
+
+    private const TYPE_C2PA = 'C2PA';
+
+    /** RIFF (4) + size (4) + form type (4). */
+    private const HEADER_LENGTH = 12;
+
+    /** More top-level chunks than this is a fault, as ISOBMFF's boxes and ID3's frames (SPEC-003 amendment 5). */
+    public const MAX_CHUNKS = 4096;
+
+    /** LBox (4) + TBox (4): the least a JUMBF box can be. */
+    private const BOX_HEADER_LENGTH = 8;
+
+    /**
+     * @param  string  $form  the form type at offset 8, four bytes (\`WEBP\`)
+     * @param  string  $name  the format's name in messages (\`WebP\`)
+     */
+    public function __construct(
+        private string $form,
+        private string $name,
+        public int $maxChunkLength = self::DEFAULT_MAX_CHUNK_LENGTH,
+        private MemoryBudget $budget = new MemoryBudget,
+    ) {}
+
+    /**
+     * @param  resource  $stream  a readable, seekable stream positioned at 0
+     * @return ManifestStoreBytes|null null when the file has no C2PA chunk (SPEC-003 AC2)
+     *
+     * @throws ContainerException on every malformed case
+     */
+    public function extract($stream): ?ManifestStoreBytes
+    {
+        $reader = new StreamReader($stream, 'chunk');
+        $header = $reader->readUpTo(self::HEADER_LENGTH);
+        if (strlen($header) < 4 || substr($header, 0, 4) !== self::RIFF) {
+            throw new ContainerException(sprintf(
+                'not a RIFF file: expected RIFF at offset 0, found %s',
+                Bytes::hex(substr($header, 0, 4)),
+            ), storeReached: false);
+        }
+        if (strlen($header) !== self::HEADER_LENGTH) {
+            throw new ContainerException(sprintf('unexpected end of file inside the %d-byte RIFF header', self::HEADER_LENGTH), storeReached: false);
+        }
+        $form = substr($header, 8, 4);
+        if ($form !== $this->form) {
+            throw new ContainerException(sprintf(
+                'not a %s: expected form type %s at offset 8, found %s',
+                $this->name,
+                $this->form,
+                Bytes::printable($form),
+            ), storeReached: false);
+        }
+
+        // The size field says where the RIFF chunk ends. A size that promises more
+        // than the file holds is a truncated file: one error naming both numbers,
+        // before any chunk is read (SPEC-003 AC5, AC16). A size that promises less
+        // is not the container's concern: the walk ends where the RIFF chunk ends,
+        // and the bytes after it are left to the data hash, which covers them
+        // (SPEC-003 amendment 3, AC17). The length comes from a seek, not a read.
+        /** @var array{1: int} $size */
+        $size = unpack('V', $header, 4);
+        if ($size[1] < 4) {
+            // a RIFF chunk too small for the form type it holds contradicts itself (SPEC-003 amendment 4)
+            throw new ContainerException(sprintf('RIFF size %d is smaller than its 4-byte form type', $size[1]), storeReached: false);
+        }
+        try {
+            $fileEnd = $reader->end();
+        } catch (ContainerException $e) {
+            // a stream that cannot be measured is a fault before any C2PA chunk (SPEC-003 AC18, step 217)
+            throw new ContainerException($e->getMessage(), previous: $e, storeReached: false);
+        }
+        if ($size[1] > $fileEnd - 8) {
+            // still a fault, but a file cut short after its C2PA chunk header is a manifest that
+            // failed, not a file without one: scan the chunk headers for it (SPEC-003 amendment 4)
+            throw new ContainerException(sprintf(
+                'RIFF size %d in the header, %d bytes in the file after it',
+                $size[1],
+                $fileEnd - 8,
+            ), storeReached: $this->reachesStore($reader, $fileEnd));
+        }
+        $end = 8 + $size[1];
+        $where = $end === $fileEnd ? 'the file' : 'the RIFF chunk';
+
+        $store = null;
+        $storeOffset = null;
+        // whether a C2PA chunk header has been read: a fault before it is not a fault
+        // in a manifest (SPEC-003 AC18, SPEC-013 amendment 16)
+        $reached = false;
+
+        // The walk's own faults, and StreamReader's inside it, are thrown with the
+        // default flag; this one place sets it from what the walk had seen.
+        try {
+            $this->walk($reader, $end, $where, $store, $storeOffset, $reached);
+        } catch (ContainerException $e) {
+            throw $e->storeReached === $reached ? $e : new ContainerException($e->getMessage(), previous: $e, storeReached: $reached);
+        }
+
+        if ($store === null || $storeOffset === null) {
+            return null;
+        }
+
+        return new ManifestStoreBytes($store, [['start' => $storeOffset, 'length' => 8 + strlen($store)]]);   // FourCC, size, data; the pad byte is hashed (step 23)
+    }
+
+    /**
+     * The chunks from offset 12 to $end, the end of the RIFF chunk.
+     *
+     * @param-out string|null $store
+     * @param-out int|null $storeOffset
+     */
+    private function walk(StreamReader $reader, int $end, string $where, ?string &$store, ?int &$storeOffset, bool &$reached): void
+    {
+        $chunks = 0;
+        while ($reader->tell() < $end) {
+            $offset = $reader->tell();
+            if (++$chunks > self::MAX_CHUNKS) {
+                throw new ContainerException(sprintf('more than %d chunks in the RIFF chunk (offset %d)', self::MAX_CHUNKS, $offset));
+            }
+            if ($end - $offset < 8) {
+                // the RIFF chunk cannot hold another chunk: what remains is left to the data
+                // hash, as c2patool leaves it (SPEC-003 amendment 4)
+                return;
+            }
+            $chunkHeader = $reader->readExactly(8, $offset, 'the chunk header');
+            /** @var array{type: string, length: int} $chunk */
+            $chunk = unpack('a4type/Vlength', $chunkHeader);
+            $padded = $chunk['length'] & 1;
+            $isStore = $chunk['type'] === self::TYPE_C2PA;
+            $reached = $reached || $isStore;
+
+            if ($offset + 8 + $chunk['length'] > $end) {
+                if (! $isStore) {
+                    // a chunk other than C2PA that runs past the end: the walk stops here, as
+                    // c2patool's does, and the data hash judges the rest (SPEC-003 amendment 4)
+                    return;
+                }
+                throw new ContainerException(sprintf(
+                    '%s chunk at offset %d declares %d bytes, past the end of %s at %d',
+                    Bytes::printable($chunk['type']),
+                    $offset,
+                    $chunk['length'],
+                    $where,
+                    $end,
+                ));
+            }
+
+            if (! $isStore) {
+                // Where the chunk sits is not this layer's concern (SPEC-003 AC8). Its
+                // pad byte is skipped unchecked, and may be missing where the RIFF chunk
+                // ends, as c2patool reads it (SPEC-003 amendment 3, AC12).
+                $reader->skip($chunk['length'], $offset);
+                if ($padded === 1 && $offset + 8 + $chunk['length'] < $end) {
+                    $reader->skip(1, $offset);
+                }
+
+                continue;
+            }
+
+            if ($storeOffset !== null) {
+                throw new ContainerException(sprintf(
+                    'two C2PA chunks at offsets %d and %d; %s %s carries at most one manifest store',
+                    $storeOffset,
+                    $offset,
+                    preg_match('/\\A[AEIOU]/', $this->name) === 1 ? 'an' : 'a',   // "an AVI", "a WAV" (SPEC-058 AC5)
+                    $this->name,
+                ));
+            }
+            if ($chunk['length'] <= $this->maxChunkLength && ! $this->budget->allows($chunk['length'])) {
+                throw new ContainerException(sprintf(
+                    'C2PA chunk length %d does not fit this host: %d bytes of memory remain. '
+                    .'The file was not examined, so this is not a judgement about it (offset %d)',
+                    $chunk['length'],
+                    $this->budget->remainingBytes() ?? 0,
+                    $offset,
+                ));
+            }
+            if ($chunk['length'] > $this->maxChunkLength) {
+                throw new ContainerException(sprintf(
+                    'C2PA chunk length %d exceeds the limit of %d bytes (offset %d)',
+                    $chunk['length'],
+                    $this->maxChunkLength,
+                    $offset,
+                ));
+            }
+            if ($chunk['length'] < self::BOX_HEADER_LENGTH) {
+                throw new ContainerException(sprintf(
+                    'C2PA chunk length %d is shorter than the %d-byte box header (offset %d)',
+                    $chunk['length'],
+                    self::BOX_HEADER_LENGTH,
+                    $offset,
+                ));
+            }
+
+            // LBox first, on its own: the first four bytes of the data, big-endian
+            // inside the box although RIFF is little-endian around it (SPEC-003 AC9, AC10).
+            $lBoxBytes = $reader->readExactly(4, $offset, 'LBox');
+            /** @var array{1: int} $lBox */
+            $lBox = unpack('N', $lBoxBytes);
+            if ($lBox[1] !== $chunk['length']) {
+                throw new ContainerException(sprintf(
+                    'LBox %d differs from the chunk length %d (C2PA chunk at offset %d)',
+                    $lBox[1],
+                    $chunk['length'],
+                    $offset,
+                ));
+            }
+
+            $store = $lBoxBytes.$reader->readExactly($chunk['length'] - 4, $offset, 'the data');
+            $storeOffset = $offset;
+
+            if ($padded === 1) {
+                $this->readPad($reader, $offset + 8 + $chunk['length'], $end, $where);
+            }
+        }
+    }
+
+    /**
+     * Whether a C2PA chunk header lies between offset 12 and $fileEnd, read
+     * header by header and never a chunk's data: for a file whose RIFF size
+     * promises more than it holds (SPEC-003 amendment 4). Stops at the first
+     * chunk that does not fit.
+     */
+    private function reachesStore(StreamReader $reader, int $fileEnd): bool
+    {
+        try {
+            $offset = $reader->tell();
+            $chunks = 0;
+            while ($fileEnd - $offset >= 8 && ++$chunks <= self::MAX_CHUNKS) {
+                /** @var array{type: string, length: int} $chunk */
+                $chunk = unpack('a4type/Vlength', $reader->readExactly(8, $offset, 'the chunk header'));
+                if ($chunk['type'] === self::TYPE_C2PA) {
+                    return true;
+                }
+                $next = $offset + 8 + $chunk['length'] + ($chunk['length'] & 1);
+                if ($next >= $fileEnd) {
+                    return false;
+                }
+                $reader->skip($next - $offset - 8, $offset);
+                $offset = $next;
+            }
+        } catch (ContainerException) {
+            return false;
+        }
+
+        return false;
+    }
+
+    /**
+     * The pad byte after the odd-length C2PA chunk: present inside the RIFF
+     * chunk and zero, as RIFF requires (SPEC-003 AC12, narrowed to the store's
+     * own chunk by amendment 3). Not part of any chunk's data.
+     */
+    private function readPad(StreamReader $reader, int $offset, int $end, string $where): void
+    {
+        $pad = $offset < $end ? $reader->readUpTo(1) : '';
+        if ($pad === '') {
+            throw new ContainerException(sprintf('pad byte expected at offset %d, but %s ends there', $offset, $where));
+        }
+        if ($pad !== "\\0") {
+            throw new ContainerException(sprintf('pad byte at offset %d is %s, not 00', $offset, Bytes::hex($pad)));
+        }
+    }
+}
 `,"src/Container/StreamReader.php":`<?php
 
 declare(strict_types=1);
@@ -2566,54 +3610,78 @@ final readonly class StreamReader
         return $end;
     }
 }
+`,"src/Container/WavManifestStoreExtractor.php":`<?php
+
+declare(strict_types=1);
+
+namespace Provemark\\C2paVerifier\\Container;
+
+use Provemark\\C2paVerifier\\Support\\MemoryBudget;
+
+/**
+ * WAV RIFF \`C2PA\` → manifest store bytes (SPEC-055; C2PA 2.4 §A.3.7).
+ *
+ * SPEC-003's walk with the form type \`WAVE\`: the same chunk, the same
+ * checks, the same bounds. \`fmt \` and \`data\` are not required or read; a
+ * \`C2PA\` nested in a \`LIST\` chunk is not looked for, as in c2patool.
+ *
+ * @internal SPEC-025: not part of the public API. It may change, move or be
+ * removed in any release; the contract is the nine classes named in the README.
+ */
+final readonly class WavManifestStoreExtractor
+{
+    public const DEFAULT_MAX_CHUNK_LENGTH = RiffManifestStoreExtractor::DEFAULT_MAX_CHUNK_LENGTH;
+
+    private RiffManifestStoreExtractor $riff;
+
+    public function __construct(
+        public int $maxChunkLength = self::DEFAULT_MAX_CHUNK_LENGTH,
+        MemoryBudget $budget = new MemoryBudget,
+    ) {
+        $this->riff = new RiffManifestStoreExtractor('WAVE', 'WAV', $maxChunkLength, $budget);
+    }
+
+    /**
+     * @param  resource  $stream  a readable, seekable stream positioned at 0
+     * @return ManifestStoreBytes|null null when the WAV has no top-level C2PA chunk (AC2, AC15)
+     *
+     * @throws ContainerException on every malformed case
+     */
+    public function extract($stream): ?ManifestStoreBytes
+    {
+        return $this->riff->extract($stream);
+    }
+}
 `,"src/Container/WebpManifestStoreExtractor.php":`<?php
 
 declare(strict_types=1);
 
 namespace Provemark\\C2paVerifier\\Container;
 
-use Provemark\\C2paVerifier\\Support\\Bytes;
 use Provemark\\C2paVerifier\\Support\\MemoryBudget;
 
 /**
- * WebP RIFF \`C2PA\` → manifest store bytes (SPEC-003; C2PA 2.4 §A.3).
+ * WebP RIFF \`C2PA\` → manifest store bytes (SPEC-003; C2PA 2.4 §A.3.7).
  *
- * Reads the twelve-byte header, checks the RIFF size against the file
- * length before anything else, then walks the chunks to that end. Every
- * chunk but \`C2PA\` is skipped unread; after an odd-length chunk the pad
- * byte is read and must be zero. The one \`C2PA\` chunk is checked before its
- * data is read (limit, minimum, overrun), then its LBox against the chunk
- * length; the pad byte is not part of the store. The walk continues past
- * it so that a second \`C2PA\` is seen and refused — c2patool takes the
- * first silently; this verifier does not choose.
+ * The walk is \`RiffManifestStoreExtractor\`'s, shared with the other RIFF
+ * forms since step 206; this class gives it the form type \`WEBP\` and keeps
+ * the name, constructor and limit SPEC-003 describes.
  *
  * @internal SPEC-025: not part of the public API. It may change, move or be
  * removed in any release; the contract is the nine classes named in the README.
  */
 final readonly class WebpManifestStoreExtractor
 {
-    // SPEC-024: 16 MiB, not 64. Measured in step 66 over 212 corpus stores: median
-    // 45 kB, p90 241 kB, largest ever met 3.36 MB. A store at this bound peaks at
-    // 38 MB (step 67b), which a 64 MB host survives; the old 64 MiB needed 132 MB and
-    // ended a 128 MB host with a fatal error. Same figure in SPEC-001 and SPEC-002.
-    public const DEFAULT_MAX_CHUNK_LENGTH = 16 * 1024 * 1024;
+    public const DEFAULT_MAX_CHUNK_LENGTH = RiffManifestStoreExtractor::DEFAULT_MAX_CHUNK_LENGTH;
 
-    private const RIFF = 'RIFF';
-
-    private const FORM_WEBP = 'WEBP';
-
-    private const TYPE_C2PA = 'C2PA';
-
-    /** RIFF (4) + size (4) + form type (4). */
-    private const HEADER_LENGTH = 12;
-
-    /** LBox (4) + TBox (4): the least a JUMBF box can be. */
-    private const BOX_HEADER_LENGTH = 8;
+    private RiffManifestStoreExtractor $riff;
 
     public function __construct(
         public int $maxChunkLength = self::DEFAULT_MAX_CHUNK_LENGTH,
-        private MemoryBudget $budget = new MemoryBudget,
-    ) {}
+        MemoryBudget $budget = new MemoryBudget,
+    ) {
+        $this->riff = new RiffManifestStoreExtractor('WEBP', 'WebP', $maxChunkLength, $budget);
+    }
 
     /**
      * @param  resource  $stream  a readable, seekable stream positioned at 0
@@ -2623,139 +3691,7 @@ final readonly class WebpManifestStoreExtractor
      */
     public function extract($stream): ?ManifestStoreBytes
     {
-        $reader = new StreamReader($stream, 'chunk');
-        $header = $reader->readUpTo(self::HEADER_LENGTH);
-        if (strlen($header) < 4 || substr($header, 0, 4) !== self::RIFF) {
-            throw new ContainerException(sprintf(
-                'not a RIFF file: expected RIFF at offset 0, found %s',
-                Bytes::hex(substr($header, 0, 4)),
-            ));
-        }
-        if (strlen($header) !== self::HEADER_LENGTH) {
-            throw new ContainerException(sprintf('unexpected end of file inside the %d-byte RIFF header', self::HEADER_LENGTH));
-        }
-        $form = substr($header, 8, 4);
-        if ($form !== self::FORM_WEBP) {
-            throw new ContainerException(sprintf(
-                'not a WebP: expected form type WEBP at offset 8, found %s',
-                Bytes::printable($form),
-            ));
-        }
-
-        // The size field promises the file length minus 8: check it first, so
-        // a truncated or padded file is one error naming both numbers (AC5,
-        // AC16). The length comes from a seek, not a read.
-        /** @var array{1: int} $size */
-        $size = unpack('V', $header, 4);
-        $end = $reader->end();
-        if ($size[1] !== $end - 8) {
-            throw new ContainerException(sprintf(
-                'RIFF size %d in the header, %d bytes in the file after it',
-                $size[1],
-                $end - 8,
-            ));
-        }
-
-        $store = null;
-        $storeOffset = null;
-
-        while ($reader->tell() < $end) {
-            $offset = $reader->tell();
-            $chunkHeader = $reader->readExactly(8, $offset, 'the chunk header');
-            /** @var array{type: string, length: int} $chunk */
-            $chunk = unpack('a4type/Vlength', $chunkHeader);
-            $padded = $chunk['length'] & 1;
-
-            if ($offset + 8 + $chunk['length'] > $end) {
-                throw new ContainerException(sprintf(
-                    '%s chunk at offset %d declares %d bytes, past the end of the file at %d',
-                    Bytes::printable($chunk['type']),
-                    $offset,
-                    $chunk['length'],
-                    $end,
-                ));
-            }
-
-            if ($chunk['type'] !== self::TYPE_C2PA) {
-                // Where the chunk sits is not this layer's concern (AC8).
-                $reader->skip($chunk['length'], $offset);
-            } else {
-                if ($storeOffset !== null) {
-                    throw new ContainerException(sprintf(
-                        'two C2PA chunks at offsets %d and %d; a WebP carries at most one manifest store',
-                        $storeOffset,
-                        $offset,
-                    ));
-                }
-                if ($chunk['length'] <= $this->maxChunkLength && ! $this->budget->allows($chunk['length'])) {
-                    throw new ContainerException(sprintf(
-                        'C2PA chunk length %d does not fit this host: %d bytes of memory remain. '
-                        .'The file was not examined, so this is not a judgement about it (offset %d)',
-                        $chunk['length'],
-                        $this->budget->remainingBytes() ?? 0,
-                        $offset,
-                    ));
-                }
-                if ($chunk['length'] > $this->maxChunkLength) {
-                    throw new ContainerException(sprintf(
-                        'C2PA chunk length %d exceeds the limit of %d bytes (offset %d)',
-                        $chunk['length'],
-                        $this->maxChunkLength,
-                        $offset,
-                    ));
-                }
-                if ($chunk['length'] < self::BOX_HEADER_LENGTH) {
-                    throw new ContainerException(sprintf(
-                        'C2PA chunk length %d is shorter than the %d-byte box header (offset %d)',
-                        $chunk['length'],
-                        self::BOX_HEADER_LENGTH,
-                        $offset,
-                    ));
-                }
-
-                // LBox first, on its own: the first four bytes of the data, big-endian
-                // inside the box although RIFF is little-endian around it (AC9, AC10).
-                $lBoxBytes = $reader->readExactly(4, $offset, 'LBox');
-                /** @var array{1: int} $lBox */
-                $lBox = unpack('N', $lBoxBytes);
-                if ($lBox[1] !== $chunk['length']) {
-                    throw new ContainerException(sprintf(
-                        'LBox %d differs from the chunk length %d (C2PA chunk at offset %d)',
-                        $lBox[1],
-                        $chunk['length'],
-                        $offset,
-                    ));
-                }
-
-                $store = $lBoxBytes.$reader->readExactly($chunk['length'] - 4, $offset, 'the data');
-                $storeOffset = $offset;
-            }
-
-            if ($padded === 1) {
-                $this->readPad($reader, $offset + 8 + $chunk['length']);
-            }
-        }
-
-        if ($store === null || $storeOffset === null) {
-            return null;
-        }
-
-        return new ManifestStoreBytes($store, [['start' => $storeOffset, 'length' => 8 + strlen($store)]]);   // FourCC, size, data; the pad byte is hashed (step 23)
-    }
-
-    /**
-     * The pad byte after an odd-length chunk: present and zero, as RIFF
-     * requires (AC12). Not part of any chunk's data.
-     */
-    private function readPad(StreamReader $reader, int $offset): void
-    {
-        $pad = $reader->readUpTo(1);
-        if ($pad === '') {
-            throw new ContainerException(sprintf('pad byte expected at offset %d, but the file ends there', $offset));
-        }
-        if ($pad !== "\\0") {
-            throw new ContainerException(sprintf('pad byte at offset %d is %s, not 00', $offset, Bytes::hex($pad)));
-        }
+        return $this->riff->extract($stream);
     }
 }
 `,"src/Cose/ClaimSignatureCheck.php":`<?php
@@ -3363,6 +4299,78 @@ final readonly class PublicKey
         return $raw;
     }
 
+    /**
+     * The same RSA public key read as rsaEncryption (SPEC-009 AC12): an id-RSASSA-PSS key's
+     * SubjectPublicKeyInfo with its algorithm identifier replaced and its key bits unchanged.
+     * PHP gives no modulus for an RSA-PSS key and refuses raw RSA on it; read this way, the
+     * EMSA-PSS check with the salt RFC 8230 §2 fixes can run on it.
+     *
+     * @throws CoseException when the key is not RSA-PSS or its SubjectPublicKeyInfo is not as OpenSSL writes it
+     */
+    public function asRsaEncryption(): \\OpenSSLAsymmetricKey
+    {
+        if ($this->kind !== self::KIND_RSA_PSS) {
+            throw new CoseException(sprintf('only an RSA-PSS key is read as rsaEncryption, not an %s', $this->describe()), StatusCode::SigningCredentialInvalid);
+        }
+        // SubjectPublicKeyInfo ::= SEQUENCE { algorithm AlgorithmIdentifier, subjectPublicKey BIT STRING }
+        [$outerLength, $at] = self::header($this->spki, 0, 0x30);
+        if ($at + $outerLength !== strlen($this->spki)) {
+            throw new CoseException('the RSA-PSS SubjectPublicKeyInfo does not end where its length says', StatusCode::SigningCredentialInvalid);
+        }
+        [$algorithmLength, $algorithmAt] = self::header($this->spki, $at, 0x30);
+        $bitsAt = $algorithmAt + $algorithmLength;
+        [$bitsLength, $bitsContent] = self::header($this->spki, $bitsAt, 0x03);
+        if ($bitsContent + $bitsLength !== strlen($this->spki)) {
+            throw new CoseException('the RSA-PSS SubjectPublicKeyInfo holds more than its algorithm and key', StatusCode::SigningCredentialInvalid);
+        }
+        $body = "\\x30\\x0d".self::OID_RSA."\\x05\\x00".substr($this->spki, $bitsAt);
+        $der = "\\x30".self::length(strlen($body)).$body;
+        $pem = "-----BEGIN PUBLIC KEY-----\\n".chunk_split(base64_encode($der), 64, "\\n")."-----END PUBLIC KEY-----\\n";
+        $key = OpenSsl::quiet(static fn () => openssl_pkey_get_public($pem));
+        $details = $key === false ? false : OpenSsl::quiet(static fn () => openssl_pkey_get_details($key));
+        if ($key === false || $details === false || $details['type'] !== OPENSSL_KEYTYPE_RSA || $details['bits'] !== $this->bits) {
+            throw new CoseException('the RSA-PSS key cannot be read as an RSA key of the same size', StatusCode::SigningCredentialInvalid);
+        }
+
+        return $key;
+    }
+
+    /**
+     * The tag at $at must be $tag; returns its content length and where the content starts.
+     *
+     * @return array{int, int}
+     */
+    private static function header(string $der, int $at, int $tag): array
+    {
+        if (! isset($der[$at + 1]) || ord($der[$at]) !== $tag) {
+            throw new CoseException(sprintf('the RSA-PSS SubjectPublicKeyInfo has no tag 0x%02x at offset %d', $tag, $at), StatusCode::SigningCredentialInvalid);
+        }
+        $first = ord($der[$at + 1]);
+        if ($first < 0x80) {
+            return [$first, $at + 2];
+        }
+        $count = $first & 0x7F;
+        if ($count < 1 || $count > 2 || ! isset($der[$at + 1 + $count])) {
+            throw new CoseException(sprintf('the RSA-PSS SubjectPublicKeyInfo has a length of %d bytes at offset %d', $count, $at), StatusCode::SigningCredentialInvalid);
+        }
+        $length = 0;
+        for ($i = 0; $i < $count; $i++) {
+            $length = ($length << 8) | ord($der[$at + 2 + $i]);
+        }
+
+        return [$length, $at + 2 + $count];
+    }
+
+    /** A DER length of at most two bytes: an RSA key of up to 16,384 bits fits (SPEC-009). */
+    private static function length(int $n): string
+    {
+        if ($n < 0 || $n > 0xFFFF) {
+            throw new CoseException(sprintf('an RSA SubjectPublicKeyInfo of %d bytes is beyond what this verifier reads', $n), StatusCode::SigningCredentialInvalid);
+        }
+
+        return $n < 0x80 ? chr($n) : ($n < 0x100 ? "\\x81".chr($n) : "\\x82".chr(($n >> 8) & 0xFF).chr($n & 0xFF));
+    }
+
     public function describe(): string
     {
         return match ($this->kind) {
@@ -3567,9 +4575,12 @@ final readonly class SignatureVerifier
     private function rsaPss(string $message, string $signature, PublicKey $key, string $hash): bool
     {
         if ($key->kind === PublicKey::KIND_RSA_PSS) {
-            // OpenSSL performs PSS itself for this key type, with the key's own
-            // parameters, and answers −1 when they do not match the hash asked.
-            return $this->opensslVerify($message, $signature, $key, self::OPENSSL_ALGOS[$hash]);
+            // Both must hold (SPEC-009 AC12). OpenSSL performs PSS for this key type with the
+            // key's own parameters, and answers −1 when they do not match the hash asked; it
+            // accepts any salt length. RFC 8230 §2 fixes the salt at the hash length, which the
+            // EMSA-PSS check enforces, run on the same key read as rsaEncryption.
+            return $this->opensslVerify($message, $signature, $key, self::OPENSSL_ALGOS[$hash])
+                && RsaPss::verify($message, $signature, $key->asRsaEncryption(), $hash, $key->bits);
         }
 
         // An ordinary RSA key: openssl_verify would do PKCS#1 v1.5. Never that.
@@ -4150,9 +5161,11 @@ final readonly class BmffHashCheck
     /** Which BMFF binding this manifest carries, newest first, or null for none. */
     public static function labelOf(Manifest $manifest): ?string
     {
-        foreach (self::LABELS as $label) {
-            if (array_key_exists($label, $manifest->assertions)) {
-                return $label;
+        foreach (self::LABELS as $kind) {
+            foreach (array_keys($manifest->assertions) as $label) {
+                if (HardBindings::baseLabel((string) $label) === $kind) {   // an instance label too (SPEC-012 amendment 9)
+                    return (string) $label;
+                }
             }
         }
 
@@ -4501,8 +5514,6 @@ final readonly class DataHashCheck
     private const ALGORITHMS = ['sha256' => 32, 'sha384' => 48, 'sha512' => 64];
 
     /** Hard-binding labels this verifier knows of but does not implement (M8 and later). */
-    private const OTHER_HARD_BINDINGS = ['c2pa.hash.bmff', 'c2pa.hash.boxes', 'c2pa.hash.collection.data'];
-
     public function __construct(
         private int $maxExclusions = self::DEFAULT_MAX_EXCLUSIONS,
         private int $chunkSize = self::DEFAULT_CHUNK_SIZE,
@@ -4519,15 +5530,16 @@ final readonly class DataHashCheck
         $bindings = [];
         foreach ($manifest->assertionStore->superboxes() as $box) {
             $label = $box->description->label;
-            if ($label === self::LABEL) {
+            $base = HardBindings::baseLabel($label);   // c2pa.hash.data__1 is a c2pa.hash.data (SPEC-012 amendment 9)
+            if ($base === self::LABEL) {
                 $bindings[] = $box;
-            } elseif (in_array($label, BmffHashCheck::LABELS, true)) {
+            } elseif (in_array($base, BmffHashCheck::LABELS, true)) {
                 // SPEC-027/029: these two are verified, by BmffHashCheck, and the Verifier
                 // routes a manifest that carries one there rather than here. Reaching this
                 // line means someone called this check directly with a BMFF binding, and
                 // saying "not supported" would be untrue since M8.
                 return [new ValidationStatus(StatusCode::GeneralError, sprintf('%s/c2pa.assertions/%s', $manifestUrl, $label), sprintf('the hard binding %s is verified by BmffHashCheck, not here; this check answers for %s alone', $label, self::LABEL))];
-            } elseif (self::isOtherHardBinding($label)) {
+            } elseif (HardBindings::isHardBinding($label)) {
                 return [new ValidationStatus(StatusCode::GeneralError, sprintf('%s/c2pa.assertions/%s', $manifestUrl, $label), sprintf('the hard binding %s is not supported yet: BMFF, box and collection hashes are M8 and later; only %s is verified today', $label, self::LABEL))];
             }
         }
@@ -4538,8 +5550,10 @@ final readonly class DataHashCheck
             return [new ValidationStatus(StatusCode::AssertionMultipleHardBindings, $manifestUrl, sprintf('the manifest has %d %s assertions (at offsets %s); a standard manifest has exactly one (C2PA 2.4 §15.10.1.2)', count($bindings), self::LABEL, implode(', ', array_map(static fn (Superbox $b): int => $b->offset, $bindings))))];
         }
 
-        $url = sprintf('%s/c2pa.assertions/%s', $manifestUrl, self::LABEL);
-        $data = $manifest->assertions[self::LABEL]->data;
+        // the label the box carries: c2pa.hash.data, or an instance of it (SPEC-012 amendment 9)
+        $label = $bindings[0]->description->label;
+        $url = sprintf('%s/c2pa.assertions/%s', $manifestUrl, $label);
+        $data = ($manifest->assertions[$label] ?? null)?->data;
         if (! is_array($data) || array_is_list($data)) {
             return [new ValidationStatus(StatusCode::AssertionDataHashMalformed, $url, sprintf('%s is not a CBOR map', self::LABEL))];
         }
@@ -4726,16 +5740,68 @@ final readonly class DataHashCheck
 
         return hash_final($context, true);
     }
+}
+`,"src/Hash/HardBindings.php":`<?php
 
-    private static function isOtherHardBinding(string $label): bool
+declare(strict_types=1);
+
+namespace Provemark\\C2paVerifier\\Hash;
+
+use Provemark\\C2paVerifier\\Jumbf\\Superbox;
+use Provemark\\C2paVerifier\\Manifest\\Manifest;
+
+/**
+ * Which assertions bind a manifest to its asset (SPEC-012 amendment 9). C2PA 2.4 §6.4
+ * labels a second assertion of a type with \`__1\`, a third with \`__2\`, so a hard binding
+ * is known by its base label; §15.10.1.2 allows exactly one of any kind.
+ *
+ * @internal SPEC-025: not part of the public API. It may change, move or be
+ * removed in any release; the contract is the nine classes named in the README.
+ */
+final class HardBindings
+{
+    /** A hard binding by its exact base label. */
+    private const EXACT = ['c2pa.hash.data'];
+
+    /** A hard binding by its base label, or one that continues it with a dot (\`c2pa.hash.bmff.v3\`). */
+    private const FAMILIES = ['c2pa.hash.bmff', 'c2pa.hash.boxes', 'c2pa.hash.collection.data'];
+
+    /** The label without its instance suffix: \`c2pa.hash.data__1\` is a \`c2pa.hash.data\` (§6.4). */
+    public static function baseLabel(string $label): string
     {
-        foreach (self::OTHER_HARD_BINDINGS as $prefix) {
-            if ($label === $prefix || str_starts_with($label, $prefix.'.')) {
+        return (string) preg_replace('/__\\d+\\z/', '', $label);
+    }
+
+    public static function isHardBinding(string $label): bool
+    {
+        $base = self::baseLabel($label);
+        if (in_array($base, self::EXACT, true)) {
+            return true;
+        }
+        foreach (self::FAMILIES as $family) {
+            if ($base === $family || str_starts_with($base, $family.'.')) {
                 return true;
             }
         }
 
         return false;
+    }
+
+    /**
+     * Every hard binding in the manifest's assertion store, box by box: two boxes under one
+     * label are two.
+     *
+     * @return list<Superbox> their boxes, in store order
+     */
+    public static function in(Manifest $manifest): array
+    {
+        return array_values(array_filter($manifest->assertionStore->superboxes(), static fn (Superbox $box): bool => self::isHardBinding($box->description->label)));
+    }
+
+    /** "c2pa.hash.data at 32831, c2pa.hash.data__1 at 33026": for an explanation. */
+    public static function describe(Superbox ...$boxes): string
+    {
+        return implode(', ', array_map(static fn (Superbox $box): string => sprintf('%s at %d', $box->description->label, $box->offset), $boxes));
     }
 }
 `,"src/Hash/HashException.php":`<?php
@@ -7488,6 +8554,10 @@ final readonly class ManifestStore
         if (is_array($value)) {
             return array_map(self::plain(...), $value);
         }
+        if (is_float($value) && ! is_finite($value)) {
+            // JSON has no NaN or infinity (RFC 8259 §6): named, so that the report still encodes (SPEC-007 AC15)
+            return is_nan($value) ? 'NaN' : ($value > 0 ? 'Infinity' : '-Infinity');
+        }
 
         return $value;
     }
@@ -7918,10 +8988,13 @@ namespace Provemark\\C2paVerifier\\Report;
  */
 final readonly class ValidationStatus
 {
+    /** The explanation, every byte sequence that is not UTF-8 replaced by \`?\` (SPEC-043 AC13). */
+    public string $explanation;
+
     public function __construct(
         public StatusCode $code,
         public string $url,
-        public string $explanation,
+        string $explanation,
         /**
          * The URI of the ingredient assertion this status was found under, when it was
          * found while walking an ingredient (SPEC-020): the report groups such statuses
@@ -7930,7 +9003,11 @@ final readonly class ValidationStatus
          * rendering below is unchanged.
          */
         public ?string $ingredientUri = null,
-    ) {}
+    ) {
+        // a check may quote what a certificate or a file carries (a damaged KeyUsage comes back
+        // from OpenSSL as raw bytes); a report that cannot be written as JSON is no report
+        $this->explanation = mb_check_encoding($explanation, 'UTF-8') ? $explanation : mb_scrub($explanation, 'UTF-8');
+    }
 
     /** @return array{code: string, url: string, explanation: string} */
     public function toArray(): array
@@ -9925,6 +11002,12 @@ final readonly class CertificateExtensions
             $value->is(TagClass::Universal, 28) => (string) mb_convert_encoding($value->contents, 'UTF-8', 'UTF-32BE'),
             default => $value->contents,
         };
+
+        if (! mb_check_encoding($text, 'UTF-8')) {
+            // SPEC-046 AC7: bytes that are not UTF-8 (a T61String or IA5String may hold them) are
+            // compared as they are; the /u fold below returns null on them, and every such name was ''
+            return $text;
+        }
 
         return mb_strtolower(trim((string) preg_replace('/\\s+/u', ' ', $text)));
     }
@@ -11945,19 +13028,23 @@ namespace Provemark\\C2paVerifier\\Verifier;
 
 use Provemark\\C2paVerifier\\Cbor\\CborBytes;
 use Provemark\\C2paVerifier\\Cbor\\CborException;
+use Provemark\\C2paVerifier\\Container\\AviManifestStoreExtractor;
 use Provemark\\C2paVerifier\\Container\\ContainerException;
 use Provemark\\C2paVerifier\\Container\\FormatDetector;
+use Provemark\\C2paVerifier\\Container\\Id3ManifestStoreExtractor;
 use Provemark\\C2paVerifier\\Container\\IsobmffManifestStoreExtractor;
 use Provemark\\C2paVerifier\\Container\\JpegManifestStoreExtractor;
 use Provemark\\C2paVerifier\\Container\\ManifestStoreBytes;
 use Provemark\\C2paVerifier\\Container\\PngManifestStoreExtractor;
 use Provemark\\C2paVerifier\\Container\\RemoteManifestDetector;
+use Provemark\\C2paVerifier\\Container\\WavManifestStoreExtractor;
 use Provemark\\C2paVerifier\\Container\\WebpManifestStoreExtractor;
 use Provemark\\C2paVerifier\\Cose\\ClaimSignatureCheck;
 use Provemark\\C2paVerifier\\Cose\\CoseException;
 use Provemark\\C2paVerifier\\Cose\\CoseSign1;
 use Provemark\\C2paVerifier\\Hash\\BmffHashCheck;
 use Provemark\\C2paVerifier\\Hash\\DataHashCheck;
+use Provemark\\C2paVerifier\\Hash\\HardBindings;
 use Provemark\\C2paVerifier\\Hash\\HashedUriCheck;
 use Provemark\\C2paVerifier\\Jumbf\\JumbfException;
 use Provemark\\C2paVerifier\\Jumbf\\JumbfParser;
@@ -12019,6 +13106,12 @@ final readonly class Verifier
         private ActionsCheck $actions = new ActionsCheck,
         private IngredientManifestCheck $ingredients = new IngredientManifestCheck,
         private UpdateManifestCheck $updateManifests = new UpdateManifestCheck,
+        // SPEC-055: last, so that a caller passing the others by position since 0.2 is not moved
+        private WavManifestStoreExtractor $wav = new WavManifestStoreExtractor,
+        // SPEC-056: last, for the same reason
+        private Id3ManifestStoreExtractor $mp3 = new Id3ManifestStoreExtractor,
+        // SPEC-058: last, for the same reason
+        private AviManifestStoreExtractor $avi = new AviManifestStoreExtractor,
     ) {}
 
     /**
@@ -12033,7 +13126,7 @@ final readonly class Verifier
             $head = $this->formats->head($stream);
 
             return new VerificationReport('unknown', false, null, ValidationResult::fromStatuses([
-                new ValidationStatus(StatusCode::GeneralError, self::STORE_URL, sprintf('unsupported file type: the file starts with %s, not a JPEG, PNG, WebP or ISOBMFF signature', Bytes::hex($head))),
+                new ValidationStatus(StatusCode::GeneralError, self::STORE_URL, sprintf('unsupported file type: the file starts with %s, not a JPEG, PNG, WebP, WAV, AVI, MP3, FLAC or ISOBMFF signature', Bytes::hex($head))),
             ], []));
         }
 
@@ -12043,13 +13136,18 @@ final readonly class Verifier
                 'jpeg' => $this->jpeg->extract($stream),
                 'png' => $this->png->extract($stream),
                 'webp' => $this->webp->extract($stream),
+                'wav' => $this->wav->extract($stream),   // SPEC-055
+                'avi' => $this->avi->extract($stream),   // SPEC-058
+                'mp3' => $this->mp3->extract($stream),   // SPEC-056
+                'flac' => $this->mp3->extract($stream),   // SPEC-057: the same ID3 tag, in front of the FLAC stream
                 // SPEC-026: the container only. There is no BMFF hard-binding check yet,
                 // so the data hash finds no \`c2pa.hash.data\` and says
                 // claim.hardBindings.missing — Invalid, named, and never a silent Valid.
                 'isobmff' => $this->isobmff->extract($stream),
             };
         } catch (ContainerException $e) {
-            return new VerificationReport($format, true, null, ValidationResult::fromStatuses([
+            // a manifest only when the extractor had reached the store (SPEC-013 amendment 16)
+            return new VerificationReport($format, $e->storeReached, null, ValidationResult::fromStatuses([
                 new ValidationStatus(StatusCode::GeneralError, self::STORE_URL, $e->getMessage()),
             ], []));
         }
@@ -12262,6 +13360,10 @@ final readonly class Verifier
                 // SPEC-013 amendment 13: a hard binding the signer lists only among gathered assertions is not
                 // one the claim makes (§10.2.2); c2pa 0.91.0 refuses such a file outright. It is not read.
                 $statuses[] = new ValidationStatus(StatusCode::ClaimHardBindingsMissing, sprintf('self#jumbf=/c2pa/%s', $binding->label), sprintf('the hard binding %s is listed only in gathered_assertions; created_assertions "shall contain, at minimum, a reference to an assertion that represents a hard binding" (C2PA 2.4 §10.2.2), so the manifest has none of its own', $gatheredOnly));
+            } elseif (count($hard = HardBindings::in($binding)) > 1) {
+                // SPEC-012 amendment 9: counted before either check is chosen, every kind and instance
+                // label together, so that the BMFF route cannot pass over a second binding either
+                $statuses[] = new ValidationStatus(StatusCode::AssertionMultipleHardBindings, sprintf('self#jumbf=/c2pa/%s', $binding->label), sprintf('the manifest has %d hard bindings (%s); a standard manifest has exactly one (C2PA 2.4 §15.10.1.2)', count($hard), HardBindings::describe(...$hard)));
             } else {
                 // SPEC-027: ISOBMFF binds through c2pa.hash.bmff.v3, whose exclusions are
                 // box paths rather than byte ranges. Which check runs follows the assertion
@@ -12338,7 +13440,7 @@ final readonly class Verifier
      */
     private static function hardBindingGatheredOnly(Manifest $manifest): ?string
     {
-        $isBinding = static fn (string $label): bool => $label === DataHashCheck::LABEL || in_array($label, BmffHashCheck::LABELS, true);
+        $isBinding = static fn (string $label): bool => in_array(HardBindings::baseLabel($label), [DataHashCheck::LABEL, ...BmffHashCheck::LABELS], true);
         $labelOf = static function (HashedUri $reference) use ($manifest): ?string {
             try {
                 return $manifest->resolve($reference->url)->description->label;
