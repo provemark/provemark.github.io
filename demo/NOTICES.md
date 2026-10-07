@@ -25,7 +25,8 @@ The PHP sources of [c2pa-verifier](https://github.com/provemark/c2pa-verifier)
 ## Sample files and trust lists
 
 - `samples/fixture-signed.jpg`, `samples/pixel-changed.jpg`,
-  `samples/fixture-unsigned.jpg` and `trust/test-roots.settings.json` come
+  `samples/fixture-unsigned.jpg`, `samples/fixture-signed.txt` and
+  `trust/test-roots.settings.json` come
   from the c2pa-verifier repository (`tests/Fixtures/`). The test
   certificates in them are the public ones from `contentauth/c2patool`.
 - `samples/google-20250919-pixel10-npld-picnic-table.jpg` is
