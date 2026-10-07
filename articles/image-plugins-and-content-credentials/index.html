@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What WordPress image plugins do to Content Credentials — provemark</title>
+<meta name="description" content="A signed image goes into WordPress; what does a visitor get? Measured for WordPress itself, seven image plugins and Jetpack's image CDN. The smaller sizes lose the credentials, some plugins replace the signed original, and twice a correct image came out looking tampered with.">
+<link rel="canonical" href="https://provemark.github.io/articles/image-plugins-and-content-credentials/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="64x64" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="provemark">
+<meta property="og:title" content="What WordPress image plugins do to Content Credentials">
+<meta property="og:description" content="A signed image goes into WordPress; what does a visitor get? Measured for core, seven image plugins and Jetpack's image CDN.">
+<meta property="og:url" content="https://provemark.github.io/articles/image-plugins-and-content-credentials/">
+<meta property="og:image" content="https://provemark.github.io/provemark-icon.png">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="inner">
+    <a class="brand" href="/">
+      <img class="mark" src="/favicon.png" alt="" width="22" height="22">
+      provemark
+    </a>
+    <nav class="header-nav">
+      <a href="https://github.com/provemark">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container post">
+
+  <div class="post-header">
+    <p class="eyebrow">Article</p>
+    <h1>What WordPress image plugins do to Content Credentials</h1>
+    <p class="post-meta">7 October 2026 · Maurice van Loon</p>
+  </div>
+
+  <p class="lead">I put signed images into WordPress, with and without the most-used image
+  plugins, and checked what a visitor gets. Mostly, it's an image without Content Credentials.
+  Some plugins also replace the signed original on the server, and in two cases a correct image
+  came out looking tampered with.</p>
+
+  <div class="body">
+
+  <p>Content Credentials (C2PA) are a signed record inside the file: who made it, with what, and
+  whether AI was involved. It's one of the ways the marking that
+  <a href="/articles/article-50-deadlines/">Article&nbsp;50 of the AI&nbsp;Act</a> asks for can
+  travel with an AI-generated image. The signature covers the bytes of the file, so anything that
+  rewrites those bytes either removes the record or breaks it.</p>
+
+  <p>WordPress rewrites images all the time. It makes smaller sizes, and image plugins compress
+  and convert on top of that. I wanted to know what's left at the end.</p>
+
+  <h2>How I measured</h2>
+
+  <p>A fresh WordPress 7.1.2 on PHP 8.3, with Imagick. Three signed images: a small JPEG, a large
+  JPEG from Lightroom (3280&times;2451, so WordPress also makes a <code>-scaled</code> copy), and a
+  PNG generated and signed by OpenAI. Each was uploaded the way the browser does it, the background
+  jobs were allowed to finish, and then I checked two things:</p>
+
+  <ul>
+    <li>every file WordPress and the plugin wrote;</li>
+    <li>every image URL in the page (<code>src</code> and <code>srcset</code>), fetched the way
+    Chrome asks for it, with <code>Accept: image/avif,image/webp</code>.</li>
+  </ul>
+
+  <p>Each plugin ran on its own, with its defaults. The one exception is WP-Optimize, which doesn't
+  compress until you turn that on, so I turned that one setting on. The files were checked with
+  <a href="https://github.com/provemark/c2pa-verifier">c2pa-verifier</a>, which gives the same
+  verdicts as <code>c2patool</code>.</p>
+
+  <p>Most of it ran on an arm64 Mac. EWWW Image Optimizer only ships its compression tools for
+  x86, so I ran EWWW again on GitHub's x86 runners, with plain WordPress next to it. Plain
+  WordPress gave the same results on both.</p>
+
+  <h2>What a visitor gets</h2>
+
+  <div class="table-wrap">
+  <table>
+    <thead>
+      <tr><th>Setup</th><th>Signed original on the server</th><th>Visitor gets valid credentials</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>WordPress only</td><td>kept</td><td>only when the page uses the original file itself (the small JPEG, and the PNG, whose original is in the <code>srcset</code>)</td></tr>
+      <tr><td>Modern Image Formats</td><td>kept</td><td>no: AVIF is served</td></tr>
+      <tr><td>Converter for Media</td><td>kept</td><td>no: WebP is served, also at the original's URL</td></tr>
+      <tr><td>WebP Express</td><td>kept</td><td>as with WordPress only</td></tr>
+      <tr><td>EWWW Image Optimizer</td><td>large JPEG replaced by a 2560&nbsp;px copy, no backup; PNG recompressed with the C2PA chunk left in</td><td>only the small JPEG; the PNG comes out broken, see below</td></tr>
+      <tr><td>Smush</td><td>JPEGs replaced, signed copy kept as <code>.bak</code></td><td>not for the JPEGs</td></tr>
+      <tr><td>WP-Optimize</td><td>small JPEG and PNG replaced, signed copy kept as a backup that's deleted after 50 days by default</td><td>no</td></tr>
+      <tr><td>reSmush.it</td><td>small JPEG and PNG replaced, signed copy kept as <code>-unsmushed</code></td><td>no</td></tr>
+      <tr><td>Jetpack image CDN</td><td>not touched, it serves its own copy</td><td>no for JPEG; one PNG came back broken, see below</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>None of the generated sizes kept valid credentials, with or without a plugin. That isn't a
+  bug. A smaller image is a different file, and a manifest signed for the original doesn't cover
+  it. Each size would need its own manifest that points back to the original, which is what I
+  proposed in <a href="https://github.com/WordPress/ai/issues/1058">WordPress/ai#1058</a>.</p>
+
+  <h2>Plugins that replace the original</h2>
+
+  <p>What I didn't expect was the original itself. Smush, WP-Optimize and reSmush.it compress the
+  uploaded file and strip its metadata, and the signed version is only kept as a backup under
+  another name. WP-Optimize deletes those backups after 50 days unless you change that. EWWW
+  shrinks large uploads to 2560 pixels in place and doesn't keep the signed file at all.</p>
+
+  <p>On a site like that the signed file can be gone. Then there's nothing to show a visitor, and
+  nothing to sign the smaller sizes from later.</p>
+
+  <h2>A correct image that looks tampered with</h2>
+
+  <p>The OpenAI PNG went wrong in a different way, twice. EWWW on the server and Jetpack's CDN on
+  the way to the visitor both returned the same pixels, all 1.5 million of them, packed
+  differently, and left the C2PA chunk in. The signature covers the bytes, not the picture, so the
+  check now says the image was changed after signing. For Jetpack's copy that's what
+  <code>c2patool</code> 0.27 and 0.28 say as well as c2pa-verifier. EWWW's copy has the same size
+  as what <code>optipng -o2</code> makes of the file, and <code>c2patool</code> says the same about
+  that.</p>
+
+  <p>I think that's worse than losing the credentials. Anyone who checks is told the image was
+  edited, while nothing in it changed.</p>
+
+  <p>The cause looks the same in both: a lossless PNG optimiser that keeps chunks it doesn't know.
+  With <code>optipng -strip all</code> the chunk is removed instead. In EWWW's case it was one line:
+  it only passed <code>-strip all</code> when optipng's version matched 0.7, and the optipng it
+  ships calls itself 7.9.1. On a server that has optipng 0.7 installed itself (Debian ships
+  0.7.8), EWWW does pass <code>-strip all</code>, and the PNG simply loses its credentials. I
+  reported it
+  (<a href="https://github.com/nosilver4u/ewww-image-optimizer/issues/389">nosilver4u/ewww-image-optimizer#389</a>),
+  it was fixed in the development version the same afternoon, and I confirmed the fix on x86.</p>
+
+  <p>Jetpack's CDN did this with one of five signed PNGs I tried. The other four lost the chunk,
+  and the two of those I compared pixel by pixel had been recompressed with some loss. That one is
+  reported too
+  (<a href="https://github.com/Automattic/jetpack/issues/53217">Automattic/jetpack#53217</a>).</p>
+
+  <h2>Limits, up front</h2>
+
+  <ul>
+    <li><strong>October 2026.</strong> Measured twice, with the plugin versions of that week; the
+    results were the same. An update can change any of it.</li>
+    <li><strong>Defaults.</strong> Other settings give other results. A setting that keeps
+    "metadata" usually means EXIF and XMP, not C2PA.</li>
+    <li><strong>Not measured:</strong> plugins that need an account (Imagify, ShortPixel, Optimole,
+    TinyPNG, LiteSpeed, Image Optimizer), and the image processing Gutenberg now does in the
+    browser.</li>
+    <li><strong>Three test images.</strong> Enough to see what happens, not to give
+    percentages.</li>
+  </ul>
+
+  <h2>If you run a site</h2>
+
+  <ul>
+    <li>Find out whether your image plugin compresses the uploaded original, and if so where the
+    backups go and how long they're kept.</li>
+    <li>If an image's provenance matters, offer the original file for download. Check that it
+    really is the original: a plugin that converts to WebP can serve WebP at the original's URL
+    too.</li>
+    <li>Look at what your visitors get. Save an image from your live page and open it in the
+    <a href="/demo/">browser demo</a>, which runs the same verifier and keeps the file on your
+    computer.</li>
+  </ul>
+
+  <p>The scripts and the results, file by file, are on
+  <a href="https://github.com/provemark/wp-image-c2pa-measurements">GitHub</a>, so you can run them
+  against your own plugins. I did the
+  measuring with Claude Code; every result here came from running those scripts. If you maintain
+  one of these plugins and I got something wrong or missed a setting, I'd like to hear it.</p>
+
+  </div><!-- /.body -->
+
+  <div class="cta">
+    <a href="https://github.com/provemark/c2pa-verifier">provemark/c2pa-verifier</a> is an
+    open-source (MIT) C2PA verifier in pure PHP, with <code>c2patool</code>'s verdicts. It's what
+    checked every file in this article.
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="inner">© 2026 provemark ·
+    <a href="https://github.com/provemark">GitHub</a> ·
+    <a href="https://packagist.org/packages/provemark/c2pa-verifier">Packagist</a>
+  </div>
+</footer>
+
+</body>
+</html>
