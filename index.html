@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>provemark — verifiable trust for PHP</title>
 <meta name="description" content="Open-source PHP tooling for verifiable trust: C2PA Content Credentials (content provenance, EU AI Act Article 50) and model-based property testing.">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="icon" type="image/png" sizes="64x64" href="/favicon.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta property="og:type" content="website">
@@ -14,9 +15,6 @@
 <meta property="og:url" content="https://provemark.github.io/">
 <meta property="og:image" content="https://provemark.github.io/provemark-icon.png">
 <meta name="twitter:card" content="summary">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/style.css">
 </head>
 <body>
@@ -60,7 +58,8 @@
   <div class="card">
     <h3><a href="https://github.com/provemark/c2pa-verifier">c2pa-verifier</a></h3>
     <p class="muted" style="margin:.35rem 0 0">A verifier for C2PA Content Credentials in pure PHP.
-    It reads the manifest store out of a JPEG, PNG, WebP or ISOBMFF file (MP4, MOV, AVIF, HEIC) and
+    It reads the manifest store out of a JPEG, PNG, GIF, WebP, WAV, AVI, MP3, FLAC or ISOBMFF file
+    (MP4, MOV, AVIF, HEIC) and
     checks the claim signature, the hash binding to the asset, the certificate chain against a trust
     list you supply, the RFC&nbsp;3161 timestamp and the revocation responses a signer staples into
     its own signature — returning what <code>c2patool</code> returns: the same
@@ -83,16 +82,16 @@
   <div class="card">
     <h3><a href="https://github.com/provemark/tracefern-image-check">tracefern-image-check</a></h3>
     <p class="muted" style="margin:.35rem 0 0"><strong>Tracefern Image Check for C2PA</strong>, a WordPress
-    plugin that verifies the Content Credentials of every JPEG, PNG and WebP uploaded to the Media
-    Library with c2pa-verifier, and shows the verdict in a Media Library column, a filter and the
+    plugin that verifies the Content Credentials of every JPEG, PNG, GIF and WebP image and every
+    WAV, MP3 and FLAC file uploaded to the Media Library with c2pa-verifier, and shows the verdict in a Media Library column, a filter and the
     attachment details: <em>Verified: trusted signer</em>, <em>Intact: signer not trusted</em>,
     <em>Does not verify</em>, <em>No Content Credentials</em> or <em>Could not be checked</em> — and
     <em>AI-generated (signed)</em> only when a manifest that verifies says so.</p>
     <p class="muted" style="margin:.7rem 0 0">The check runs in the background, so it never blocks or
     breaks an upload; the plugin signs nothing and makes no network calls. It is c2pa-verifier's
     first real user.</p>
-    <p class="muted" style="margin:.7rem 0 0"><strong>Submitted to the WordPress.org plugin directory
-    and awaiting review; not listed yet.</strong></p>
+    <p class="muted" style="margin:.7rem 0 0">In the WordPress.org plugin directory:
+    <a href="https://wordpress.org/plugins/tracefern-image-check-for-c2pa/">Tracefern Image Check for C2PA</a>.</p>
   </div>
 
   <div class="card">

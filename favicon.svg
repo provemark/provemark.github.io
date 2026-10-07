@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  <style>
+    .bg { fill: #a8321f; } .p { stroke: #f6f3ec; }
+    @media (prefers-color-scheme: dark) { .bg { fill: #e0705a; } .p { stroke: #17150f; } }
+  </style>
+  <rect class="bg" width="1024" height="1024"/>
+  <path class="p" d="M276 622 L412 758 V264 H597 A156 156 0 0 1 597 576 H412" fill="none" stroke-width="128" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
