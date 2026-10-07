@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>provemark</title>
+  <link>https://provemark.github.io/</link>
+  <description>Measurements and notes on C2PA Content Credentials, from the maker of c2pa-verifier.</description>
+  <language>en</language>
+  <atom:link href="https://provemark.github.io/feed.xml" rel="self" type="application/rss+xml"/>
+  <lastBuildDate>Wed, 07 Oct 2026 12:00:00 +0000</lastBuildDate>
+  <item>
+    <title>What WordPress image plugins do to Content Credentials</title>
+    <link>https://provemark.github.io/articles/image-plugins-and-content-credentials/</link>
+    <guid isPermaLink="true">https://provemark.github.io/articles/image-plugins-and-content-credentials/</guid>
+    <pubDate>Wed, 07 Oct 2026 12:00:00 +0000</pubDate>
+    <description>A signed image goes into WordPress; what does a visitor get? Measured for WordPress itself, seven image plugins and Jetpack's image CDN. The smaller sizes lose the credentials, some plugins replace the signed original, and twice a correct image came out looking tampered with.</description>
+  </item>
+  <item>
+    <title>How do you know a C2PA verifier is right?</title>
+    <link>https://provemark.github.io/articles/measuring-a-verifier/</link>
+    <guid isPermaLink="true">https://provemark.github.io/articles/measuring-a-verifier/</guid>
+    <pubDate>Thu, 24 Sep 2026 12:00:00 +0000</pubDate>
+    <description>A verifier that wrongly says Valid is worse than none. How c2pa-verifier, a C2PA verifier in pure PHP for hosts that can't run c2patool, is measured against the reference instead of trusted on its own tests — and the time the reference itself was wrong.</description>
+  </item>
+  <item>
+    <title>Two Article 50 deadlines, and which one is yours</title>
+    <link>https://provemark.github.io/articles/article-50-deadlines/</link>
+    <guid isPermaLink="true">https://provemark.github.io/articles/article-50-deadlines/</guid>
+    <pubDate>Wed, 12 Aug 2026 12:00:00 +0000</pubDate>
+    <description>Article 50(2) of the EU AI Act has applied since 2 August 2026, but the Digital Omnibus gave systems already on the market until 2 December 2026. Which date binds you depends on when your system was placed on the market — and the certificate, not the code, is the critical path.</description>
+  </item>
+  <item>
+    <title>From valid to trusted: the PHP route to production Content Credentials</title>
+    <link>https://provemark.github.io/articles/path-to-trusted/</link>
+    <guid isPermaLink="true">https://provemark.github.io/articles/path-to-trusted/</guid>
+    <pubDate>Sat, 08 Aug 2026 12:00:00 +0000</pubDate>
+    <description>PHP now has a Content Credentials library the Content Authenticity Initiative points at. Here is the rest of the map: how a deployment becomes a Conforming Product, what it costs, and what the security requirements ask of your architecture.</description>
+  </item>
+  <item>
+    <title>Three things that will cost you a day with C2PA</title>
+    <link>https://provemark.github.io/articles/c2pa-gotchas/</link>
+    <guid isPermaLink="true">https://provemark.github.io/articles/c2pa-gotchas/</guid>
+    <pubDate>Thu, 06 Aug 2026 12:00:00 +0000</pubDate>
+    <description>Article 50 of the EU AI Act applies since 2 August 2026. Three C2PA implementation traps found the hard way: sign() does not return your file, re-encoding silently destroys credentials, and trust verification can verify nothing without telling you.</description>
+  </item>
+  <item>
+    <title>Introducing stateful-check: generate programs, not values</title>
+    <link>https://provemark.github.io/articles/introducing-stateful-check/</link>
+    <guid isPermaLink="true">https://provemark.github.io/articles/introducing-stateful-check/</guid>
+    <pubDate>Mon, 03 Aug 2026 12:00:00 +0000</pubDate>
+    <description>A whole class of bugs lives not in a single input but in the order of operations. stateful-check generates command sequences, checks them against a shadow model, and shrinks a failure to a minimal counterexample. Model-based property testing for PHP.</description>
+  </item>
+  <item>
+    <title>Mocked ≠ real: the bug my unit tests were hiding</title>
+    <link>https://provemark.github.io/articles/mocked-vs-real/</link>
+    <guid isPermaLink="true">https://provemark.github.io/articles/mocked-vs-real/</guid>
+    <pubDate>Wed, 29 Jul 2026 12:00:00 +0000</pubDate>
+    <description>A green unit test hid a broken read path, because the mock was more forgiving than the real C2PA signing service. How a stateful property test caught it, and why mocks encode assumptions the code shares.</description>
+  </item>
+  <item>
+    <title>Introducing provemark: C2PA Content Credentials for PHP</title>
+    <link>https://provemark.github.io/articles/introducing-provemark/</link>
+    <guid isPermaLink="true">https://provemark.github.io/articles/introducing-provemark/</guid>
+    <pubDate>Tue, 28 Jul 2026 12:00:00 +0000</pubDate>
+    <description>A framework-agnostic PHP library to build, sign, read and verify C2PA Content Credentials — with first-class marking of AI-generated content under the EU AI Act, Article 50, and a Laravel integration.</description>
+  </item>
+  <item>
+    <title>Valid ≠ trusted: a practical guide to C2PA signing certificates</title>
+    <link>https://provemark.github.io/articles/c2pa-certificates/</link>
+    <guid isPermaLink="true">https://provemark.github.io/articles/c2pa-certificates/</guid>
+    <pubDate>Tue, 28 Jul 2026 12:00:00 +0000</pubDate>
+    <description>A hands-on guide to C2PA signing certificates from a working PHP implementation: test certs, the valid-vs-trusted distinction, trust lists, key isolation, and getting a production certificate.</description>
+  </item>
+</channel>
+</rss>
