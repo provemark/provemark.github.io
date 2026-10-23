@@ -1,4 +1,4 @@
-const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["assets/php-wasm-not-bundled-B_lfuRhw.js","assets/rolldown-runtime-D2aABDIb.js","assets/web-8-3-B-4TzLcY.js"])))=>i.map(i=>d[i]);
+const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["assets/php-wasm-not-bundled-B_lfuRhw.js","assets/rolldown-runtime-D2aABDIb.js","assets/web-8-3-stRFi1eJ.js"])))=>i.map(i=>d[i]);
 import{n as __esmMin,r as __toESM,t as __commonJSMin}from"./rolldown-runtime-D2aABDIb.js";(function(){let e=document.createElement(`link`).relList;if(e&&e.supports&&e.supports(`modulepreload`))return;for(let e of document.querySelectorAll(`link[rel="modulepreload"]`))r(e);new MutationObserver(e=>{for(let n of e)if(n.type===`childList`)for(let e of n.addedNodes)e.tagName===`LINK`&&e.rel===`modulepreload`&&r(e)}).observe(document,{childList:!0,subtree:!0});function n(e){let n={};return e.integrity&&(n.integrity=e.integrity),e.referrerPolicy&&(n.referrerPolicy=e.referrerPolicy),n.credentials=e.crossOrigin===`use-credentials`?`include`:e.crossOrigin===`anonymous`?`omit`:`same-origin`,n}function r(e){if(e.ep)return;e.ep=!0;let r=n(e);fetch(e.href,r)}})();var E$3,f,w$3,L$1,d,m$1,c$3,t,a,P$2,T$2,M$1,g$1,S$2,init_logger=__esmMin((()=>{E$3=`playground-log`,f=(e,...n)=>{M$1.dispatchEvent(new CustomEvent(E$3,{detail:{log:e,args:n}}))},w$3=(e,...n)=>{switch(typeof e.message==`string`?Reflect.set(e,`message`,g$1(e.message)):e.message.message&&typeof e.message.message==`string`&&Reflect.set(e.message,`message`,g$1(e.message.message)),e.severity){case t.Debug:console.debug(e.message,...n);break;case t.Info:console.info(e.message,...n);break;case t.Warn:console.warn(e.message,...n);break;case t.Error:console.error(e.message,...n);break;case t.Fatal:console.error(e.message,...n);break;default:console.log(e.message,...n)}},L$1=e=>e instanceof Error?[e.message,e.stack].join(`
 `):JSON.stringify(e,null,2),d=[],m$1=e=>{d.push(e)},c$3=e=>{if(e.raw===!0)m$1(e.message);else{let n=S$2(typeof e.message==`object`?L$1(e.message):e.message,e.severity,e.prefix??a.JS);m$1(n)}},t={Fatal:{name:`fatal`,level:0},Error:{name:`error`,level:1},Warn:{name:`warn`,level:2},Log:{name:`log`,level:3},Info:{name:`info`,level:4},Debug:{name:`debug`,level:5}},a={WASM:`Wasm Crash`,PHP:`PHP`,JS:`JavaScript`},P$2=class extends EventTarget{constructor(e=[]){super(),this.fatalErrorEvent=`playground-fatal-error`,this.severity=t.Info,this.handlers=e}getLogs(){return this.handlers.includes(c$3)?[...d]:(this.error(`Logs aren't stored because the logToMemory handler isn't registered.
 				If you're using a custom logger instance, make sure to register logToMemory handler.
@@ -98,7 +98,7 @@ CLI option:
 === Stderr ===
  ${r.errors}`,r,`request`);return r}async runStream(e){let n=await this.semaphore.acquire(),r,i=v(this,y$1,we$1).call(this,async()=>{if(u$1(this,z)||(await this[__private__dont__use].ccall(`php_wasm_init`,null,[],[],{isAsync:!0}),x$1(this,z,!0)),e.scriptPath&&!this.fileExists(e.scriptPath))throw Error(`The script path "${e.scriptPath}" does not exist.`);v(this,y$1,xe).call(this,e.relativeUri||``),v(this,y$1,be).call(this,e.method||`GET`);let n=normalizeHeaders(e.headers||{}),i=n.host||`example.com:443`,o=v(this,y$1,Fe).call(this,i,e.protocol||`http`);if(v(this,y$1,Se).call(this,i),v(this,y$1,ke).call(this,o),v(this,y$1,Re).call(this,n),e.body&&(r=v(this,y$1,He$1).call(this,e.body)),typeof e.code==`string`)this.writeFile(`/internal/eval.php`,e.code),v(this,y$1,ge$1).call(this,`/internal/eval.php`);else if(typeof e.scriptPath==`string`)v(this,y$1,ge$1).call(this,e.scriptPath||``);else throw TypeError("The request object must have either a `code` or a `scriptPath` property.");let s=v(this,y$1,Ee$1).call(this,e.$_SERVER,n,o);for(let e in s)v(this,y$1,Te$1).call(this,e,s[e]);let l=e.env||{};for(let e in l)v(this,y$1,Pe).call(this,e,l[e]);return await this[__private__dont__use].ccall(`wasm_sapi_handle_request`,NUMBER,[],[],{async:!0})}),o=()=>{if(r)try{this[__private__dont__use].free(r)}catch(e){M$1.error(e)}n(),this.dispatchEvent({type:`request.end`})};return i.then(e=>(e.finished.finally(o),e),e=>{try{o()}catch{}finally{throw e}})}defineConstant(e,n){let r={};try{r=JSON.parse(this.fileExists(`/internal/shared/consts.json`)&&this.readFileAsText(`/internal/shared/consts.json`)||`{}`)}catch{}this.writeFile(`/internal/shared/consts.json`,JSON.stringify({...r,[e]:n}))}mkdir(e){let n=FSHelpers.mkdir(this[__private__dont__use].FS,e);return this.dispatchEvent({type:`filesystem.write`}),n}mkdirTree(e){return FSHelpers.mkdir(this[__private__dont__use].FS,e)}readFileAsText(e){return FSHelpers.readFileAsText(this[__private__dont__use].FS,e)}readFileAsBuffer(e){return FSHelpers.readFileAsBuffer(this[__private__dont__use].FS,e)}writeFile(e,n){let r=FSHelpers.writeFile(this[__private__dont__use].FS,e,n);return this.dispatchEvent({type:`filesystem.write`}),r}unlink(e){let n=FSHelpers.unlink(this[__private__dont__use].FS,e);return this.dispatchEvent({type:`filesystem.write`}),n}mv(e,n){let r=FSHelpers.mv(this[__private__dont__use].FS,e,n);return this.dispatchEvent({type:`filesystem.write`}),r}cp(e,n){let r=FSHelpers.copyRecursive(this[__private__dont__use].FS,e,n);return this.dispatchEvent({type:`filesystem.write`}),r}rmdir(e,n={recursive:!0}){let r=FSHelpers.rmdir(this[__private__dont__use].FS,e,n);return this.dispatchEvent({type:`filesystem.write`}),r}listFiles(e,n={prependPath:!1}){return FSHelpers.listFiles(this[__private__dont__use].FS,e,n)}isDir(e){return FSHelpers.isDir(this[__private__dont__use].FS,e)}isFile(e){return FSHelpers.isFile(this[__private__dont__use].FS,e)}symlink(e,n){return FSHelpers.symlink(this[__private__dont__use].FS,e,n)}isSymlink(e){return FSHelpers.isSymlink(this[__private__dont__use].FS,e)}readlink(e){return FSHelpers.readlink(this[__private__dont__use].FS,e)}realpath(e){return FSHelpers.realpath(this[__private__dont__use].FS,e)}fileExists(e){return FSHelpers.fileExists(this[__private__dont__use].FS,e)}enableRuntimeRotation(e){x$1(this,k$1,{...u$1(this,k$1),enabled:!0,recreateRuntime:e.recreateRuntime,maxRequests:e.maxRequests??400})}async rotateRuntime(){if(!u$1(this,k$1).enabled)throw Error(`Runtime rotation is not enabled. Call enableRuntimeRotation() first.`);await this.hotSwapPHPRuntime(await u$1(this,k$1).recreateRuntime()),u$1(this,k$1).requestsMade=0,u$1(this,k$1).needsRotating=!1}async hotSwapPHPRuntime(e){let n=this[__private__dont__use].FS,r=this.listFiles(`/`).map(e=>`/${e}`),i=n.cwd();n.chdir(`/`);let o=Object.entries(u$1(this,$)).map(([e,r])=>({mountHandler:r.mountHandler,mountPointSnapshot:snapshotMountPoint(n,e),vfsPath:e})),s=Object.values(u$1(this,$)).reverse();for(let e of s)await e.unmount();try{this.exit()}catch{}this.initializeRuntime(e),u$1(this,Q$1)&&this.setSapiName(u$1(this,Q$1));let l=this[__private__dont__use].FS;for(let e of r)e&&e!==`/request`&&copyMEMFSNodes(n,l,e);for(let{mountHandler:e,mountPointSnapshot:n,vfsPath:r}of o)try{await this.mount(r,e)}catch(i){if(isMissingMountSourceError(i)){restoreMountPointSnapshot(l,r,n);continue}if(!isMissingMountTargetPathError(i))throw i;this.mkdir(r),await this.mount(r,e)}try{l.chdir(i)}catch(e){throw Error(`Failed to restore CWD to ${i} after PHP runtime rotation.`,{cause:e})}}async mount(e,n){let r=await n(this,this[__private__dont__use].FS,e),i={mountHandler:n,unmount:async()=>{try{await r()}catch(n){throw n instanceof MountStillActiveError||delete u$1(this,$)[e],n}delete u$1(this,$)[e]}};return u$1(this,$)[e]=i,()=>i.unmount()}async cli(e,n={}){if(j$1(e[0]??``)!==`php`)return this.subProcess(e,n);u$1(this,z)&&(u$1(this,k$1).needsRotating=!0);let r=await this.semaphore.acquire();return await v(this,y$1,we$1).call(this,()=>{let r=n.env||{};for(let[e,n]of Object.entries(r))v(this,y$1,Pe).call(this,e,n);e=[e[0],`-c`,PHP_INI_PATH,...e.slice(1)];for(let n of e)this[__private__dont__use].ccall(`wasm_add_cli_arg`,null,[STRING],[n]);return this[__private__dont__use].ccall(`run_cli`,null,[],[],{async:!0})}).then(e=>(e.exitCode.finally(r),e)).finally(()=>{u$1(this,k$1).needsRotating=!0})}async subProcess(e,n={}){let r=v(this,y$1,ye$1).call(this,e[0],e.slice(1),{env:n.env,cwd:n.cwd??this.cwd()}),i=await createInvertedReadableStream();r.on(`error`,e=>{safeStreamError$1(i.controller,e)});let o=e=>{try{i.controller.enqueue(e)}catch{r.stderr.off(`data`,o)}};r.stderr.on(`data`,o);let s=await createInvertedReadableStream(),l=e=>{try{s.controller.enqueue(e)}catch{r.stdout.off(`data`,l)}};return r.stdout.on(`data`,l),r.on(`exit`,()=>{setTimeout(()=>{try{i.controller.close()}catch{}try{s.controller.close()}catch{}},0)}),new StreamedPHPResponse(new ReadableStream({start(e){e.close()}}),s.stream,i.stream,new Promise(e=>{r.on(`exit`,n=>{e(n)})}))}setSkipShebang(e){this[__private__dont__use].ccall(`wasm_set_skip_shebang`,null,[NUMBER],[+!!e])}exit(e=0){this.dispatchEvent({type:`runtime.beforeExit`});try{this[__private__dont__use]._exit(e)}catch{}x$1(this,z,!1),x$1(this,G$1,null),this[__private__dont__use]&&(delete this[__private__dont__use].onMessage,delete this[__private__dont__use])}[Symbol.dispose](){this.exit(0)}},Q$1=new WeakMap,z=new WeakMap,G$1=new WeakMap,j=new WeakMap,J=new WeakMap,$=new WeakMap,K$1=new WeakMap,ne$1=new WeakMap,k$1=new WeakMap,y$1=new WeakSet,ye$1=function(e,n=[],r={}){let i=Array.isArray(e)?e:n.length?[e,...n]:x$2(e),o=i[0]&&u$1(this,ne$1).get(j$1(i[0]));if(o)return o(i[0],i.slice(1),r);if(u$1(this,K$1))return u$1(this,K$1).call(this,e,n,r);let s=Error(`popen(), proc_open() are unsupported on this PHP instance. Call php.setSpawnHandler()
 			and provide a callback to handle spawning processes, or disable popen(), proc_open() via php.ini.`);throw s.code=`SPAWN_UNSUPPORTED`,s},Ee$1=function(e,n,r){let i={...e||{}};i.HTTPS=i.HTTPS||r===443?`on`:`off`;for(let e in n){let r=`HTTP_`;[`content-type`,`content-length`].includes(e.toLowerCase())&&(r=``),i[`${r}${e.toUpperCase().replace(/-/g,`_`)}`]=n[e]}return i},xe=function(e){this[__private__dont__use].ccall(`wasm_set_request_uri`,null,[STRING],[e]);let n=``;e.includes(`?`)&&(n=e.substring(e.indexOf(`?`)+1)),this[__private__dont__use].ccall(`wasm_set_query_string`,null,[STRING],[n])},Se=function(e){this[__private__dont__use].ccall(`wasm_set_request_host`,null,[STRING],[e])},ke=function(e){this[__private__dont__use].ccall(`wasm_set_request_port`,null,[NUMBER],[e])},Fe=function(e,n){let r;try{r=parseInt(new URL(e).port,10)}catch{}return(!r||isNaN(r)||r===80)&&(r=n===`https`?443:80),r},be=function(e){this[__private__dont__use].ccall(`wasm_set_request_method`,null,[STRING],[e])},Re=function(e){e.cookie&&this[__private__dont__use].ccall(`wasm_set_cookies`,null,[STRING],[e.cookie]),e[`content-type`]&&this[__private__dont__use].ccall(`wasm_set_content_type`,null,[STRING],[e[`content-type`]]),e[`content-length`]&&this[__private__dont__use].ccall(`wasm_set_content_length`,null,[NUMBER],[parseInt(e[`content-length`],10)])},He$1=function(e){let n,r;typeof e==`string`?(M$1.warn(`Passing a string as the request body is deprecated. Please use a Uint8Array instead. See https://github.com/WordPress/wordpress-playground/issues/997 for more details`),r=this[__private__dont__use].lengthBytesUTF8(e),n=r+1):(r=e.byteLength,n=e.byteLength);let i=this[__private__dont__use].malloc(n);if(!i)throw Error(`Could not allocate memory for the request body.`);return typeof e==`string`?this[__private__dont__use].stringToUTF8(e,i,n+1):this[__private__dont__use].HEAPU8.set(e,i),this[__private__dont__use].ccall(`wasm_set_request_body`,null,[NUMBER],[i]),this[__private__dont__use].ccall(`wasm_set_content_length`,null,[NUMBER],[r]),i},ge$1=function(e){this[__private__dont__use].ccall(`wasm_set_path_translated`,null,[STRING],[e])},Te$1=function(e,n){this[__private__dont__use].ccall(`wasm_add_SERVER_entry`,null,[STRING,STRING],[e,n])},Pe=function(e,n){this[__private__dont__use].ccall(`wasm_add_ENV_entry`,null,[STRING,STRING],[e,n])},we$1=async function(e){u$1(this,k$1).enabled&&u$1(this,k$1).needsRotating&&await this.rotateRuntime(),++u$1(this,k$1).requestsMade,u$1(this,k$1).requestsMade>=u$1(this,k$1).maxRequests&&(u$1(this,k$1).needsRotating=!0);let n=this[__private__dont__use],r=await createInvertedReadableStream();n.onHeaders=e=>{N||i||r.controller.enqueue(e.slice())};let i=!1,o=()=>{i||(i=!0,r.controller.close())},s=await createInvertedReadableStream();n.onStdout=e=>{o(),!N&&s.controller.enqueue(e.slice())};let l=await createInvertedReadableStream();n.onStderr=e=>{N||l.controller.enqueue(e.slice())};let N=!1,ae,ce=(async()=>{var n;try{return await Promise.race([e(),new Promise((e,n)=>{var r;ae=e=>{isExitCode(e.error)||n(e.error)},(r=u$1(this,G$1))==null||r.addEventListener(`error`,ae,{once:!0})})])}catch(e){if(isExitCode(e))return e.status;safeStreamError$1(s.controller,e),safeStreamError$1(l.controller,e),safeStreamError$1(r.controller,e),N=!0;for(let e in this)typeof this[e]==`function`&&(this[e]=()=>{throw Error(`PHP runtime has crashed – see the earlier error for details.`)});throw this.functionsMaybeMissingFromAsyncify=getFunctionsMaybeMissingFromAsyncify(),e}finally{N||=(safeStreamClose$1(s.controller),safeStreamClose$1(l.controller),o(),!0),(n=u$1(this,G$1))==null||n.removeEventListener(`error`,ae)}})().then(e=>(e!==0&&this.dispatchEvent({type:`request.error`,error:Error(`PHP.run() failed with exit code ${e}.`),source:`php-wasm`}),e),e=>{let n=e.source??`php-wasm`;throw this.dispatchEvent({type:`request.error`,error:e,source:n}),e});return new StreamedPHPResponse(r.stream,s.stream,l.stream,ce)},getNodeType=(e,n)=>{try{return`contents`in e.lookupPath(n,{follow:!0}).node?`memfs`:`not-memfs`}catch{return`missing`}},HttpCookieStore=class{constructor(){this.cookies={}}rememberCookiesFromResponseHeaders(e){if(e!=null&&e[`set-cookie`])for(let n of e[`set-cookie`])try{if(!n.includes(`=`))continue;let e=n.indexOf(`=`),r=n.substring(0,e),i=n.substring(e+1).split(`;`)[0];this.cookies[r]=i}catch(e){M$1.error(e)}}getCookieRequestHeader(){let e=[];for(let n in this.cookies)e.push(`${n}=${this.cookies[n]}`);return e.join(`; `)}},SinglePHPInstanceManager=class{constructor(e){if(this.isAcquired=!1,!e.php&&!e.phpFactory)throw Error(`SinglePHPInstanceManager requires either php or phpFactory`);this.php=e.php,this.phpFactory=e.phpFactory}async getPrimaryPhp(){return this.php?this.php:(this.phpPromise||=this.phpFactory().then(e=>(this.php=e,this.phpPromise=void 0,e)),this.phpPromise)}async acquirePHPInstance(){if(this.isAcquired)throw Error(`The PHP instance already acquired. SinglePHPInstanceManager cannot spawn another PHP instance since, by definition, it only manages a single PHP instance.`);let e=await this.getPrimaryPhp();return this.isAcquired=!0,{php:e,reap:()=>{this.isAcquired=!1}}}async[Symbol.asyncDispose](){this.php&&this.php.exit()}},MaxPhpInstancesError=class extends Error{constructor(e){super(`Requested more concurrent PHP instances than the limit (${e}).`),this.name=this.constructor.name}},PHPProcessManager=class{constructor(e){this.instances=[],this.idleInstances=[],this.maxPhpInstances=e?.maxPhpInstances??2,this.phpFactory=e?.phpFactory,this.semaphore=new v$1({concurrency:this.maxPhpInstances,timeout:e?.timeout||3e4})}async getPrimaryPhp(){if(this.instances.length>0)return this.instances[0];this.primaryPhpPromise||=this.spawnInstance(!0);try{return await this.primaryPhpPromise}finally{this.primaryPhpPromise=void 0}}async acquirePHPInstance(){let e;try{e=await this.semaphore.acquire()}catch(e){throw e instanceof b$2?new MaxPhpInstancesError(this.maxPhpInstances):e}let n=await this.getOrSpawnInstance();return{php:n,reap:()=>{this.idleInstances.push(n),e()}}}async getOrSpawnInstance(){return this.instances.length===0&&await this.getPrimaryPhp(),this.idleInstances.length===0&&await this.spawnInstance(!1),this.idleInstances.pop()}async spawnInstance(e){if(!this.phpFactory)throw Error(`phpFactory must be set before spawning instances.`);let n=await this.phpFactory({isPrimary:e});return this.instances.push(n),this.idleInstances.push(n),n}async[Symbol.asyncDispose](){for(let e of this.instances)e.exit();this.instances=[],this.idleInstances=[]}},PHPNextVersion=`next`,SupportedPHPVersions=[`8.5`,`8.4`,`8.3`,`8.2`,`8.1`,`8.0`,`7.4`],LatestSupportedPHPVersion=SupportedPHPVersions[0],SupportedPHPVersionsList=SupportedPHPVersions,LegacyPHPVersions=[`5.2`],AllPHPVersions=[PHPNextVersion,...SupportedPHPVersions,...LegacyPHPVersions],LEGACY_PHP_INI_PATH=`/internal/shared/php.ini`,LEGACY_PHP_INI_CONTENT=[`auto_prepend_file=/internal/shared/auto_prepend_file.php`,`memory_limit=256M`,`ignore_repeated_errors = 1`,`error_reporting = E_ALL`,`display_errors = 1`,`html_errors = 1`,`display_startup_errors = On`,`log_errors = 1`,`always_populate_raw_post_data = -1`,`upload_max_filesize = 2000M`,`post_max_size = 2000M`,`allow_url_fopen = On`,`allow_url_include = Off`,`session.save_path = /home/web_user`,`implicit_flush = 1`,`output_buffering = 0`,`max_execution_time = 0`,`max_input_time = -1`,`disable_functions = ini_get_all`,`opcache.enable = 0`,`opcache.enable_cli = 0`].join(`
-`),DEFAULT_BASE_URL=`http://example.com`,_default=`application/octet-stream`,asx=`video/x-ms-asf`,atom=`application/atom+xml`,avi=`video/x-msvideo`,avif=`image/avif`,bin=`application/octet-stream`,bmp=`image/x-ms-bmp`,cco=`application/x-cocoa`,cjs=`application/javascript`,css=`text/css`,data=`application/octet-stream`,deb=`application/octet-stream`,der=`application/x-x509-ca-cert`,dmg=`application/octet-stream`,doc=`application/msword`,docx=`application/vnd.openxmlformats-officedocument.wordprocessingml.document`,eot=`application/vnd.ms-fontobject`,flv=`video/x-flv`,gif=`image/gif`,gz=`application/gzip`,hqx=`application/mac-binhex40`,htc=`text/x-component`,html=`text/html`,ico=`image/x-icon`,iso=`application/octet-stream`,jad=`text/vnd.sun.j2me.app-descriptor`,jar=`application/java-archive`,jardiff=`application/x-java-archive-diff`,jng=`image/x-jng`,jnlp=`application/x-java-jnlp-file`,jpg=`image/jpeg`,jpeg=`image/jpeg`,js=`application/javascript`,json=`application/json`,kml=`application/vnd.google-earth.kml+xml`,kmz=`application/vnd.google-earth.kmz`,m3u8=`application/vnd.apple.mpegurl`,m4a=`audio/x-m4a`,m4v=`video/x-m4v`,md=`text/plain`,mid=`audio/midi`,mjs=`application/javascript`,mml=`text/mathml`,mng=`video/x-mng`,mov=`video/quicktime`,mp3=`audio/mpeg`,mp4=`video/mp4`,mpeg=`video/mpeg`,msi=`application/octet-stream`,odg=`application/vnd.oasis.opendocument.graphics`,odp=`application/vnd.oasis.opendocument.presentation`,ods=`application/vnd.oasis.opendocument.spreadsheet`,odt=`application/vnd.oasis.opendocument.text`,ogg=`audio/ogg`,otf=`font/otf`,pdf=`application/pdf`,pl=`application/x-perl`,png=`image/png`,ppt=`application/vnd.ms-powerpoint`,pptx=`application/vnd.openxmlformats-officedocument.presentationml.presentation`,prc=`application/x-pilot`,ps=`application/postscript`,ra=`audio/x-realaudio`,rar=`application/x-rar-compressed`,rpm=`application/x-redhat-package-manager`,rss=`application/rss+xml`,rtf=`application/rtf`,run=`application/x-makeself`,sea=`application/x-sea`,sit=`application/x-stuffit`,svg=`image/svg+xml`,swf=`application/x-shockwave-flash`,tcl=`application/x-tcl`,tar=`application/x-tar`,tif=`image/tiff`,ts=`video/mp2t`,ttf=`font/ttf`,txt=`text/plain`,wasm=`application/wasm`,wbmp=`image/vnd.wap.wbmp`,webm=`video/webm`,webp=`image/webp`,wml=`text/vnd.wap.wml`,wmlc=`application/vnd.wap.wmlc`,wmv=`video/x-ms-wmv`,woff=`font/woff`,woff2=`font/woff2`,xhtml=`application/xhtml+xml`,xls=`application/vnd.ms-excel`,xlsx=`application/vnd.openxmlformats-officedocument.spreadsheetml.sheet`,xml=`text/xml`,xpi=`application/x-xpinstall`,xspf=`application/xspf+xml`,zip=`application/zip`,mimeTypes={_default,"3gpp":`video/3gpp`,"7z":`application/x-7z-compressed`,asx,atom,avi,avif,bin,bmp,cco,cjs,css,data,deb,der,dmg,doc,docx,eot,flv,gif,gz,hqx,htc,html,ico,iso,jad,jar,jardiff,jng,jnlp,jpg,jpeg,js,json,kml,kmz,m3u8,m4a,m4v,md,mid,mjs,mml,mng,mov,mp3,mp4,mpeg,msi,odg,odp,ods,odt,ogg,otf,pdf,pl,png,ppt,pptx,prc,ps,ra,rar,rpm,rss,rtf,run,sea,sit,svg,swf,tcl,tar,tif,ts,ttf,txt,wasm,wbmp,webm,webp,wml,wmlc,wmv,woff,woff2,xhtml,xls,xlsx,xml,xpi,xspf,zip},PHPRequestHandler=class{constructor(e){_(this,R$2),_(this,C$1),_(this,Z$1),_(this,ie$1),_(this,X$1),_(this,ee$1),_(this,I$2),_(this,te$1),_(this,V$1),_(this,oe);let{documentRoot:n=`/www/`,absoluteUrl:r=typeof location==`object`?location.href:DEFAULT_BASE_URL,rewriteRules:i=[],pathAliases:o=[],getFileNotFoundAction:s=()=>({type:`404`})}=e,l=e=>{e.isDir(n)||e.mkdir(n),e.chdir(n),e.requestHandler=this};if(e.php)l(e.php),this.instanceManager=new SinglePHPInstanceManager({php:e.php});else if(e.phpFactory)this.instanceManager=new PHPProcessManager({phpFactory:async n=>{let r=await e.phpFactory({...n,requestHandler:this});return l(r),r},maxPhpInstances:e.maxPhpInstances});else throw Error(`Either php or phpFactory must be provided in the configuration.`);x$1(this,V$1,e.cookieStore===void 0?new HttpCookieStore:e.cookieStore),x$1(this,C$1,n);let N=new URL(r);x$1(this,ie$1,N.hostname),x$1(this,X$1,N.port?Number(N.port):N.protocol===`https:`?443:80),x$1(this,Z$1,(N.protocol||``).replace(`:`,``));let ae=u$1(this,X$1)!==443&&u$1(this,X$1)!==80;x$1(this,ee$1,[u$1(this,ie$1),ae?`:${u$1(this,X$1)}`:``].join(``)),x$1(this,I$2,N.pathname.replace(/\/+$/,``)),x$1(this,te$1,[`${u$1(this,Z$1)}://`,u$1(this,ee$1),u$1(this,I$2)].join(``)),this.rewriteRules=i,x$1(this,oe,o),this.getFileNotFoundAction=s}async getPrimaryPhp(){return await this.instanceManager.getPrimaryPhp()}pathToInternalUrl(e){return e.startsWith(`/`)||(e=`/${e}`),`${this.absoluteUrl}${e}`}internalUrlToPath(e){let n=new URL(e,`https://playground.internal`);return n.pathname.startsWith(u$1(this,I$2))&&(n.pathname=n.pathname.slice(u$1(this,I$2).length)),toRelativeUrl(n)}get absoluteUrl(){return u$1(this,te$1)}get documentRoot(){return u$1(this,C$1)}async request(e){let n=await this.requestStreamed(e),r=await PHPResponse.fromStreamedResponse(n);return r.ok()&&r.exitCode!==0?new PHPResponse(500,r.headers,r.bytes,r.errors,r.exitCode):r}async requestStreamed(e){let n=looksLikeAbsoluteUrl(e.url),r=new URL(e.url.split(`#`)[0],n?void 0:DEFAULT_BASE_URL),i=v(this,R$2,Me).call(this,r),o=await this.getPrimaryPhp(),s=removePathPrefix(decodeURIComponent(i.pathname),u$1(this,I$2)),l=v(this,R$2,le).call(this,s);if(o.isDir(l)){if(!s.endsWith(`/`))return StreamedPHPResponse.fromPHPResponse(new PHPResponse(301,{location:[`${i.pathname}/`]},new Uint8Array));for(let e of[`index.php`,`index.html`]){let n=m(l,e);if(o.isFile(n)){l=n,i.pathname=m(i.pathname,e);break}}}if(!o.isFile(l)){let e=s;for(;e.startsWith(`/`)&&e!==W$1(e);){e=W$1(e);let n=v(this,R$2,le).call(this,e);if(o.isFile(n)&&n.endsWith(`.php`)){l=v(this,R$2,le).call(this,e);break}}}if(!o.isFile(l)){let e=this.getFileNotFoundAction(i.pathname);switch(e.type){case`response`:return StreamedPHPResponse.fromPHPResponse(e.response);case`internal-redirect`:l=m(u$1(this,C$1),e.uri);break;case`404`:return StreamedPHPResponse.forHttpCode(404);default:throw Error(`Unsupported file-not-found action type: '${e.type}'`)}}return o.isFile(l)?l.endsWith(`.php`)?await v(this,R$2,Ie).call(this,e,r,i,l):StreamedPHPResponse.fromPHPResponse(v(this,R$2,Le$1).call(this,o,l)):StreamedPHPResponse.forHttpCode(404)}prepare_$_SERVER_superglobal(e,n,r){let i={REMOTE_ADDR:`127.0.0.1`,DOCUMENT_ROOT:u$1(this,C$1),HTTPS:u$1(this,te$1).startsWith(`https://`)?`on`:``};return i.REQUEST_URI=e.pathname+e.search,r.startsWith(u$1(this,C$1))&&(i.SCRIPT_NAME=r.substring(u$1(this,C$1).length),i.PHP_SELF=n.pathname,i.REQUEST_URI.startsWith(i.SCRIPT_NAME)&&(i.PATH_INFO=i.REQUEST_URI.substring(i.SCRIPT_NAME.length),i.PATH_INFO.includes(`?`)&&(i.PATH_INFO=i.PATH_INFO.substring(0,i.PATH_INFO.indexOf(`?`))))),i.QUERY_STRING=n.search.substring(1),i}async[Symbol.asyncDispose](){await this.instanceManager[Symbol.asyncDispose]()}},C$1=new WeakMap,Z$1=new WeakMap,ie$1=new WeakMap,X$1=new WeakMap,ee$1=new WeakMap,I$2=new WeakMap,te$1=new WeakMap,V$1=new WeakMap,oe=new WeakMap,R$2=new WeakSet,Me=function(e){let n=applyRewriteRules(removePathPrefix(decodeURIComponent(e.pathname),u$1(this,I$2)),this.rewriteRules),r=new URL(m(u$1(this,I$2),n),e.toString());for(let[n,i]of e.searchParams.entries())r.searchParams.append(n,i);return r},le=function(e){for(let n of u$1(this,oe))if(e===n.urlPrefix||e.startsWith(n.urlPrefix+`/`)){let r=e.slice(n.urlPrefix.length);return m(n.fsPath,r)}return m(u$1(this,C$1),e)},Le$1=function(e,n){let r=e.readFileAsBuffer(n);return new PHPResponse(200,{"content-length":[`${r.byteLength}`],"content-type":[inferMimeType(n)],"accept-ranges":[`bytes`],"cache-control":[`public, max-age=0`]},r)},Ie=async function(e,n,r,i){let o;try{o=await this.instanceManager.acquirePHPInstance()}catch(e){return e instanceof MaxPhpInstancesError?StreamedPHPResponse.forHttpCode(502):StreamedPHPResponse.forHttpCode(500)}let s;try{s=await v(this,R$2,Ae).call(this,o.php,e,n,r,i)}catch(e){throw o.reap(),e}return s.finished.finally(()=>{o?.reap()}),s},Ae=async function(e,n,r,i,o){let s=`GET`,l={host:u$1(this,ee$1),...normalizeHeaders(n.headers||{})};u$1(this,V$1)&&(l.cookie=u$1(this,V$1).getCookieRequestHeader());let N=n.body;if(typeof N==`object`&&!(N instanceof Uint8Array)){s=`POST`;let{bytes:e,contentType:n}=await encodeAsMultipart(N);N=e,l[`content-type`]=n}let ae=await e.runStream({relativeUri:ensurePathPrefix(toRelativeUrl(new URL(i.toString())),u$1(this,I$2)),protocol:u$1(this,Z$1),method:n.method||s,$_SERVER:this.prepare_$_SERVER_superglobal(r,i,o),body:N,scriptPath:o,headers:l});if(u$1(this,V$1)){let e=await ae.headers;u$1(this,V$1).rememberCookiesFromResponseHeaders(e)}return ae},schema12={properties:{name:{type:`string`},version:{type:`string`},mode:{type:`string`,const:`php-extension`},loadWithIniDirective:{$ref:`#/definitions/PHPExtensionLoadDirective`,description:"The first directive of the generated startup `.ini` file. Defaults to `extension`; use `zend_extension` for Zend extensions like Xdebug. Use `false` to stage the `.so` without registering it in php.ini."},iniEntries:{type:`object`,additionalProperties:{type:`string`},description:"Additional `key=value` lines for the generated startup `.ini` file."},env:{type:`object`,additionalProperties:{type:`string`},description:`Environment variables added before the extension is loaded.`},extensionDir:{type:`string`,description:"VFS directory where PHP.wasm writes the extension `.so` file and its per-extension ini file. Defaults to `PHP_EXTENSIONS_DIR`."},artifacts:{type:`array`,items:{type:`object`,properties:{phpVersion:{type:`string`,description:"PHP major/minor version, e.g. `8.4`."},sourcePath:{type:`string`,description:`Relative to the manifest URL/base URL, or an absolute URL.`},extraFiles:{$ref:`#/definitions/PHPExtensionManifestExtraFiles`,description:`URL-backed files needed only by this artifact.`}},required:[`phpVersion`,`sourcePath`],additionalProperties:!1}},extraFiles:{$ref:`#/definitions/PHPExtensionManifestExtraFiles`,description:`URL-backed files shared by every artifact in this manifest.`}}},schema15={properties:{nodes:{items:{properties:{type:{enum:[`file`,`directory`]}}}}}},func2=Object.prototype.hasOwnProperty,schema14={enum:[`extension`,`zend_extension`]},PHP_EXTENSIONS_DIR=`/internal/shared/extensions`,MAX_EXTENSION_SIDECAR_FILE_REQUESTS=5,NodeSABSyncReceiveMessageTransport=class e{static async create(){if(!e.receiveMessageOnPort)try{e.receiveMessageOnPort=require___vite_browser_external().receiveMessageOnPort}catch{e.receiveMessageOnPort=await __vitePreload(()=>Promise.resolve().then(()=>__toESM(require___vite_browser_external(),1)).then(e=>e.receiveMessageOnPort),void 0)}return new e}constructor(){}afterResponseSent(e){let{notifyBuffer:n}=e.data;if(n){let e=new Int32Array(n);e[0]=1,Atomics.notify(e,0)}}send(n,r,i){var o;let s=new SharedArrayBuffer(4),l=new Int32Array(s);l[0]=0;let N=generateUUID();if(n.postMessage({...r,id:N,notifyBuffer:s},i),Atomics.wait(l,0,0,5e3)===`timed-out`)throw Error(`Timeout waiting for response`);for(;;){let r=e.receiveMessageOnPort(n);if(r.message?.id===N)return r.message;if(!r)throw Error(`No response received`)}}},proxyMarker=Symbol(`Comlink.proxy`),createEndpoint=Symbol(`Comlink.endpoint`),releaseProxy=Symbol(`Comlink.releaseProxy`),finalizer=Symbol(`Comlink.finalizer`),throwMarker=Symbol(`Comlink.thrown`),WireValueType={RAW:`RAW`,HANDLER:`HANDLER`},MessageType={GET:`GET`,SET:`SET`,APPLY:`APPLY`,CONSTRUCT:`CONSTRUCT`,ENDPOINT:`ENDPOINT`,RELEASE:`RELEASE`},isObject=e=>typeof e==`object`&&!!e||typeof e==`function`,proxyTransferHandler={canHandle:e=>isObject(e)&&e[proxyMarker],serialize(e){let{port1:n,port2:r}=new MessageChannel;return expose(e,n),[r,[r]]},deserialize(e){return e.start(),wrap(e)}},throwTransferHandler$1={canHandle:e=>isObject(e)&&throwMarker in e,serialize({value:e}){let n;return n=e instanceof Error?{isError:!0,value:{message:e.message,name:e.name,stack:e.stack}}:{isError:!1,value:e},[n,[]]},deserialize(e){throw e.isError?Object.assign(Error(e.value.message),e.value):e.value}},transferHandlers=new Map([[`proxy`,proxyTransferHandler],[`throw`,throwTransferHandler$1]]),proxyCounter=new WeakMap,proxyFinalizers=`FinalizationRegistry`in globalThis&&new FinalizationRegistry(e=>{let n=(proxyCounter.get(e)||0)-1;proxyCounter.set(e,n),n===0&&releaseEndpoint(e)}),transferCache=new WeakMap,proxyByListener=new WeakMap,list=[Error,EvalError,RangeError,ReferenceError,SyntaxError,TypeError,URIError,AggregateError,globalThis.DOMException,globalThis.AssertionError,globalThis.SystemError].filter(Boolean).map(e=>[e.name,e]),errorConstructors=new Map(list),NonError=class e extends Error{constructor(n){super(e._prepareSuperMessage(n)),this.name=`NonError`}static _prepareSuperMessage(e){try{return JSON.stringify(e)}catch{return String(e)}}},errorProperties=[{property:`name`,enumerable:!1},{property:`message`,enumerable:!1},{property:`stack`,enumerable:!1},{property:`code`,enumerable:!0},{property:`cause`,enumerable:!1},{property:`errors`,enumerable:!1}],toJsonWasCalled=new WeakSet,toJSON=e=>{toJsonWasCalled.add(e);let n=e.toJSON();return toJsonWasCalled.delete(e),n},newError=e=>{let n=errorConstructors.get(e)??Error;return n===AggregateError?new n([]):new n},destroyCircular=({from:e,seen:n,to:r,forceEnumerable:i,maxDepth:o,depth:s,useToJSON:l,serialize:N})=>{if(r||=Array.isArray(e)?[]:!N&&isErrorLike(e)?newError(e.name):{},n.push(e),s>=o)return r;if(l&&typeof e.toJSON==`function`&&!toJsonWasCalled.has(e))return toJSON(e);let ae=e=>destroyCircular({from:e,seen:[...n],forceEnumerable:i,maxDepth:o,depth:s,useToJSON:l,serialize:N});for(let[i,o]of Object.entries(e)){if(o&&o instanceof Uint8Array&&o.constructor.name===`Buffer`){r[i]=`[object Buffer]`;continue}if(typeof o==`object`&&o&&typeof o.pipe==`function`){r[i]=`[object Stream]`;continue}if(typeof o!=`function`){if(!o||typeof o!=`object`){try{r[i]=o}catch{}continue}if(!n.includes(e[i])){s++,r[i]=ae(e[i]);continue}r[i]=`[Circular]`}}if(N||r instanceof Error)for(let{property:n,enumerable:o}of errorProperties)e[n]!==void 0&&e[n]!==null&&Object.defineProperty(r,n,{value:isErrorLike(e[n])||Array.isArray(e[n])?ae(e[n]):e[n],enumerable:i?!0:o,configurable:!0,writable:!0});return r},releaseApiProxy=releaseProxy,isTransferHandlersSetup=!1,throwTransferHandler=transferHandlers.get(`throw`),throwTransferHandlerCustom={canHandle:throwTransferHandler.canHandle,serialize:({value:e})=>{let n;return e instanceof Error?(n={isError:!0,value:serializeError(e)},n.value.originalErrorClassName=e.constructor.name):n={isError:!1,value:e},[n,[]]},deserialize:e=>{if(e.isError){let n=deserializeError(e.value),r=Error(`Comlink method call failed`),i=n;for(;i.cause;)i=i.cause;throw i.cause=r,n}throw e.value}},transferHandlers.set(`throw`,throwTransferHandlerCustom),MAX_ADDRESSABLE_FILE_OFFSET=BigInt(2**53-1),IntervalNode=class{constructor(e){this.left=null,this.right=null,this.range=e,this.max=e.end}},FileLockIntervalTree=class{constructor(){this.root=null}isEmpty(){return this.root===null}insert(e){this.root=this.insertNode(this.root,e)}findOverlapping(e){let n=[];return this.findOverlappingRanges(this.root,e,n),n}remove(e){this.root=this.removeNode(this.root,e)}findLocksForProcess(e){let n=[];return this.findLocksForProcessInNode(this.root,e,n),n}findStrictestExistingLockType(){let e=`unlocked`,n=r=>{if(r){if(r.range.type===`exclusive`){e=`exclusive`;return}r.range.type===`shared`&&(e=`shared`),n(r.left),n(r.right)}};return n(this.root),e}insertNode(e,n){return e?(n.start<e.range.start?e.left=this.insertNode(e.left,n):e.right=this.insertNode(e.right,n),e.max=this.bigintMax(e.max,n.end),e):new IntervalNode(n)}bigintMax(...e){return e.reduce((e,n)=>n>e?n:e,e[0])}findOverlappingRanges(e,n,r){e&&(this.doRangesOverlap(e.range,n)&&r.push(e.range),e.left&&e.left.max>=n.start&&this.findOverlappingRanges(e.left,n,r),e.right&&e.range.start<=n.end&&this.findOverlappingRanges(e.right,n,r))}doRangesOverlap(e,n){return e.start<n.end&&n.start<e.end}removeNode(e,n){if(!e)return null;if(this.areRangesEqual(e.range,n)){if(!e.left)return e.right;if(!e.right)return e.left;let n=this.findMin(e.right);e.range=n.range,e.right=this.removeNode(e.right,n.range)}else n.start<e.range.start?e.left=this.removeNode(e.left,n):e.right=this.removeNode(e.right,n);return e.max=e.range.end,e.left&&(e.max=this.bigintMax(e.max,e.left.max)),e.right&&(e.max=this.bigintMax(e.max,e.right.max)),e}findMin(e){let n=e;for(;n.left;)n=n.left;return n}areRangesEqual(e,n){return e.start===n.start&&e.end===n.end&&e.pid===n.pid&&e.fd===n.fd}findLocksForProcessInNode(e,n,r){e&&(e.range.pid===n&&r.push(e.range),this.findLocksForProcessInNode(e.left,n,r),this.findLocksForProcessInNode(e.right,n,r))}},FileLockManagerInMemory=class{constructor(){this.locks=new Map}lockWholeFile(e,n){if(this.locks.get(e)===void 0){if(n.type===`unlock`)return!0;this.locks.set(e,new FileLock)}let r=this.locks.get(e).lockWholeFile(n);return this.forgetPathIfUnlocked(e),r}lockFileByteRange(e,n){if(!this.locks.has(e)){if(n.type===`unlocked`)return!0;this.locks.set(e,new FileLock)}return this.locks.get(e).lockFileByteRange(n)}findFirstConflictingByteRangeLock(e,n){let r=this.locks.get(e);if(r!==void 0)return r.findFirstConflictingByteRangeLock(n)}releaseLocksForProcess(e){for(let[n,r]of this.locks.entries())r.releaseLocksForProcess(e),this.forgetPathIfUnlocked(n)}releaseLocksOnFdClose(e,n,r){let i=this.locks.get(r);i&&(i.releaseLocksOnFdClose(e,n),this.forgetPathIfUnlocked(r))}forgetPathIfUnlocked(e){let n=this.locks.get(e);n&&n.isUnlocked()&&this.locks.delete(e)}},FileLock=class{constructor(){this.rangeLocks=new FileLockIntervalTree,this.wholeFileLock={type:`unlocked`}}lockWholeFile(e){if(e.type===`unlock`)return this.wholeFileLock.type===`unlocked`||(this.wholeFileLock.type===`exclusive`&&this.wholeFileLock.pid===e.pid&&this.wholeFileLock.fd===e.fd?this.wholeFileLock={type:`unlocked`}:this.wholeFileLock.type===`shared`&&this.wholeFileLock.pidFds.has(e.pid)&&this.wholeFileLock.pidFds.get(e.pid).has(e.fd)&&(this.wholeFileLock.pidFds.get(e.pid).delete(e.fd),this.wholeFileLock.pidFds.get(e.pid).size===0&&this.wholeFileLock.pidFds.delete(e.pid),this.wholeFileLock.pidFds.size===0&&(this.wholeFileLock={type:`unlocked`}))),!0;if(this.isThereAConflictWithRequestedWholeFileLock(e))return!1;if(e.type===`exclusive`)return this.wholeFileLock={type:`exclusive`,pid:e.pid,fd:e.fd},!0;if(e.type===`shared`){this.wholeFileLock.type!==`shared`&&(this.wholeFileLock={type:`shared`,pidFds:new Map});let n=this.wholeFileLock;return n.pidFds.has(e.pid)||n.pidFds.set(e.pid,new Set),n.pidFds.get(e.pid).add(e.fd),!0}throw Error(`Unexpected wholeFileLock() op: '${e.type}'`)}lockFileByteRange(e){if(e.start===e.end&&(e={...e,end:MAX_ADDRESSABLE_FILE_OFFSET}),e.type===`unlocked`){let n=this.rangeLocks.findOverlapping(e).filter(n=>n.pid===e.pid);for(let r of n)this.rangeLocks.remove(r),r.start<e.start&&this.rangeLocks.insert({...r,end:e.start}),r.end>e.end&&this.rangeLocks.insert({...r,start:e.end});return!0}if(this.isThereAConflictWithRequestedRangeLock(e))return!1;let n=this.rangeLocks.findOverlapping(e).filter(n=>n.pid===e.pid),r=e.start,i=e.end;for(let e of n)this.rangeLocks.remove(e),e.start<r&&(r=e.start),e.end>i&&(i=e.end);let o={...e,start:r,end:i};return this.rangeLocks.insert(o),!0}findFirstConflictingByteRangeLock(e){e.start===e.end&&(e={...e,end:MAX_ADDRESSABLE_FILE_OFFSET});let n=this.rangeLocks.findOverlapping(e).find(n=>n.pid!==e.pid&&(e.type===`exclusive`||n.type===`exclusive`));if(n)return n;if(this.wholeFileLock.type!==`unlocked`&&(this.wholeFileLock.type===`exclusive`||e.type===`exclusive`))return{type:this.wholeFileLock.type,start:0n,end:0n,pid:-1}}releaseLocksForProcess(e){for(let n of this.rangeLocks.findLocksForProcess(e))this.lockFileByteRange({...n,type:`unlocked`});if(this.wholeFileLock.type===`exclusive`&&this.wholeFileLock.pid===e)this.lockWholeFile({pid:e,fd:this.wholeFileLock.fd,type:`unlock`});else if(this.wholeFileLock.type===`shared`&&this.wholeFileLock.pidFds.has(e))for(let n of this.wholeFileLock.pidFds.get(e))this.lockWholeFile({pid:e,fd:n,type:`unlock`})}releaseLocksOnFdClose(e,n){for(let n of this.rangeLocks.findLocksForProcess(e))this.lockFileByteRange({...n,type:`unlocked`});this.lockWholeFile({pid:e,fd:n,type:`unlock`})}isUnlocked(){return this.wholeFileLock.type===`unlocked`&&this.rangeLocks.isEmpty()}isThereAConflictWithRequestedRangeLock(e){return this.findFirstConflictingByteRangeLock(e)!==void 0}isThereAConflictWithRequestedWholeFileLock(e){return e.type===`exclusive`?!!(this.wholeFileLock.type===`exclusive`&&(this.wholeFileLock.fd!==e.fd||this.wholeFileLock.pid!==e.pid)||this.wholeFileLock.type===`shared`&&Array.from(this.wholeFileLock.pidFds).some(([n])=>n!==e.pid)||this.rangeLocks.findOverlapping({start:0n,end:MAX_ADDRESSABLE_FILE_OFFSET}).length>0):e.type===`shared`?this.wholeFileLock.type===`exclusive`&&this.wholeFileLock.pid!==e.pid||this.rangeLocks.findOverlapping({start:0n,end:MAX_ADDRESSABLE_FILE_OFFSET}).filter(e=>e.type===`exclusive`).length>0:!1}},FileLockManagerComposite=class{constructor({nativeLockManager:e,wasmLockManager:n}){this.nativeLockManager=e,this.wasmLockManager=n}lockWholeFile(e,n){if(n.type!==`unlock`){let r,i;try{if(r=this.nativeLockManager.lockWholeFile(e,n),!r)return!1;i=this.wasmLockManager.lockWholeFile(e,n)}catch(e){M$1.error(`Unexpected error in lockWholeFile()`,e)}finally{r&&!i&&this.nativeLockManager.lockWholeFile(e,{...n,type:`unlock`})}return!!r&&!!i}try{this.wasmLockManager.lockWholeFile(e,n)}catch(e){M$1.error(`Unexpected error unlocking whole file with in-memory lock manager`,e)}try{this.nativeLockManager.lockWholeFile(e,n)}catch(e){M$1.error(`Unexpected error unlocking whole file with native lock manager`,e)}return!0}lockFileByteRange(e,n,r){if(n.type!==`unlocked`){let i,o;try{if(i=this.nativeLockManager.lockFileByteRange(e,n,r),!i)return!1;o=this.wasmLockManager.lockFileByteRange(e,n,r)}catch(e){M$1.error(`Unexpected error in lockFileByteRange()`,e)}finally{i&&!o&&this.nativeLockManager.lockFileByteRange(e,{...n,type:`unlocked`},!1)}return!!i&&!!o}try{this.wasmLockManager.lockFileByteRange(e,n,r)}catch(e){M$1.error(`Unexpected error unlocking byte range with in-memory lock manager`,e)}try{this.nativeLockManager.lockFileByteRange(e,n,r)}catch(e){M$1.error(`Unexpected error unlocking byte range with native lock manager`,e)}return!0}findFirstConflictingByteRangeLock(e,n){try{return this.nativeLockManager.findFirstConflictingByteRangeLock(e,n)||this.wasmLockManager.findFirstConflictingByteRangeLock(e,n)}catch(e){M$1.error(`Unexpected error in findFirstConflictingByteRangeLock()`,e);return}}releaseLocksForProcess(e){try{this.wasmLockManager.releaseLocksForProcess(e)}catch(e){M$1.error(`Unexpected error in wasmLockManager.releaseLocksForProcess()`,e)}try{this.nativeLockManager.releaseLocksForProcess(e)}catch(e){M$1.error(`Unexpected error in nativeLockManager.releaseLocksForProcess()`,e)}}releaseLocksOnFdClose(e,n,r){try{this.wasmLockManager.releaseLocksOnFdClose(e,n,r)}catch(e){M$1.error(`Unexpected error in wasmLockManager.releaseLocksOnFdClose()`,e)}try{this.nativeLockManager.releaseLocksOnFdClose(e,n,r)}catch(e){M$1.error(`Unexpected error in nativeLockManager.releaseLocksOnFdClose()`,e)}}},maxValueForSigned32BitInteger=2**31-1,ProcessIdAllocator=class{constructor(e=1,n=maxValueForSigned32BitInteger){this.claimed=new Set,this.initialId=e,this.maxId=n,this.nextId=e}claim(){let e=this.maxId-this.initialId+1;for(let n=0;n<e;n++)if(this.claimed.has(this.nextId))this.nextId++,this.nextId>this.maxId&&(this.nextId=this.initialId);else return this.claimed.add(this.nextId),this.nextId;throw Error(`Unable to find free process ID after ${e} tries.`)}release(e){return this.claimed.has(e)?(this.claimed.delete(e),!0):!1}}}));async function w$1(e,n){let r;return r=[`GET`,`HEAD`].includes(e.method)?void 0:`body`in n?n.body:!e.bodyUsed&&e.body?e.body:await e.arrayBuffer(),new Request(n.url||e.url,{body:r,method:e.method,headers:e.headers,referrer:e.referrer,referrerPolicy:e.referrerPolicy,mode:e.mode===`navigate`?`same-origin`:e.mode,credentials:e.credentials,cache:e.cache,redirect:e.redirect,integrity:e.integrity,...r instanceof ReadableStream&&{duplex:`half`},...n})}async function A$1(){if(u!==void 0)return u;try{let e=new ReadableStream({start(e){e.close()}});await fetch(`data:,`,{method:`POST`,body:e,duplex:`half`}),u=!0}catch{u=!1}return u}async function W(e,n,r,i){var o;let s=typeof e==`string`?new Request(e,n):e,l=i?new URL(i):null,N=l?new URL(s.url,l):new URL(s.url);if(B(N))return await fetch(s);if(D(N))return s=await I$1(s,N),await fetch(s);if(N.protocol===`http:`){N.protocol=`https:`;let e=N.toString();s=await w$1(s,{url:e}),N=new URL(e)}if(!r||l&&N.protocol===l.protocol&&N.hostname===l.hostname&&N.port===l.port&&N.pathname.startsWith(l.pathname))return await fetch(s);let ae=s.clone();try{return await fetch(s)}catch{let e=new Headers(s.headers),n=e.get(`x-cors-proxy-allowed-request-headers`)?.split(`,`)||[],i=n.includes(`authorization`)||n.includes(`cookie`),o=e.get(`content-type`);o&&o.toLowerCase().includes(`multipart/form-data`)&&(e.set(`x-cors-proxy-content-type`,o),e.set(`content-type`,`application/octet-stream`));let l=null,N=s.method.toUpperCase();N!==`GET`&&N!==`HEAD`&&(l=await A$1()?ae.body:await ae.arrayBuffer()),l instanceof ReadableStream&&new URL(r,import.meta.url).protocol===`http:`&&(l=await new Response(l).arrayBuffer());let ce=await w$1(s,{url:`${r}${s.url}`,headers:e,body:l,...i&&{credentials:`include`}}),ue=await fetch(ce);if(!ue.headers.has(q))throw new O(s.url,ue.status,ue.statusText);return ue}}function B(e){return e.hostname===`localhost`||e.hostname===`127.0.0.1`||e.hostname===`[::1]`||e.hostname===`::1`}function D(e){return e.protocol===`https:`&&b$1.has(e.hostname)}async function I$1(e,n){let r=b$1.get(n.hostname);if(!r)return e;let i=new Headers(e.headers);for(let[e,n]of Object.entries(r))i.has(e)||i.set(e,n);return await w$1(e,{headers:i})}var u,O,q,b$1,init_web_service_worker=__esmMin((()=>{init_universal(),O=class extends Error{constructor(e,n,r){super(`Could not fetch ${e} – your network appears to be blocking this request (HTTP ${n}). This often happens on school, university, or corporate networks. Try switching to a different network or using a VPN.`),this.name=`FirewallInterferenceError`,this.url=e,this.status=n,this.statusText=r}},q=`X-Playground-Cors-Proxy`,b$1=new Map([[`api.anthropic.com`,{"anthropic-dangerous-direct-browser-access":`true`}],[`api.openai.com`,{}],[`generativelanguage.googleapis.com`,{}]])}));function R$1(e=fetch){let n={};return async function(r,i){if(!n[r]){n[r]={responsePromise:e(r,i),async nextResponse(){let e=await n[r].responsePromise,[i,o]=n[r].unlockedBodyStream.tee();return n[r].unlockedBodyStream=i,new Response(o,{status:e.status,statusText:e.statusText,headers:e.headers})}};let o=await n[r].responsePromise;n[r].unlockedBodyStream=o.body}return n[r].nextResponse()}}var init_common=__esmMin((()=>{})),jspi,init_esm=__esmMin((()=>{jspi=()=>(async()=>`Suspending`in WebAssembly)()})),A,init_fs_journal=__esmMin((()=>{init_universal(),init_util(),init_logger(),new v$1({concurrency:15})}));async function je(){let e=$e(),n;for(let r of e)try{return await __vitePreload(()=>import(r),[])}catch(e){n=e}throw Error("PHP next assets are missing. Run `npm run sync:php-next` before using PHP next locally.",{cause:n})}function $e(){var e,n;let r=globalThis.location?.origin||``,i=(globalThis.location?.pathname||`/`).startsWith(`/website-server/`)?`/website-server/`:`/`;return Array.from(new Set([`${r}${i}php-next/index.js`,`${r}/website-server/php-next/index.js`,`${r}/php-next/index.js`]))}async function Ge(e=LatestSupportedPHPVersion,n=`asyncify`){switch(e){case`next`:return(await je()).getPHPLoaderModule(n);case`8.5`:return(await __vitePreload(async()=>{let{getPHPLoaderModule:e}=await import(`./php-wasm-not-bundled-B_lfuRhw.js`);return{getPHPLoaderModule:e}},__vite__mapDeps([0,1]))).getPHPLoaderModule();case`8.4`:return(await __vitePreload(async()=>{let{getPHPLoaderModule:e}=await import(`./php-wasm-not-bundled-B_lfuRhw.js`);return{getPHPLoaderModule:e}},__vite__mapDeps([0,1]))).getPHPLoaderModule();case`8.3`:return(await __vitePreload(async()=>{let{getPHPLoaderModule:e}=await import(`./web-8-3-B-4TzLcY.js`);return{getPHPLoaderModule:e}},__vite__mapDeps([2,1]))).getPHPLoaderModule();case`8.2`:return(await __vitePreload(async()=>{let{getPHPLoaderModule:e}=await import(`./php-wasm-not-bundled-B_lfuRhw.js`);return{getPHPLoaderModule:e}},__vite__mapDeps([0,1]))).getPHPLoaderModule();case`8.1`:return(await __vitePreload(async()=>{let{getPHPLoaderModule:e}=await import(`./php-wasm-not-bundled-B_lfuRhw.js`);return{getPHPLoaderModule:e}},__vite__mapDeps([0,1]))).getPHPLoaderModule();case`8.0`:return(await __vitePreload(async()=>{let{getPHPLoaderModule:e}=await import(`./php-wasm-not-bundled-B_lfuRhw.js`);return{getPHPLoaderModule:e}},__vite__mapDeps([0,1]))).getPHPLoaderModule();case`7.4`:return(await __vitePreload(async()=>{let{getPHPLoaderModule:e}=await import(`./php-wasm-not-bundled-B_lfuRhw.js`);return{getPHPLoaderModule:e}},__vite__mapDeps([0,1]))).getPHPLoaderModule();case`5.2`:return(await __vitePreload(async()=>{let{getPHPLoaderModule:e}=await import(`./php-wasm-not-bundled-B_lfuRhw.js`);return{getPHPLoaderModule:e}},__vite__mapDeps([0,1]))).getPHPLoaderModule()}throw Error(`Unsupported PHP version ${e}`)}function y(e){return Object.fromEntries(Object.entries(e).map(([e,n])=>[n,e]))}function b(e){return new Uint8Array([e>>8&255,e&255])}function I(e){return new Uint8Array([e>>16&255,e>>8&255,e&255])}function X(e){let n=new ArrayBuffer(8);return new DataView(n).setBigUint64(0,BigInt(e),!1),new Uint8Array(n)}function Je(e){let n=new K(e.buffer),r=[];for(;!n.isFinished();){let i=n.offset,o=n.readUint16(),s=Ve[o],l=n.readUint16(),N=n.readUint8Array(l);if(!(s in se))continue;let ae=se[s];r.push({type:s,data:ae.decodeFromClient(N),raw:e.slice(i,i+4+l)})}return r}async function V(e,n,r,i){let o=R$3([n,r]),s=await crypto.subtle.importKey(`raw`,e,{name:`HMAC`,hash:{name:`SHA-256`}},!1,[`sign`]),l=o,N=[];for(;R$3(N).byteLength<i;){l=await ie(s,l);let e=await ie(s,R$3([l,o]));N.push(e)}return R$3(N).slice(0,i)}async function ie(e,n){return await crypto.subtle.sign({name:`HMAC`,hash:`SHA-256`},e,n)}function rt(e){return new TransformStream({transform(n,r){for(;n.length>0;)r.enqueue(n.slice(0,e)),n=n.slice(e)}})}function st(e,n){return it.generateCertificate(e,n)}function L(e){for(let[n,r]of Object.entries(at))if(r===e)return n;throw Error(`OID not found for name: ${e}`)}function _e(e){return`${e.getUTCFullYear().toString().substr(2)}${x(e.getUTCMonth()+1)}${x(e.getUTCDate())}${x(e.getUTCHours())}${x(e.getUTCMinutes())}${x(e.getUTCSeconds())}Z`}function x(e){return e.toString().padStart(2,`0`)}function _t(e,n){let r=new Date(e);return r.setUTCFullYear(r.getUTCFullYear()+n),r}function ht(e,n){if(n.length<8)return!1;if(e===443&&n[0]===C.Handshake&&n[1]===3&&n[2]>=1&&n[2]<=3)return`tls`;let r=new TextDecoder(`latin1`,{fatal:!0}).decode(n);return lt.some(e=>r.startsWith(e+` `))?`http`:`other`}function Ct(e,n){let r=e.length,i=n.length,o=r-i;for(let r=0;r<=o;r++){let o=!0;for(let s=0;s<i;s++)if(e[r+s]!==n[s]){o=!1;break}if(o)return r}return-1}async function ut(e=LatestSupportedPHPVersion){switch(e){case`8.5`:return(await __vitePreload(async()=>{let{getIntlExtensionPath:e}=await import(`./php-wasm-not-bundled-B_lfuRhw.js`);return{getIntlExtensionPath:e}},__vite__mapDeps([0,1]))).getIntlExtensionPath();case`8.4`:return(await __vitePreload(async()=>{let{getIntlExtensionPath:e}=await import(`./php-wasm-not-bundled-B_lfuRhw.js`);return{getIntlExtensionPath:e}},__vite__mapDeps([0,1]))).getIntlExtensionPath();case`8.3`:return(await __vitePreload(async()=>{let{getIntlExtensionPath:e}=await import(`./web-8-3-B-4TzLcY.js`);return{getIntlExtensionPath:e}},__vite__mapDeps([2,1]))).getIntlExtensionPath();case`8.2`:return(await __vitePreload(async()=>{let{getIntlExtensionPath:e}=await import(`./php-wasm-not-bundled-B_lfuRhw.js`);return{getIntlExtensionPath:e}},__vite__mapDeps([0,1]))).getIntlExtensionPath();case`8.1`:return(await __vitePreload(async()=>{let{getIntlExtensionPath:e}=await import(`./php-wasm-not-bundled-B_lfuRhw.js`);return{getIntlExtensionPath:e}},__vite__mapDeps([0,1]))).getIntlExtensionPath();case`8.0`:return(await __vitePreload(async()=>{let{getIntlExtensionPath:e}=await import(`./php-wasm-not-bundled-B_lfuRhw.js`);return{getIntlExtensionPath:e}},__vite__mapDeps([0,1]))).getIntlExtensionPath();case`7.4`:return(await __vitePreload(async()=>{let{getIntlExtensionPath:e}=await import(`./php-wasm-not-bundled-B_lfuRhw.js`);return{getIntlExtensionPath:e}},__vite__mapDeps([0,1]))).getIntlExtensionPath()}throw Error(`Unsupported PHP version ${e}`)}async function At(e,n,r,i=[]){return i.length?withResolvedPHPExtensions(r,await Promise.all(i.map(r=>Ht(e,n,r)))):r}async function Ht(e,n,r){if(isLegacyPHPVersion(e))throw Error(`Extensions are not available for legacy PHP ${e}.`);if(isPHPNextVersion(e))throw Error(`Extensions are not available for PHP next.`);if(typeof r==`object`&&`source`in r){if(n===`asyncify`)throw Error(`External PHP extensions require JSPI. Asyncify is only supported for PHP.wasm bundled extensions.`);return await resolvePHPExtension({...r,phpVersion:e})}let i=typeof r==`string`?r:r.name;if(i!==`intl`)throw Error(`Unknown bundled PHP web extension: ${String(i)}.`);let o=R$1(fetch),s=await ut(e),l=(await __vitePreload(async()=>{let{default:e}=await import(`./php-wasm-not-bundled-B_lfuRhw.js`);return{default:e}},__vite__mapDeps([0,1]))).default,[N,ae]=await Promise.all([s,l].map(async e=>{let n=await o(e);if(!n.ok)throw Error(`Failed to fetch bundled PHP web extension asset: ${n.url||e} (${n.status} ${n.statusText}).`);return await n.arrayBuffer()}));return await resolvePHPExtension({source:{format:`so`,name:`intl`,bytes:new Uint8Array(N)},phpVersion:e,env:{ICU_DATA:`/internal/shared`},extraFiles:{files:{"/internal/shared/icudt74l.dat":new Uint8Array(ae)}}})}async function xt(e,n={}){var r;`setImmediate`in globalThis||(globalThis.setImmediate=e=>setTimeout(e,0));let i=await jspi()?`jspi`:`asyncify`,o={...dt(),...n.emscriptenOptions||{},phpWasmAsyncMode:i};n.tcpOverFetch&&(o=ct(o,n.tcpOverFetch));let s=isLegacyPHPVersion(e),l=[...n.extensions??[]];if(n.withIntl&&!ft(l,`intl`)&&l.push(`intl`),s){let e=await o,n=e.preRun||[];o={...e,preRun:[...n,createLegacyPhpIniPreRunStep()]}}if(s&&l.length)throw Error(`Extensions are not available for legacy PHP ${e}.`);s||(o=At(e,i,await o,l));let[N,ae]=await Promise.all([Ge(e,i),o]);return(r=n.onPhpLoaderModuleLoaded)==null||r.call(n,N),await loadPHPRuntime(N,ae)}function ft(e,n){return e.some(e=>typeof e==`string`?e===n:!(`source`in e)&&e.name===n)}var K,F,R,Ve,He,ze,de,fe,Q,Ee,Te,pe,ee,we,te,Ye,Y,ne,Z,re,Ze,se,Xe,ye,me,Le,ge,C,T,Qe,et,G,k,tt,nt,p,P,it,at,E,c,ot,ct,St,lt,w,dt,init_web=__esmMin((()=>{init_universal(),init_util(),init_logger(),init_web_service_worker(),init_common(),init_esm(),init_fs_journal(),init_preload_helper(),K=class{constructor(e){this.offset=0,this.buffer=e,this.view=new DataView(e)}readUint8(){let e=this.view.getUint8(this.offset);return this.offset+=1,e}readUint16(){let e=this.view.getUint16(this.offset);return this.offset+=2,e}readUint32(){let e=this.view.getUint32(this.offset);return this.offset+=4,e}readUint8Array(e){let n=this.buffer.slice(this.offset,this.offset+e);return this.offset+=e,new Uint8Array(n)}isFinished(){return this.offset>=this.buffer.byteLength}},F=class{constructor(e){this.offset=0,this.buffer=new ArrayBuffer(e),this.uint8Array=new Uint8Array(this.buffer),this.view=new DataView(this.buffer)}writeUint8(e){this.view.setUint8(this.offset,e),this.offset+=1}writeUint16(e){this.view.setUint16(this.offset,e),this.offset+=2}writeUint32(e){this.view.setUint32(this.offset,e),this.offset+=4}writeUint8Array(e){this.uint8Array.set(e,this.offset),this.offset+=e.length}},R={server_name:0,max_fragment_length:1,client_certificate_url:2,trusted_ca_keys:3,truncated_hmac:4,status_request:5,user_mapping:6,client_authz:7,server_authz:8,cert_type:9,supported_groups:10,ec_point_formats:11,srp:12,signature_algorithms:13,use_srtp:14,heartbeat:15,application_layer_protocol_negotiation:16,status_request_v2:17,signed_certificate_timestamp:18,client_certificate_type:19,server_certificate_type:20,padding:21,encrypt_then_mac:22,extended_master_secret:23,token_binding:24,cached_info:25,tls_its:26,compress_certificate:27,record_size_limit:28,pwd_protect:29,pwo_clear:30,password_salt:31,ticket_pinning:32,tls_cert_with_extern_psk:33,delegated_credential:34,session_ticket:35,TLMSP:36,TLMSP_proxying:37,TLMSP_delegate:38,supported_ekt_ciphers:39,pre_shared_key:41,early_data:42,supported_versions:43,cookie:44,psk_key_exchange_modes:45,reserved:46,certificate_authorities:47,oid_filters:48,post_handshake_auth:49,signature_algorithms_cert:50,key_share:51,transparency_info:52,connection_id:54,renegotiation_info:65281},Ve=y(R),He={host_name:0},ze=y(He),de=class{static decodeFromClient(e){let n=new DataView(e.buffer),r=0,i=n.getUint16(r);r+=2;let o=[];for(;r<i+2;){let i=e[r];r+=1;let s=n.getUint16(r);r+=2;let l=e.slice(r,r+s);switch(r+=s,i){case He.host_name:o.push({name_type:ze[i],name:{host_name:new TextDecoder().decode(l)}});break;default:throw Error(`Unsupported name type ${i}`)}}return{server_name_list:o}}static encodeForClient(e){if(e!=null&&e.server_name_list.length)throw Error(`Encoding non-empty lists for ClientHello is not supported yet. Only empty lists meant for ServerHello are supported today.`);let n=new F(4);return n.writeUint16(R.server_name),n.writeUint16(0),n.uint8Array}},fe={uncompressed:0,ansiX962_compressed_prime:1,ansiX962_compressed_char2:2},Q=y(fe),Ee=class{static decodeFromClient(e){let n=new K(e.buffer),r=n.readUint8(),i=[];for(let e=0;e<r;e++){let e=n.readUint8();e in Q&&i.push(Q[e])}return i}static encodeForClient(e){let n=new F(6);return n.writeUint16(R.ec_point_formats),n.writeUint16(2),n.writeUint8(1),n.writeUint8(fe[e]),n.uint8Array}},Te={decodeFromClient(e){let n=e[0]??0;return{renegotiatedConnection:e.slice(1,1+n)}},encodeForClient(){let e=R.renegotiation_info,n=new Uint8Array([0]);return new Uint8Array([e>>8&255,e&255,0,n.length,...n])}},pe={TLS1_CK_PSK_WITH_RC4_128_SHA:138,TLS1_CK_PSK_WITH_3DES_EDE_CBC_SHA:139,TLS1_CK_PSK_WITH_AES_128_CBC_SHA:140,TLS1_CK_PSK_WITH_AES_256_CBC_SHA:141,TLS1_CK_DHE_PSK_WITH_RC4_128_SHA:142,TLS1_CK_DHE_PSK_WITH_3DES_EDE_CBC_SHA:143,TLS1_CK_DHE_PSK_WITH_AES_128_CBC_SHA:144,TLS1_CK_DHE_PSK_WITH_AES_256_CBC_SHA:145,TLS1_CK_RSA_PSK_WITH_RC4_128_SHA:146,TLS1_CK_RSA_PSK_WITH_3DES_EDE_CBC_SHA:147,TLS1_CK_RSA_PSK_WITH_AES_128_CBC_SHA:148,TLS1_CK_RSA_PSK_WITH_AES_256_CBC_SHA:149,TLS1_CK_PSK_WITH_AES_128_GCM_SHA256:168,TLS1_CK_PSK_WITH_AES_256_GCM_SHA384:169,TLS1_CK_DHE_PSK_WITH_AES_128_GCM_SHA256:170,TLS1_CK_DHE_PSK_WITH_AES_256_GCM_SHA384:171,TLS1_CK_RSA_PSK_WITH_AES_128_GCM_SHA256:172,TLS1_CK_RSA_PSK_WITH_AES_256_GCM_SHA384:173,TLS1_CK_PSK_WITH_AES_128_CBC_SHA256:174,TLS1_CK_PSK_WITH_AES_256_CBC_SHA384:175,TLS1_CK_PSK_WITH_NULL_SHA256:176,TLS1_CK_PSK_WITH_NULL_SHA384:177,TLS1_CK_DHE_PSK_WITH_AES_128_CBC_SHA256:178,TLS1_CK_DHE_PSK_WITH_AES_256_CBC_SHA384:179,TLS1_CK_DHE_PSK_WITH_NULL_SHA256:180,TLS1_CK_DHE_PSK_WITH_NULL_SHA384:181,TLS1_CK_RSA_PSK_WITH_AES_128_CBC_SHA256:182,TLS1_CK_RSA_PSK_WITH_AES_256_CBC_SHA384:183,TLS1_CK_RSA_PSK_WITH_NULL_SHA256:184,TLS1_CK_RSA_PSK_WITH_NULL_SHA384:185,TLS1_CK_PSK_WITH_NULL_SHA:44,TLS1_CK_DHE_PSK_WITH_NULL_SHA:45,TLS1_CK_RSA_PSK_WITH_NULL_SHA:46,TLS1_CK_RSA_WITH_AES_128_SHA:47,TLS1_CK_DH_DSS_WITH_AES_128_SHA:48,TLS1_CK_DH_RSA_WITH_AES_128_SHA:49,TLS1_CK_DHE_DSS_WITH_AES_128_SHA:50,TLS1_CK_DHE_RSA_WITH_AES_128_SHA:51,TLS1_CK_ADH_WITH_AES_128_SHA:52,TLS1_CK_RSA_WITH_AES_256_SHA:53,TLS1_CK_DH_DSS_WITH_AES_256_SHA:54,TLS1_CK_DH_RSA_WITH_AES_256_SHA:55,TLS1_CK_DHE_DSS_WITH_AES_256_SHA:56,TLS1_CK_DHE_RSA_WITH_AES_256_SHA:57,TLS1_CK_ADH_WITH_AES_256_SHA:58,TLS1_CK_RSA_WITH_NULL_SHA256:59,TLS1_CK_RSA_WITH_AES_128_SHA256:60,TLS1_CK_RSA_WITH_AES_256_SHA256:61,TLS1_CK_DH_DSS_WITH_AES_128_SHA256:62,TLS1_CK_DH_RSA_WITH_AES_128_SHA256:63,TLS1_CK_DHE_DSS_WITH_AES_128_SHA256:64,TLS1_CK_RSA_WITH_CAMELLIA_128_CBC_SHA:65,TLS1_CK_DH_DSS_WITH_CAMELLIA_128_CBC_SHA:66,TLS1_CK_DH_RSA_WITH_CAMELLIA_128_CBC_SHA:67,TLS1_CK_DHE_DSS_WITH_CAMELLIA_128_CBC_SHA:68,TLS1_CK_DHE_RSA_WITH_CAMELLIA_128_CBC_SHA:69,TLS1_CK_ADH_WITH_CAMELLIA_128_CBC_SHA:70,TLS1_CK_DHE_RSA_WITH_AES_128_SHA256:103,TLS1_CK_DH_DSS_WITH_AES_256_SHA256:104,TLS1_CK_DH_RSA_WITH_AES_256_SHA256:105,TLS1_CK_DHE_DSS_WITH_AES_256_SHA256:106,TLS1_CK_DHE_RSA_WITH_AES_256_SHA256:107,TLS1_CK_ADH_WITH_AES_128_SHA256:108,TLS1_CK_ADH_WITH_AES_256_SHA256:109,TLS1_CK_RSA_WITH_CAMELLIA_256_CBC_SHA:132,TLS1_CK_DH_DSS_WITH_CAMELLIA_256_CBC_SHA:133,TLS1_CK_DH_RSA_WITH_CAMELLIA_256_CBC_SHA:134,TLS1_CK_DHE_DSS_WITH_CAMELLIA_256_CBC_SHA:135,TLS1_CK_DHE_RSA_WITH_CAMELLIA_256_CBC_SHA:136,TLS1_CK_ADH_WITH_CAMELLIA_256_CBC_SHA:137,TLS1_CK_RSA_WITH_SEED_SHA:150,TLS1_CK_DH_DSS_WITH_SEED_SHA:151,TLS1_CK_DH_RSA_WITH_SEED_SHA:152,TLS1_CK_DHE_DSS_WITH_SEED_SHA:153,TLS1_CK_DHE_RSA_WITH_SEED_SHA:154,TLS1_CK_ADH_WITH_SEED_SHA:155,TLS1_CK_RSA_WITH_AES_128_GCM_SHA256:156,TLS1_CK_RSA_WITH_AES_256_GCM_SHA384:157,TLS1_CK_DHE_RSA_WITH_AES_128_GCM_SHA256:158,TLS1_CK_DHE_RSA_WITH_AES_256_GCM_SHA384:159,TLS1_CK_DH_RSA_WITH_AES_128_GCM_SHA256:160,TLS1_CK_DH_RSA_WITH_AES_256_GCM_SHA384:161,TLS1_CK_DHE_DSS_WITH_AES_128_GCM_SHA256:162,TLS1_CK_DHE_DSS_WITH_AES_256_GCM_SHA384:163,TLS1_CK_DH_DSS_WITH_AES_128_GCM_SHA256:164,TLS1_CK_DH_DSS_WITH_AES_256_GCM_SHA384:165,TLS1_CK_ADH_WITH_AES_128_GCM_SHA256:166,TLS1_CK_ADH_WITH_AES_256_GCM_SHA384:167,TLS1_CK_RSA_WITH_AES_128_CCM:49308,TLS1_CK_RSA_WITH_AES_256_CCM:49309,TLS1_CK_DHE_RSA_WITH_AES_128_CCM:49310,TLS1_CK_DHE_RSA_WITH_AES_256_CCM:49311,TLS1_CK_RSA_WITH_AES_128_CCM_8:49312,TLS1_CK_RSA_WITH_AES_256_CCM_8:49313,TLS1_CK_DHE_RSA_WITH_AES_128_CCM_8:49314,TLS1_CK_DHE_RSA_WITH_AES_256_CCM_8:49315,TLS1_CK_PSK_WITH_AES_128_CCM:49316,TLS1_CK_PSK_WITH_AES_256_CCM:49317,TLS1_CK_DHE_PSK_WITH_AES_128_CCM:49318,TLS1_CK_DHE_PSK_WITH_AES_256_CCM:49319,TLS1_CK_PSK_WITH_AES_128_CCM_8:49320,TLS1_CK_PSK_WITH_AES_256_CCM_8:49321,TLS1_CK_DHE_PSK_WITH_AES_128_CCM_8:49322,TLS1_CK_DHE_PSK_WITH_AES_256_CCM_8:49323,TLS1_CK_ECDHE_ECDSA_WITH_AES_128_CCM:49324,TLS1_CK_ECDHE_ECDSA_WITH_AES_256_CCM:49325,TLS1_CK_ECDHE_ECDSA_WITH_AES_128_CCM_8:49326,TLS1_CK_ECDHE_ECDSA_WITH_AES_256_CCM_8:49327,TLS1_CK_RSA_WITH_CAMELLIA_128_CBC_SHA256:186,TLS1_CK_DH_DSS_WITH_CAMELLIA_128_CBC_SHA256:187,TLS1_CK_DH_RSA_WITH_CAMELLIA_128_CBC_SHA256:188,TLS1_CK_DHE_DSS_WITH_CAMELLIA_128_CBC_SHA256:189,TLS1_CK_DHE_RSA_WITH_CAMELLIA_128_CBC_SHA256:190,TLS1_CK_ADH_WITH_CAMELLIA_128_CBC_SHA256:191,TLS1_CK_RSA_WITH_CAMELLIA_256_CBC_SHA256:192,TLS1_CK_DH_DSS_WITH_CAMELLIA_256_CBC_SHA256:193,TLS1_CK_DH_RSA_WITH_CAMELLIA_256_CBC_SHA256:194,TLS1_CK_DHE_DSS_WITH_CAMELLIA_256_CBC_SHA256:195,TLS1_CK_DHE_RSA_WITH_CAMELLIA_256_CBC_SHA256:196,TLS1_CK_ADH_WITH_CAMELLIA_256_CBC_SHA256:197,TLS1_CK_ECDH_ECDSA_WITH_NULL_SHA:49153,TLS1_CK_ECDH_ECDSA_WITH_RC4_128_SHA:49154,TLS1_CK_ECDH_ECDSA_WITH_DES_192_CBC3_SHA:49155,TLS1_CK_ECDH_ECDSA_WITH_AES_128_CBC_SHA:49156,TLS1_CK_ECDH_ECDSA_WITH_AES_256_CBC_SHA:49157,TLS1_CK_ECDHE_ECDSA_WITH_NULL_SHA:49158,TLS1_CK_ECDHE_ECDSA_WITH_RC4_128_SHA:49159,TLS1_CK_ECDHE_ECDSA_WITH_DES_192_CBC3_SHA:49160,TLS1_CK_ECDHE_ECDSA_WITH_AES_128_CBC_SHA:49161,TLS1_CK_ECDHE_ECDSA_WITH_AES_256_CBC_SHA:49162,TLS1_CK_ECDH_RSA_WITH_NULL_SHA:49163,TLS1_CK_ECDH_RSA_WITH_RC4_128_SHA:49164,TLS1_CK_ECDH_RSA_WITH_DES_192_CBC3_SHA:49165,TLS1_CK_ECDH_RSA_WITH_AES_128_CBC_SHA:49166,TLS1_CK_ECDH_RSA_WITH_AES_256_CBC_SHA:49167,TLS1_CK_ECDHE_RSA_WITH_NULL_SHA:49168,TLS1_CK_ECDHE_RSA_WITH_RC4_128_SHA:49169,TLS1_CK_ECDHE_RSA_WITH_DES_192_CBC3_SHA:49170,TLS1_CK_ECDHE_RSA_WITH_AES_128_CBC_SHA:49171,TLS1_CK_ECDHE_RSA_WITH_AES_256_CBC_SHA:49172,TLS1_CK_ECDH_anon_WITH_NULL_SHA:49173,TLS1_CK_ECDH_anon_WITH_RC4_128_SHA:49174,TLS1_CK_ECDH_anon_WITH_DES_192_CBC3_SHA:49175,TLS1_CK_ECDH_anon_WITH_AES_128_CBC_SHA:49176,TLS1_CK_ECDH_anon_WITH_AES_256_CBC_SHA:49177,TLS1_CK_SRP_SHA_WITH_3DES_EDE_CBC_SHA:49178,TLS1_CK_SRP_SHA_RSA_WITH_3DES_EDE_CBC_SHA:49179,TLS1_CK_SRP_SHA_DSS_WITH_3DES_EDE_CBC_SHA:49180,TLS1_CK_SRP_SHA_WITH_AES_128_CBC_SHA:49181,TLS1_CK_SRP_SHA_RSA_WITH_AES_128_CBC_SHA:49182,TLS1_CK_SRP_SHA_DSS_WITH_AES_128_CBC_SHA:49183,TLS1_CK_SRP_SHA_WITH_AES_256_CBC_SHA:49184,TLS1_CK_SRP_SHA_RSA_WITH_AES_256_CBC_SHA:49185,TLS1_CK_SRP_SHA_DSS_WITH_AES_256_CBC_SHA:49186,TLS1_CK_ECDHE_ECDSA_WITH_AES_128_SHA256:49187,TLS1_CK_ECDHE_ECDSA_WITH_AES_256_SHA384:49188,TLS1_CK_ECDH_ECDSA_WITH_AES_128_SHA256:49189,TLS1_CK_ECDH_ECDSA_WITH_AES_256_SHA384:49190,TLS1_CK_ECDHE_RSA_WITH_AES_128_SHA256:49191,TLS1_CK_ECDHE_RSA_WITH_AES_256_SHA384:49192,TLS1_CK_ECDH_RSA_WITH_AES_128_SHA256:49193,TLS1_CK_ECDH_RSA_WITH_AES_256_SHA384:49194,TLS1_CK_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256:49195,TLS1_CK_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384:49196,TLS1_CK_ECDH_ECDSA_WITH_AES_128_GCM_SHA256:49197,TLS1_CK_ECDH_ECDSA_WITH_AES_256_GCM_SHA384:49198,TLS1_CK_ECDHE_RSA_WITH_AES_128_GCM_SHA256:49199,TLS1_CK_ECDHE_RSA_WITH_AES_256_GCM_SHA384:49200,TLS1_CK_ECDH_RSA_WITH_AES_128_GCM_SHA256:49201,TLS1_CK_ECDH_RSA_WITH_AES_256_GCM_SHA384:49202,TLS1_CK_ECDHE_PSK_WITH_RC4_128_SHA:49203,TLS1_CK_ECDHE_PSK_WITH_3DES_EDE_CBC_SHA:49204,TLS1_CK_ECDHE_PSK_WITH_AES_128_CBC_SHA:49205,TLS1_CK_ECDHE_PSK_WITH_AES_256_CBC_SHA:49206,TLS1_CK_ECDHE_PSK_WITH_AES_128_CBC_SHA256:49207,TLS1_CK_ECDHE_PSK_WITH_AES_256_CBC_SHA384:49208,TLS1_CK_ECDHE_PSK_WITH_NULL_SHA:49209,TLS1_CK_ECDHE_PSK_WITH_NULL_SHA256:49210,TLS1_CK_ECDHE_PSK_WITH_NULL_SHA384:49211,TLS1_CK_ECDHE_ECDSA_WITH_CAMELLIA_128_CBC_SHA256:49266,TLS1_CK_ECDHE_ECDSA_WITH_CAMELLIA_256_CBC_SHA384:49267,TLS1_CK_ECDH_ECDSA_WITH_CAMELLIA_128_CBC_SHA256:49268,TLS1_CK_ECDH_ECDSA_WITH_CAMELLIA_256_CBC_SHA384:49269,TLS1_CK_ECDHE_RSA_WITH_CAMELLIA_128_CBC_SHA256:49270,TLS1_CK_ECDHE_RSA_WITH_CAMELLIA_256_CBC_SHA384:49271,TLS1_CK_ECDH_RSA_WITH_CAMELLIA_128_CBC_SHA256:49272,TLS1_CK_ECDH_RSA_WITH_CAMELLIA_256_CBC_SHA384:49273,TLS1_CK_PSK_WITH_CAMELLIA_128_CBC_SHA256:49300,TLS1_CK_PSK_WITH_CAMELLIA_256_CBC_SHA384:49301,TLS1_CK_DHE_PSK_WITH_CAMELLIA_128_CBC_SHA256:49302,TLS1_CK_DHE_PSK_WITH_CAMELLIA_256_CBC_SHA384:49303,TLS1_CK_RSA_PSK_WITH_CAMELLIA_128_CBC_SHA256:49304,TLS1_CK_RSA_PSK_WITH_CAMELLIA_256_CBC_SHA384:49305,TLS1_CK_ECDHE_PSK_WITH_CAMELLIA_128_CBC_SHA256:49306,TLS1_CK_ECDHE_PSK_WITH_CAMELLIA_256_CBC_SHA384:49307,TLS1_CK_ECDHE_RSA_WITH_CHACHA20_POLY1305:52392,TLS1_CK_ECDHE_ECDSA_WITH_CHACHA20_POLY1305:52393,TLS1_CK_DHE_RSA_WITH_CHACHA20_POLY1305:52394,TLS1_CK_PSK_WITH_CHACHA20_POLY1305:52395,TLS1_CK_ECDHE_PSK_WITH_CHACHA20_POLY1305:52396,TLS1_CK_DHE_PSK_WITH_CHACHA20_POLY1305:52397,TLS1_CK_RSA_PSK_WITH_CHACHA20_POLY1305:52398},ee=y(pe),we={secp256r1:23,secp384r1:24,secp521r1:25,x25519:29,x448:30},te=y(we),Ye=class{static decodeFromClient(e){let n=new K(e.buffer);n.readUint16();let r=[];for(;!n.isFinished();){let e=n.readUint16();e in te&&r.push(te[e])}return r}static encodeForClient(e){let n=new F(6);return n.writeUint16(R.supported_groups),n.writeUint16(2),n.writeUint16(we[e]),n.uint8Array}},Y={anonymous:0,rsa:1,dsa:2,ecdsa:3},ne=y(Y),Z={none:0,md5:1,sha1:2,sha224:3,sha256:4,sha384:5,sha512:6},re=y(Z),Ze=class{static decodeFromClient(e){let n=new K(e.buffer);n.readUint16();let r=[];for(;!n.isFinished();){let e=n.readUint8(),i=n.readUint8();if(ne[i]){if(!re[e]){M$1.warn(`Unknown hash algorithm: ${e}`);continue}r.push({algorithm:ne[i],hash:re[e]})}}return r}static encodeforClient(e,n){let r=new F(6);return r.writeUint16(R.signature_algorithms),r.writeUint16(2),r.writeUint8(Z[e]),r.writeUint8(Y[n]),r.uint8Array}},se={server_name:de,signature_algorithms:Ze,supported_groups:Ye,ec_point_formats:Ee,renegotiation_info:Te},Xe={Null:0},ye={Warning:1,Fatal:2},me=y(ye),Le={CloseNotify:0,UnexpectedMessage:10,BadRecordMac:20,DecryptionFailed:21,RecordOverflow:22,DecompressionFailure:30,HandshakeFailure:40,NoCertificate:41,BadCertificate:42,UnsupportedCertificate:43,CertificateRevoked:44,CertificateExpired:45,CertificateUnknown:46,IllegalParameter:47,UnknownCa:48,AccessDenied:49,DecodeError:50,DecryptError:51,ExportRestriction:60,ProtocolVersion:70,InsufficientSecurity:71,InternalError:80,UserCanceled:90,NoRenegotiation:100,UnsupportedExtension:110},ge=y(Le),C={ChangeCipherSpec:20,Alert:21,Handshake:22,ApplicationData:23},T={HelloRequest:0,ClientHello:1,ServerHello:2,Certificate:11,ServerKeyExchange:12,ServerHelloDone:14,ClientKeyExchange:16,Finished:20},Qe={NamedCurve:3},et={secp256r1:23},G=class extends Error{},k=new Uint8Array([3,3]),tt=crypto.subtle.generateKey({name:`ECDH`,namedCurve:`P-256`},!0,[`deriveKey`,`deriveBits`]),nt=class{constructor(){this.receivedRecordSequenceNumber=0,this.sentRecordSequenceNumber=0,this.closed=!1,this.receivedBytesBuffer=new Uint8Array,this.receivedTLSRecords=[],this.partialTLSMessages={},this.handshakeMessages=[],this.MAX_CHUNK_SIZE=16384,this.clientEnd={upstream:new TransformStream,downstream:new TransformStream},this.clientDownstreamWriter=this.clientEnd.downstream.writable.getWriter(),this.clientUpstreamReader=this.clientEnd.upstream.readable.getReader(),this.serverEnd={upstream:new TransformStream,downstream:rt(this.MAX_CHUNK_SIZE)},this.serverUpstreamWriter=this.serverEnd.upstream.writable.getWriter();let e=this;this.serverEnd.downstream.readable.pipeTo(new WritableStream({async write(n){await e.writeTLSRecord(C.ApplicationData,n)},async abort(n){e.clientDownstreamWriter.releaseLock(),e.clientEnd.downstream.writable.abort(n),e.close()},close(){e.close()}})).catch(()=>{})}async close(){if(!this.closed){this.closed=!0;try{await this.clientDownstreamWriter.close()}catch{}try{await this.clientUpstreamReader.cancel()}catch{}try{await this.serverUpstreamWriter.close()}catch{}try{await this.clientEnd.upstream.readable.cancel()}catch{}try{await this.clientEnd.downstream.writable.close()}catch{}}}async TLSHandshake(e,n){let r=await this.readNextHandshakeMessage(T.ClientHello);if(!r.body.cipher_suites.length)throw Error(`Client did not propose any supported cipher suites.`);let i=crypto.getRandomValues(new Uint8Array(32));await this.writeTLSRecord(C.Handshake,P.serverHello(r.body,i,Xe.Null)),await this.writeTLSRecord(C.Handshake,P.certificate(n));let o=await tt,s=r.body.random,l=await P.ECDHEServerKeyExchange(s,i,o,e);await this.writeTLSRecord(C.Handshake,l),await this.writeTLSRecord(C.Handshake,P.serverHelloDone());let N=await this.readNextHandshakeMessage(T.ClientKeyExchange);await this.readNextMessage(C.ChangeCipherSpec),this.sessionKeys=await this.deriveSessionKeys({clientRandom:s,serverRandom:i,serverPrivateKey:o.privateKey,clientPublicKey:await crypto.subtle.importKey(`raw`,N.body.exchange_keys,{name:`ECDH`,namedCurve:`P-256`},!1,[])}),await this.readNextHandshakeMessage(T.Finished),await this.writeTLSRecord(C.ChangeCipherSpec,P.changeCipherSpec()),await this.writeTLSRecord(C.Handshake,await P.createFinishedMessage(this.handshakeMessages,this.sessionKeys.masterSecret)),this.handshakeMessages=[],this.pollForClientMessages()}async deriveSessionKeys({clientRandom:e,serverRandom:n,serverPrivateKey:r,clientPublicKey:i}){let o=await crypto.subtle.deriveBits({name:`ECDH`,public:i},r,256),s=new Uint8Array(await V(o,new TextEncoder().encode(`master secret`),D$2([e,n]),48)),l=await V(s,new TextEncoder().encode(`key expansion`),D$2([n,e]),40),N=new K(l),ae=N.readUint8Array(16),ce=N.readUint8Array(16),ue=N.readUint8Array(4),he=N.readUint8Array(4);return{masterSecret:s,clientWriteKey:await crypto.subtle.importKey(`raw`,ae,{name:`AES-GCM`},!1,[`encrypt`,`decrypt`]),serverWriteKey:await crypto.subtle.importKey(`raw`,ce,{name:`AES-GCM`},!1,[`encrypt`,`decrypt`]),clientIV:ue,serverIV:he}}async readNextHandshakeMessage(e){let n=await this.readNextMessage(C.Handshake);if(n.msg_type!==e)throw Error(`Expected ${e} message`);return n}async readNextMessage(e){let n,r=!1;do n=await this.readNextTLSRecord(e),r=await this.accumulateUntilMessageIsComplete(n);while(r===!1);let i=p.TLSMessage(n.type,r);return n.type===C.Handshake&&this.handshakeMessages.push(n.fragment),i}async readNextTLSRecord(e){for(;;){for(let n=0;n<this.receivedTLSRecords.length;n++){let r=this.receivedTLSRecords[n];if(r.type===e)return this.receivedTLSRecords.splice(n,1),r}let n=await this.pollBytes(5),r=n[3]<<8|n[4],i=n[0],o=await this.pollBytes(r),s={type:i,version:{major:n[1],minor:n[2]},length:r,fragment:this.sessionKeys&&i!==C.ChangeCipherSpec?await this.decryptData(i,o):o};if(s.type===C.Alert){let e=s.fragment[0],n=s.fragment[1],r=me[e],i=ge[n];throw e===ye.Warning&&n===Le.CloseNotify?new G(`TLS connection closed by peer (CloseNotify)`):Error(`TLS alert received: ${r} ${i}`)}this.receivedTLSRecords.push(s)}}async pollBytes(e){for(;this.receivedBytesBuffer.length<e;){let{value:n,done:r}=await this.clientUpstreamReader.read();if(r)throw await this.close(),new G(`TLS connection closed`);if(this.receivedBytesBuffer=D$2([this.receivedBytesBuffer,n]),this.receivedBytesBuffer.length>=e)break;await new Promise(e=>setTimeout(e,100))}let n=this.receivedBytesBuffer.slice(0,e);return this.receivedBytesBuffer=this.receivedBytesBuffer.slice(e),n}async pollForClientMessages(){try{for(;;){let e=await this.readNextMessage(C.ApplicationData);this.serverUpstreamWriter.write(e.body)}}catch(e){if(e instanceof G)return;throw e}}async decryptData(e,n){let r=this.sessionKeys.clientIV,i=n.slice(0,8),o=new Uint8Array([...r,...i]),s=await crypto.subtle.decrypt({name:`AES-GCM`,iv:o,additionalData:new Uint8Array([...X(this.receivedRecordSequenceNumber),e,...k,...b(n.length-8-16)]),tagLength:128},this.sessionKeys.clientWriteKey,n.slice(8));return++this.receivedRecordSequenceNumber,new Uint8Array(s)}async accumulateUntilMessageIsComplete(e){this.partialTLSMessages[e.type]=D$2([this.partialTLSMessages[e.type]||new Uint8Array,e.fragment]);let n=this.partialTLSMessages[e.type];switch(e.type){case C.Handshake:{if(n.length<4)return!1;let e=n[1]<<8|n[2];if(n.length<3+e)return!1;break}case C.Alert:if(n.length<2)return!1;break;case C.ChangeCipherSpec:case C.ApplicationData:break;default:throw Error(`TLS: Unsupported record type ${e.type}`)}return delete this.partialTLSMessages[e.type],n}async writeTLSRecord(e,n){e===C.Handshake&&this.handshakeMessages.push(n),this.sessionKeys&&e!==C.ChangeCipherSpec&&(n=await this.encryptData(e,n));let r=k,i=n.length,o=new Uint8Array(5);o[0]=e,o[1]=r[0],o[2]=r[1],o[3]=i>>8&255,o[4]=i&255;let s=D$2([o,n]);this.clientDownstreamWriter.write(s)}async encryptData(e,n){let r=this.sessionKeys.serverIV,i=crypto.getRandomValues(new Uint8Array(8)),o=new Uint8Array([...r,...i]),s=new Uint8Array([...X(this.sentRecordSequenceNumber),e,...k,...b(n.length)]),l=await crypto.subtle.encrypt({name:`AES-GCM`,iv:o,additionalData:s,tagLength:128},this.sessionKeys.serverWriteKey,n);return++this.sentRecordSequenceNumber,D$2([i,new Uint8Array(l)])}},p=class e{static TLSMessage(n,r){switch(n){case C.Handshake:return e.clientHandshake(r);case C.Alert:return e.alert(r);case C.ChangeCipherSpec:return e.changeCipherSpec();case C.ApplicationData:return e.applicationData(r);default:throw Error(`TLS: Unsupported TLS record type ${n}`)}}static parseCipherSuites(e){let n=new K(e);n.readUint16();let r=[];for(;!n.isFinished();){let e=n.readUint16();e in ee&&r.push(ee[e])}return r}static applicationData(e){return{type:C.ApplicationData,body:e}}static changeCipherSpec(){return{type:C.ChangeCipherSpec,body:new Uint8Array}}static alert(e){return{type:C.Alert,level:me[e[0]],description:ge[e[1]]}}static clientHandshake(n){let r=n[0],i=n[1]<<16|n[2]<<8|n[3],o=n.slice(4),s;switch(r){case T.HelloRequest:s=e.clientHelloRequestPayload();break;case T.ClientHello:s=e.clientHelloPayload(o);break;case T.ClientKeyExchange:s=e.clientKeyExchangePayload(o);break;case T.Finished:s=e.clientFinishedPayload(o);break;default:throw Error(`Invalid handshake type ${r}`)}return{type:C.Handshake,msg_type:r,length:i,body:s}}static clientHelloRequestPayload(){return{}}static clientHelloPayload(n){let r=new K(n.buffer),i={client_version:r.readUint8Array(2),random:r.readUint8Array(32)},o=r.readUint8();i.session_id=r.readUint8Array(o);let s=r.readUint16();i.cipher_suites=e.parseCipherSuites(r.readUint8Array(s).buffer);let l=r.readUint8();i.compression_methods=r.readUint8Array(l);let N=r.readUint16();return i.extensions=Je(r.readUint8Array(N)),i}static clientKeyExchangePayload(e){return{exchange_keys:e.slice(1,e.length)}}static clientFinishedPayload(e){return{verify_data:e}}},P=class{static certificate(e){let n=[];for(let r of e)n.push(I(r.byteLength)),n.push(new Uint8Array(r));let r=D$2(n),i=new Uint8Array([...I(r.byteLength),...r]);return new Uint8Array([T.Certificate,...I(i.length),...i])}static async ECDHEServerKeyExchange(e,n,r,i){let o=new Uint8Array(await crypto.subtle.exportKey(`raw`,r.publicKey)),s=new Uint8Array([Qe.NamedCurve,...b(et.secp256r1),o.byteLength,...o]),l=await crypto.subtle.sign({name:`RSASSA-PKCS1-v1_5`,hash:`SHA-256`},i,new Uint8Array([...e,...n,...s])),N=new Uint8Array(l),ae=new Uint8Array([Z.sha256,Y.rsa]),ce=new Uint8Array([...s,...ae,...b(N.length),...N]);return new Uint8Array([T.ServerKeyExchange,...I(ce.length),...ce])}static serverHello(e,n,r){let i=D$2(e.extensions.map(e=>{switch(e.type){case`server_name`:return de.encodeForClient();case`ec_point_formats`:return Ee.encodeForClient(`uncompressed`);case`renegotiation_info`:return Te.encodeForClient()}}).filter(e=>e!==void 0)),o=new Uint8Array,s=new Uint8Array([...k,...n,o.length,...o,...b(pe.TLS1_CK_ECDHE_RSA_WITH_AES_128_GCM_SHA256),r,...b(i.length),...i]);return new Uint8Array([T.ServerHello,...I(s.length),...s])}static serverHelloDone(){return new Uint8Array([T.ServerHelloDone,...I(0)])}static async createFinishedMessage(e,n){let r=await crypto.subtle.digest(`SHA-256`,D$2(e)),i=new Uint8Array(await V(n,new TextEncoder().encode(`server finished`),r,12));return new Uint8Array([T.Finished,...I(i.length),...i])}static changeCipherSpec(){return new Uint8Array([1])}},it=class{static async generateCertificate(e,n){let r=await crypto.subtle.generateKey({name:`RSASSA-PKCS1-v1_5`,hash:`SHA-256`,modulusLength:2048,publicExponent:new Uint8Array([1,0,1])},!0,[`sign`,`verify`]),i=await this.signingRequest(e,r.publicKey);return{keyPair:r,certificate:await this.sign(i,n?.privateKey??r.privateKey),tbsCertificate:i,tbsDescription:e}}static async sign(e,n){let r=await crypto.subtle.sign({name:`RSASSA-PKCS1-v1_5`,hash:`SHA-256`},n,e.buffer);return c.sequence([new Uint8Array(e.buffer),this.signatureAlgorithm(`sha256WithRSAEncryption`),c.bitString(new Uint8Array(r))])}static async signingRequest(e,n){let r=[];return e.keyUsage&&r.push(this.keyUsage(e.keyUsage)),e.extKeyUsage&&r.push(this.extKeyUsage(e.extKeyUsage)),e.subjectAltNames&&r.push(this.subjectAltName(e.subjectAltNames)),e.nsCertType&&r.push(this.nsCertType(e.nsCertType)),e.basicConstraints&&r.push(this.basicConstraints(e.basicConstraints)),c.sequence([this.version(e.version),this.serialNumber(e.serialNumber),this.signatureAlgorithm(e.signatureAlgorithm),this.distinguishedName(e.issuer??e.subject),this.validity(e.validity),this.distinguishedName(e.subject),await this.subjectPublicKeyInfo(n),this.extensions(r)])}static version(e=2){return c.ASN1(160,c.integer(new Uint8Array([e])))}static serialNumber(e=crypto.getRandomValues(new Uint8Array(4))){return c.integer(e)}static signatureAlgorithm(e=`sha256WithRSAEncryption`){return c.sequence([c.objectIdentifier(L(e)),c.null()])}static async subjectPublicKeyInfo(e){return new Uint8Array(await crypto.subtle.exportKey(`spki`,e))}static extensions(e){return c.ASN1(163,c.sequence(e))}static distinguishedName(e){let n=[];for(let[r,i]of Object.entries(e)){let e=[c.objectIdentifier(L(r))];switch(r){case`countryName`:e.push(c.printableString(i));break;default:e.push(c.utf8String(i))}n.push(c.set([c.sequence(e)]))}return c.sequence(n)}static validity(e){return c.sequence([c.ASN1(E.UTCTime,new TextEncoder().encode(_e(e?.notBefore??new Date))),c.ASN1(E.UTCTime,new TextEncoder().encode(_e(e?.notAfter??_t(new Date,10))))])}static basicConstraints({ca:e=!0,pathLenConstraint:n=void 0}){let r=[c.boolean(e)];return n!==void 0&&r.push(c.integer(new Uint8Array([n]))),c.sequence([c.objectIdentifier(L(`basicConstraints`)),c.octetString(c.sequence(r))])}static keyUsage(e){let n=new Uint8Array([0]);return e!=null&&e.digitalSignature&&(n[0]|=1),e!=null&&e.nonRepudiation&&(n[0]|=2),e!=null&&e.keyEncipherment&&(n[0]|=4),e!=null&&e.dataEncipherment&&(n[0]|=8),e!=null&&e.keyAgreement&&(n[0]|=16),e!=null&&e.keyCertSign&&(n[0]|=32),e!=null&&e.cRLSign&&(n[0]|=64),e!=null&&e.encipherOnly&&(n[0]|=128),e!=null&&e.decipherOnly&&(n[0]|=64),c.sequence([c.objectIdentifier(L(`keyUsage`)),c.boolean(!0),c.octetString(c.bitString(n))])}static extKeyUsage(e={}){return c.sequence([c.objectIdentifier(L(`extKeyUsage`)),c.boolean(!0),c.octetString(c.sequence(Object.entries(e).map(([e,n])=>n?c.objectIdentifier(L(e)):c.null())))])}static nsCertType(e){let n=new Uint8Array([0]);return e.client&&(n[0]|=1),e.server&&(n[0]|=2),e.email&&(n[0]|=4),e.objsign&&(n[0]|=8),e.sslCA&&(n[0]|=16),e.emailCA&&(n[0]|=32),e.objCA&&(n[0]|=64),c.sequence([c.objectIdentifier(L(`nsCertType`)),c.octetString(n)])}static subjectAltName(e){var n,r;let i=e.dnsNames?.map(e=>{let n=c.ia5String(e);return c.contextSpecific(2,n)})||[],o=e.ipAddresses?.map(e=>{let n=c.ia5String(e);return c.contextSpecific(7,n)})||[],s=c.octetString(c.sequence([...i,...o]));return c.sequence([c.objectIdentifier(L(`subjectAltName`)),c.boolean(!0),s])}},at={"1.2.840.113549.1.1.1":`rsaEncryption`,"1.2.840.113549.1.1.4":`md5WithRSAEncryption`,"1.2.840.113549.1.1.5":`sha1WithRSAEncryption`,"1.2.840.113549.1.1.7":`RSAES-OAEP`,"1.2.840.113549.1.1.8":`mgf1`,"1.2.840.113549.1.1.9":`pSpecified`,"1.2.840.113549.1.1.10":`RSASSA-PSS`,"1.2.840.113549.1.1.11":`sha256WithRSAEncryption`,"1.2.840.113549.1.1.12":`sha384WithRSAEncryption`,"1.2.840.113549.1.1.13":`sha512WithRSAEncryption`,"1.3.101.112":`EdDSA25519`,"1.2.840.10040.4.3":`dsa-with-sha1`,"1.3.14.3.2.7":`desCBC`,"1.3.14.3.2.26":`sha1`,"1.3.14.3.2.29":`sha1WithRSASignature`,"2.16.840.1.101.3.4.2.1":`sha256`,"2.16.840.1.101.3.4.2.2":`sha384`,"2.16.840.1.101.3.4.2.3":`sha512`,"2.16.840.1.101.3.4.2.4":`sha224`,"2.16.840.1.101.3.4.2.5":`sha512-224`,"2.16.840.1.101.3.4.2.6":`sha512-256`,"1.2.840.113549.2.2":`md2`,"1.2.840.113549.2.5":`md5`,"1.2.840.113549.1.7.1":`data`,"1.2.840.113549.1.7.2":`signedData`,"1.2.840.113549.1.7.3":`envelopedData`,"1.2.840.113549.1.7.4":`signedAndEnvelopedData`,"1.2.840.113549.1.7.5":`digestedData`,"1.2.840.113549.1.7.6":`encryptedData`,"1.2.840.113549.1.9.1":`emailAddress`,"1.2.840.113549.1.9.2":`unstructuredName`,"1.2.840.113549.1.9.3":`contentType`,"1.2.840.113549.1.9.4":`messageDigest`,"1.2.840.113549.1.9.5":`signingTime`,"1.2.840.113549.1.9.6":`counterSignature`,"1.2.840.113549.1.9.7":`challengePassword`,"1.2.840.113549.1.9.8":`unstructuredAddress`,"1.2.840.113549.1.9.14":`extensionRequest`,"1.2.840.113549.1.9.20":`friendlyName`,"1.2.840.113549.1.9.21":`localKeyId`,"1.2.840.113549.1.9.22.1":`x509Certificate`,"1.2.840.113549.1.12.10.1.1":`keyBag`,"1.2.840.113549.1.12.10.1.2":`pkcs8ShroudedKeyBag`,"1.2.840.113549.1.12.10.1.3":`certBag`,"1.2.840.113549.1.12.10.1.4":`crlBag`,"1.2.840.113549.1.12.10.1.5":`secretBag`,"1.2.840.113549.1.12.10.1.6":`safeContentsBag`,"1.2.840.113549.1.5.13":`pkcs5PBES2`,"1.2.840.113549.1.5.12":`pkcs5PBKDF2`,"1.2.840.113549.1.12.1.1":`pbeWithSHAAnd128BitRC4`,"1.2.840.113549.1.12.1.2":`pbeWithSHAAnd40BitRC4`,"1.2.840.113549.1.12.1.3":`pbeWithSHAAnd3-KeyTripleDES-CBC`,"1.2.840.113549.1.12.1.4":`pbeWithSHAAnd2-KeyTripleDES-CBC`,"1.2.840.113549.1.12.1.5":`pbeWithSHAAnd128BitRC2-CBC`,"1.2.840.113549.1.12.1.6":`pbewithSHAAnd40BitRC2-CBC`,"1.2.840.113549.2.7":`hmacWithSHA1`,"1.2.840.113549.2.8":`hmacWithSHA224`,"1.2.840.113549.2.9":`hmacWithSHA256`,"1.2.840.113549.2.10":`hmacWithSHA384`,"1.2.840.113549.2.11":`hmacWithSHA512`,"1.2.840.113549.3.7":`des-EDE3-CBC`,"2.16.840.1.101.3.4.1.2":`aes128-CBC`,"2.16.840.1.101.3.4.1.22":`aes192-CBC`,"2.16.840.1.101.3.4.1.42":`aes256-CBC`,"2.5.4.3":`commonName`,"2.5.4.4":`surname`,"2.5.4.5":`serialNumber`,"2.5.4.6":`countryName`,"2.5.4.7":`localityName`,"2.5.4.8":`stateOrProvinceName`,"2.5.4.9":`streetAddress`,"2.5.4.10":`organizationName`,"2.5.4.11":`organizationalUnitName`,"2.5.4.12":`title`,"2.5.4.13":`description`,"2.5.4.15":`businessCategory`,"2.5.4.17":`postalCode`,"2.5.4.42":`givenName`,"1.3.6.1.4.1.311.60.2.1.2":`jurisdictionOfIncorporationStateOrProvinceName`,"1.3.6.1.4.1.311.60.2.1.3":`jurisdictionOfIncorporationCountryName`,"2.16.840.1.113730.1.1":`nsCertType`,"2.16.840.1.113730.1.13":`nsComment`,"2.5.29.14":`subjectKeyIdentifier`,"2.5.29.15":`keyUsage`,"2.5.29.17":`subjectAltName`,"2.5.29.18":`issuerAltName`,"2.5.29.19":`basicConstraints`,"2.5.29.31":`cRLDistributionPoints`,"2.5.29.32":`certificatePolicies`,"2.5.29.35":`authorityKeyIdentifier`,"2.5.29.37":`extKeyUsage`,"1.3.6.1.4.1.11129.2.4.2":`timestampList`,"1.3.6.1.5.5.7.1.1":`authorityInfoAccess`,"1.3.6.1.5.5.7.3.1":`serverAuth`,"1.3.6.1.5.5.7.3.2":`clientAuth`,"1.3.6.1.5.5.7.3.3":`codeSigning`,"1.3.6.1.5.5.7.3.4":`emailProtection`,"1.3.6.1.5.5.7.3.8":`timeStamping`},E={Boolean:1,Integer:2,BitString:3,OctetString:4,Null:5,OID:6,Utf8String:12,Sequence:48,Set:49,PrintableString:19,IA5String:22,UTCTime:23},c=class e{static length_(e){if(e<128)return new Uint8Array([e]);{let n=e,r=[];for(;n>0;)r.unshift(n&255),n>>=8;let i=r.length,o=new Uint8Array(1+i);o[0]=128|i;for(let e=0;e<i;e++)o[e+1]=r[e];return o}}static ASN1(n,r){let i=e.length_(r.length),o=new Uint8Array(1+i.length+r.length);return o[0]=n,o.set(i,1),o.set(r,1+i.length),o}static integer(n){let r=0;for(;r<n.length-1&&n[r]===0&&n[r+1]<128;)r++;if(r>0&&(n=n.subarray(r)),n[0]>127){let e=new Uint8Array(n.length+1);e[0]=0,e.set(n,1),n=e}return e.ASN1(E.Integer,n)}static bitString(n){let r=new Uint8Array([0]),i=new Uint8Array(r.length+n.length);return i.set(r),i.set(n,r.length),e.ASN1(E.BitString,i)}static octetString(n){return e.ASN1(E.OctetString,n)}static null(){return e.ASN1(E.Null,new Uint8Array)}static objectIdentifier(n){let r=n.split(`.`).map(Number),i=[r[0]*40+r[1]];for(let e=2;e<r.length;e++){let n=r[e],o=[];do o.unshift(n&127),n>>=7;while(n>0);for(let e=0;e<o.length-1;e++)o[e]|=128;i.push(...o)}return e.ASN1(E.OID,new Uint8Array(i))}static utf8String(n){let r=new TextEncoder().encode(n);return e.ASN1(E.Utf8String,r)}static printableString(n){let r=new TextEncoder().encode(n);return e.ASN1(E.PrintableString,r)}static sequence(n){return e.ASN1(E.Sequence,D$2(n))}static set(n){return e.ASN1(E.Set,D$2(n))}static ia5String(n){let r=new TextEncoder().encode(n);return e.ASN1(E.IA5String,r)}static contextSpecific(n,r,i=!1){let o=(i?160:128)|n;return e.ASN1(o,r)}static boolean(n){return e.ASN1(E.Boolean,new Uint8Array([n?255:0]))}},ot=class extends TransformStream{constructor(){let e=new Uint8Array,n=`SCAN_CHUNK_SIZE`,r=0;super({transform(i,o){for(e=D$2([e,i]);e.length>0;)if(n===`SCAN_CHUNK_SIZE`){if(e.length<3)return;let i=0;for(;i<e.length;){let n=e[i];if(!(n>=48&&n<=57||n>=97&&n<=102||n>=65&&n<=70))break;i++}if(i===0)throw Error(`Invalid chunk size format`);if(e.length<i+2)return;if(e[i]!==13||e[i+1]!==10)throw Error(`Invalid chunk size format. Expected CRLF after chunk size`);let s=new TextDecoder().decode(e.slice(0,i)),l=parseInt(s,16);if(e=e.slice(i+2),l===0){n=`SCAN_FINAL_CHUNK`,o.terminate();return}r=l,n=`SCAN_CHUNK_DATA`}else if(n===`SCAN_CHUNK_DATA`){let i=Math.min(r,e.length),s=e.slice(0,i);e=e.slice(i),r-=i,o.enqueue(s),r===0&&(n=`SCAN_CHUNK_TRAILER`)}else if(n===`SCAN_CHUNK_TRAILER`){if(e.length<2)return;if(e[0]!==13||e[1]!==10)throw Error(`Invalid chunk trailer format. Expected CRLF after chunk data`);e=e.slice(2),n=`SCAN_CHUNK_SIZE`}}})}},ct=(e,n)=>({...e,websocket:{url:(e,n,r)=>`ws://playground.internal/?${new URLSearchParams({host:n,port:r}).toString()}`,subprotocol:`binary`,decorator:()=>class extends St{constructor(e,r){super(e,r,{CAroot:n.CAroot,corsProxyUrl:n.corsProxyUrl})}}}}),St=class{constructor(e,n,{CAroot:r,corsProxyUrl:i,outputType:o=`messages`}={}){this.CONNECTING=0,this.OPEN=1,this.CLOSING=2,this.CLOSED=3,this.readyState=this.CONNECTING,this.binaryType=`blob`,this.bufferedAmount=0,this.extensions=``,this.protocol=`ws`,this.host=``,this.port=0,this.listeners=new Map,this.clientUpstream=new TransformStream,this.clientUpstreamWriter=this.clientUpstream.writable.getWriter(),this.clientDownstream=new TransformStream,this.fetchInitiated=!1,this.bufferedBytesFromClient=new Uint8Array,this.url=e,this.options=n;let s=new URL(e);this.host=s.searchParams.get(`host`),this.port=parseInt(s.searchParams.get(`port`),10),this.binaryType=`arraybuffer`,this.corsProxyUrl=i,this.CAroot=r,o===`messages`&&this.clientDownstream.readable.pipeTo(new WritableStream({write:e=>{this.emit(`message`,{data:e})},abort:()=>{this.emit(`error`,Error(`ECONNREFUSED`)),this.close()},close:()=>{this.close()}})).catch(()=>{}),this.readyState=this.OPEN,this.emit(`open`)}on(e,n){this.addEventListener(e,n)}once(e,n){let r=i=>{n(i),this.removeEventListener(e,r)};this.addEventListener(e,r)}addEventListener(e,n){this.listeners.has(e)||this.listeners.set(e,new Set),this.listeners.get(e).add(n)}removeListener(e,n){this.removeEventListener(e,n)}removeEventListener(e,n){let r=this.listeners.get(e);r&&r.delete(n)}emit(e,n={}){e===`message`?this.onmessage(n):e===`close`?this.onclose(n):e===`error`?this.onerror(n):e===`open`&&this.onopen(n);let r=this.listeners.get(e);if(r)for(let e of r)e(n)}onclose(e){}onerror(e){}onmessage(e){}onopen(e){}send(e){if(this.readyState!==this.CLOSING&&this.readyState!==this.CLOSED&&(this.clientUpstreamWriter.write(new Uint8Array(e)),!this.fetchInitiated))switch(this.bufferedBytesFromClient=D$2([this.bufferedBytesFromClient,new Uint8Array(e)]),ht(this.port,this.bufferedBytesFromClient)){case!1:return;case`other`:this.emit(`error`,Error(`Unsupported protocol`)),this.close();break;case`tls`:this.fetchOverTLS(),this.fetchInitiated=!0;break;case`http`:this.fetchOverHTTP(),this.fetchInitiated=!0}}async fetchOverTLS(){if(!this.CAroot)throw Error(`TLS protocol is only supported when the TCPOverFetchWebsocket is instantiated with a CAroot`);let e=await st({subject:{commonName:this.host,organizationName:this.host,countryName:`US`},issuer:this.CAroot.tbsDescription.subject},this.CAroot.keyPair),n=new nt;this.clientUpstream.readable.pipeTo(n.clientEnd.upstream.writable).catch(()=>{}),n.clientEnd.downstream.readable.pipeTo(this.clientDownstream.writable).catch(()=>{}),await n.TLSHandshake(e.keyPair.privateKey,[e.certificate,this.CAroot.certificate]);let{request:r,expectsContinue:i}=await w.parseHttpRequest(n.serverEnd.upstream.readable,this.host,`https`);if(i){let e=n.serverEnd.downstream.writable.getWriter();await e.write(new TextEncoder().encode(`HTTP/1.1 100 Continue\r
+`),DEFAULT_BASE_URL=`http://example.com`,_default=`application/octet-stream`,asx=`video/x-ms-asf`,atom=`application/atom+xml`,avi=`video/x-msvideo`,avif=`image/avif`,bin=`application/octet-stream`,bmp=`image/x-ms-bmp`,cco=`application/x-cocoa`,cjs=`application/javascript`,css=`text/css`,data=`application/octet-stream`,deb=`application/octet-stream`,der=`application/x-x509-ca-cert`,dmg=`application/octet-stream`,doc=`application/msword`,docx=`application/vnd.openxmlformats-officedocument.wordprocessingml.document`,eot=`application/vnd.ms-fontobject`,flv=`video/x-flv`,gif=`image/gif`,gz=`application/gzip`,hqx=`application/mac-binhex40`,htc=`text/x-component`,html=`text/html`,ico=`image/x-icon`,iso=`application/octet-stream`,jad=`text/vnd.sun.j2me.app-descriptor`,jar=`application/java-archive`,jardiff=`application/x-java-archive-diff`,jng=`image/x-jng`,jnlp=`application/x-java-jnlp-file`,jpg=`image/jpeg`,jpeg=`image/jpeg`,js=`application/javascript`,json=`application/json`,kml=`application/vnd.google-earth.kml+xml`,kmz=`application/vnd.google-earth.kmz`,m3u8=`application/vnd.apple.mpegurl`,m4a=`audio/x-m4a`,m4v=`video/x-m4v`,md=`text/plain`,mid=`audio/midi`,mjs=`application/javascript`,mml=`text/mathml`,mng=`video/x-mng`,mov=`video/quicktime`,mp3=`audio/mpeg`,mp4=`video/mp4`,mpeg=`video/mpeg`,msi=`application/octet-stream`,odg=`application/vnd.oasis.opendocument.graphics`,odp=`application/vnd.oasis.opendocument.presentation`,ods=`application/vnd.oasis.opendocument.spreadsheet`,odt=`application/vnd.oasis.opendocument.text`,ogg=`audio/ogg`,otf=`font/otf`,pdf=`application/pdf`,pl=`application/x-perl`,png=`image/png`,ppt=`application/vnd.ms-powerpoint`,pptx=`application/vnd.openxmlformats-officedocument.presentationml.presentation`,prc=`application/x-pilot`,ps=`application/postscript`,ra=`audio/x-realaudio`,rar=`application/x-rar-compressed`,rpm=`application/x-redhat-package-manager`,rss=`application/rss+xml`,rtf=`application/rtf`,run=`application/x-makeself`,sea=`application/x-sea`,sit=`application/x-stuffit`,svg=`image/svg+xml`,swf=`application/x-shockwave-flash`,tcl=`application/x-tcl`,tar=`application/x-tar`,tif=`image/tiff`,ts=`video/mp2t`,ttf=`font/ttf`,txt=`text/plain`,wasm=`application/wasm`,wbmp=`image/vnd.wap.wbmp`,webm=`video/webm`,webp=`image/webp`,wml=`text/vnd.wap.wml`,wmlc=`application/vnd.wap.wmlc`,wmv=`video/x-ms-wmv`,woff=`font/woff`,woff2=`font/woff2`,xhtml=`application/xhtml+xml`,xls=`application/vnd.ms-excel`,xlsx=`application/vnd.openxmlformats-officedocument.spreadsheetml.sheet`,xml=`text/xml`,xpi=`application/x-xpinstall`,xspf=`application/xspf+xml`,zip=`application/zip`,mimeTypes={_default,"3gpp":`video/3gpp`,"7z":`application/x-7z-compressed`,asx,atom,avi,avif,bin,bmp,cco,cjs,css,data,deb,der,dmg,doc,docx,eot,flv,gif,gz,hqx,htc,html,ico,iso,jad,jar,jardiff,jng,jnlp,jpg,jpeg,js,json,kml,kmz,m3u8,m4a,m4v,md,mid,mjs,mml,mng,mov,mp3,mp4,mpeg,msi,odg,odp,ods,odt,ogg,otf,pdf,pl,png,ppt,pptx,prc,ps,ra,rar,rpm,rss,rtf,run,sea,sit,svg,swf,tcl,tar,tif,ts,ttf,txt,wasm,wbmp,webm,webp,wml,wmlc,wmv,woff,woff2,xhtml,xls,xlsx,xml,xpi,xspf,zip},PHPRequestHandler=class{constructor(e){_(this,R$2),_(this,C$1),_(this,Z$1),_(this,ie$1),_(this,X$1),_(this,ee$1),_(this,I$2),_(this,te$1),_(this,V$1),_(this,oe);let{documentRoot:n=`/www/`,absoluteUrl:r=typeof location==`object`?location.href:DEFAULT_BASE_URL,rewriteRules:i=[],pathAliases:o=[],getFileNotFoundAction:s=()=>({type:`404`})}=e,l=e=>{e.isDir(n)||e.mkdir(n),e.chdir(n),e.requestHandler=this};if(e.php)l(e.php),this.instanceManager=new SinglePHPInstanceManager({php:e.php});else if(e.phpFactory)this.instanceManager=new PHPProcessManager({phpFactory:async n=>{let r=await e.phpFactory({...n,requestHandler:this});return l(r),r},maxPhpInstances:e.maxPhpInstances});else throw Error(`Either php or phpFactory must be provided in the configuration.`);x$1(this,V$1,e.cookieStore===void 0?new HttpCookieStore:e.cookieStore),x$1(this,C$1,n);let N=new URL(r);x$1(this,ie$1,N.hostname),x$1(this,X$1,N.port?Number(N.port):N.protocol===`https:`?443:80),x$1(this,Z$1,(N.protocol||``).replace(`:`,``));let ae=u$1(this,X$1)!==443&&u$1(this,X$1)!==80;x$1(this,ee$1,[u$1(this,ie$1),ae?`:${u$1(this,X$1)}`:``].join(``)),x$1(this,I$2,N.pathname.replace(/\/+$/,``)),x$1(this,te$1,[`${u$1(this,Z$1)}://`,u$1(this,ee$1),u$1(this,I$2)].join(``)),this.rewriteRules=i,x$1(this,oe,o),this.getFileNotFoundAction=s}async getPrimaryPhp(){return await this.instanceManager.getPrimaryPhp()}pathToInternalUrl(e){return e.startsWith(`/`)||(e=`/${e}`),`${this.absoluteUrl}${e}`}internalUrlToPath(e){let n=new URL(e,`https://playground.internal`);return n.pathname.startsWith(u$1(this,I$2))&&(n.pathname=n.pathname.slice(u$1(this,I$2).length)),toRelativeUrl(n)}get absoluteUrl(){return u$1(this,te$1)}get documentRoot(){return u$1(this,C$1)}async request(e){let n=await this.requestStreamed(e),r=await PHPResponse.fromStreamedResponse(n);return r.ok()&&r.exitCode!==0?new PHPResponse(500,r.headers,r.bytes,r.errors,r.exitCode):r}async requestStreamed(e){let n=looksLikeAbsoluteUrl(e.url),r=new URL(e.url.split(`#`)[0],n?void 0:DEFAULT_BASE_URL),i=v(this,R$2,Me).call(this,r),o=await this.getPrimaryPhp(),s=removePathPrefix(decodeURIComponent(i.pathname),u$1(this,I$2)),l=v(this,R$2,le).call(this,s);if(o.isDir(l)){if(!s.endsWith(`/`))return StreamedPHPResponse.fromPHPResponse(new PHPResponse(301,{location:[`${i.pathname}/`]},new Uint8Array));for(let e of[`index.php`,`index.html`]){let n=m(l,e);if(o.isFile(n)){l=n,i.pathname=m(i.pathname,e);break}}}if(!o.isFile(l)){let e=s;for(;e.startsWith(`/`)&&e!==W$1(e);){e=W$1(e);let n=v(this,R$2,le).call(this,e);if(o.isFile(n)&&n.endsWith(`.php`)){l=v(this,R$2,le).call(this,e);break}}}if(!o.isFile(l)){let e=this.getFileNotFoundAction(i.pathname);switch(e.type){case`response`:return StreamedPHPResponse.fromPHPResponse(e.response);case`internal-redirect`:l=m(u$1(this,C$1),e.uri);break;case`404`:return StreamedPHPResponse.forHttpCode(404);default:throw Error(`Unsupported file-not-found action type: '${e.type}'`)}}return o.isFile(l)?l.endsWith(`.php`)?await v(this,R$2,Ie).call(this,e,r,i,l):StreamedPHPResponse.fromPHPResponse(v(this,R$2,Le$1).call(this,o,l)):StreamedPHPResponse.forHttpCode(404)}prepare_$_SERVER_superglobal(e,n,r){let i={REMOTE_ADDR:`127.0.0.1`,DOCUMENT_ROOT:u$1(this,C$1),HTTPS:u$1(this,te$1).startsWith(`https://`)?`on`:``};return i.REQUEST_URI=e.pathname+e.search,r.startsWith(u$1(this,C$1))&&(i.SCRIPT_NAME=r.substring(u$1(this,C$1).length),i.PHP_SELF=n.pathname,i.REQUEST_URI.startsWith(i.SCRIPT_NAME)&&(i.PATH_INFO=i.REQUEST_URI.substring(i.SCRIPT_NAME.length),i.PATH_INFO.includes(`?`)&&(i.PATH_INFO=i.PATH_INFO.substring(0,i.PATH_INFO.indexOf(`?`))))),i.QUERY_STRING=n.search.substring(1),i}async[Symbol.asyncDispose](){await this.instanceManager[Symbol.asyncDispose]()}},C$1=new WeakMap,Z$1=new WeakMap,ie$1=new WeakMap,X$1=new WeakMap,ee$1=new WeakMap,I$2=new WeakMap,te$1=new WeakMap,V$1=new WeakMap,oe=new WeakMap,R$2=new WeakSet,Me=function(e){let n=applyRewriteRules(removePathPrefix(decodeURIComponent(e.pathname),u$1(this,I$2)),this.rewriteRules),r=new URL(m(u$1(this,I$2),n),e.toString());for(let[n,i]of e.searchParams.entries())r.searchParams.append(n,i);return r},le=function(e){for(let n of u$1(this,oe))if(e===n.urlPrefix||e.startsWith(n.urlPrefix+`/`)){let r=e.slice(n.urlPrefix.length);return m(n.fsPath,r)}return m(u$1(this,C$1),e)},Le$1=function(e,n){let r=e.readFileAsBuffer(n);return new PHPResponse(200,{"content-length":[`${r.byteLength}`],"content-type":[inferMimeType(n)],"accept-ranges":[`bytes`],"cache-control":[`public, max-age=0`]},r)},Ie=async function(e,n,r,i){let o;try{o=await this.instanceManager.acquirePHPInstance()}catch(e){return e instanceof MaxPhpInstancesError?StreamedPHPResponse.forHttpCode(502):StreamedPHPResponse.forHttpCode(500)}let s;try{s=await v(this,R$2,Ae).call(this,o.php,e,n,r,i)}catch(e){throw o.reap(),e}return s.finished.finally(()=>{o?.reap()}),s},Ae=async function(e,n,r,i,o){let s=`GET`,l={host:u$1(this,ee$1),...normalizeHeaders(n.headers||{})};u$1(this,V$1)&&(l.cookie=u$1(this,V$1).getCookieRequestHeader());let N=n.body;if(typeof N==`object`&&!(N instanceof Uint8Array)){s=`POST`;let{bytes:e,contentType:n}=await encodeAsMultipart(N);N=e,l[`content-type`]=n}let ae=await e.runStream({relativeUri:ensurePathPrefix(toRelativeUrl(new URL(i.toString())),u$1(this,I$2)),protocol:u$1(this,Z$1),method:n.method||s,$_SERVER:this.prepare_$_SERVER_superglobal(r,i,o),body:N,scriptPath:o,headers:l});if(u$1(this,V$1)){let e=await ae.headers;u$1(this,V$1).rememberCookiesFromResponseHeaders(e)}return ae},schema12={properties:{name:{type:`string`},version:{type:`string`},mode:{type:`string`,const:`php-extension`},loadWithIniDirective:{$ref:`#/definitions/PHPExtensionLoadDirective`,description:"The first directive of the generated startup `.ini` file. Defaults to `extension`; use `zend_extension` for Zend extensions like Xdebug. Use `false` to stage the `.so` without registering it in php.ini."},iniEntries:{type:`object`,additionalProperties:{type:`string`},description:"Additional `key=value` lines for the generated startup `.ini` file."},env:{type:`object`,additionalProperties:{type:`string`},description:`Environment variables added before the extension is loaded.`},extensionDir:{type:`string`,description:"VFS directory where PHP.wasm writes the extension `.so` file and its per-extension ini file. Defaults to `PHP_EXTENSIONS_DIR`."},artifacts:{type:`array`,items:{type:`object`,properties:{phpVersion:{type:`string`,description:"PHP major/minor version, e.g. `8.4`."},sourcePath:{type:`string`,description:`Relative to the manifest URL/base URL, or an absolute URL.`},extraFiles:{$ref:`#/definitions/PHPExtensionManifestExtraFiles`,description:`URL-backed files needed only by this artifact.`}},required:[`phpVersion`,`sourcePath`],additionalProperties:!1}},extraFiles:{$ref:`#/definitions/PHPExtensionManifestExtraFiles`,description:`URL-backed files shared by every artifact in this manifest.`}}},schema15={properties:{nodes:{items:{properties:{type:{enum:[`file`,`directory`]}}}}}},func2=Object.prototype.hasOwnProperty,schema14={enum:[`extension`,`zend_extension`]},PHP_EXTENSIONS_DIR=`/internal/shared/extensions`,MAX_EXTENSION_SIDECAR_FILE_REQUESTS=5,NodeSABSyncReceiveMessageTransport=class e{static async create(){if(!e.receiveMessageOnPort)try{e.receiveMessageOnPort=require___vite_browser_external().receiveMessageOnPort}catch{e.receiveMessageOnPort=await __vitePreload(()=>Promise.resolve().then(()=>__toESM(require___vite_browser_external(),1)).then(e=>e.receiveMessageOnPort),void 0)}return new e}constructor(){}afterResponseSent(e){let{notifyBuffer:n}=e.data;if(n){let e=new Int32Array(n);e[0]=1,Atomics.notify(e,0)}}send(n,r,i){var o;let s=new SharedArrayBuffer(4),l=new Int32Array(s);l[0]=0;let N=generateUUID();if(n.postMessage({...r,id:N,notifyBuffer:s},i),Atomics.wait(l,0,0,5e3)===`timed-out`)throw Error(`Timeout waiting for response`);for(;;){let r=e.receiveMessageOnPort(n);if(r.message?.id===N)return r.message;if(!r)throw Error(`No response received`)}}},proxyMarker=Symbol(`Comlink.proxy`),createEndpoint=Symbol(`Comlink.endpoint`),releaseProxy=Symbol(`Comlink.releaseProxy`),finalizer=Symbol(`Comlink.finalizer`),throwMarker=Symbol(`Comlink.thrown`),WireValueType={RAW:`RAW`,HANDLER:`HANDLER`},MessageType={GET:`GET`,SET:`SET`,APPLY:`APPLY`,CONSTRUCT:`CONSTRUCT`,ENDPOINT:`ENDPOINT`,RELEASE:`RELEASE`},isObject=e=>typeof e==`object`&&!!e||typeof e==`function`,proxyTransferHandler={canHandle:e=>isObject(e)&&e[proxyMarker],serialize(e){let{port1:n,port2:r}=new MessageChannel;return expose(e,n),[r,[r]]},deserialize(e){return e.start(),wrap(e)}},throwTransferHandler$1={canHandle:e=>isObject(e)&&throwMarker in e,serialize({value:e}){let n;return n=e instanceof Error?{isError:!0,value:{message:e.message,name:e.name,stack:e.stack}}:{isError:!1,value:e},[n,[]]},deserialize(e){throw e.isError?Object.assign(Error(e.value.message),e.value):e.value}},transferHandlers=new Map([[`proxy`,proxyTransferHandler],[`throw`,throwTransferHandler$1]]),proxyCounter=new WeakMap,proxyFinalizers=`FinalizationRegistry`in globalThis&&new FinalizationRegistry(e=>{let n=(proxyCounter.get(e)||0)-1;proxyCounter.set(e,n),n===0&&releaseEndpoint(e)}),transferCache=new WeakMap,proxyByListener=new WeakMap,list=[Error,EvalError,RangeError,ReferenceError,SyntaxError,TypeError,URIError,AggregateError,globalThis.DOMException,globalThis.AssertionError,globalThis.SystemError].filter(Boolean).map(e=>[e.name,e]),errorConstructors=new Map(list),NonError=class e extends Error{constructor(n){super(e._prepareSuperMessage(n)),this.name=`NonError`}static _prepareSuperMessage(e){try{return JSON.stringify(e)}catch{return String(e)}}},errorProperties=[{property:`name`,enumerable:!1},{property:`message`,enumerable:!1},{property:`stack`,enumerable:!1},{property:`code`,enumerable:!0},{property:`cause`,enumerable:!1},{property:`errors`,enumerable:!1}],toJsonWasCalled=new WeakSet,toJSON=e=>{toJsonWasCalled.add(e);let n=e.toJSON();return toJsonWasCalled.delete(e),n},newError=e=>{let n=errorConstructors.get(e)??Error;return n===AggregateError?new n([]):new n},destroyCircular=({from:e,seen:n,to:r,forceEnumerable:i,maxDepth:o,depth:s,useToJSON:l,serialize:N})=>{if(r||=Array.isArray(e)?[]:!N&&isErrorLike(e)?newError(e.name):{},n.push(e),s>=o)return r;if(l&&typeof e.toJSON==`function`&&!toJsonWasCalled.has(e))return toJSON(e);let ae=e=>destroyCircular({from:e,seen:[...n],forceEnumerable:i,maxDepth:o,depth:s,useToJSON:l,serialize:N});for(let[i,o]of Object.entries(e)){if(o&&o instanceof Uint8Array&&o.constructor.name===`Buffer`){r[i]=`[object Buffer]`;continue}if(typeof o==`object`&&o&&typeof o.pipe==`function`){r[i]=`[object Stream]`;continue}if(typeof o!=`function`){if(!o||typeof o!=`object`){try{r[i]=o}catch{}continue}if(!n.includes(e[i])){s++,r[i]=ae(e[i]);continue}r[i]=`[Circular]`}}if(N||r instanceof Error)for(let{property:n,enumerable:o}of errorProperties)e[n]!==void 0&&e[n]!==null&&Object.defineProperty(r,n,{value:isErrorLike(e[n])||Array.isArray(e[n])?ae(e[n]):e[n],enumerable:i?!0:o,configurable:!0,writable:!0});return r},releaseApiProxy=releaseProxy,isTransferHandlersSetup=!1,throwTransferHandler=transferHandlers.get(`throw`),throwTransferHandlerCustom={canHandle:throwTransferHandler.canHandle,serialize:({value:e})=>{let n;return e instanceof Error?(n={isError:!0,value:serializeError(e)},n.value.originalErrorClassName=e.constructor.name):n={isError:!1,value:e},[n,[]]},deserialize:e=>{if(e.isError){let n=deserializeError(e.value),r=Error(`Comlink method call failed`),i=n;for(;i.cause;)i=i.cause;throw i.cause=r,n}throw e.value}},transferHandlers.set(`throw`,throwTransferHandlerCustom),MAX_ADDRESSABLE_FILE_OFFSET=BigInt(2**53-1),IntervalNode=class{constructor(e){this.left=null,this.right=null,this.range=e,this.max=e.end}},FileLockIntervalTree=class{constructor(){this.root=null}isEmpty(){return this.root===null}insert(e){this.root=this.insertNode(this.root,e)}findOverlapping(e){let n=[];return this.findOverlappingRanges(this.root,e,n),n}remove(e){this.root=this.removeNode(this.root,e)}findLocksForProcess(e){let n=[];return this.findLocksForProcessInNode(this.root,e,n),n}findStrictestExistingLockType(){let e=`unlocked`,n=r=>{if(r){if(r.range.type===`exclusive`){e=`exclusive`;return}r.range.type===`shared`&&(e=`shared`),n(r.left),n(r.right)}};return n(this.root),e}insertNode(e,n){return e?(n.start<e.range.start?e.left=this.insertNode(e.left,n):e.right=this.insertNode(e.right,n),e.max=this.bigintMax(e.max,n.end),e):new IntervalNode(n)}bigintMax(...e){return e.reduce((e,n)=>n>e?n:e,e[0])}findOverlappingRanges(e,n,r){e&&(this.doRangesOverlap(e.range,n)&&r.push(e.range),e.left&&e.left.max>=n.start&&this.findOverlappingRanges(e.left,n,r),e.right&&e.range.start<=n.end&&this.findOverlappingRanges(e.right,n,r))}doRangesOverlap(e,n){return e.start<n.end&&n.start<e.end}removeNode(e,n){if(!e)return null;if(this.areRangesEqual(e.range,n)){if(!e.left)return e.right;if(!e.right)return e.left;let n=this.findMin(e.right);e.range=n.range,e.right=this.removeNode(e.right,n.range)}else n.start<e.range.start?e.left=this.removeNode(e.left,n):e.right=this.removeNode(e.right,n);return e.max=e.range.end,e.left&&(e.max=this.bigintMax(e.max,e.left.max)),e.right&&(e.max=this.bigintMax(e.max,e.right.max)),e}findMin(e){let n=e;for(;n.left;)n=n.left;return n}areRangesEqual(e,n){return e.start===n.start&&e.end===n.end&&e.pid===n.pid&&e.fd===n.fd}findLocksForProcessInNode(e,n,r){e&&(e.range.pid===n&&r.push(e.range),this.findLocksForProcessInNode(e.left,n,r),this.findLocksForProcessInNode(e.right,n,r))}},FileLockManagerInMemory=class{constructor(){this.locks=new Map}lockWholeFile(e,n){if(this.locks.get(e)===void 0){if(n.type===`unlock`)return!0;this.locks.set(e,new FileLock)}let r=this.locks.get(e).lockWholeFile(n);return this.forgetPathIfUnlocked(e),r}lockFileByteRange(e,n){if(!this.locks.has(e)){if(n.type===`unlocked`)return!0;this.locks.set(e,new FileLock)}return this.locks.get(e).lockFileByteRange(n)}findFirstConflictingByteRangeLock(e,n){let r=this.locks.get(e);if(r!==void 0)return r.findFirstConflictingByteRangeLock(n)}releaseLocksForProcess(e){for(let[n,r]of this.locks.entries())r.releaseLocksForProcess(e),this.forgetPathIfUnlocked(n)}releaseLocksOnFdClose(e,n,r){let i=this.locks.get(r);i&&(i.releaseLocksOnFdClose(e,n),this.forgetPathIfUnlocked(r))}forgetPathIfUnlocked(e){let n=this.locks.get(e);n&&n.isUnlocked()&&this.locks.delete(e)}},FileLock=class{constructor(){this.rangeLocks=new FileLockIntervalTree,this.wholeFileLock={type:`unlocked`}}lockWholeFile(e){if(e.type===`unlock`)return this.wholeFileLock.type===`unlocked`||(this.wholeFileLock.type===`exclusive`&&this.wholeFileLock.pid===e.pid&&this.wholeFileLock.fd===e.fd?this.wholeFileLock={type:`unlocked`}:this.wholeFileLock.type===`shared`&&this.wholeFileLock.pidFds.has(e.pid)&&this.wholeFileLock.pidFds.get(e.pid).has(e.fd)&&(this.wholeFileLock.pidFds.get(e.pid).delete(e.fd),this.wholeFileLock.pidFds.get(e.pid).size===0&&this.wholeFileLock.pidFds.delete(e.pid),this.wholeFileLock.pidFds.size===0&&(this.wholeFileLock={type:`unlocked`}))),!0;if(this.isThereAConflictWithRequestedWholeFileLock(e))return!1;if(e.type===`exclusive`)return this.wholeFileLock={type:`exclusive`,pid:e.pid,fd:e.fd},!0;if(e.type===`shared`){this.wholeFileLock.type!==`shared`&&(this.wholeFileLock={type:`shared`,pidFds:new Map});let n=this.wholeFileLock;return n.pidFds.has(e.pid)||n.pidFds.set(e.pid,new Set),n.pidFds.get(e.pid).add(e.fd),!0}throw Error(`Unexpected wholeFileLock() op: '${e.type}'`)}lockFileByteRange(e){if(e.start===e.end&&(e={...e,end:MAX_ADDRESSABLE_FILE_OFFSET}),e.type===`unlocked`){let n=this.rangeLocks.findOverlapping(e).filter(n=>n.pid===e.pid);for(let r of n)this.rangeLocks.remove(r),r.start<e.start&&this.rangeLocks.insert({...r,end:e.start}),r.end>e.end&&this.rangeLocks.insert({...r,start:e.end});return!0}if(this.isThereAConflictWithRequestedRangeLock(e))return!1;let n=this.rangeLocks.findOverlapping(e).filter(n=>n.pid===e.pid),r=e.start,i=e.end;for(let e of n)this.rangeLocks.remove(e),e.start<r&&(r=e.start),e.end>i&&(i=e.end);let o={...e,start:r,end:i};return this.rangeLocks.insert(o),!0}findFirstConflictingByteRangeLock(e){e.start===e.end&&(e={...e,end:MAX_ADDRESSABLE_FILE_OFFSET});let n=this.rangeLocks.findOverlapping(e).find(n=>n.pid!==e.pid&&(e.type===`exclusive`||n.type===`exclusive`));if(n)return n;if(this.wholeFileLock.type!==`unlocked`&&(this.wholeFileLock.type===`exclusive`||e.type===`exclusive`))return{type:this.wholeFileLock.type,start:0n,end:0n,pid:-1}}releaseLocksForProcess(e){for(let n of this.rangeLocks.findLocksForProcess(e))this.lockFileByteRange({...n,type:`unlocked`});if(this.wholeFileLock.type===`exclusive`&&this.wholeFileLock.pid===e)this.lockWholeFile({pid:e,fd:this.wholeFileLock.fd,type:`unlock`});else if(this.wholeFileLock.type===`shared`&&this.wholeFileLock.pidFds.has(e))for(let n of this.wholeFileLock.pidFds.get(e))this.lockWholeFile({pid:e,fd:n,type:`unlock`})}releaseLocksOnFdClose(e,n){for(let n of this.rangeLocks.findLocksForProcess(e))this.lockFileByteRange({...n,type:`unlocked`});this.lockWholeFile({pid:e,fd:n,type:`unlock`})}isUnlocked(){return this.wholeFileLock.type===`unlocked`&&this.rangeLocks.isEmpty()}isThereAConflictWithRequestedRangeLock(e){return this.findFirstConflictingByteRangeLock(e)!==void 0}isThereAConflictWithRequestedWholeFileLock(e){return e.type===`exclusive`?!!(this.wholeFileLock.type===`exclusive`&&(this.wholeFileLock.fd!==e.fd||this.wholeFileLock.pid!==e.pid)||this.wholeFileLock.type===`shared`&&Array.from(this.wholeFileLock.pidFds).some(([n])=>n!==e.pid)||this.rangeLocks.findOverlapping({start:0n,end:MAX_ADDRESSABLE_FILE_OFFSET}).length>0):e.type===`shared`?this.wholeFileLock.type===`exclusive`&&this.wholeFileLock.pid!==e.pid||this.rangeLocks.findOverlapping({start:0n,end:MAX_ADDRESSABLE_FILE_OFFSET}).filter(e=>e.type===`exclusive`).length>0:!1}},FileLockManagerComposite=class{constructor({nativeLockManager:e,wasmLockManager:n}){this.nativeLockManager=e,this.wasmLockManager=n}lockWholeFile(e,n){if(n.type!==`unlock`){let r,i;try{if(r=this.nativeLockManager.lockWholeFile(e,n),!r)return!1;i=this.wasmLockManager.lockWholeFile(e,n)}catch(e){M$1.error(`Unexpected error in lockWholeFile()`,e)}finally{r&&!i&&this.nativeLockManager.lockWholeFile(e,{...n,type:`unlock`})}return!!r&&!!i}try{this.wasmLockManager.lockWholeFile(e,n)}catch(e){M$1.error(`Unexpected error unlocking whole file with in-memory lock manager`,e)}try{this.nativeLockManager.lockWholeFile(e,n)}catch(e){M$1.error(`Unexpected error unlocking whole file with native lock manager`,e)}return!0}lockFileByteRange(e,n,r){if(n.type!==`unlocked`){let i,o;try{if(i=this.nativeLockManager.lockFileByteRange(e,n,r),!i)return!1;o=this.wasmLockManager.lockFileByteRange(e,n,r)}catch(e){M$1.error(`Unexpected error in lockFileByteRange()`,e)}finally{i&&!o&&this.nativeLockManager.lockFileByteRange(e,{...n,type:`unlocked`},!1)}return!!i&&!!o}try{this.wasmLockManager.lockFileByteRange(e,n,r)}catch(e){M$1.error(`Unexpected error unlocking byte range with in-memory lock manager`,e)}try{this.nativeLockManager.lockFileByteRange(e,n,r)}catch(e){M$1.error(`Unexpected error unlocking byte range with native lock manager`,e)}return!0}findFirstConflictingByteRangeLock(e,n){try{return this.nativeLockManager.findFirstConflictingByteRangeLock(e,n)||this.wasmLockManager.findFirstConflictingByteRangeLock(e,n)}catch(e){M$1.error(`Unexpected error in findFirstConflictingByteRangeLock()`,e);return}}releaseLocksForProcess(e){try{this.wasmLockManager.releaseLocksForProcess(e)}catch(e){M$1.error(`Unexpected error in wasmLockManager.releaseLocksForProcess()`,e)}try{this.nativeLockManager.releaseLocksForProcess(e)}catch(e){M$1.error(`Unexpected error in nativeLockManager.releaseLocksForProcess()`,e)}}releaseLocksOnFdClose(e,n,r){try{this.wasmLockManager.releaseLocksOnFdClose(e,n,r)}catch(e){M$1.error(`Unexpected error in wasmLockManager.releaseLocksOnFdClose()`,e)}try{this.nativeLockManager.releaseLocksOnFdClose(e,n,r)}catch(e){M$1.error(`Unexpected error in nativeLockManager.releaseLocksOnFdClose()`,e)}}},maxValueForSigned32BitInteger=2**31-1,ProcessIdAllocator=class{constructor(e=1,n=maxValueForSigned32BitInteger){this.claimed=new Set,this.initialId=e,this.maxId=n,this.nextId=e}claim(){let e=this.maxId-this.initialId+1;for(let n=0;n<e;n++)if(this.claimed.has(this.nextId))this.nextId++,this.nextId>this.maxId&&(this.nextId=this.initialId);else return this.claimed.add(this.nextId),this.nextId;throw Error(`Unable to find free process ID after ${e} tries.`)}release(e){return this.claimed.has(e)?(this.claimed.delete(e),!0):!1}}}));async function w$1(e,n){let r;return r=[`GET`,`HEAD`].includes(e.method)?void 0:`body`in n?n.body:!e.bodyUsed&&e.body?e.body:await e.arrayBuffer(),new Request(n.url||e.url,{body:r,method:e.method,headers:e.headers,referrer:e.referrer,referrerPolicy:e.referrerPolicy,mode:e.mode===`navigate`?`same-origin`:e.mode,credentials:e.credentials,cache:e.cache,redirect:e.redirect,integrity:e.integrity,...r instanceof ReadableStream&&{duplex:`half`},...n})}async function A$1(){if(u!==void 0)return u;try{let e=new ReadableStream({start(e){e.close()}});await fetch(`data:,`,{method:`POST`,body:e,duplex:`half`}),u=!0}catch{u=!1}return u}async function W(e,n,r,i){var o;let s=typeof e==`string`?new Request(e,n):e,l=i?new URL(i):null,N=l?new URL(s.url,l):new URL(s.url);if(B(N))return await fetch(s);if(D(N))return s=await I$1(s,N),await fetch(s);if(N.protocol===`http:`){N.protocol=`https:`;let e=N.toString();s=await w$1(s,{url:e}),N=new URL(e)}if(!r||l&&N.protocol===l.protocol&&N.hostname===l.hostname&&N.port===l.port&&N.pathname.startsWith(l.pathname))return await fetch(s);let ae=s.clone();try{return await fetch(s)}catch{let e=new Headers(s.headers),n=e.get(`x-cors-proxy-allowed-request-headers`)?.split(`,`)||[],i=n.includes(`authorization`)||n.includes(`cookie`),o=e.get(`content-type`);o&&o.toLowerCase().includes(`multipart/form-data`)&&(e.set(`x-cors-proxy-content-type`,o),e.set(`content-type`,`application/octet-stream`));let l=null,N=s.method.toUpperCase();N!==`GET`&&N!==`HEAD`&&(l=await A$1()?ae.body:await ae.arrayBuffer()),l instanceof ReadableStream&&new URL(r,import.meta.url).protocol===`http:`&&(l=await new Response(l).arrayBuffer());let ce=await w$1(s,{url:`${r}${s.url}`,headers:e,body:l,...i&&{credentials:`include`}}),ue=await fetch(ce);if(!ue.headers.has(q))throw new O(s.url,ue.status,ue.statusText);return ue}}function B(e){return e.hostname===`localhost`||e.hostname===`127.0.0.1`||e.hostname===`[::1]`||e.hostname===`::1`}function D(e){return e.protocol===`https:`&&b$1.has(e.hostname)}async function I$1(e,n){let r=b$1.get(n.hostname);if(!r)return e;let i=new Headers(e.headers);for(let[e,n]of Object.entries(r))i.has(e)||i.set(e,n);return await w$1(e,{headers:i})}var u,O,q,b$1,init_web_service_worker=__esmMin((()=>{init_universal(),O=class extends Error{constructor(e,n,r){super(`Could not fetch ${e} – your network appears to be blocking this request (HTTP ${n}). This often happens on school, university, or corporate networks. Try switching to a different network or using a VPN.`),this.name=`FirewallInterferenceError`,this.url=e,this.status=n,this.statusText=r}},q=`X-Playground-Cors-Proxy`,b$1=new Map([[`api.anthropic.com`,{"anthropic-dangerous-direct-browser-access":`true`}],[`api.openai.com`,{}],[`generativelanguage.googleapis.com`,{}]])}));function R$1(e=fetch){let n={};return async function(r,i){if(!n[r]){n[r]={responsePromise:e(r,i),async nextResponse(){let e=await n[r].responsePromise,[i,o]=n[r].unlockedBodyStream.tee();return n[r].unlockedBodyStream=i,new Response(o,{status:e.status,statusText:e.statusText,headers:e.headers})}};let o=await n[r].responsePromise;n[r].unlockedBodyStream=o.body}return n[r].nextResponse()}}var init_common=__esmMin((()=>{})),jspi,init_esm=__esmMin((()=>{jspi=()=>(async()=>`Suspending`in WebAssembly)()})),A,init_fs_journal=__esmMin((()=>{init_universal(),init_util(),init_logger(),new v$1({concurrency:15})}));async function je(){let e=$e(),n;for(let r of e)try{return await __vitePreload(()=>import(r),[])}catch(e){n=e}throw Error("PHP next assets are missing. Run `npm run sync:php-next` before using PHP next locally.",{cause:n})}function $e(){var e,n;let r=globalThis.location?.origin||``,i=(globalThis.location?.pathname||`/`).startsWith(`/website-server/`)?`/website-server/`:`/`;return Array.from(new Set([`${r}${i}php-next/index.js`,`${r}/website-server/php-next/index.js`,`${r}/php-next/index.js`]))}async function Ge(e=LatestSupportedPHPVersion,n=`asyncify`){switch(e){case`next`:return(await je()).getPHPLoaderModule(n);case`8.5`:return(await __vitePreload(async()=>{let{getPHPLoaderModule:e}=await import(`./php-wasm-not-bundled-B_lfuRhw.js`);return{getPHPLoaderModule:e}},__vite__mapDeps([0,1]))).getPHPLoaderModule();case`8.4`:return(await __vitePreload(async()=>{let{getPHPLoaderModule:e}=await import(`./php-wasm-not-bundled-B_lfuRhw.js`);return{getPHPLoaderModule:e}},__vite__mapDeps([0,1]))).getPHPLoaderModule();case`8.3`:return(await __vitePreload(async()=>{let{getPHPLoaderModule:e}=await import(`./web-8-3-stRFi1eJ.js`);return{getPHPLoaderModule:e}},__vite__mapDeps([2,1]))).getPHPLoaderModule();case`8.2`:return(await __vitePreload(async()=>{let{getPHPLoaderModule:e}=await import(`./php-wasm-not-bundled-B_lfuRhw.js`);return{getPHPLoaderModule:e}},__vite__mapDeps([0,1]))).getPHPLoaderModule();case`8.1`:return(await __vitePreload(async()=>{let{getPHPLoaderModule:e}=await import(`./php-wasm-not-bundled-B_lfuRhw.js`);return{getPHPLoaderModule:e}},__vite__mapDeps([0,1]))).getPHPLoaderModule();case`8.0`:return(await __vitePreload(async()=>{let{getPHPLoaderModule:e}=await import(`./php-wasm-not-bundled-B_lfuRhw.js`);return{getPHPLoaderModule:e}},__vite__mapDeps([0,1]))).getPHPLoaderModule();case`7.4`:return(await __vitePreload(async()=>{let{getPHPLoaderModule:e}=await import(`./php-wasm-not-bundled-B_lfuRhw.js`);return{getPHPLoaderModule:e}},__vite__mapDeps([0,1]))).getPHPLoaderModule();case`5.2`:return(await __vitePreload(async()=>{let{getPHPLoaderModule:e}=await import(`./php-wasm-not-bundled-B_lfuRhw.js`);return{getPHPLoaderModule:e}},__vite__mapDeps([0,1]))).getPHPLoaderModule()}throw Error(`Unsupported PHP version ${e}`)}function y(e){return Object.fromEntries(Object.entries(e).map(([e,n])=>[n,e]))}function b(e){return new Uint8Array([e>>8&255,e&255])}function I(e){return new Uint8Array([e>>16&255,e>>8&255,e&255])}function X(e){let n=new ArrayBuffer(8);return new DataView(n).setBigUint64(0,BigInt(e),!1),new Uint8Array(n)}function Je(e){let n=new K(e.buffer),r=[];for(;!n.isFinished();){let i=n.offset,o=n.readUint16(),s=Ve[o],l=n.readUint16(),N=n.readUint8Array(l);if(!(s in se))continue;let ae=se[s];r.push({type:s,data:ae.decodeFromClient(N),raw:e.slice(i,i+4+l)})}return r}async function V(e,n,r,i){let o=R$3([n,r]),s=await crypto.subtle.importKey(`raw`,e,{name:`HMAC`,hash:{name:`SHA-256`}},!1,[`sign`]),l=o,N=[];for(;R$3(N).byteLength<i;){l=await ie(s,l);let e=await ie(s,R$3([l,o]));N.push(e)}return R$3(N).slice(0,i)}async function ie(e,n){return await crypto.subtle.sign({name:`HMAC`,hash:`SHA-256`},e,n)}function rt(e){return new TransformStream({transform(n,r){for(;n.length>0;)r.enqueue(n.slice(0,e)),n=n.slice(e)}})}function st(e,n){return it.generateCertificate(e,n)}function L(e){for(let[n,r]of Object.entries(at))if(r===e)return n;throw Error(`OID not found for name: ${e}`)}function _e(e){return`${e.getUTCFullYear().toString().substr(2)}${x(e.getUTCMonth()+1)}${x(e.getUTCDate())}${x(e.getUTCHours())}${x(e.getUTCMinutes())}${x(e.getUTCSeconds())}Z`}function x(e){return e.toString().padStart(2,`0`)}function _t(e,n){let r=new Date(e);return r.setUTCFullYear(r.getUTCFullYear()+n),r}function ht(e,n){if(n.length<8)return!1;if(e===443&&n[0]===C.Handshake&&n[1]===3&&n[2]>=1&&n[2]<=3)return`tls`;let r=new TextDecoder(`latin1`,{fatal:!0}).decode(n);return lt.some(e=>r.startsWith(e+` `))?`http`:`other`}function Ct(e,n){let r=e.length,i=n.length,o=r-i;for(let r=0;r<=o;r++){let o=!0;for(let s=0;s<i;s++)if(e[r+s]!==n[s]){o=!1;break}if(o)return r}return-1}async function ut(e=LatestSupportedPHPVersion){switch(e){case`8.5`:return(await __vitePreload(async()=>{let{getIntlExtensionPath:e}=await import(`./php-wasm-not-bundled-B_lfuRhw.js`);return{getIntlExtensionPath:e}},__vite__mapDeps([0,1]))).getIntlExtensionPath();case`8.4`:return(await __vitePreload(async()=>{let{getIntlExtensionPath:e}=await import(`./php-wasm-not-bundled-B_lfuRhw.js`);return{getIntlExtensionPath:e}},__vite__mapDeps([0,1]))).getIntlExtensionPath();case`8.3`:return(await __vitePreload(async()=>{let{getIntlExtensionPath:e}=await import(`./web-8-3-stRFi1eJ.js`);return{getIntlExtensionPath:e}},__vite__mapDeps([2,1]))).getIntlExtensionPath();case`8.2`:return(await __vitePreload(async()=>{let{getIntlExtensionPath:e}=await import(`./php-wasm-not-bundled-B_lfuRhw.js`);return{getIntlExtensionPath:e}},__vite__mapDeps([0,1]))).getIntlExtensionPath();case`8.1`:return(await __vitePreload(async()=>{let{getIntlExtensionPath:e}=await import(`./php-wasm-not-bundled-B_lfuRhw.js`);return{getIntlExtensionPath:e}},__vite__mapDeps([0,1]))).getIntlExtensionPath();case`8.0`:return(await __vitePreload(async()=>{let{getIntlExtensionPath:e}=await import(`./php-wasm-not-bundled-B_lfuRhw.js`);return{getIntlExtensionPath:e}},__vite__mapDeps([0,1]))).getIntlExtensionPath();case`7.4`:return(await __vitePreload(async()=>{let{getIntlExtensionPath:e}=await import(`./php-wasm-not-bundled-B_lfuRhw.js`);return{getIntlExtensionPath:e}},__vite__mapDeps([0,1]))).getIntlExtensionPath()}throw Error(`Unsupported PHP version ${e}`)}async function At(e,n,r,i=[]){return i.length?withResolvedPHPExtensions(r,await Promise.all(i.map(r=>Ht(e,n,r)))):r}async function Ht(e,n,r){if(isLegacyPHPVersion(e))throw Error(`Extensions are not available for legacy PHP ${e}.`);if(isPHPNextVersion(e))throw Error(`Extensions are not available for PHP next.`);if(typeof r==`object`&&`source`in r){if(n===`asyncify`)throw Error(`External PHP extensions require JSPI. Asyncify is only supported for PHP.wasm bundled extensions.`);return await resolvePHPExtension({...r,phpVersion:e})}let i=typeof r==`string`?r:r.name;if(i!==`intl`)throw Error(`Unknown bundled PHP web extension: ${String(i)}.`);let o=R$1(fetch),s=await ut(e),l=(await __vitePreload(async()=>{let{default:e}=await import(`./php-wasm-not-bundled-B_lfuRhw.js`);return{default:e}},__vite__mapDeps([0,1]))).default,[N,ae]=await Promise.all([s,l].map(async e=>{let n=await o(e);if(!n.ok)throw Error(`Failed to fetch bundled PHP web extension asset: ${n.url||e} (${n.status} ${n.statusText}).`);return await n.arrayBuffer()}));return await resolvePHPExtension({source:{format:`so`,name:`intl`,bytes:new Uint8Array(N)},phpVersion:e,env:{ICU_DATA:`/internal/shared`},extraFiles:{files:{"/internal/shared/icudt74l.dat":new Uint8Array(ae)}}})}async function xt(e,n={}){var r;`setImmediate`in globalThis||(globalThis.setImmediate=e=>setTimeout(e,0));let i=await jspi()?`jspi`:`asyncify`,o={...dt(),...n.emscriptenOptions||{},phpWasmAsyncMode:i};n.tcpOverFetch&&(o=ct(o,n.tcpOverFetch));let s=isLegacyPHPVersion(e),l=[...n.extensions??[]];if(n.withIntl&&!ft(l,`intl`)&&l.push(`intl`),s){let e=await o,n=e.preRun||[];o={...e,preRun:[...n,createLegacyPhpIniPreRunStep()]}}if(s&&l.length)throw Error(`Extensions are not available for legacy PHP ${e}.`);s||(o=At(e,i,await o,l));let[N,ae]=await Promise.all([Ge(e,i),o]);return(r=n.onPhpLoaderModuleLoaded)==null||r.call(n,N),await loadPHPRuntime(N,ae)}function ft(e,n){return e.some(e=>typeof e==`string`?e===n:!(`source`in e)&&e.name===n)}var K,F,R,Ve,He,ze,de,fe,Q,Ee,Te,pe,ee,we,te,Ye,Y,ne,Z,re,Ze,se,Xe,ye,me,Le,ge,C,T,Qe,et,G,k,tt,nt,p,P,it,at,E,c,ot,ct,St,lt,w,dt,init_web=__esmMin((()=>{init_universal(),init_util(),init_logger(),init_web_service_worker(),init_common(),init_esm(),init_fs_journal(),init_preload_helper(),K=class{constructor(e){this.offset=0,this.buffer=e,this.view=new DataView(e)}readUint8(){let e=this.view.getUint8(this.offset);return this.offset+=1,e}readUint16(){let e=this.view.getUint16(this.offset);return this.offset+=2,e}readUint32(){let e=this.view.getUint32(this.offset);return this.offset+=4,e}readUint8Array(e){let n=this.buffer.slice(this.offset,this.offset+e);return this.offset+=e,new Uint8Array(n)}isFinished(){return this.offset>=this.buffer.byteLength}},F=class{constructor(e){this.offset=0,this.buffer=new ArrayBuffer(e),this.uint8Array=new Uint8Array(this.buffer),this.view=new DataView(this.buffer)}writeUint8(e){this.view.setUint8(this.offset,e),this.offset+=1}writeUint16(e){this.view.setUint16(this.offset,e),this.offset+=2}writeUint32(e){this.view.setUint32(this.offset,e),this.offset+=4}writeUint8Array(e){this.uint8Array.set(e,this.offset),this.offset+=e.length}},R={server_name:0,max_fragment_length:1,client_certificate_url:2,trusted_ca_keys:3,truncated_hmac:4,status_request:5,user_mapping:6,client_authz:7,server_authz:8,cert_type:9,supported_groups:10,ec_point_formats:11,srp:12,signature_algorithms:13,use_srtp:14,heartbeat:15,application_layer_protocol_negotiation:16,status_request_v2:17,signed_certificate_timestamp:18,client_certificate_type:19,server_certificate_type:20,padding:21,encrypt_then_mac:22,extended_master_secret:23,token_binding:24,cached_info:25,tls_its:26,compress_certificate:27,record_size_limit:28,pwd_protect:29,pwo_clear:30,password_salt:31,ticket_pinning:32,tls_cert_with_extern_psk:33,delegated_credential:34,session_ticket:35,TLMSP:36,TLMSP_proxying:37,TLMSP_delegate:38,supported_ekt_ciphers:39,pre_shared_key:41,early_data:42,supported_versions:43,cookie:44,psk_key_exchange_modes:45,reserved:46,certificate_authorities:47,oid_filters:48,post_handshake_auth:49,signature_algorithms_cert:50,key_share:51,transparency_info:52,connection_id:54,renegotiation_info:65281},Ve=y(R),He={host_name:0},ze=y(He),de=class{static decodeFromClient(e){let n=new DataView(e.buffer),r=0,i=n.getUint16(r);r+=2;let o=[];for(;r<i+2;){let i=e[r];r+=1;let s=n.getUint16(r);r+=2;let l=e.slice(r,r+s);switch(r+=s,i){case He.host_name:o.push({name_type:ze[i],name:{host_name:new TextDecoder().decode(l)}});break;default:throw Error(`Unsupported name type ${i}`)}}return{server_name_list:o}}static encodeForClient(e){if(e!=null&&e.server_name_list.length)throw Error(`Encoding non-empty lists for ClientHello is not supported yet. Only empty lists meant for ServerHello are supported today.`);let n=new F(4);return n.writeUint16(R.server_name),n.writeUint16(0),n.uint8Array}},fe={uncompressed:0,ansiX962_compressed_prime:1,ansiX962_compressed_char2:2},Q=y(fe),Ee=class{static decodeFromClient(e){let n=new K(e.buffer),r=n.readUint8(),i=[];for(let e=0;e<r;e++){let e=n.readUint8();e in Q&&i.push(Q[e])}return i}static encodeForClient(e){let n=new F(6);return n.writeUint16(R.ec_point_formats),n.writeUint16(2),n.writeUint8(1),n.writeUint8(fe[e]),n.uint8Array}},Te={decodeFromClient(e){let n=e[0]??0;return{renegotiatedConnection:e.slice(1,1+n)}},encodeForClient(){let e=R.renegotiation_info,n=new Uint8Array([0]);return new Uint8Array([e>>8&255,e&255,0,n.length,...n])}},pe={TLS1_CK_PSK_WITH_RC4_128_SHA:138,TLS1_CK_PSK_WITH_3DES_EDE_CBC_SHA:139,TLS1_CK_PSK_WITH_AES_128_CBC_SHA:140,TLS1_CK_PSK_WITH_AES_256_CBC_SHA:141,TLS1_CK_DHE_PSK_WITH_RC4_128_SHA:142,TLS1_CK_DHE_PSK_WITH_3DES_EDE_CBC_SHA:143,TLS1_CK_DHE_PSK_WITH_AES_128_CBC_SHA:144,TLS1_CK_DHE_PSK_WITH_AES_256_CBC_SHA:145,TLS1_CK_RSA_PSK_WITH_RC4_128_SHA:146,TLS1_CK_RSA_PSK_WITH_3DES_EDE_CBC_SHA:147,TLS1_CK_RSA_PSK_WITH_AES_128_CBC_SHA:148,TLS1_CK_RSA_PSK_WITH_AES_256_CBC_SHA:149,TLS1_CK_PSK_WITH_AES_128_GCM_SHA256:168,TLS1_CK_PSK_WITH_AES_256_GCM_SHA384:169,TLS1_CK_DHE_PSK_WITH_AES_128_GCM_SHA256:170,TLS1_CK_DHE_PSK_WITH_AES_256_GCM_SHA384:171,TLS1_CK_RSA_PSK_WITH_AES_128_GCM_SHA256:172,TLS1_CK_RSA_PSK_WITH_AES_256_GCM_SHA384:173,TLS1_CK_PSK_WITH_AES_128_CBC_SHA256:174,TLS1_CK_PSK_WITH_AES_256_CBC_SHA384:175,TLS1_CK_PSK_WITH_NULL_SHA256:176,TLS1_CK_PSK_WITH_NULL_SHA384:177,TLS1_CK_DHE_PSK_WITH_AES_128_CBC_SHA256:178,TLS1_CK_DHE_PSK_WITH_AES_256_CBC_SHA384:179,TLS1_CK_DHE_PSK_WITH_NULL_SHA256:180,TLS1_CK_DHE_PSK_WITH_NULL_SHA384:181,TLS1_CK_RSA_PSK_WITH_AES_128_CBC_SHA256:182,TLS1_CK_RSA_PSK_WITH_AES_256_CBC_SHA384:183,TLS1_CK_RSA_PSK_WITH_NULL_SHA256:184,TLS1_CK_RSA_PSK_WITH_NULL_SHA384:185,TLS1_CK_PSK_WITH_NULL_SHA:44,TLS1_CK_DHE_PSK_WITH_NULL_SHA:45,TLS1_CK_RSA_PSK_WITH_NULL_SHA:46,TLS1_CK_RSA_WITH_AES_128_SHA:47,TLS1_CK_DH_DSS_WITH_AES_128_SHA:48,TLS1_CK_DH_RSA_WITH_AES_128_SHA:49,TLS1_CK_DHE_DSS_WITH_AES_128_SHA:50,TLS1_CK_DHE_RSA_WITH_AES_128_SHA:51,TLS1_CK_ADH_WITH_AES_128_SHA:52,TLS1_CK_RSA_WITH_AES_256_SHA:53,TLS1_CK_DH_DSS_WITH_AES_256_SHA:54,TLS1_CK_DH_RSA_WITH_AES_256_SHA:55,TLS1_CK_DHE_DSS_WITH_AES_256_SHA:56,TLS1_CK_DHE_RSA_WITH_AES_256_SHA:57,TLS1_CK_ADH_WITH_AES_256_SHA:58,TLS1_CK_RSA_WITH_NULL_SHA256:59,TLS1_CK_RSA_WITH_AES_128_SHA256:60,TLS1_CK_RSA_WITH_AES_256_SHA256:61,TLS1_CK_DH_DSS_WITH_AES_128_SHA256:62,TLS1_CK_DH_RSA_WITH_AES_128_SHA256:63,TLS1_CK_DHE_DSS_WITH_AES_128_SHA256:64,TLS1_CK_RSA_WITH_CAMELLIA_128_CBC_SHA:65,TLS1_CK_DH_DSS_WITH_CAMELLIA_128_CBC_SHA:66,TLS1_CK_DH_RSA_WITH_CAMELLIA_128_CBC_SHA:67,TLS1_CK_DHE_DSS_WITH_CAMELLIA_128_CBC_SHA:68,TLS1_CK_DHE_RSA_WITH_CAMELLIA_128_CBC_SHA:69,TLS1_CK_ADH_WITH_CAMELLIA_128_CBC_SHA:70,TLS1_CK_DHE_RSA_WITH_AES_128_SHA256:103,TLS1_CK_DH_DSS_WITH_AES_256_SHA256:104,TLS1_CK_DH_RSA_WITH_AES_256_SHA256:105,TLS1_CK_DHE_DSS_WITH_AES_256_SHA256:106,TLS1_CK_DHE_RSA_WITH_AES_256_SHA256:107,TLS1_CK_ADH_WITH_AES_128_SHA256:108,TLS1_CK_ADH_WITH_AES_256_SHA256:109,TLS1_CK_RSA_WITH_CAMELLIA_256_CBC_SHA:132,TLS1_CK_DH_DSS_WITH_CAMELLIA_256_CBC_SHA:133,TLS1_CK_DH_RSA_WITH_CAMELLIA_256_CBC_SHA:134,TLS1_CK_DHE_DSS_WITH_CAMELLIA_256_CBC_SHA:135,TLS1_CK_DHE_RSA_WITH_CAMELLIA_256_CBC_SHA:136,TLS1_CK_ADH_WITH_CAMELLIA_256_CBC_SHA:137,TLS1_CK_RSA_WITH_SEED_SHA:150,TLS1_CK_DH_DSS_WITH_SEED_SHA:151,TLS1_CK_DH_RSA_WITH_SEED_SHA:152,TLS1_CK_DHE_DSS_WITH_SEED_SHA:153,TLS1_CK_DHE_RSA_WITH_SEED_SHA:154,TLS1_CK_ADH_WITH_SEED_SHA:155,TLS1_CK_RSA_WITH_AES_128_GCM_SHA256:156,TLS1_CK_RSA_WITH_AES_256_GCM_SHA384:157,TLS1_CK_DHE_RSA_WITH_AES_128_GCM_SHA256:158,TLS1_CK_DHE_RSA_WITH_AES_256_GCM_SHA384:159,TLS1_CK_DH_RSA_WITH_AES_128_GCM_SHA256:160,TLS1_CK_DH_RSA_WITH_AES_256_GCM_SHA384:161,TLS1_CK_DHE_DSS_WITH_AES_128_GCM_SHA256:162,TLS1_CK_DHE_DSS_WITH_AES_256_GCM_SHA384:163,TLS1_CK_DH_DSS_WITH_AES_128_GCM_SHA256:164,TLS1_CK_DH_DSS_WITH_AES_256_GCM_SHA384:165,TLS1_CK_ADH_WITH_AES_128_GCM_SHA256:166,TLS1_CK_ADH_WITH_AES_256_GCM_SHA384:167,TLS1_CK_RSA_WITH_AES_128_CCM:49308,TLS1_CK_RSA_WITH_AES_256_CCM:49309,TLS1_CK_DHE_RSA_WITH_AES_128_CCM:49310,TLS1_CK_DHE_RSA_WITH_AES_256_CCM:49311,TLS1_CK_RSA_WITH_AES_128_CCM_8:49312,TLS1_CK_RSA_WITH_AES_256_CCM_8:49313,TLS1_CK_DHE_RSA_WITH_AES_128_CCM_8:49314,TLS1_CK_DHE_RSA_WITH_AES_256_CCM_8:49315,TLS1_CK_PSK_WITH_AES_128_CCM:49316,TLS1_CK_PSK_WITH_AES_256_CCM:49317,TLS1_CK_DHE_PSK_WITH_AES_128_CCM:49318,TLS1_CK_DHE_PSK_WITH_AES_256_CCM:49319,TLS1_CK_PSK_WITH_AES_128_CCM_8:49320,TLS1_CK_PSK_WITH_AES_256_CCM_8:49321,TLS1_CK_DHE_PSK_WITH_AES_128_CCM_8:49322,TLS1_CK_DHE_PSK_WITH_AES_256_CCM_8:49323,TLS1_CK_ECDHE_ECDSA_WITH_AES_128_CCM:49324,TLS1_CK_ECDHE_ECDSA_WITH_AES_256_CCM:49325,TLS1_CK_ECDHE_ECDSA_WITH_AES_128_CCM_8:49326,TLS1_CK_ECDHE_ECDSA_WITH_AES_256_CCM_8:49327,TLS1_CK_RSA_WITH_CAMELLIA_128_CBC_SHA256:186,TLS1_CK_DH_DSS_WITH_CAMELLIA_128_CBC_SHA256:187,TLS1_CK_DH_RSA_WITH_CAMELLIA_128_CBC_SHA256:188,TLS1_CK_DHE_DSS_WITH_CAMELLIA_128_CBC_SHA256:189,TLS1_CK_DHE_RSA_WITH_CAMELLIA_128_CBC_SHA256:190,TLS1_CK_ADH_WITH_CAMELLIA_128_CBC_SHA256:191,TLS1_CK_RSA_WITH_CAMELLIA_256_CBC_SHA256:192,TLS1_CK_DH_DSS_WITH_CAMELLIA_256_CBC_SHA256:193,TLS1_CK_DH_RSA_WITH_CAMELLIA_256_CBC_SHA256:194,TLS1_CK_DHE_DSS_WITH_CAMELLIA_256_CBC_SHA256:195,TLS1_CK_DHE_RSA_WITH_CAMELLIA_256_CBC_SHA256:196,TLS1_CK_ADH_WITH_CAMELLIA_256_CBC_SHA256:197,TLS1_CK_ECDH_ECDSA_WITH_NULL_SHA:49153,TLS1_CK_ECDH_ECDSA_WITH_RC4_128_SHA:49154,TLS1_CK_ECDH_ECDSA_WITH_DES_192_CBC3_SHA:49155,TLS1_CK_ECDH_ECDSA_WITH_AES_128_CBC_SHA:49156,TLS1_CK_ECDH_ECDSA_WITH_AES_256_CBC_SHA:49157,TLS1_CK_ECDHE_ECDSA_WITH_NULL_SHA:49158,TLS1_CK_ECDHE_ECDSA_WITH_RC4_128_SHA:49159,TLS1_CK_ECDHE_ECDSA_WITH_DES_192_CBC3_SHA:49160,TLS1_CK_ECDHE_ECDSA_WITH_AES_128_CBC_SHA:49161,TLS1_CK_ECDHE_ECDSA_WITH_AES_256_CBC_SHA:49162,TLS1_CK_ECDH_RSA_WITH_NULL_SHA:49163,TLS1_CK_ECDH_RSA_WITH_RC4_128_SHA:49164,TLS1_CK_ECDH_RSA_WITH_DES_192_CBC3_SHA:49165,TLS1_CK_ECDH_RSA_WITH_AES_128_CBC_SHA:49166,TLS1_CK_ECDH_RSA_WITH_AES_256_CBC_SHA:49167,TLS1_CK_ECDHE_RSA_WITH_NULL_SHA:49168,TLS1_CK_ECDHE_RSA_WITH_RC4_128_SHA:49169,TLS1_CK_ECDHE_RSA_WITH_DES_192_CBC3_SHA:49170,TLS1_CK_ECDHE_RSA_WITH_AES_128_CBC_SHA:49171,TLS1_CK_ECDHE_RSA_WITH_AES_256_CBC_SHA:49172,TLS1_CK_ECDH_anon_WITH_NULL_SHA:49173,TLS1_CK_ECDH_anon_WITH_RC4_128_SHA:49174,TLS1_CK_ECDH_anon_WITH_DES_192_CBC3_SHA:49175,TLS1_CK_ECDH_anon_WITH_AES_128_CBC_SHA:49176,TLS1_CK_ECDH_anon_WITH_AES_256_CBC_SHA:49177,TLS1_CK_SRP_SHA_WITH_3DES_EDE_CBC_SHA:49178,TLS1_CK_SRP_SHA_RSA_WITH_3DES_EDE_CBC_SHA:49179,TLS1_CK_SRP_SHA_DSS_WITH_3DES_EDE_CBC_SHA:49180,TLS1_CK_SRP_SHA_WITH_AES_128_CBC_SHA:49181,TLS1_CK_SRP_SHA_RSA_WITH_AES_128_CBC_SHA:49182,TLS1_CK_SRP_SHA_DSS_WITH_AES_128_CBC_SHA:49183,TLS1_CK_SRP_SHA_WITH_AES_256_CBC_SHA:49184,TLS1_CK_SRP_SHA_RSA_WITH_AES_256_CBC_SHA:49185,TLS1_CK_SRP_SHA_DSS_WITH_AES_256_CBC_SHA:49186,TLS1_CK_ECDHE_ECDSA_WITH_AES_128_SHA256:49187,TLS1_CK_ECDHE_ECDSA_WITH_AES_256_SHA384:49188,TLS1_CK_ECDH_ECDSA_WITH_AES_128_SHA256:49189,TLS1_CK_ECDH_ECDSA_WITH_AES_256_SHA384:49190,TLS1_CK_ECDHE_RSA_WITH_AES_128_SHA256:49191,TLS1_CK_ECDHE_RSA_WITH_AES_256_SHA384:49192,TLS1_CK_ECDH_RSA_WITH_AES_128_SHA256:49193,TLS1_CK_ECDH_RSA_WITH_AES_256_SHA384:49194,TLS1_CK_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256:49195,TLS1_CK_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384:49196,TLS1_CK_ECDH_ECDSA_WITH_AES_128_GCM_SHA256:49197,TLS1_CK_ECDH_ECDSA_WITH_AES_256_GCM_SHA384:49198,TLS1_CK_ECDHE_RSA_WITH_AES_128_GCM_SHA256:49199,TLS1_CK_ECDHE_RSA_WITH_AES_256_GCM_SHA384:49200,TLS1_CK_ECDH_RSA_WITH_AES_128_GCM_SHA256:49201,TLS1_CK_ECDH_RSA_WITH_AES_256_GCM_SHA384:49202,TLS1_CK_ECDHE_PSK_WITH_RC4_128_SHA:49203,TLS1_CK_ECDHE_PSK_WITH_3DES_EDE_CBC_SHA:49204,TLS1_CK_ECDHE_PSK_WITH_AES_128_CBC_SHA:49205,TLS1_CK_ECDHE_PSK_WITH_AES_256_CBC_SHA:49206,TLS1_CK_ECDHE_PSK_WITH_AES_128_CBC_SHA256:49207,TLS1_CK_ECDHE_PSK_WITH_AES_256_CBC_SHA384:49208,TLS1_CK_ECDHE_PSK_WITH_NULL_SHA:49209,TLS1_CK_ECDHE_PSK_WITH_NULL_SHA256:49210,TLS1_CK_ECDHE_PSK_WITH_NULL_SHA384:49211,TLS1_CK_ECDHE_ECDSA_WITH_CAMELLIA_128_CBC_SHA256:49266,TLS1_CK_ECDHE_ECDSA_WITH_CAMELLIA_256_CBC_SHA384:49267,TLS1_CK_ECDH_ECDSA_WITH_CAMELLIA_128_CBC_SHA256:49268,TLS1_CK_ECDH_ECDSA_WITH_CAMELLIA_256_CBC_SHA384:49269,TLS1_CK_ECDHE_RSA_WITH_CAMELLIA_128_CBC_SHA256:49270,TLS1_CK_ECDHE_RSA_WITH_CAMELLIA_256_CBC_SHA384:49271,TLS1_CK_ECDH_RSA_WITH_CAMELLIA_128_CBC_SHA256:49272,TLS1_CK_ECDH_RSA_WITH_CAMELLIA_256_CBC_SHA384:49273,TLS1_CK_PSK_WITH_CAMELLIA_128_CBC_SHA256:49300,TLS1_CK_PSK_WITH_CAMELLIA_256_CBC_SHA384:49301,TLS1_CK_DHE_PSK_WITH_CAMELLIA_128_CBC_SHA256:49302,TLS1_CK_DHE_PSK_WITH_CAMELLIA_256_CBC_SHA384:49303,TLS1_CK_RSA_PSK_WITH_CAMELLIA_128_CBC_SHA256:49304,TLS1_CK_RSA_PSK_WITH_CAMELLIA_256_CBC_SHA384:49305,TLS1_CK_ECDHE_PSK_WITH_CAMELLIA_128_CBC_SHA256:49306,TLS1_CK_ECDHE_PSK_WITH_CAMELLIA_256_CBC_SHA384:49307,TLS1_CK_ECDHE_RSA_WITH_CHACHA20_POLY1305:52392,TLS1_CK_ECDHE_ECDSA_WITH_CHACHA20_POLY1305:52393,TLS1_CK_DHE_RSA_WITH_CHACHA20_POLY1305:52394,TLS1_CK_PSK_WITH_CHACHA20_POLY1305:52395,TLS1_CK_ECDHE_PSK_WITH_CHACHA20_POLY1305:52396,TLS1_CK_DHE_PSK_WITH_CHACHA20_POLY1305:52397,TLS1_CK_RSA_PSK_WITH_CHACHA20_POLY1305:52398},ee=y(pe),we={secp256r1:23,secp384r1:24,secp521r1:25,x25519:29,x448:30},te=y(we),Ye=class{static decodeFromClient(e){let n=new K(e.buffer);n.readUint16();let r=[];for(;!n.isFinished();){let e=n.readUint16();e in te&&r.push(te[e])}return r}static encodeForClient(e){let n=new F(6);return n.writeUint16(R.supported_groups),n.writeUint16(2),n.writeUint16(we[e]),n.uint8Array}},Y={anonymous:0,rsa:1,dsa:2,ecdsa:3},ne=y(Y),Z={none:0,md5:1,sha1:2,sha224:3,sha256:4,sha384:5,sha512:6},re=y(Z),Ze=class{static decodeFromClient(e){let n=new K(e.buffer);n.readUint16();let r=[];for(;!n.isFinished();){let e=n.readUint8(),i=n.readUint8();if(ne[i]){if(!re[e]){M$1.warn(`Unknown hash algorithm: ${e}`);continue}r.push({algorithm:ne[i],hash:re[e]})}}return r}static encodeforClient(e,n){let r=new F(6);return r.writeUint16(R.signature_algorithms),r.writeUint16(2),r.writeUint8(Z[e]),r.writeUint8(Y[n]),r.uint8Array}},se={server_name:de,signature_algorithms:Ze,supported_groups:Ye,ec_point_formats:Ee,renegotiation_info:Te},Xe={Null:0},ye={Warning:1,Fatal:2},me=y(ye),Le={CloseNotify:0,UnexpectedMessage:10,BadRecordMac:20,DecryptionFailed:21,RecordOverflow:22,DecompressionFailure:30,HandshakeFailure:40,NoCertificate:41,BadCertificate:42,UnsupportedCertificate:43,CertificateRevoked:44,CertificateExpired:45,CertificateUnknown:46,IllegalParameter:47,UnknownCa:48,AccessDenied:49,DecodeError:50,DecryptError:51,ExportRestriction:60,ProtocolVersion:70,InsufficientSecurity:71,InternalError:80,UserCanceled:90,NoRenegotiation:100,UnsupportedExtension:110},ge=y(Le),C={ChangeCipherSpec:20,Alert:21,Handshake:22,ApplicationData:23},T={HelloRequest:0,ClientHello:1,ServerHello:2,Certificate:11,ServerKeyExchange:12,ServerHelloDone:14,ClientKeyExchange:16,Finished:20},Qe={NamedCurve:3},et={secp256r1:23},G=class extends Error{},k=new Uint8Array([3,3]),tt=crypto.subtle.generateKey({name:`ECDH`,namedCurve:`P-256`},!0,[`deriveKey`,`deriveBits`]),nt=class{constructor(){this.receivedRecordSequenceNumber=0,this.sentRecordSequenceNumber=0,this.closed=!1,this.receivedBytesBuffer=new Uint8Array,this.receivedTLSRecords=[],this.partialTLSMessages={},this.handshakeMessages=[],this.MAX_CHUNK_SIZE=16384,this.clientEnd={upstream:new TransformStream,downstream:new TransformStream},this.clientDownstreamWriter=this.clientEnd.downstream.writable.getWriter(),this.clientUpstreamReader=this.clientEnd.upstream.readable.getReader(),this.serverEnd={upstream:new TransformStream,downstream:rt(this.MAX_CHUNK_SIZE)},this.serverUpstreamWriter=this.serverEnd.upstream.writable.getWriter();let e=this;this.serverEnd.downstream.readable.pipeTo(new WritableStream({async write(n){await e.writeTLSRecord(C.ApplicationData,n)},async abort(n){e.clientDownstreamWriter.releaseLock(),e.clientEnd.downstream.writable.abort(n),e.close()},close(){e.close()}})).catch(()=>{})}async close(){if(!this.closed){this.closed=!0;try{await this.clientDownstreamWriter.close()}catch{}try{await this.clientUpstreamReader.cancel()}catch{}try{await this.serverUpstreamWriter.close()}catch{}try{await this.clientEnd.upstream.readable.cancel()}catch{}try{await this.clientEnd.downstream.writable.close()}catch{}}}async TLSHandshake(e,n){let r=await this.readNextHandshakeMessage(T.ClientHello);if(!r.body.cipher_suites.length)throw Error(`Client did not propose any supported cipher suites.`);let i=crypto.getRandomValues(new Uint8Array(32));await this.writeTLSRecord(C.Handshake,P.serverHello(r.body,i,Xe.Null)),await this.writeTLSRecord(C.Handshake,P.certificate(n));let o=await tt,s=r.body.random,l=await P.ECDHEServerKeyExchange(s,i,o,e);await this.writeTLSRecord(C.Handshake,l),await this.writeTLSRecord(C.Handshake,P.serverHelloDone());let N=await this.readNextHandshakeMessage(T.ClientKeyExchange);await this.readNextMessage(C.ChangeCipherSpec),this.sessionKeys=await this.deriveSessionKeys({clientRandom:s,serverRandom:i,serverPrivateKey:o.privateKey,clientPublicKey:await crypto.subtle.importKey(`raw`,N.body.exchange_keys,{name:`ECDH`,namedCurve:`P-256`},!1,[])}),await this.readNextHandshakeMessage(T.Finished),await this.writeTLSRecord(C.ChangeCipherSpec,P.changeCipherSpec()),await this.writeTLSRecord(C.Handshake,await P.createFinishedMessage(this.handshakeMessages,this.sessionKeys.masterSecret)),this.handshakeMessages=[],this.pollForClientMessages()}async deriveSessionKeys({clientRandom:e,serverRandom:n,serverPrivateKey:r,clientPublicKey:i}){let o=await crypto.subtle.deriveBits({name:`ECDH`,public:i},r,256),s=new Uint8Array(await V(o,new TextEncoder().encode(`master secret`),D$2([e,n]),48)),l=await V(s,new TextEncoder().encode(`key expansion`),D$2([n,e]),40),N=new K(l),ae=N.readUint8Array(16),ce=N.readUint8Array(16),ue=N.readUint8Array(4),he=N.readUint8Array(4);return{masterSecret:s,clientWriteKey:await crypto.subtle.importKey(`raw`,ae,{name:`AES-GCM`},!1,[`encrypt`,`decrypt`]),serverWriteKey:await crypto.subtle.importKey(`raw`,ce,{name:`AES-GCM`},!1,[`encrypt`,`decrypt`]),clientIV:ue,serverIV:he}}async readNextHandshakeMessage(e){let n=await this.readNextMessage(C.Handshake);if(n.msg_type!==e)throw Error(`Expected ${e} message`);return n}async readNextMessage(e){let n,r=!1;do n=await this.readNextTLSRecord(e),r=await this.accumulateUntilMessageIsComplete(n);while(r===!1);let i=p.TLSMessage(n.type,r);return n.type===C.Handshake&&this.handshakeMessages.push(n.fragment),i}async readNextTLSRecord(e){for(;;){for(let n=0;n<this.receivedTLSRecords.length;n++){let r=this.receivedTLSRecords[n];if(r.type===e)return this.receivedTLSRecords.splice(n,1),r}let n=await this.pollBytes(5),r=n[3]<<8|n[4],i=n[0],o=await this.pollBytes(r),s={type:i,version:{major:n[1],minor:n[2]},length:r,fragment:this.sessionKeys&&i!==C.ChangeCipherSpec?await this.decryptData(i,o):o};if(s.type===C.Alert){let e=s.fragment[0],n=s.fragment[1],r=me[e],i=ge[n];throw e===ye.Warning&&n===Le.CloseNotify?new G(`TLS connection closed by peer (CloseNotify)`):Error(`TLS alert received: ${r} ${i}`)}this.receivedTLSRecords.push(s)}}async pollBytes(e){for(;this.receivedBytesBuffer.length<e;){let{value:n,done:r}=await this.clientUpstreamReader.read();if(r)throw await this.close(),new G(`TLS connection closed`);if(this.receivedBytesBuffer=D$2([this.receivedBytesBuffer,n]),this.receivedBytesBuffer.length>=e)break;await new Promise(e=>setTimeout(e,100))}let n=this.receivedBytesBuffer.slice(0,e);return this.receivedBytesBuffer=this.receivedBytesBuffer.slice(e),n}async pollForClientMessages(){try{for(;;){let e=await this.readNextMessage(C.ApplicationData);this.serverUpstreamWriter.write(e.body)}}catch(e){if(e instanceof G)return;throw e}}async decryptData(e,n){let r=this.sessionKeys.clientIV,i=n.slice(0,8),o=new Uint8Array([...r,...i]),s=await crypto.subtle.decrypt({name:`AES-GCM`,iv:o,additionalData:new Uint8Array([...X(this.receivedRecordSequenceNumber),e,...k,...b(n.length-8-16)]),tagLength:128},this.sessionKeys.clientWriteKey,n.slice(8));return++this.receivedRecordSequenceNumber,new Uint8Array(s)}async accumulateUntilMessageIsComplete(e){this.partialTLSMessages[e.type]=D$2([this.partialTLSMessages[e.type]||new Uint8Array,e.fragment]);let n=this.partialTLSMessages[e.type];switch(e.type){case C.Handshake:{if(n.length<4)return!1;let e=n[1]<<8|n[2];if(n.length<3+e)return!1;break}case C.Alert:if(n.length<2)return!1;break;case C.ChangeCipherSpec:case C.ApplicationData:break;default:throw Error(`TLS: Unsupported record type ${e.type}`)}return delete this.partialTLSMessages[e.type],n}async writeTLSRecord(e,n){e===C.Handshake&&this.handshakeMessages.push(n),this.sessionKeys&&e!==C.ChangeCipherSpec&&(n=await this.encryptData(e,n));let r=k,i=n.length,o=new Uint8Array(5);o[0]=e,o[1]=r[0],o[2]=r[1],o[3]=i>>8&255,o[4]=i&255;let s=D$2([o,n]);this.clientDownstreamWriter.write(s)}async encryptData(e,n){let r=this.sessionKeys.serverIV,i=crypto.getRandomValues(new Uint8Array(8)),o=new Uint8Array([...r,...i]),s=new Uint8Array([...X(this.sentRecordSequenceNumber),e,...k,...b(n.length)]),l=await crypto.subtle.encrypt({name:`AES-GCM`,iv:o,additionalData:s,tagLength:128},this.sessionKeys.serverWriteKey,n);return++this.sentRecordSequenceNumber,D$2([i,new Uint8Array(l)])}},p=class e{static TLSMessage(n,r){switch(n){case C.Handshake:return e.clientHandshake(r);case C.Alert:return e.alert(r);case C.ChangeCipherSpec:return e.changeCipherSpec();case C.ApplicationData:return e.applicationData(r);default:throw Error(`TLS: Unsupported TLS record type ${n}`)}}static parseCipherSuites(e){let n=new K(e);n.readUint16();let r=[];for(;!n.isFinished();){let e=n.readUint16();e in ee&&r.push(ee[e])}return r}static applicationData(e){return{type:C.ApplicationData,body:e}}static changeCipherSpec(){return{type:C.ChangeCipherSpec,body:new Uint8Array}}static alert(e){return{type:C.Alert,level:me[e[0]],description:ge[e[1]]}}static clientHandshake(n){let r=n[0],i=n[1]<<16|n[2]<<8|n[3],o=n.slice(4),s;switch(r){case T.HelloRequest:s=e.clientHelloRequestPayload();break;case T.ClientHello:s=e.clientHelloPayload(o);break;case T.ClientKeyExchange:s=e.clientKeyExchangePayload(o);break;case T.Finished:s=e.clientFinishedPayload(o);break;default:throw Error(`Invalid handshake type ${r}`)}return{type:C.Handshake,msg_type:r,length:i,body:s}}static clientHelloRequestPayload(){return{}}static clientHelloPayload(n){let r=new K(n.buffer),i={client_version:r.readUint8Array(2),random:r.readUint8Array(32)},o=r.readUint8();i.session_id=r.readUint8Array(o);let s=r.readUint16();i.cipher_suites=e.parseCipherSuites(r.readUint8Array(s).buffer);let l=r.readUint8();i.compression_methods=r.readUint8Array(l);let N=r.readUint16();return i.extensions=Je(r.readUint8Array(N)),i}static clientKeyExchangePayload(e){return{exchange_keys:e.slice(1,e.length)}}static clientFinishedPayload(e){return{verify_data:e}}},P=class{static certificate(e){let n=[];for(let r of e)n.push(I(r.byteLength)),n.push(new Uint8Array(r));let r=D$2(n),i=new Uint8Array([...I(r.byteLength),...r]);return new Uint8Array([T.Certificate,...I(i.length),...i])}static async ECDHEServerKeyExchange(e,n,r,i){let o=new Uint8Array(await crypto.subtle.exportKey(`raw`,r.publicKey)),s=new Uint8Array([Qe.NamedCurve,...b(et.secp256r1),o.byteLength,...o]),l=await crypto.subtle.sign({name:`RSASSA-PKCS1-v1_5`,hash:`SHA-256`},i,new Uint8Array([...e,...n,...s])),N=new Uint8Array(l),ae=new Uint8Array([Z.sha256,Y.rsa]),ce=new Uint8Array([...s,...ae,...b(N.length),...N]);return new Uint8Array([T.ServerKeyExchange,...I(ce.length),...ce])}static serverHello(e,n,r){let i=D$2(e.extensions.map(e=>{switch(e.type){case`server_name`:return de.encodeForClient();case`ec_point_formats`:return Ee.encodeForClient(`uncompressed`);case`renegotiation_info`:return Te.encodeForClient()}}).filter(e=>e!==void 0)),o=new Uint8Array,s=new Uint8Array([...k,...n,o.length,...o,...b(pe.TLS1_CK_ECDHE_RSA_WITH_AES_128_GCM_SHA256),r,...b(i.length),...i]);return new Uint8Array([T.ServerHello,...I(s.length),...s])}static serverHelloDone(){return new Uint8Array([T.ServerHelloDone,...I(0)])}static async createFinishedMessage(e,n){let r=await crypto.subtle.digest(`SHA-256`,D$2(e)),i=new Uint8Array(await V(n,new TextEncoder().encode(`server finished`),r,12));return new Uint8Array([T.Finished,...I(i.length),...i])}static changeCipherSpec(){return new Uint8Array([1])}},it=class{static async generateCertificate(e,n){let r=await crypto.subtle.generateKey({name:`RSASSA-PKCS1-v1_5`,hash:`SHA-256`,modulusLength:2048,publicExponent:new Uint8Array([1,0,1])},!0,[`sign`,`verify`]),i=await this.signingRequest(e,r.publicKey);return{keyPair:r,certificate:await this.sign(i,n?.privateKey??r.privateKey),tbsCertificate:i,tbsDescription:e}}static async sign(e,n){let r=await crypto.subtle.sign({name:`RSASSA-PKCS1-v1_5`,hash:`SHA-256`},n,e.buffer);return c.sequence([new Uint8Array(e.buffer),this.signatureAlgorithm(`sha256WithRSAEncryption`),c.bitString(new Uint8Array(r))])}static async signingRequest(e,n){let r=[];return e.keyUsage&&r.push(this.keyUsage(e.keyUsage)),e.extKeyUsage&&r.push(this.extKeyUsage(e.extKeyUsage)),e.subjectAltNames&&r.push(this.subjectAltName(e.subjectAltNames)),e.nsCertType&&r.push(this.nsCertType(e.nsCertType)),e.basicConstraints&&r.push(this.basicConstraints(e.basicConstraints)),c.sequence([this.version(e.version),this.serialNumber(e.serialNumber),this.signatureAlgorithm(e.signatureAlgorithm),this.distinguishedName(e.issuer??e.subject),this.validity(e.validity),this.distinguishedName(e.subject),await this.subjectPublicKeyInfo(n),this.extensions(r)])}static version(e=2){return c.ASN1(160,c.integer(new Uint8Array([e])))}static serialNumber(e=crypto.getRandomValues(new Uint8Array(4))){return c.integer(e)}static signatureAlgorithm(e=`sha256WithRSAEncryption`){return c.sequence([c.objectIdentifier(L(e)),c.null()])}static async subjectPublicKeyInfo(e){return new Uint8Array(await crypto.subtle.exportKey(`spki`,e))}static extensions(e){return c.ASN1(163,c.sequence(e))}static distinguishedName(e){let n=[];for(let[r,i]of Object.entries(e)){let e=[c.objectIdentifier(L(r))];switch(r){case`countryName`:e.push(c.printableString(i));break;default:e.push(c.utf8String(i))}n.push(c.set([c.sequence(e)]))}return c.sequence(n)}static validity(e){return c.sequence([c.ASN1(E.UTCTime,new TextEncoder().encode(_e(e?.notBefore??new Date))),c.ASN1(E.UTCTime,new TextEncoder().encode(_e(e?.notAfter??_t(new Date,10))))])}static basicConstraints({ca:e=!0,pathLenConstraint:n=void 0}){let r=[c.boolean(e)];return n!==void 0&&r.push(c.integer(new Uint8Array([n]))),c.sequence([c.objectIdentifier(L(`basicConstraints`)),c.octetString(c.sequence(r))])}static keyUsage(e){let n=new Uint8Array([0]);return e!=null&&e.digitalSignature&&(n[0]|=1),e!=null&&e.nonRepudiation&&(n[0]|=2),e!=null&&e.keyEncipherment&&(n[0]|=4),e!=null&&e.dataEncipherment&&(n[0]|=8),e!=null&&e.keyAgreement&&(n[0]|=16),e!=null&&e.keyCertSign&&(n[0]|=32),e!=null&&e.cRLSign&&(n[0]|=64),e!=null&&e.encipherOnly&&(n[0]|=128),e!=null&&e.decipherOnly&&(n[0]|=64),c.sequence([c.objectIdentifier(L(`keyUsage`)),c.boolean(!0),c.octetString(c.bitString(n))])}static extKeyUsage(e={}){return c.sequence([c.objectIdentifier(L(`extKeyUsage`)),c.boolean(!0),c.octetString(c.sequence(Object.entries(e).map(([e,n])=>n?c.objectIdentifier(L(e)):c.null())))])}static nsCertType(e){let n=new Uint8Array([0]);return e.client&&(n[0]|=1),e.server&&(n[0]|=2),e.email&&(n[0]|=4),e.objsign&&(n[0]|=8),e.sslCA&&(n[0]|=16),e.emailCA&&(n[0]|=32),e.objCA&&(n[0]|=64),c.sequence([c.objectIdentifier(L(`nsCertType`)),c.octetString(n)])}static subjectAltName(e){var n,r;let i=e.dnsNames?.map(e=>{let n=c.ia5String(e);return c.contextSpecific(2,n)})||[],o=e.ipAddresses?.map(e=>{let n=c.ia5String(e);return c.contextSpecific(7,n)})||[],s=c.octetString(c.sequence([...i,...o]));return c.sequence([c.objectIdentifier(L(`subjectAltName`)),c.boolean(!0),s])}},at={"1.2.840.113549.1.1.1":`rsaEncryption`,"1.2.840.113549.1.1.4":`md5WithRSAEncryption`,"1.2.840.113549.1.1.5":`sha1WithRSAEncryption`,"1.2.840.113549.1.1.7":`RSAES-OAEP`,"1.2.840.113549.1.1.8":`mgf1`,"1.2.840.113549.1.1.9":`pSpecified`,"1.2.840.113549.1.1.10":`RSASSA-PSS`,"1.2.840.113549.1.1.11":`sha256WithRSAEncryption`,"1.2.840.113549.1.1.12":`sha384WithRSAEncryption`,"1.2.840.113549.1.1.13":`sha512WithRSAEncryption`,"1.3.101.112":`EdDSA25519`,"1.2.840.10040.4.3":`dsa-with-sha1`,"1.3.14.3.2.7":`desCBC`,"1.3.14.3.2.26":`sha1`,"1.3.14.3.2.29":`sha1WithRSASignature`,"2.16.840.1.101.3.4.2.1":`sha256`,"2.16.840.1.101.3.4.2.2":`sha384`,"2.16.840.1.101.3.4.2.3":`sha512`,"2.16.840.1.101.3.4.2.4":`sha224`,"2.16.840.1.101.3.4.2.5":`sha512-224`,"2.16.840.1.101.3.4.2.6":`sha512-256`,"1.2.840.113549.2.2":`md2`,"1.2.840.113549.2.5":`md5`,"1.2.840.113549.1.7.1":`data`,"1.2.840.113549.1.7.2":`signedData`,"1.2.840.113549.1.7.3":`envelopedData`,"1.2.840.113549.1.7.4":`signedAndEnvelopedData`,"1.2.840.113549.1.7.5":`digestedData`,"1.2.840.113549.1.7.6":`encryptedData`,"1.2.840.113549.1.9.1":`emailAddress`,"1.2.840.113549.1.9.2":`unstructuredName`,"1.2.840.113549.1.9.3":`contentType`,"1.2.840.113549.1.9.4":`messageDigest`,"1.2.840.113549.1.9.5":`signingTime`,"1.2.840.113549.1.9.6":`counterSignature`,"1.2.840.113549.1.9.7":`challengePassword`,"1.2.840.113549.1.9.8":`unstructuredAddress`,"1.2.840.113549.1.9.14":`extensionRequest`,"1.2.840.113549.1.9.20":`friendlyName`,"1.2.840.113549.1.9.21":`localKeyId`,"1.2.840.113549.1.9.22.1":`x509Certificate`,"1.2.840.113549.1.12.10.1.1":`keyBag`,"1.2.840.113549.1.12.10.1.2":`pkcs8ShroudedKeyBag`,"1.2.840.113549.1.12.10.1.3":`certBag`,"1.2.840.113549.1.12.10.1.4":`crlBag`,"1.2.840.113549.1.12.10.1.5":`secretBag`,"1.2.840.113549.1.12.10.1.6":`safeContentsBag`,"1.2.840.113549.1.5.13":`pkcs5PBES2`,"1.2.840.113549.1.5.12":`pkcs5PBKDF2`,"1.2.840.113549.1.12.1.1":`pbeWithSHAAnd128BitRC4`,"1.2.840.113549.1.12.1.2":`pbeWithSHAAnd40BitRC4`,"1.2.840.113549.1.12.1.3":`pbeWithSHAAnd3-KeyTripleDES-CBC`,"1.2.840.113549.1.12.1.4":`pbeWithSHAAnd2-KeyTripleDES-CBC`,"1.2.840.113549.1.12.1.5":`pbeWithSHAAnd128BitRC2-CBC`,"1.2.840.113549.1.12.1.6":`pbewithSHAAnd40BitRC2-CBC`,"1.2.840.113549.2.7":`hmacWithSHA1`,"1.2.840.113549.2.8":`hmacWithSHA224`,"1.2.840.113549.2.9":`hmacWithSHA256`,"1.2.840.113549.2.10":`hmacWithSHA384`,"1.2.840.113549.2.11":`hmacWithSHA512`,"1.2.840.113549.3.7":`des-EDE3-CBC`,"2.16.840.1.101.3.4.1.2":`aes128-CBC`,"2.16.840.1.101.3.4.1.22":`aes192-CBC`,"2.16.840.1.101.3.4.1.42":`aes256-CBC`,"2.5.4.3":`commonName`,"2.5.4.4":`surname`,"2.5.4.5":`serialNumber`,"2.5.4.6":`countryName`,"2.5.4.7":`localityName`,"2.5.4.8":`stateOrProvinceName`,"2.5.4.9":`streetAddress`,"2.5.4.10":`organizationName`,"2.5.4.11":`organizationalUnitName`,"2.5.4.12":`title`,"2.5.4.13":`description`,"2.5.4.15":`businessCategory`,"2.5.4.17":`postalCode`,"2.5.4.42":`givenName`,"1.3.6.1.4.1.311.60.2.1.2":`jurisdictionOfIncorporationStateOrProvinceName`,"1.3.6.1.4.1.311.60.2.1.3":`jurisdictionOfIncorporationCountryName`,"2.16.840.1.113730.1.1":`nsCertType`,"2.16.840.1.113730.1.13":`nsComment`,"2.5.29.14":`subjectKeyIdentifier`,"2.5.29.15":`keyUsage`,"2.5.29.17":`subjectAltName`,"2.5.29.18":`issuerAltName`,"2.5.29.19":`basicConstraints`,"2.5.29.31":`cRLDistributionPoints`,"2.5.29.32":`certificatePolicies`,"2.5.29.35":`authorityKeyIdentifier`,"2.5.29.37":`extKeyUsage`,"1.3.6.1.4.1.11129.2.4.2":`timestampList`,"1.3.6.1.5.5.7.1.1":`authorityInfoAccess`,"1.3.6.1.5.5.7.3.1":`serverAuth`,"1.3.6.1.5.5.7.3.2":`clientAuth`,"1.3.6.1.5.5.7.3.3":`codeSigning`,"1.3.6.1.5.5.7.3.4":`emailProtection`,"1.3.6.1.5.5.7.3.8":`timeStamping`},E={Boolean:1,Integer:2,BitString:3,OctetString:4,Null:5,OID:6,Utf8String:12,Sequence:48,Set:49,PrintableString:19,IA5String:22,UTCTime:23},c=class e{static length_(e){if(e<128)return new Uint8Array([e]);{let n=e,r=[];for(;n>0;)r.unshift(n&255),n>>=8;let i=r.length,o=new Uint8Array(1+i);o[0]=128|i;for(let e=0;e<i;e++)o[e+1]=r[e];return o}}static ASN1(n,r){let i=e.length_(r.length),o=new Uint8Array(1+i.length+r.length);return o[0]=n,o.set(i,1),o.set(r,1+i.length),o}static integer(n){let r=0;for(;r<n.length-1&&n[r]===0&&n[r+1]<128;)r++;if(r>0&&(n=n.subarray(r)),n[0]>127){let e=new Uint8Array(n.length+1);e[0]=0,e.set(n,1),n=e}return e.ASN1(E.Integer,n)}static bitString(n){let r=new Uint8Array([0]),i=new Uint8Array(r.length+n.length);return i.set(r),i.set(n,r.length),e.ASN1(E.BitString,i)}static octetString(n){return e.ASN1(E.OctetString,n)}static null(){return e.ASN1(E.Null,new Uint8Array)}static objectIdentifier(n){let r=n.split(`.`).map(Number),i=[r[0]*40+r[1]];for(let e=2;e<r.length;e++){let n=r[e],o=[];do o.unshift(n&127),n>>=7;while(n>0);for(let e=0;e<o.length-1;e++)o[e]|=128;i.push(...o)}return e.ASN1(E.OID,new Uint8Array(i))}static utf8String(n){let r=new TextEncoder().encode(n);return e.ASN1(E.Utf8String,r)}static printableString(n){let r=new TextEncoder().encode(n);return e.ASN1(E.PrintableString,r)}static sequence(n){return e.ASN1(E.Sequence,D$2(n))}static set(n){return e.ASN1(E.Set,D$2(n))}static ia5String(n){let r=new TextEncoder().encode(n);return e.ASN1(E.IA5String,r)}static contextSpecific(n,r,i=!1){let o=(i?160:128)|n;return e.ASN1(o,r)}static boolean(n){return e.ASN1(E.Boolean,new Uint8Array([n?255:0]))}},ot=class extends TransformStream{constructor(){let e=new Uint8Array,n=`SCAN_CHUNK_SIZE`,r=0;super({transform(i,o){for(e=D$2([e,i]);e.length>0;)if(n===`SCAN_CHUNK_SIZE`){if(e.length<3)return;let i=0;for(;i<e.length;){let n=e[i];if(!(n>=48&&n<=57||n>=97&&n<=102||n>=65&&n<=70))break;i++}if(i===0)throw Error(`Invalid chunk size format`);if(e.length<i+2)return;if(e[i]!==13||e[i+1]!==10)throw Error(`Invalid chunk size format. Expected CRLF after chunk size`);let s=new TextDecoder().decode(e.slice(0,i)),l=parseInt(s,16);if(e=e.slice(i+2),l===0){n=`SCAN_FINAL_CHUNK`,o.terminate();return}r=l,n=`SCAN_CHUNK_DATA`}else if(n===`SCAN_CHUNK_DATA`){let i=Math.min(r,e.length),s=e.slice(0,i);e=e.slice(i),r-=i,o.enqueue(s),r===0&&(n=`SCAN_CHUNK_TRAILER`)}else if(n===`SCAN_CHUNK_TRAILER`){if(e.length<2)return;if(e[0]!==13||e[1]!==10)throw Error(`Invalid chunk trailer format. Expected CRLF after chunk data`);e=e.slice(2),n=`SCAN_CHUNK_SIZE`}}})}},ct=(e,n)=>({...e,websocket:{url:(e,n,r)=>`ws://playground.internal/?${new URLSearchParams({host:n,port:r}).toString()}`,subprotocol:`binary`,decorator:()=>class extends St{constructor(e,r){super(e,r,{CAroot:n.CAroot,corsProxyUrl:n.corsProxyUrl})}}}}),St=class{constructor(e,n,{CAroot:r,corsProxyUrl:i,outputType:o=`messages`}={}){this.CONNECTING=0,this.OPEN=1,this.CLOSING=2,this.CLOSED=3,this.readyState=this.CONNECTING,this.binaryType=`blob`,this.bufferedAmount=0,this.extensions=``,this.protocol=`ws`,this.host=``,this.port=0,this.listeners=new Map,this.clientUpstream=new TransformStream,this.clientUpstreamWriter=this.clientUpstream.writable.getWriter(),this.clientDownstream=new TransformStream,this.fetchInitiated=!1,this.bufferedBytesFromClient=new Uint8Array,this.url=e,this.options=n;let s=new URL(e);this.host=s.searchParams.get(`host`),this.port=parseInt(s.searchParams.get(`port`),10),this.binaryType=`arraybuffer`,this.corsProxyUrl=i,this.CAroot=r,o===`messages`&&this.clientDownstream.readable.pipeTo(new WritableStream({write:e=>{this.emit(`message`,{data:e})},abort:()=>{this.emit(`error`,Error(`ECONNREFUSED`)),this.close()},close:()=>{this.close()}})).catch(()=>{}),this.readyState=this.OPEN,this.emit(`open`)}on(e,n){this.addEventListener(e,n)}once(e,n){let r=i=>{n(i),this.removeEventListener(e,r)};this.addEventListener(e,r)}addEventListener(e,n){this.listeners.has(e)||this.listeners.set(e,new Set),this.listeners.get(e).add(n)}removeListener(e,n){this.removeEventListener(e,n)}removeEventListener(e,n){let r=this.listeners.get(e);r&&r.delete(n)}emit(e,n={}){e===`message`?this.onmessage(n):e===`close`?this.onclose(n):e===`error`?this.onerror(n):e===`open`&&this.onopen(n);let r=this.listeners.get(e);if(r)for(let e of r)e(n)}onclose(e){}onerror(e){}onmessage(e){}onopen(e){}send(e){if(this.readyState!==this.CLOSING&&this.readyState!==this.CLOSED&&(this.clientUpstreamWriter.write(new Uint8Array(e)),!this.fetchInitiated))switch(this.bufferedBytesFromClient=D$2([this.bufferedBytesFromClient,new Uint8Array(e)]),ht(this.port,this.bufferedBytesFromClient)){case!1:return;case`other`:this.emit(`error`,Error(`Unsupported protocol`)),this.close();break;case`tls`:this.fetchOverTLS(),this.fetchInitiated=!0;break;case`http`:this.fetchOverHTTP(),this.fetchInitiated=!0}}async fetchOverTLS(){if(!this.CAroot)throw Error(`TLS protocol is only supported when the TCPOverFetchWebsocket is instantiated with a CAroot`);let e=await st({subject:{commonName:this.host,organizationName:this.host,countryName:`US`},issuer:this.CAroot.tbsDescription.subject},this.CAroot.keyPair),n=new nt;this.clientUpstream.readable.pipeTo(n.clientEnd.upstream.writable).catch(()=>{}),n.clientEnd.downstream.readable.pipeTo(this.clientDownstream.writable).catch(()=>{}),await n.TLSHandshake(e.keyPair.privateKey,[e.certificate,this.CAroot.certificate]);let{request:r,expectsContinue:i}=await w.parseHttpRequest(n.serverEnd.upstream.readable,this.host,`https`);if(i){let e=n.serverEnd.downstream.writable.getWriter();await e.write(new TextEncoder().encode(`HTTP/1.1 100 Continue\r
 \r
 `)),e.releaseLock()}try{await w.fetchRawResponseBytes(r,this.corsProxyUrl).pipeTo(n.serverEnd.downstream.writable)}catch{}}async fetchOverHTTP(){let{request:e,expectsContinue:n}=await w.parseHttpRequest(this.clientUpstream.readable,this.host,`http`);if(n){let e=this.clientDownstream.writable.getWriter();await e.write(new TextEncoder().encode(`HTTP/1.1 100 Continue\r
 \r
@@ -766,12 +766,15 @@ final readonly class CborDecoder
     public function __construct(
         public int $maxDepth = self::DEFAULT_MAX_DEPTH,
         public int $maxItems = self::DEFAULT_MAX_ITEMS,
+        // amendment 3: maps as CborMap, for crJSON (SPEC-074); every check keeps the default
+        public bool $keepMaps = false,
     ) {}
 
     /**
      * Exactly one data item; bytes left over are an error. The value is an
      * int, a string (text), a CborBytes, a list, an array with int|string
-     * keys (a map), a CborTag, a bool or null — nested the same way.
+     * keys (a map), a CborTag, a bool or null — nested the same way. With
+     * keepMaps every map is a CborMap instead (amendment 3).
      *
      * @throws CborException
      */
@@ -1026,9 +1029,9 @@ final readonly class CborDecoder
 
     /**
      * @param  int|null  $count  null: indefinite, pairs until a break, counted against the same limit
-     * @return array<int|string, mixed>
+     * @return array<int|string, mixed>|CborMap a CborMap with keepMaps (amendment 3)
      */
-    private function map(string $bytes, int &$offset, int $head, ?int $count, int $depth, CborBudget $budget): array
+    private function map(string $bytes, int &$offset, int $head, ?int $count, int $depth, CborBudget $budget): array|CborMap
     {
         $this->countable('map', $head, $count ?? 0);
         $this->enter($depth, $head);
@@ -1055,7 +1058,7 @@ final readonly class CborDecoder
             $map[$key] = $value;
         }
 
-        return $map;
+        return $this->keepMaps ? new CborMap($map) : $map;
     }
 
     private function countable(string $what, int $head, int $count): void
@@ -1095,6 +1098,7 @@ final readonly class CborDecoder
         return match (true) {
             $value instanceof CborBytes => 'a byte string',
             $value instanceof CborTag => 'a tag',
+            $value instanceof CborMap => 'a map',
             is_array($value) => array_is_list($value) ? 'an array' : 'a map',
             is_bool($value) => 'a boolean',
             $value === null => 'null',
@@ -1127,6 +1131,27 @@ namespace Provemark\\C2paVerifier\\Cbor;
  * removed in any release; the contract is the nine classes named in the README.
  */
 final class CborException extends \\RuntimeException {}
+`,"src/Cbor/CborMap.php":`<?php
+
+declare(strict_types=1);
+
+namespace Provemark\\C2paVerifier\\Cbor;
+
+/**
+ * A CBOR map (major type 5), kept as a map: only from a decoder made with
+ * \`keepMaps: true\` (SPEC-006 amendment 3). A PHP array cannot tell an
+ * empty map from an empty array, or a map keyed 0, 1, 2… from a list;
+ * crJSON must (SPEC-074). The keys follow AC13's rules, so they are
+ * unique and never a text that reads as an integer.
+ *
+ * @internal SPEC-025: not part of the public API. It may change, move or be
+ * removed in any release; the contract is the nine classes named in the README.
+ */
+final readonly class CborMap
+{
+    /** @param  array<int|string, mixed>  $entries  the keys and values, in the order they were encoded */
+    public function __construct(public array $entries) {}
+}
 `,"src/Cbor/CborTag.php":`<?php
 
 declare(strict_types=1);
@@ -1148,6 +1173,127 @@ final readonly class CborTag
         public mixed $value,
     ) {}
 }
+`,"src/Cbor/CrJsonValue.php":`<?php
+
+declare(strict_types=1);
+
+namespace Provemark\\C2paVerifier\\Cbor;
+
+/**
+ * A decoded CBOR value as crJSON writes it: C2PA 2.4 crJSON Table 1
+ * (SPEC-074). Byte strings as \`b64'…'\` (the closing quote as CBOR's
+ * diagnostic notation has it, RFC 8610 Appendix G.2), tag 0 as its text,
+ * maps as objects with their keys as strings, everything JSON already
+ * has as it is. What the table cannot express is refused by name: a tag
+ * other than 0, NaN and the infinities. The input must come from a
+ * decoder made with \`keepMaps: true\` (SPEC-006 amendment 3); without it
+ * an empty map reads as an empty array, so a keyed array is refused.
+ *
+ * @internal SPEC-025: not part of the public API. It may change, move or be
+ * removed in any release; the contract is the nine classes named in the README.
+ */
+final class CrJsonValue
+{
+    /**
+     * A JSON-encodable value: maps become stdClass, so that \`json_encode\`
+     * writes \`{}\` for an empty one; call it with JSON_PRESERVE_ZERO_FRACTION.
+     *
+     * @throws CrJsonValueException naming the reason and the path
+     */
+    public static function of(mixed $cbor): mixed
+    {
+        return self::map($cbor, '$');
+    }
+
+    /**
+     * A JSON assertion as it is (crJSON §3.6.2), where it can be written back as the same JSON: not
+     * where a number lies beyond a double, or an integer beyond 64 bits, which PHP would write as
+     * another number (SPEC-075 amendment 2).
+     *
+     * @throws CrJsonValueException
+     */
+    public static function fromJson(string $json): mixed
+    {
+        try {
+            $value = json_decode($json, false, 64, JSON_THROW_ON_ERROR);
+            $exact = json_decode($json, false, 64, JSON_THROW_ON_ERROR | JSON_BIGINT_AS_STRING);
+            json_encode($value, JSON_THROW_ON_ERROR | JSON_PRESERVE_ZERO_FRACTION);   // refuses an infinity
+        } catch (\\JsonException $e) {
+            throw new CrJsonValueException(sprintf('the JSON cannot be written back: %s', $e->getMessage()), 0, $e);
+        }
+        if (serialize($value) !== serialize($exact)) {
+            throw new CrJsonValueException('the JSON holds an integer beyond 64 bits, which would be written back as another number');
+        }
+
+        return $value;
+    }
+
+    private static function map(mixed $value, string $path): mixed
+    {
+        if ($value instanceof CborBytes) {
+            return "b64'".base64_encode($value->bytes)."'";
+        }
+        if ($value instanceof CborTag) {
+            if ($value->number !== 0) {
+                throw new CrJsonValueException(sprintf('tag %d at %s: crJSON Table 1 names only tag 0 (date-time)', $value->number, $path));
+            }
+            if (! is_string($value->value)) {
+                throw new CrJsonValueException(sprintf('tag 0 at %s holds %s, not text (RFC 8949 §3.4.1)', $path, get_debug_type($value->value)));
+            }
+
+            return $value->value;
+        }
+        if ($value instanceof CborMap) {
+            $object = new \\stdClass;
+            foreach ($value->entries as $key => $entry) {
+                if (str_starts_with((string) $key, "\\0")) {
+                    // PHP cannot hold such a key as a property (SPEC-074 amendment 2)
+                    throw new CrJsonValueException(sprintf('a map key at %s starts with a NUL byte, which this writer cannot hold', $path));
+                }
+                $object->{(string) $key} = self::map($entry, ($path === '$' ? '' : $path.'.').$key);
+            }
+
+            return $object;
+        }
+        if (is_array($value)) {
+            if (! array_is_list($value)) {
+                throw new CrJsonValueException(sprintf('a keyed array at %s: a map decoded without keepMaps (SPEC-006 amendment 3), where an empty map cannot be told from an empty array', $path));
+            }
+            $list = [];
+            foreach ($value as $i => $item) {
+                $list[] = self::map($item, "{$path}[{$i}]");
+            }
+
+            return $list;
+        }
+        if (is_float($value) && is_nan($value)) {
+            throw new CrJsonValueException(sprintf('NaN at %s: JSON has no NaN (RFC 8259 §6)', $path));
+        }
+        if (is_float($value) && is_infinite($value)) {
+            throw new CrJsonValueException(sprintf('%sinfinity at %s: JSON has no infinity (RFC 8259 §6)', $value > 0 ? '+' : '-', $path));
+        }
+        if (is_int($value) || is_float($value) || is_string($value) || is_bool($value) || $value === null) {
+            return $value;
+        }
+
+        throw new CrJsonValueException(sprintf('%s at %s is not a decoded CBOR value', get_debug_type($value), $path));
+    }
+}
+`,"src/Cbor/CrJsonValueException.php":`<?php
+
+declare(strict_types=1);
+
+namespace Provemark\\C2paVerifier\\Cbor;
+
+/**
+ * A CBOR value that crJSON Table 1 cannot express (SPEC-074 AC6). The
+ * message names the reason and the path to the value. There is never a
+ * partial value.
+ *
+ * @internal SPEC-025: not part of the public API. It may change, move or be
+ * removed in any release; the contract is the nine classes named in the README.
+ */
+final class CrJsonValueException extends \\RuntimeException {}
 `,"src/Cli/Command.php":`<?php
 
 declare(strict_types=1);
@@ -1181,6 +1327,10 @@ final readonly class Command
     public const string USAGE = "Usage: c2pa-verify [--settings <path>] [--text] [--] <file>\\n"
         ."  Prints the verification report as JSON on standard output.\\n"
         ."  --settings <path>  trust settings in c2patool's JSON shape (anchors, EKUs, allowed list)\\n"
+        ."  --trust-list <pem>      the signers' trust anchors, PEM (the C2PA Trust List); not with --settings\\n"
+        ."  --tsa-trust-list <pem>  the time-stamp authorities' trust anchors, PEM (the C2PA TSA Trust List); not with --settings\\n"
+        ."  --at <time>        judge at this time (RFC 3339) where no trusted timestamp gives one; default now\\n"
+        ."  --crjson           print the report as crJSON (C2PA 2.4) instead; a failure crJSON has no place for goes to standard error\\n"
         ."  --text             also read plain text (C2PA 2.4 §A.8; experimental upstream, off by default)\\n"
         ."  --help             this text\\n"
         ."  Exit status: 0 Trusted or Valid, 1 Invalid, 2 no report (usage, unreadable file or settings).\\n";
@@ -1199,6 +1349,9 @@ final readonly class Command
         // 1. the arguments: four cases, no short options, no repeats
         $file = null;
         $settingsPath = null;
+        $at = null;
+        $lists = ['--trust-list' => null, '--tsa-trust-list' => null];
+        $crJson = false;
         $text = false;
         $optionsEnded = false;
         for ($i = 0, $n = count($arguments); $i < $n; $i++) {
@@ -1225,6 +1378,42 @@ final readonly class Command
                 } else {
                     $settingsPath = substr($argument, strlen('--settings='));
                 }
+
+                continue;
+            }
+            if (! $optionsEnded && ($argument === '--at' || str_starts_with($argument, '--at='))) {
+                if ($at !== null) {
+                    return $this->usage($stderr, '--at given twice');
+                }
+                if ($argument === '--at' && $i + 1 >= $n) {
+                    return $this->usage($stderr, '--at needs a time (RFC 3339, e.g. 2026-10-09T05:31:00Z)');
+                }
+                $value = $argument === '--at' ? $arguments[++$i] : substr($argument, strlen('--at='));
+                $at = self::rfc3339($value);
+                if ($at === null) {
+                    return $this->usage($stderr, sprintf("--at: '%s' is not an RFC 3339 date-time (e.g. 2026-10-09T05:31:00Z)", $value));
+                }
+
+                continue;
+            }
+            $listOption = $optionsEnded ? null : (array_key_exists($argument, $lists) ? $argument : (str_starts_with($argument, '--trust-list=') ? '--trust-list' : (str_starts_with($argument, '--tsa-trust-list=') ? '--tsa-trust-list' : null)));
+            if ($listOption !== null) {
+                // SPEC-077: the conformance programme's lists, as published
+                if ($lists[$listOption] !== null) {
+                    return $this->usage($stderr, "{$listOption} given twice");
+                }
+                if ($argument === $listOption && $i + 1 >= $n) {
+                    return $this->usage($stderr, "{$listOption} needs a path");
+                }
+                $lists[$listOption] = $argument === $listOption ? $arguments[++$i] : substr($argument, strlen($listOption) + 1);
+
+                continue;
+            }
+            if (! $optionsEnded && $argument === '--crjson') {
+                if ($crJson) {
+                    return $this->usage($stderr, '--crjson given twice');
+                }
+                $crJson = true;
 
                 continue;
             }
@@ -1258,19 +1447,49 @@ final readonly class Command
             $verifier = $this->textVerifier;
         }
 
+        if ($settingsPath !== null && ($lists['--trust-list'] !== null || $lists['--tsa-trust-list'] !== null)) {
+            return $this->usage($stderr, '--settings and --trust-list/--tsa-trust-list exclude each other: one source of trust');
+        }
+
         // 2. the settings, before the file: the caller asked for trust and gets it or a refusal
         $settings = null;
+        if ($lists['--trust-list'] !== null || $lists['--tsa-trust-list'] !== null) {
+            $pems = [];
+            foreach ($lists as $option => $path) {
+                if ($path === null) {
+                    $pems[$option] = null;
+
+                    continue;
+                }
+                $pem = $this->read($path);
+                if (is_array($pem)) {
+                    return $this->usage($stderr, sprintf('cannot read %s %s: %s', $option, $path, $pem['reason']));
+                }
+                $pems[$option] = $pem;
+            }
+            foreach ($pems as $option => $pem) {
+                if ($pem === null) {
+                    continue;
+                }
+                try {
+                    TrustSettings::fromTrustLists($option === '--trust-list' ? $pem : null, $option === '--tsa-trust-list' ? $pem : null);
+                } catch (TrustException $e) {
+                    return $this->usage($stderr, sprintf('%s %s: %s', $option, (string) $lists[$option], $e->getMessage()));
+                }
+            }
+            $settings = TrustSettings::fromTrustLists($pems['--trust-list'], $pems['--tsa-trust-list']);
+        }
         if ($settingsPath !== null) {
             $json = $this->read($settingsPath);
             if (is_array($json)) {
-                fwrite($stderr, sprintf("Error: cannot read settings %s: %s\\n", $settingsPath, $json['reason']));
+                fwrite($stderr, self::shown(sprintf("Error: cannot read settings %s: %s\\n", $settingsPath, $json['reason'])));
 
                 return 2;
             }
             try {
                 $settings = TrustSettings::fromJson($json);
             } catch (TrustException $e) {
-                fwrite($stderr, sprintf("Error: settings %s: %s\\n", $settingsPath, $e->getMessage()));
+                fwrite($stderr, self::shown(sprintf("Error: settings %s: %s\\n", $settingsPath, $e->getMessage())));
 
                 return 2;
             }
@@ -1279,41 +1498,87 @@ final readonly class Command
         // 3. the file as a stream; a directory opens without complaint on macOS and Linux
         //    and then fails on every read, so it is refused here, before the verifier
         if (is_dir($file)) {
-            fwrite($stderr, sprintf("Error: cannot open %s: Is a directory\\n", $file));
+            fwrite($stderr, self::shown(sprintf("Error: cannot open %s: Is a directory\\n", $file)));
 
             return 2;
         }
         $stream = $this->open($file);
         if (is_array($stream)) {
-            fwrite($stderr, sprintf("Error: cannot open %s: %s\\n", $file, $stream['reason']));
+            fwrite($stderr, self::shown(sprintf("Error: cannot open %s: %s\\n", $file, $stream['reason'])));
 
             return 2;
         }
 
         // 4. the report, and the verdict as the exit status
         try {
-            $report = $verifier->verify($stream, $settings);
+            $report = $verifier->verify($stream, $settings, $at);
         } finally {
             fclose($stream);
         }
         try {
-            $json = $report->toJson();
+            $json = $crJson ? $report->toCrJson() : $report->toJson();
         } catch (\\JsonException $e) {
             // SPEC-019 AC13: no input is known to reach this since SPEC-007 AC15; should one, it is
             // the command's own failure, one line and exit 2, never PHP's fatal error and its trace
-            fwrite($stderr, sprintf("Error: the report cannot be written as JSON: %s\\n", $e->getMessage()));
+            fwrite($stderr, self::shown(sprintf("Error: the report cannot be written as JSON: %s\\n", $e->getMessage())));
 
             return 2;
         }
         fwrite($stdout, $json."\\n");
+        if ($crJson && $report->store === null) {
+            // SPEC-075 AC8: crJSON describes a store; with none, the report's own answer has nowhere to go but here
+            $failure = array_values(array_filter($report->result->statuses, static fn ($s): bool => $s->code->isFailure()))[0] ?? null;
+            fwrite($stderr, $failure === null
+                ? "crJSON: no manifest store in the file\\n"
+                : self::shown(sprintf("crJSON: no manifest store: %s: %s\\n", $failure->code->value, $failure->explanation)));
+        }
 
         return $report->result->state === ValidationState::Invalid ? 1 : 0;
+    }
+
+    /**
+     * An RFC 3339 §5.6 date-time, or null (SPEC-073 AC5). Every field is range-checked, so
+     * 2026-02-30 is refused rather than rolled over into March; a leap second (60) is
+     * refused too, since no epoch can hold it. The fraction is dropped: rounded down.
+     */
+    private static function rfc3339(string $value): ?\\DateTimeImmutable
+    {
+        if (preg_match('/^(\\d{4})-(\\d{2})-(\\d{2})[Tt](\\d{2}):(\\d{2}):(\\d{2})(?:\\.\\d+)?([Zz]|[+-](\\d{2}):(\\d{2}))$/D', $value, $m) !== 1) {
+            return null;
+        }
+        if (! checkdate((int) $m[2], (int) $m[3], (int) $m[1]) || (int) $m[4] > 23 || (int) $m[5] > 59 || (int) $m[6] > 59
+            || (isset($m[8], $m[9]) && ((int) $m[8] > 23 || (int) $m[9] > 59))) {
+            return null;
+        }
+        $offset = strtoupper($m[7]) === 'Z' ? '+00:00' : $m[7];
+        $parsed = \\DateTimeImmutable::createFromFormat('!Y-m-d\\\\TH:i:sP', sprintf('%s-%s-%sT%s:%s:%s%s', $m[1], $m[2], $m[3], $m[4], $m[5], $m[6], $offset));
+        // the time is recorded in UTC (crJSON's validationTime): an offset can carry it past year 9999 or before
+        // year 1, which RFC 3339 cannot write (SPEC-073 amendment 2)
+        $year = $parsed === false ? 0 : (int) $parsed->setTimezone(new \\DateTimeZone('UTC'))->format('Y');
+
+        return $parsed === false || $year < 1 || $year > 9999 ? null : $parsed;
+    }
+
+    /**
+     * A line for the terminal (SPEC-019 amendment 4): what the command echoes (a path, an option, a
+     * message naming manifest content) with its control characters written as escapes, as the report's
+     * JSON writes them: C0 and DEL as \\xNN, C1 and the bidirectional overrides as \\u{…}, bytes that are
+     * not UTF-8 as U+FFFD. One final newline is kept.
+     */
+    private static function shown(string $line): string
+    {
+        $newline = str_ends_with($line, "\\n");
+        $text = mb_scrub($newline ? substr($line, 0, -1) : $line, 'UTF-8');
+        $text = (string) preg_replace_callback('/[\\x00-\\x1F\\x7F]/', static fn (array $m): string => sprintf('\\\\x%02X', ord($m[0])), $text);
+        $text = (string) preg_replace_callback('/[\\x{80}-\\x{9F}\\x{202A}-\\x{202E}\\x{2066}-\\x{2069}]/u', static fn (array $m): string => sprintf('\\\\u{%X}', mb_ord($m[0], 'UTF-8')), $text);
+
+        return $newline ? $text."\\n" : $text;
     }
 
     /** @param  resource  $stderr */
     private function usage($stderr, string $fault): int
     {
-        fwrite($stderr, sprintf("Error: %s\\n%s", $fault, self::USAGE));
+        fwrite($stderr, self::shown(sprintf("Error: %s\\n", $fault)).self::USAGE);
 
         return 2;
     }
@@ -5504,7 +5769,7 @@ final readonly class BmffHashCheck
     private const UNSUPPORTED_FILTERS = ['length', 'version', 'flags', 'exact'];
 
     /** SPEC-071: the boxes an exclusion may take whole, as c2pa-rs writes them. */
-    private const ALLOWED_WHOLE = ['/ftyp', '/mfra', '/free', '/skip', '/meta/iloc', '/mfra/tfra', '/moov/free', '/moov/udta', '/moov/meta'];   // the last three: Pixel Camera (SPEC-072)
+    private const ALLOWED_WHOLE = ['/ftyp', '/mfra', '/free', '/skip', '/mfra/tfra', '/moov/free', '/moov/udta', '/moov/meta'];   // the last three: Pixel Camera (SPEC-072)
 
     /** SPEC-072: a track excluded by index, allowed only when its handler is timed metadata (checked after the walk). */
     private const INDEXED_TRACK = '#^/moov\\[1\\]/trak\\[([1-9][0-9]{0,8})\\]$#';
@@ -5515,8 +5780,12 @@ final readonly class BmffHashCheck
     /** SPEC-072: exclusions whose boxes can hold metadata worth saying is not signed. */
     private const UNSIGNED_METADATA = ['/moov/udta', '/moov/meta'];
 
-    /** SPEC-071: the offset fields, allowed only through a subset from offset 16 on. */
-    private const ALLOWED_OFFSET_FIELDS = ['/moov/trak/mdia/minf/stbl/stco', '/moov/trak/mdia/minf/stbl/co64', '/moof/traf/tfhd', '/moof/traf/trun'];
+    /**
+     * SPEC-071 amendment 1: the offset tables an older c2pa-rs excluded, now refused. With them excluded,
+     * the bytes read as samples can be changed without touching the hash; C2PA 2.4 §18.6.2 hashes every
+     * offset at its post-embed value, and today's c2pa-rs no longer excludes them.
+     */
+    private const OFFSET_TABLES = ['/moov/trak/mdia/minf/stbl/stco', '/moov/trak/mdia/minf/stbl/co64', '/meta/iloc', '/moof/traf/tfhd', '/moof/traf/trun'];
 
     /**
      * @param  iterable<string, resource>  $fragments  a name and an open stream, one at
@@ -6017,16 +6286,11 @@ final readonly class BmffHashCheck
             }
         } elseif (in_array($xpath, self::ALLOWED_WHOLE, true) || (is_string($xpath) && preg_match(self::INDEXED_TRACK, $xpath) === 1)) {
             return null;   // an indexed track: its handler is checked after the box walk (SPEC-072)
-        } elseif (in_array($xpath, self::ALLOWED_OFFSET_FIELDS, true)) {
-            $subset = $exclusion['subset'] ?? null;
-            if (is_array($subset) && $subset !== [] && array_filter($subset, static fn (mixed $range): bool => ! is_array($range) || ! is_int($range['offset'] ?? null) || $range['offset'] < 16) === []) {
-                return null;
-            }
-
-            return 'an offset table may be excluded only with a subset whose every range starts at offset 16 or later, so that its header and entry count stay hashed';
+        } elseif (in_array($xpath, self::OFFSET_TABLES, true)) {
+            return 'an offset table is hashed, never excluded: with it excluded, which bytes are read as the media can change without changing the hash (C2PA 2.4 §18.6.2 hashes every offset at its post-embed value; an older c2pa-rs excluded these, today\\'s does not)';
         }
 
-        return 'a BMFF hash may exclude only the C2PA uuid box, ftyp, mfra, free, skip, meta/iloc, mfra/tfra and the offset fields of stco, co64, tfhd and trun (from offset 16), which is what c2pa-rs writes, and moov/free, moov/udta, moov/meta and a timed-metadata track, which is what Pixel Camera writes; any other box could hold the media';
+        return 'a BMFF hash may exclude only the C2PA uuid box, ftyp, mfra, free, skip and mfra/tfra, which is what c2pa-rs writes, and moov/free, moov/udta, moov/meta and a timed-metadata track, which is what Pixel Camera writes; any other box could hold the media';
     }
 
     /**
@@ -6980,7 +7244,7 @@ final readonly class HashedUriCheck
     private function notRedacted(Manifest $manifest): array
     {
         $statuses = [];
-        foreach ($manifest->redacted as $uri) {
+        foreach ($manifest->declared as $uri) {   // declared, in effect or not (SPEC-035 amendment 6)
             if (! $this->resolves($manifest, $uri)) {
                 continue;   // removed: a valid form of redaction
             }
@@ -9142,12 +9406,21 @@ final readonly class Manifest
         /** A c2um box: it adds assertions without touching the content, and its rules differ (SPEC-022, C2PA 2.4 §11.2.3). */
         public bool $isUpdateManifest = false,
         /**
-         * The absolute URIs of this manifest's assertions that a claim in the store declares redacted
-         * (SPEC-035; C2PA 2.4 §6.8). A reference among them may name a box that is gone.
+         * The absolute URIs of this manifest's assertions that a claim in the store redacts with effect:
+         * declared by a manifest above this one in the ingredient graph (SPEC-035; amendment 6; C2PA 2.4
+         * §6.8). A reference among them may name a box that is gone.
          *
          * @var list<string>
          */
         public array $redacted = [],
+        /**
+         * Every absolute URI of this manifest's assertions that a reached claim declares redacted, in
+         * effect or not: what is checked for a box still holding content (\`assertion.notRedacted\`, as
+         * c2pa-rs reports it; SPEC-035 AC5).
+         *
+         * @var list<string>
+         */
+        public array $declared = [],
     ) {}
 
     /** One manifest on its own: the redactions its own claim declares are the only ones it knows. */
@@ -9182,18 +9455,37 @@ final readonly class Manifest
     }
 
     /**
-     * This manifest with the store's redactions that name it, its references checked against them.
+     * This manifest with the store's redactions that name it, its references checked against those in
+     * effect.
      *
-     * @param  list<string>  $redactions  every absolute entry in the store (redactionsOf())
+     * @param  list<string>  $redactions  the entries in effect (SPEC-035 amendment 6)
+     * @param  list<string>|null  $declared  every entry a reached claim declares; null: the same as $redactions
      */
-    public function withRedactions(array $redactions): self
+    public function withRedactions(array $redactions, ?array $declared = null): self
     {
         $prefix = sprintf('%s/c2pa/%s/', self::URI_PREFIX, $this->label);
-        $mine = array_values(array_filter($redactions, static fn (string $uri): bool => str_starts_with($uri, $prefix)));
-        $manifest = new self($this->label, $this->claim, $this->assertions, $this->box, $this->assertionStore, $this->claimBox, $this->signatureBox, $this->isUpdateManifest, $mine);
+        $manifest = new self($this->label, $this->claim, $this->assertions, $this->box, $this->assertionStore, $this->claimBox, $this->signatureBox, $this->isUpdateManifest, self::naming($redactions, $prefix), self::naming($declared ?? $redactions, $prefix));
         $manifest->checkReferences();
 
         return $manifest;
+    }
+
+    /**
+     * The entries that name an assertion of the manifest with this prefix.
+     *
+     * @param  list<string>  $uris
+     * @return list<string>
+     */
+    private static function naming(array $uris, string $prefix): array
+    {
+        $mine = [];
+        foreach ($uris as $uri) {
+            if (str_starts_with($uri, $prefix)) {
+                $mine[] = $uri;
+            }
+        }
+
+        return $mine;
     }
 
     /** A URI of this manifest in its absolute form: a relative one is read against this manifest (§14.2). */
@@ -9261,6 +9553,11 @@ final readonly class Manifest
         $assertions = [];
         foreach ($assertionStore->superboxes() as $assertionBox) {
             $assertionLabel = $assertionBox->description->label;
+            if (isset($assertions[$assertionLabel])) {
+                // a second box with one label: a reference resolves to the first (resolve()), so every check
+                // reads that one; HashedUriCheck reports this one as undeclared (SPEC-007 amendment 9)
+                continue;
+            }
             $data = self::at(sprintf('%s/c2pa.assertions/%s', $manifestUrl, $assertionLabel), static fn (): mixed => self::assertionData($assertionBox, $budget));
             $assertions[$assertionLabel] = new Assertion($assertionLabel, $assertionBox, $data);
         }
@@ -9746,6 +10043,32 @@ final readonly class ManifestGraph
         return $labels;
     }
 
+    /**
+     * The manifests reachable from $label through ingredient references, $label itself left out even
+     * where a cycle leads back to it: what a manifest may speak for (SPEC-070 amendment 3) and redact
+     * (SPEC-035 amendment 6).
+     *
+     * @return list<string>
+     */
+    public function below(string $label): array
+    {
+        $seen = [];
+        $queue = [$label];
+        while ($queue !== []) {
+            $current = array_pop($queue);
+            foreach ($this->ingredients[$current] ?? [] as $ingredient) {
+                $named = $ingredient->manifestLabel();
+                if ($named !== null && ! isset($seen[$named])) {
+                    $seen[$named] = true;
+                    $queue[] = $named;
+                }
+            }
+        }
+        unset($seen[$label]);
+
+        return array_map('strval', array_keys($seen));
+    }
+
     /** @return list<string> every claim's redacted_assertions, in store order */
     private static function redactions(ManifestStore $store): array
     {
@@ -9813,7 +10136,7 @@ final readonly class ManifestStore
                 }
             }
         }
-        $redactions = Manifest::redactionsOf(self::redacting(array_values(array_filter($read, static fn (Manifest|ManifestException|CborException $m): bool => $m instanceof Manifest))));
+        [$redactions, $declared] = self::redacting(array_values(array_filter($read, static fn (Manifest|ManifestException|CborException $m): bool => $m instanceof Manifest)));
         $manifests = [];
         foreach ($read as $manifest) {
             if (! $manifest instanceof Manifest) {
@@ -9824,7 +10147,7 @@ final readonly class ManifestStore
             if (isset($manifests[$manifest->label])) {
                 throw new ManifestException(sprintf('the store holds two manifests labelled %s; a label identifies one manifest (C2PA 2.4 §8.1)', $manifest->label), StatusCode::ClaimMalformed);
             }
-            $manifest = $manifest->withRedactions($redactions);
+            $manifest = $manifest->withRedactions($redactions, $declared);
             $manifests[$manifest->label] = $manifest;
         }
         if ($manifests === []) {
@@ -9835,15 +10158,16 @@ final readonly class ManifestStore
     }
 
     /**
-     * The manifests whose redactions count: the active one and those the ingredient graph reaches
-     * from it (SPEC-035 amendment 5), as c2pa-rs gathers them while it walks the claims it
-     * validates. A manifest nothing references is never validated, so what it declares redacted
-     * excuses nothing (C2PA 2.4 §6.8: a redaction is made by a manifest that takes the redacted one
-     * as an ingredient). When the graph cannot be built, only the active manifest counts; the
+     * The redactions that count: those declared by the active manifest and the manifests the
+     * ingredient graph reaches from it (SPEC-035 amendment 5), each only where it names an
+     * assertion of a manifest below the one declaring it (amendment 6; C2PA 2.4 §6.8: a manifest
+     * redacts in the ingredients it takes). A manifest nothing references is never validated, so
+     * what it declares excuses nothing. When the graph cannot be built, no redaction counts; the
      * verifier reports the graph's own error.
      *
      * @param  list<Manifest>  $read  in store order, references not yet checked
-     * @return list<Manifest>
+     * @return array{0: list<string>, 1: list<string>} the redactions in effect, and every one the reached
+     *                                                 claims declare (for \`assertion.notRedacted\`)
      */
     private static function redacting(array $read): array
     {
@@ -9852,17 +10176,44 @@ final readonly class ManifestStore
             $byLabel[$manifest->label] = $manifest;
         }
         if ($byLabel === []) {
-            return [];
+            return [[], []];
         }
         $active = $byLabel[array_key_last($byLabel)];
         try {
             $graph = ManifestGraph::fromStore(new self($byLabel, $active));
-            $reached = [$active->label, ...array_map('strval', array_keys($graph->referenced))];
         } catch (ManifestException) {
-            $reached = [$active->label];
+            return [[], Manifest::redactionsOf([$active])];
+        }
+        $declared = [];
+        foreach ([$active->label, ...array_map('strval', array_keys($graph->referenced))] as $label) {
+            if (isset($byLabel[$label])) {
+                $declared[$label] = Manifest::redactionsOf([$byLabel[$label]]);
+            }
         }
 
-        return array_values(array_filter($read, static fn (Manifest $m): bool => in_array($m->label, $reached, true)));
+        return [self::scopedRedactions($graph, $declared), array_values(array_unique(array_merge([], ...array_values($declared))))];
+    }
+
+    /**
+     * Of each manifest's declared redactions, those that name an assertion of a manifest below it in
+     * the graph (SPEC-035 amendment 6). A URI that names no manifest applies to nothing.
+     *
+     * @param  array<string, list<string>>  $declared  by the declaring manifest's label
+     * @return list<string>
+     */
+    public static function scopedRedactions(ManifestGraph $graph, array $declared): array
+    {
+        $applies = [];
+        foreach ($declared as $by => $uris) {
+            $below = $graph->below((string) $by);
+            foreach ($uris as $uri) {
+                if (preg_match('#^self\\#jumbf=/c2pa/([^/]+)/#', $uri, $m) === 1 && in_array($m[1], $below, true)) {
+                    $applies[] = $uri;
+                }
+            }
+        }
+
+        return array_values(array_unique($applies));
     }
 
     /**
@@ -11433,6 +11784,51 @@ final readonly class TimestampCheck
     }
 
     /**
+     * The token SPEC-017 and SPEC-064 judge, read but not judged, for crJSON's timeStampInfo
+     * (SPEC-076 AC4): the header's one token, else the first a time-stamp assertion offers that
+     * can be read; its genTime and its signer's certificate, whether or not it would validate.
+     * Null where there is none, or none can be read. Where the verdict took its time from an
+     * assertion's token, \`$judged\` names that assertion and its token comes first (SPEC-076
+     * amendment 1), so crJSON shows the time that counted.
+     *
+     * @param  string|null  $judged  the url of the manifest's \`timeStamp.trusted\`, if any
+     * @return array{0: int, 1: Certificate}|null
+     */
+    public function readToken(Manifest $manifest, TimestampAssertions $assertions, ?string $judged = null): ?array
+    {
+        $candidates = [];
+        foreach ($assertions->tokensFor($manifest->label) as [$der, $url]) {
+            if ($judged !== null && $url === $judged) {
+                $candidates[] = $der;
+            }
+        }
+        try {
+            $header = TimestampHeader::fromUnprotected(CoseSign1::ofManifest($manifest)->unprotected);
+            if ($header !== null && count($header->tokens) === 1) {
+                $candidates[] = $header->tokens[0];
+            }
+        } catch (CoseException|TimestampException) {
+            // no header to read; an assertion may still offer a token
+        }
+        foreach ($assertions->tokensFor($manifest->label) as [$der]) {
+            $candidates[] = $der;
+        }
+        foreach ($candidates as $der) {
+            try {
+                $token = TimeStampToken::fromHeaderValue($der, $this->reader);
+                $signer = $token->signedData->signerCertificate($this->reader);
+                if ($signer !== null) {
+                    return [$token->tstInfo->genTime, Certificate::fromDer($signer)];
+                }
+            } catch (TimestampException|TrustException|Asn1Exception) {
+                continue;
+            }
+        }
+
+        return null;
+    }
+
+    /**
      * A header's one token judged against the manifest's countersigned
      * bytes. A header with more than one token is malformed and gives no time,
      * as c2pa-rs 0.91.1 drops it (\`sigtst.rs\`: "only a single timestamp
@@ -11553,7 +11949,7 @@ final readonly class TimestampCheck
                     $trusted ? StatusCode::TimeStampTrusted : StatusCode::TimeStampUntrusted,
                     $url,
                     sprintf('timestamp cert %s: %s — %s', $trusted ? 'trusted' : 'untrusted', $tsaName, preg_replace('/^signing certificate (un)?trusted: /', '', $outcome->explanation) ?? $outcome->explanation)
-                        .($trusted || $settings === null ? '' : ChainCheck::kindNote($settings, TrustAnchorSet::TSA, $ordered)),
+                        .($trusted || $settings === null ? '' : ChainCheck::kindNote($settings, TrustAnchorSet::TSA, $ordered, $tst->genTime)),
                 );
             }
         }
@@ -11587,7 +11983,13 @@ final readonly class TimestampCheck
             return new TrustSettings([], [], [self::OID_EKU_TIME_STAMPING], true);
         }
 
-        return new TrustSettings(ChainCheck::tsaAnchorsOf($operator), [], [self::OID_EKU_TIME_STAMPING], $operator->verifyTrust);
+        // the operator's "tsa" entries become this check's signer entries, their dates kept (SPEC-079)
+        $sets = array_values(array_map(
+            static fn (TrustAnchorSet $set): TrustAnchorSet => new TrustAnchorSet(TrustAnchorSet::MANIFEST, $set->anchors, windows: $set->windows, reasons: $set->reasons),
+            array_filter($operator->anchorSets, static fn (TrustAnchorSet $set): bool => $set->kind === TrustAnchorSet::TSA),
+        ));
+
+        return new TrustSettings($operator->trustAnchors, [], [self::OID_EKU_TIME_STAMPING], $operator->verifyTrust, $sets);
     }
 
     /**
@@ -12193,6 +12595,9 @@ final readonly class Certificate
 
     public string $serialDecimal;
 
+    /** The serial in lower-case hex without leading zeros, as crJSON writes it (SPEC-076 AC2). */
+    public string $serialHex;
+
     /** RFC 5280 §4.1.2.2: the serial number is a positive integer (SPEC-015 amendment 7). */
     public bool $serialPositive;
 
@@ -12270,6 +12675,7 @@ final readonly class Certificate
             throw new TrustException(sprintf('a certificate serial number of %d octets; this verifier reads at most %d (RFC 5280 allows 20)', Bytes::decimalOctets($serialHex), Bytes::MAX_DECIMAL_OCTETS));
         }
         $this->serialDecimal = self::hexToDecimal($serialHex);
+        $this->serialHex = ltrim(strtolower($serialHex), '0') ?: '0';
         $this->serialPositive = $this->serialDecimal !== '0' && ! str_starts_with($this->serialDecimal, '-');
     }
 
@@ -12847,9 +13253,10 @@ final readonly class CertificateProfileCheck
     /**
      * @param  int|null  $at  the epoch to judge validity at — a trusted timestamp's time (SPEC-017); null = now
      * @param  string|null  $reason  why $at is what it is, for the \`.expired\` message ("no timestamp", "the timestamp's TSA is not trusted", …)
+     * @param  string|null  $timeName  what $at is, for the same message, where it is neither now nor a timestamp's (SPEC-073)
      * @return list<ValidationStatus>
      */
-    public function check(Manifest $manifest, ?TrustSettings $settings = null, ?int $at = null, ?string $reason = null): array
+    public function check(Manifest $manifest, ?TrustSettings $settings = null, ?int $at = null, ?string $reason = null, ?string $timeName = null): array
     {
         $url = sprintf('self#jumbf=/c2pa/%s/c2pa.signature', $manifest->label);
         try {
@@ -12864,26 +13271,27 @@ final readonly class CertificateProfileCheck
             return [new ValidationStatus(StatusCode::SigningCredentialInvalid, $url, sprintf('the signing certificate could not be read: %s', $e->getMessage()))];
         }
 
-        return $this->checkLeaf($leaf, $settings, $at, $url, $this->acceptedEkus($certificates, $settings), $reason);
+        return $this->checkLeaf($leaf, $settings, $at, $url, $this->acceptedEkus($certificates, $settings, $at), $reason, timeName: $timeName);
     }
 
     /**
      * The EKUs accepted for this chain: the built-in list, the top-level
      * \`trust_config\`, and the \`trust_config\` of every "manifest" entry the
-     * chain reaches — never another entry's (C2PA 2.4 §14.4.1; SPEC-031 AC8).
+     * chain reaches — never another entry's (C2PA 2.4 §14.4.1; SPEC-031 AC8). Reached as the trust
+     * check reaches it: at $at, with the entry's dates (SPEC-079 amendment 2).
      *
      * @param  non-empty-list<Certificate>  $chain
+     * @param  int|null  $at  null = now
      * @return list<string>
      */
-    private function acceptedEkus(array $chain, ?TrustSettings $settings): array
+    public function acceptedEkus(array $chain, ?TrustSettings $settings, ?int $at = null): array
     {
         $accepted = [...self::BUILT_IN_EKUS, ...($settings === null ? [] : $settings->trustConfig)];
         foreach ($settings === null ? [] : $settings->anchorSets as $set) {
             if ($set->kind !== TrustAnchorSet::MANIFEST || $set->trustConfig === []) {
                 continue;
             }
-            $reached = (new ChainCheck)->checkCertificates($chain, new TrustSettings($set->anchors, $set->allowedList), '');
-            if (($reached[0] ?? null)?->code === StatusCode::SigningCredentialTrusted) {
+            if (ChainCheck::reaches($chain, $set, $at)) {
                 $accepted = [...$accepted, ...$set->trustConfig];
             }
         }
@@ -12897,9 +13305,10 @@ final readonly class CertificateProfileCheck
      * @param  list<string>|null  $ekus  non-null replaces the accepted EKU list (built-in + trust_config) — SPEC-017: a TSA needs timeStamping alone
      * @param  string|null  $reason  why $at is what it is, for the \`.expired\` message
      * @param  bool  $manifestSigner  false for a TSA: §14.5.1.1 asks digitalSignature of a manifest signer only
+     * @param  string|null  $timeName  what $at is, where it is neither now nor a timestamp's (SPEC-073)
      * @return list<ValidationStatus>
      */
-    public function checkLeaf(Certificate $leaf, ?TrustSettings $settings, ?int $at, string $url, ?array $ekus = null, ?string $reason = null, bool $manifestSigner = true): array
+    public function checkLeaf(Certificate $leaf, ?TrustSettings $settings, ?int $at, string $url, ?array $ekus = null, ?string $reason = null, bool $manifestSigner = true, ?string $timeName = null): array
     {
         $faults = [];
         $invalid = static fn (string $reason): ValidationStatus => new ValidationStatus(StatusCode::SigningCredentialInvalid, $url, 'signing certificate invalid: '.$reason);
@@ -12925,7 +13334,7 @@ final readonly class CertificateProfileCheck
                 gmdate('Y-m-d\\TH:i:s\\Z', $time),
                 gmdate('Y-m-d\\TH:i:s\\Z', $leaf->validFrom),
                 gmdate('Y-m-d\\TH:i:s\\Z', $leaf->validTo),
-                $at === null ? 'now' : "the timestamp's time",
+                $timeName ?? ($at === null ? 'now' : "the timestamp's time"),
                 $reason ?? ($at === null ? 'no timestamp' : 'from a trusted timestamp'),
             ));
         }
@@ -13071,7 +13480,7 @@ final readonly class ChainCheck
 
         $statuses = $this->checkCertificates($chain, $settings, $url, $at, $cose->unprotected);
         $statuses = $this->timeStampingSigner($chain, $settings, $url, $at, $statuses);
-        $note = self::kindNote($settings, TrustAnchorSet::MANIFEST, $chain);
+        $note = self::kindNote($settings, TrustAnchorSet::MANIFEST, $chain, $at);
         if ($note === '') {
             return $statuses;
         }
@@ -13146,7 +13555,7 @@ final readonly class ChainCheck
                 // depth = links walked from the leaf to the anchor: the leaf itself an anchor is 0, the leaf signed by one is 1
                 if ($current->sameAs($anchor)) {
                     $path = array_reverse(array_slice($chain, 0, $depth + 1));
-                    $fault = self::pathFault($path) ?? (new OcspCheck)->revokedCa($unprotected, $path, $at);
+                    $fault = self::listedFault($settings, $anchor, $at) ?? self::pathFault($path) ?? (new OcspCheck)->revokedCa($unprotected, $path, $at);
                     if ($fault !== null) {
                         return [new ValidationStatus(StatusCode::SigningCredentialUntrusted, $url, sprintf('signing certificate untrusted: %s', $fault))];
                     }
@@ -13155,7 +13564,7 @@ final readonly class ChainCheck
                 }
                 if ($current->issuer === $anchor->subject && $current->signedBy($anchor)) {
                     // the anchor issued $current: $depth intermediates lie between it and the leaf
-                    $fault = self::issuerFault($anchor, $current, $depth, $at, 'trust anchor');
+                    $fault = self::issuerFault($anchor, $current, $depth, $at, 'trust anchor') ?? self::listedFault($settings, $anchor, $at);
                     if ($fault !== null) {
                         $anchorFault ??= $fault;
 
@@ -13234,21 +13643,81 @@ final readonly class ChainCheck
     }
 
     /**
+     * Why a reached anchor does not count at $at under its list's dates (C2PA 2.4 §14.4.1, §15.7;
+     * SPEC-079), or null when it counts: an entry without dates (a PEM bundle, the legacy list), or a
+     * dated entry with a trusted stretch around $at.
+     */
+    private static function listedFault(TrustSettings $settings, Certificate $anchor, int $at): ?string
+    {
+        foreach ($settings->trustAnchors as $legacy) {
+            if (hash_equals($legacy->sha256, $anchor->sha256)) {
+                return null;
+            }
+        }
+        $hash = bin2hex($anchor->sha256);
+        $dated = false;
+        $stretches = [];
+        $reason = null;
+        foreach ($settings->anchorSets as $set) {
+            if ($set->kind !== TrustAnchorSet::MANIFEST || array_filter($set->anchors, static fn (Certificate $a): bool => hash_equals($a->sha256, $anchor->sha256)) === []) {
+                continue;
+            }
+            if (! array_key_exists($hash, $set->windows)) {
+                return null;
+            }
+            foreach ($set->windows[$hash] as $window) {
+                if ($at >= $window['from'] && ($window['until'] === null || $at < $window['until'])) {
+                    return null;
+                }
+            }
+            $dated = true;
+            $stretches = [...$stretches, ...$set->windows[$hash]];
+            $reason ??= $set->reasons[$hash] ?? null;
+        }
+        if (! $dated) {
+            return null;
+        }
+        $when = static fn (int $t): string => gmdate('Y-m-d\\TH:i:s\\Z', $t);
+
+        return sprintf(
+            'the trust list does not trust the anchor %s at %s: %s (C2PA 2.4 §14.4.1)',
+            $anchor->subjectCn(),
+            $when($at),
+            $reason ?? 'it is trusted '.implode(', and ', array_map(static fn (array $w): string => ($w['from'] === PHP_INT_MIN ? '' : 'from '.$when($w['from']).' ').($w['until'] === null ? 'on' : 'until '.$when($w['until'])), $stretches)).' and untrusted otherwise',
+        );
+    }
+
+    /**
+     * Whether the chain reaches one entry as the trust check would reach it: at $at, with the entry's
+     * allowed list and its dates (SPEC-079 amendment 2), whatever the entry's kind.
+     *
+     * @param  non-empty-list<Certificate>  $chain  leaf first
+     * @param  int|null  $at  null = now
+     */
+    public static function reaches(array $chain, TrustAnchorSet $set, ?int $at): bool
+    {
+        $alone = new TrustAnchorSet(TrustAnchorSet::MANIFEST, $set->anchors, $set->allowedList, windows: $set->windows, reasons: $set->reasons);
+        $outcome = (new self)->checkCertificates($chain, new TrustSettings([], [], [], true, [$alone]), '', $at);
+
+        return ($outcome[0] ?? null)?->code === StatusCode::SigningCredentialTrusted;
+    }
+
+    /**
      * For an untrusted outcome: a sentence naming the entries of another
      * kind that this chain *would* have reached, which were deliberately not
      * used — or '' when no such entry exists (SPEC-031 AC6).
      *
      * @param  non-empty-list<Certificate>  $chain  leaf first
+     * @param  int|null  $at  the time the trust check used; null = now
      */
-    public static function kindNote(TrustSettings $settings, string $kind, array $chain): string
+    public static function kindNote(TrustSettings $settings, string $kind, array $chain, ?int $at = null): string
     {
         $reached = [];
         foreach ($settings->anchorSets as $i => $set) {
             if ($set->kind === $kind) {
                 continue;
             }
-            $outcome = (new ChainCheck)->checkCertificates($chain, new TrustSettings($set->anchors, $set->allowedList), '');
-            if (($outcome[0] ?? null)?->code === StatusCode::SigningCredentialTrusted) {
+            if (self::reaches($chain, $set, $at)) {
                 $reached[] = sprintf('trust.anchors[%d] ("%s")', $i, $set->kind);
             }
         }
@@ -14210,6 +14679,11 @@ final readonly class TrustAnchorSet
      * @param  list<Certificate>  $anchors
      * @param  list<Certificate>  $allowedList  only ever non-empty for a "manifest" entry (§14.4.3)
      * @param  list<string>  $trustConfig  EKU OIDs for chains that reach this entry
+     * @param  array<string, list<array{from: int, until: int|null}>>  $windows  SPEC-079: by an anchor's SHA-256 (hex), the
+     *                                                                           stretches its list trusts it in; an anchor absent
+     *                                                                           here has no dates (a PEM bundle); an empty list
+     *                                                                           means never
+     * @param  array<string, string>  $reasons  SPEC-079: by SHA-256 (hex), why an anchor could not be placed on a timeline
      */
     public function __construct(
         public string $kind,
@@ -14217,6 +14691,8 @@ final readonly class TrustAnchorSet
         public array $allowedList = [],
         public array $trustConfig = [],
         public ?string $uri = null,
+        public array $windows = [],
+        public array $reasons = [],
     ) {
         if (! in_array($kind, self::KINDS, true)) {
             throw new TrustException(sprintf('trust_kind %s is not one of %s', $kind, implode(', ', self::KINDS)));
@@ -14391,6 +14867,291 @@ final readonly class TrustSettings
     }
 
     /**
+     * The conformance programme's two lists as they are published, PEM bundles (SPEC-077): the
+     * signer list as one "manifest" entry, the TSA list as one "tsa" entry (SPEC-031), so that an
+     * anchor of one list never vouches for the other's kind (C2PA 2.4 §14.4.1, §14.4.2). Either
+     * may be left out; a list given without a certificate is refused, since it would make every
+     * signer untrusted without a word.
+     *
+     * @throws TrustException
+     */
+    public static function fromTrustLists(?string $signers, ?string $tsas = null, int $maxCertificates = self::DEFAULT_MAX_CERTIFICATES): self
+    {
+        if ($signers === null && $tsas === null) {
+            throw new TrustException('no list given: a signer trust list, a TSA trust list, or both');
+        }
+        $sets = [];
+        foreach ([[TrustAnchorSet::MANIFEST, $signers, 'the trust list'], [TrustAnchorSet::TSA, $tsas, 'the TSA trust list']] as [$kind, $pem, $what]) {
+            if ($pem === null) {
+                continue;
+            }
+            if (str_starts_with($pem, "\\u{FEFF}")) {
+                $pem = substr($pem, 3);   // a byte order mark: not part of the list (SPEC-079 amendment 2)
+            }
+            if (str_starts_with(ltrim($pem), '{')) {
+                $sets[] = self::fromLote($pem, $kind, $what, $maxCertificates);   // SPEC-079: the programme's JSON form
+
+                continue;
+            }
+            $certificates = str_contains($pem, '-----BEGIN ') ? self::certificatesFromPem($pem, $what, $maxCertificates) : [];
+            if ($certificates === []) {
+                throw new TrustException(sprintf('%s holds no certificate', $what));
+            }
+            $sets[] = new TrustAnchorSet($kind, $certificates);
+        }
+
+        return new self([], [], [], true, $sets);
+    }
+
+    private const string LOTE_TRUSTED = 'http://c2pa.org/conformance/trust-list/trusted';
+
+    private const string LOTE_UNTRUSTED = 'http://c2pa.org/conformance/trust-list/untrusted';
+
+    /**
+     * A list in ETSI TS 119 602's JSON form (LoTE), as the programme publishes it (SPEC-079). Each
+     * service's statuses, the current one and its ServiceHistory, form a timeline, each status lasting
+     * until the next begins; only an \`untrusted\` stretch limits the anchor (amendment 1; C2PA 2.4
+     * §14.4.1's notAfter). A service whose entry could hide a removal is kept, never trusted, with
+     * its reason.
+     */
+    private static function fromLote(string $json, string $kind, string $what, int $max): TrustAnchorSet
+    {
+        try {
+            $decoded = json_decode($json, true, 64, JSON_THROW_ON_ERROR);
+        } catch (\\JsonException $e) {
+            throw new TrustException(sprintf('%s is not valid JSON: %s', $what, $e->getMessage()), 0, $e);
+        }
+        $lote = is_array($decoded) ? ($decoded['LoTE'] ?? null) : null;
+        if (! is_array($lote) || ! is_array($lote['TrustedEntitiesList'] ?? null)) {
+            throw new TrustException(sprintf('%s is JSON but not a List of Trusted Entities (ETSI TS 119 602 LoTE)', $what));
+        }
+        $anchors = [];
+        $timelines = [];   // by hash: null (no dates), or the stretches every service holding it trusts
+        $reasons = [];
+        $read = 0;
+        foreach ($lote['TrustedEntitiesList'] as $e => $entity) {
+            $where = sprintf('%s: entity %d', $what, (int) $e + 1);
+            if (! is_array($entity)) {
+                throw new TrustException(sprintf('%s is not an object', $where));
+            }
+            $services = $entity['TrustedEntityServices'] ?? [];
+            if (! is_array($services)) {
+                throw new TrustException(sprintf('%s: TrustedEntityServices is not a list', $where));   // could hide a removal (amendment 2)
+            }
+            foreach ($services as $s => $service) {
+                $at = sprintf('%s, service %d', $where, (int) $s + 1);
+                $information = is_array($service) ? ($service['ServiceInformation'] ?? []) : null;
+                if (! is_array($information)) {
+                    throw new TrustException(sprintf('%s: %s is not an object', $at, is_array($service) ? 'ServiceInformation' : 'the service'));
+                }
+                $certificates = self::loteCertificates($information, $at, $max - $read);
+                $read += count($certificates);
+                $history = $service['ServiceHistory'] ?? [];
+                [$stretches, $reason] = is_array($history)
+                    ? self::loteTimeline($information, $history, $certificates, $at, $max - $read, $read)
+                    : [[], 'its ServiceHistory is not a list'];
+                foreach ($certificates as $certificate) {
+                    $hash = bin2hex($certificate->sha256);
+                    if (! array_key_exists($hash, $timelines)) {
+                        $anchors[] = $certificate;   // once each, however many services hold it
+                        $timelines[$hash] = $stretches;
+                    } elseif ($stretches !== null) {
+                        // in more than one service: trusted only where every one of them trusts it (amendment 2)
+                        $timelines[$hash] = $timelines[$hash] === null ? $stretches : self::bothTrust($timelines[$hash], $stretches);
+                    }
+                    if ($reason !== null) {
+                        $reasons[$hash] ??= $reason;
+                    } elseif ($timelines[$hash] === [] && ! isset($reasons[$hash])) {
+                        $reasons[$hash] = 'the services that hold it never trust it at the same time';
+                    }
+                }
+            }
+        }
+        $windows = array_filter($timelines, static fn (?array $w): bool => $w !== null);
+        if (count(array_filter($windows, static fn (array $w): bool => $w === [])) === count($anchors)) {
+            throw new TrustException(sprintf('%s holds no usable anchor: no service is trusted at any time', $what));
+        }
+
+        return new TrustAnchorSet($kind, $anchors, windows: $windows, reasons: $reasons);
+    }
+
+    /**
+     * @param  array<mixed>  $information
+     * @return list<Certificate>
+     */
+    private static function loteCertificates(array $information, string $at, int $room): array
+    {
+        $identity = is_array($information['ServiceDigitalIdentity'] ?? null) ? $information['ServiceDigitalIdentity'] : [];
+        $certificates = [];
+        foreach (is_array($identity['X509Certificates'] ?? null) ? $identity['X509Certificates'] : [] as $i => $entry) {
+            $value = is_array($entry) && is_string($entry['val'] ?? null) ? $entry['val'] : null;
+            $der = $value === null ? false : base64_decode($value, true);
+            if ($der === false || $der === '') {
+                throw new TrustException(sprintf('%s, certificate %d is not base64', $at, (int) $i + 1));
+            }
+            if (count($certificates) >= $room) {
+                throw new TrustException(sprintf('%s: the list holds more certificates than this verifier reads', $at));
+            }
+            try {
+                $certificates[] = Certificate::fromDer($der);
+            } catch (TrustException $e) {
+                throw new TrustException(sprintf('%s, certificate %d: %s', $at, (int) $i + 1, $e->getMessage()), 0, $e);
+            }
+        }
+
+        return $certificates;
+    }
+
+    /**
+     * A service's trusted stretches (SPEC-079 amendment 1): every time except inside an \`untrusted\`
+     * stretch, which runs from its status's starting time to the next \`trusted\` status's, or for good.
+     * A \`trusted\` status bounds nothing by itself. Statuses are ordered with their fractions of a
+     * second, a \`trusted\` one before an \`untrusted\` one at the same instant (amendment 2); an
+     * \`untrusted\` stretch starts at the second its time falls in and ends at the next whole second
+     * after its end, so rounding never trusts more. Null: no \`untrusted\` status, so no dates, as a
+     * PEM bundle. An empty list and a reason: an entry that could hide the end of trust.
+     *
+     * @param  array<mixed>  $information
+     * @param  array<mixed>  $history
+     * @param  list<Certificate>  $certificates
+     * @param  int  $read  certificates read so far, a history's counted with them (amendment 2)
+     * @return array{0: list<array{from: int, until: int|null}>|null, 1: string|null}
+     */
+    private static function loteTimeline(array $information, array $history, array $certificates, string $at, int $room, int &$read): array
+    {
+        $own = array_map(static fn (Certificate $c): string => $c->sha256, $certificates);
+        $records = [];
+        foreach ([$information, ...array_values($history)] as $n => $record) {
+            if (! is_array($record)) {
+                return [[], 'a history entry is not an object'];
+            }
+            if ($n > 0 && is_array($record['ServiceDigitalIdentity'] ?? null)) {
+                $listed = $record['ServiceDigitalIdentity']['X509Certificates'] ?? [];
+                if (is_array($listed) && count($listed) > $room) {
+                    throw new TrustException(sprintf('%s: the list holds more certificates than this verifier reads', $at));
+                }
+                try {
+                    $theirs = array_map(static fn (Certificate $c): string => $c->sha256, self::loteCertificates($record, 'history', $room));
+                } catch (TrustException) {
+                    return [[], 'a history entry names certificates that cannot be read'];
+                }
+                $room -= count($theirs);
+                $read += count($theirs);
+                if ($theirs !== $own) {
+                    return [[], 'a history entry names other certificates than the service'];
+                }
+            }
+            $status = $record['ServiceStatus'] ?? null;
+            if ($status === null || $status === '') {
+                continue;   // no status: nothing said, read as the PEM bundle reads it (the NETLOCK entries)
+            }
+            if ($status !== self::LOTE_TRUSTED && $status !== self::LOTE_UNTRUSTED) {
+                return [[], sprintf('the status %s is neither trusted nor untrusted', is_string($status) ? $status : get_debug_type($status))];
+            }
+            $time = $record['StatusStartingTime'] ?? null;
+            $instant = is_string($time) && $time !== '' ? self::rfc3339($time) : null;
+            if ($instant === null) {
+                if ($status === self::LOTE_TRUSTED) {
+                    continue;   // a trusted status bounds nothing, so its time is not needed
+                }
+
+                return [[], $time === null || $time === ''
+                    ? 'the list untrusts it with no starting time'
+                    : sprintf('the list untrusts it from %s, which is not an RFC 3339 date-time', is_string($time) ? $time : get_debug_type($time))];
+            }
+            $records[] = [$instant[0], $instant[1], $status === self::LOTE_UNTRUSTED];
+        }
+        if (array_filter($records, static fn (array $r): bool => $r[2]) === []) {
+            return [null, null];
+        }
+        // by instant; at one instant a trusted status first, so the untrusted one is what follows
+        usort($records, static fn (array $a, array $b): int => [$a[0], $a[1], $a[2]] <=> [$b[0], $b[1], $b[2]]);
+        $untrusted = [];
+        foreach ($records as $i => [$second, , $isUntrusted]) {
+            if (! $isUntrusted) {
+                continue;
+            }
+            $until = null;
+            foreach (array_slice($records, $i + 1) as [$next, $fraction, $nextUntrusted]) {
+                if (! $nextUntrusted) {
+                    $until = $next + (trim($fraction, '0') === '' ? 0 : 1);
+
+                    break;
+                }
+            }
+            $untrusted[] = ['from' => $second, 'until' => $until];
+        }
+
+        return [self::outside($untrusted), null];
+    }
+
+    /**
+     * Every time outside the given stretches, as stretches in order.
+     *
+     * @param  list<array{from: int, until: int|null}>  $removed
+     * @return list<array{from: int, until: int|null}>
+     */
+    private static function outside(array $removed): array
+    {
+        usort($removed, static fn (array $a, array $b): int => $a['from'] <=> $b['from']);
+        $stretches = [];
+        $start = PHP_INT_MIN;
+        foreach ($removed as ['from' => $from, 'until' => $until]) {
+            if ($from > $start) {
+                $stretches[] = ['from' => $start, 'until' => $from];
+            }
+            if ($until === null) {
+                return $stretches;
+            }
+            $start = max($start, $until);
+        }
+        $stretches[] = ['from' => $start, 'until' => null];
+
+        return $stretches;
+    }
+
+    /**
+     * The times both timelines trust.
+     *
+     * @param  list<array{from: int, until: int|null}>  $a
+     * @param  list<array{from: int, until: int|null}>  $b
+     * @return list<array{from: int, until: int|null}>
+     */
+    private static function bothTrust(array $a, array $b): array
+    {
+        $both = [];
+        foreach ($a as $x) {
+            foreach ($b as $y) {
+                $from = max($x['from'], $y['from']);
+                $until = $x['until'] === null ? $y['until'] : ($y['until'] === null ? $x['until'] : min($x['until'], $y['until']));
+                if ($until === null || $from < $until) {
+                    $both[] = ['from' => $from, 'until' => $until];
+                }
+            }
+        }
+        usort($both, static fn (array $p, array $q): int => $p['from'] <=> $q['from']);
+
+        return $both;
+    }
+
+    /**
+     * An RFC 3339 date-time as whole seconds since the epoch (a fraction rounded down) and its
+     * fraction's digits, padded to eighteen so they order as numbers, or null.
+     *
+     * @return array{int, string}|null
+     */
+    private static function rfc3339(string $value): ?array
+    {
+        if (preg_match('/^(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})(?:\\.(\\d+))?(Z|[+-]\\d{2}:\\d{2})$/D', $value, $m) !== 1
+            || ! checkdate((int) $m[2], (int) $m[3], (int) $m[1]) || (int) $m[4] > 23 || (int) $m[5] > 59 || (int) $m[6] > 59) {
+            return null;
+        }
+        $parsed = \\DateTimeImmutable::createFromFormat('!Y-m-d\\\\TH:i:sP', sprintf('%s-%s-%sT%s:%s:%s%s', $m[1], $m[2], $m[3], $m[4], $m[5], $m[6], $m[8] === 'Z' ? '+00:00' : $m[8]));
+
+        return $parsed === false ? null : [$parsed->getTimestamp(), substr(str_pad($m[7], 18, '0'), 0, 18)];
+    }
+
+    /**
      * Every \`CERTIFICATE\` block of a PEM string as a Certificate, in order.
      * A block of any other kind (a key, a request) is refused without
      * echoing its contents; a block OpenSSL refuses names its position.
@@ -14482,6 +15243,261 @@ final readonly class TrustSettings
         return $value;
     }
 }
+`,"src/Verifier/CrJsonDocument.php":`<?php
+
+declare(strict_types=1);
+
+namespace Provemark\\C2paVerifier\\Verifier;
+
+use Provemark\\C2paVerifier\\Cbor\\CborDecoder;
+use Provemark\\C2paVerifier\\Cbor\\CborException;
+use Provemark\\C2paVerifier\\Cbor\\CrJsonValue;
+use Provemark\\C2paVerifier\\Cbor\\CrJsonValueException;
+use Provemark\\C2paVerifier\\Cose\\CoseException;
+use Provemark\\C2paVerifier\\Cose\\CoseSign1;
+use Provemark\\C2paVerifier\\Manifest\\Assertion;
+use Provemark\\C2paVerifier\\Manifest\\EmbeddedFile;
+use Provemark\\C2paVerifier\\Manifest\\Manifest;
+use Provemark\\C2paVerifier\\Manifest\\ManifestException;
+use Provemark\\C2paVerifier\\Manifest\\ManifestGraph;
+use Provemark\\C2paVerifier\\Manifest\\ManifestStore;
+use Provemark\\C2paVerifier\\Timestamp\\TimestampAssertions;
+use Provemark\\C2paVerifier\\Timestamp\\TimestampCheck;
+use Provemark\\C2paVerifier\\Trust\\Certificate;
+use Provemark\\C2paVerifier\\Trust\\TrustException;
+
+/**
+ * A report as a crJSON document (C2PA 2.4 crJSON §3; SPEC-075): every
+ * manifest of the store, the active one first, its claim and assertions
+ * mapped by Table 1 (SPEC-074), and its own validation results. Nothing is
+ * checked here: the statuses are the report's, placed where crJSON wants
+ * them. The signature is SPEC-076's: the algorithm by its C2PA name, the leaf
+ * certificate, and the time-stamp token as read.
+ *
+ * @internal SPEC-025: not part of the public API. It may change, move or be
+ * removed in any release; the contract is the nine classes named in the README.
+ */
+final class CrJsonDocument
+{
+    public const string SPEC_VERSION = '2.4.0';
+
+    /** COSE algorithm identifiers by the names crJSON §3.7 uses (C2PA 2.4 §13.2.1; SPEC-076 AC1). */
+    private const array ALGORITHMS = [-7 => 'ES256', -35 => 'ES384', -36 => 'ES512', -37 => 'PS256', -38 => 'PS384', -39 => 'PS512', -8 => 'Ed25519'];
+
+    /** The schema's distinguishedName keys, by OpenSSL's short names (SPEC-076 AC3). */
+    private const array DN_KEYS = ['C' => 'C', 'ST' => 'ST', 'L' => 'L', 'O' => 'O', 'OU' => 'OU', 'CN' => 'CN', 'emailAddress' => 'E', 'organizationIdentifier' => '2.5.4.97'];
+
+    /** The form of the crJSON page's minimal example, and of c2pa-rs (SPEC-075 AC1). */
+    private const array CONTEXT = ['@vocab' => 'https://c2pa.org/crjson', 'extras' => 'https://c2pa.org/crjson/extras'];
+
+    /** @return array<string, mixed> the document, ready for json_encode with JSON_PRESERVE_ZERO_FRACTION */
+    public static function of(VerificationReport $report): array
+    {
+        $document = [
+            '@context' => self::CONTEXT,
+            'jsonGenerator' => ['name' => 'provemark/c2pa-verifier', 'version' => Verifier::VERSION],
+            'manifests' => [],
+        ];
+        $store = $report->store;
+        if ($store === null) {
+            return $document;   // AC8: crJSON describes a store; the report's failure goes elsewhere
+        }
+
+        $time = gmdate('Y-m-d\\TH:i:s\\Z', ($report->validationTime ?? new \\DateTimeImmutable)->getTimestamp());
+        $results = $report->result->toArray()['validation_results'];
+        $empty = ['success' => [], 'informational' => [], 'failure' => []];
+        /** @var array{success: list<mixed>, informational: list<mixed>, failure: list<mixed>} $active */
+        $active = is_array($results) && is_array($results['activeManifest'] ?? null) ? $results['activeManifest'] : $empty;
+        /** @var list<array{ingredientAssertionURI: string, validationDeltas: array<string, list<mixed>>}> $deltas */
+        $deltas = is_array($results) && is_array($results['ingredientDeltas'] ?? null) ? $results['ingredientDeltas'] : [];
+
+        // each delta goes to the manifest whose label its ingredient assertion's URI names (§3.8)
+        $held = [];
+        $byUri = [];
+        foreach ($deltas as $delta) {
+            $byUri[$delta['ingredientAssertionURI']] = $delta['validationDeltas'];
+            if (preg_match('#^self\\#jumbf=/c2pa/([^/]+)/#', $delta['ingredientAssertionURI'], $m) === 1) {
+                $held[$m[1]][] = $delta;
+            }
+        }
+        $own = self::ownResults($store, $byUri);
+        $assertions = TimestampAssertions::collect($store);
+
+        foreach (array_reverse($store->manifests, true) as $label => $manifest) {
+            $codes = $manifest === $store->active ? $active : ($own[$label] ?? $empty);
+            $document['manifests'][] = [
+                'label' => (string) $label,
+                ($manifest->claim->version === 2 ? 'claim.v2' : 'claim') => self::claim($manifest),
+                'assertions' => self::assertions($manifest),
+                'signature' => self::signature($manifest, $assertions, $codes),
+                'validationResults' => $codes + ['specVersion' => self::SPEC_VERSION, 'validationTime' => $time],
+            ] + (isset($held[$label]) ? ['ingredientDeltas' => $held[$label]] : []);
+        }
+
+        return $document;
+    }
+
+    /**
+     * §3.7: the claim signature, or {} where it cannot be read (SPEC-076 AC5).
+     *
+     * @param  array<string, list<mixed>>  $results  the manifest's own validation results, as written below
+     * @return array<string, mixed>|\\stdClass
+     */
+    private static function signature(Manifest $manifest, TimestampAssertions $assertions, array $results = []): array|\\stdClass
+    {
+        try {
+            $cose = CoseSign1::ofManifest($manifest);
+            $leaf = Certificate::chainOf($cose)[0] ?? null;
+        } catch (CoseException|TrustException) {
+            return new \\stdClass;
+        }
+        if ($leaf === null) {
+            return new \\stdClass;
+        }
+        $signature = ['algorithm' => self::ALGORITHMS[$cose->alg] ?? 'Unknown', 'certificateInfo' => self::certificateInfo($leaf)];
+        $judged = null;
+        foreach ($results['success'] ?? [] as $status) {
+            if (is_array($status) && ($status['code'] ?? null) === 'timeStamp.trusted' && is_string($status['url'] ?? null)) {
+                $judged = $status['url'];   // the token the verdict took its time from (SPEC-076 amendment 1)
+            }
+        }
+        $token = (new TimestampCheck)->readToken($manifest, $assertions, $judged);
+        if ($token !== null) {
+            $signature['timeStampInfo'] = ['timestamp' => gmdate('Y-m-d\\TH:i:s\\Z', $token[0]), 'certificateInfo' => self::certificateInfo($token[1])];
+        }
+
+        return $signature;
+    }
+
+    /** @return array{serialNumber: string, issuer: array<string, string>, subject: array<string, string>, validity: array{notBefore: string, notAfter: string}} */
+    private static function certificateInfo(Certificate $certificate): array
+    {
+        return [
+            'serialNumber' => $certificate->serialHex,
+            'issuer' => self::distinguishedName($certificate->issuer),
+            'subject' => self::distinguishedName($certificate->subject),
+            'validity' => ['notBefore' => gmdate('Y-m-d\\TH:i:s\\Z', $certificate->validFrom), 'notAfter' => gmdate('Y-m-d\\TH:i:s\\Z', $certificate->validTo)],
+        ];
+    }
+
+    /**
+     * A name as the schema's distinguishedName: its eight keys only, in the certificate's order,
+     * a repeated attribute's last value (as c2pa-rs writes it; SPEC-076 AC3).
+     *
+     * @param  array<string, mixed>  $name  openssl_x509_parse()'s subject or issuer
+     * @return array<string, string>
+     */
+    public static function distinguishedName(array $name): array
+    {
+        $out = [];
+        foreach ($name as $attribute => $value) {
+            $key = self::DN_KEYS[$attribute] ?? null;
+            $last = is_array($value) ? end($value) : $value;
+            if ($key !== null && is_string($last)) {
+                $out[$key] = $last;
+            }
+        }
+
+        return $out;
+    }
+
+    /**
+     * An ingredient manifest's own results: the delta of the ingredient assertion that names it
+     * (step 370: 31 of 31 in c2pa-rs's crJSON); a manifest named by none has none.
+     *
+     * @param  array<string, array<string, list<mixed>>>  $byUri
+     * @return array<string, array<string, list<mixed>>>
+     */
+    private static function ownResults(ManifestStore $store, array $byUri): array
+    {
+        try {
+            $graph = ManifestGraph::fromStore($store);
+        } catch (ManifestException) {
+            return [];   // the report says why; no delta could have been placed either
+        }
+
+        return self::ownResultsOf($graph, $byUri);
+    }
+
+    /**
+     * The delta of the reference the checker scoped each manifest's own statuses under: the first
+     * in walk order (\`IngredientManifestCheck::check()\`; SPEC-075 amendment 3). A manifest whose
+     * first reference has no delta has none, whatever another reference holds.
+     *
+     * @param  array<string, array<string, list<mixed>>>  $byUri
+     * @return array<string, array<string, list<mixed>>>
+     */
+    public static function ownResultsOf(ManifestGraph $graph, array $byUri): array
+    {
+        $own = [];
+        foreach ($graph->referenced as $label => $urls) {
+            if (isset($urls[0], $byUri[$urls[0]])) {
+                $own[(string) $label] = $byUri[$urls[0]];
+            }
+        }
+
+        return $own;
+    }
+
+    /** §3.5: the claim's own CBOR, faithfully; an absent gathered or redacted list written as []. */
+    private static function claim(Manifest $manifest): mixed
+    {
+        try {
+            $claim = CrJsonValue::of((new CborDecoder(keepMaps: true))->decode($manifest->claimBytes()));
+        } catch (CborException|CrJsonValueException) {
+            return new \\stdClass;
+        }
+        if (! $claim instanceof \\stdClass) {
+            return $claim;
+        }
+        $lists = $manifest->claim->version === 2 ? ['gathered_assertions', 'redacted_assertions'] : ['redacted_assertions'];
+        foreach ($lists as $list) {
+            $claim->{$list} ??= [];
+        }
+
+        return $claim;
+    }
+
+    /** §3.6: one key per assertion, in store order. */
+    private static function assertions(Manifest $manifest): \\stdClass
+    {
+        $hashes = [];
+        foreach ([...$manifest->claim->createdAssertions, ...$manifest->claim->gatheredAssertions] as $reference) {
+            $hashes[$manifest->absoluteUri($reference->url)] ??= $reference->hash->bytes;
+        }
+        $out = new \\stdClass;
+        foreach ($manifest->assertions as $assertion) {
+            $out->{$assertion->label} = self::assertion($manifest, $assertion, $hashes);
+        }
+
+        return $out;
+    }
+
+    /** @param  array<string, string>  $hashes  the claim's hash of each assertion, by absolute URI */
+    private static function assertion(Manifest $manifest, Assertion $assertion, array $hashes): mixed
+    {
+        if ($assertion->data instanceof EmbeddedFile) {
+            // the crJSON page is silent on embedded files; this is c2pa-rs's shape (SPEC-075 AC4)
+            $identifier = sprintf('self#jumbf=/c2pa/%s/c2pa.assertions/%s', $manifest->label, $assertion->label);
+
+            return ['format' => $assertion->data->format, 'identifier' => $identifier]
+                + (isset($hashes[$identifier]) ? ['hash' => "b64'".base64_encode($hashes[$identifier])."'"] : []);
+        }
+        $boxes = $assertion->box->contentBoxes();
+        if (count($boxes) !== 1) {
+            return new \\stdClass;
+        }
+        try {
+            return match ($boxes[0]->type) {
+                'cbor' => CrJsonValue::of((new CborDecoder(keepMaps: true))->decode($boxes[0]->data)),
+                'json' => CrJsonValue::fromJson($boxes[0]->data),   // §3.6.2: as it is, where it can be (SPEC-075 amendment 2)
+                default => new \\stdClass,   // §3.6.1: nothing to derive
+            };
+        } catch (CborException|CrJsonValueException) {
+            return new \\stdClass;
+        }
+    }
+}
 `,"src/Verifier/FragmentedVerifier.php":`<?php
 
 declare(strict_types=1);
@@ -14524,8 +15540,9 @@ final readonly class FragmentedVerifier
      * @param  iterable<string, resource>  $fragments  a name and an open stream, one
      *                                                 at a time. The name is what a status says when that fragment is the
      *                                                 one that failed, so it should be something a caller recognises.
+     * @param  \\DateTimeInterface|null  $validationTime  as Verifier::verify() takes it (SPEC-073)
      */
-    public function verify($init, iterable $fragments, ?TrustSettings $settings = null): VerificationReport
+    public function verify($init, iterable $fragments, ?TrustSettings $settings = null, ?\\DateTimeInterface $validationTime = null): VerificationReport
     {
         // Verifier already routes an ISOBMFF file to the BMFF hard binding; what it
         // does not know is that there are more files. Handing it a check that does
@@ -14536,7 +15553,7 @@ final readonly class FragmentedVerifier
         // could not be used. An earlier draft took one and quietly ignored it, which
         // PHPStan caught and which would have read as a seam that was not one.
         return (new Verifier(bmffHash: new BmffHashCheck(fragments: $fragments)))
-            ->verify($init, $settings);
+            ->verify($init, $settings, $validationTime);
     }
 
     /**
@@ -14629,7 +15646,7 @@ final readonly class IngredientManifestCheck
      *
      * @return list<ValidationStatus>
      */
-    public function check(ManifestStore $store, ManifestGraph $graph, ?TrustSettings $settings): array
+    public function check(ManifestStore $store, ManifestGraph $graph, ?TrustSettings $settings, ?int $now = null, ?int $clock = null): array
     {
         $byUrl = [];
         foreach ($graph->ingredients as $list) {
@@ -14647,7 +15664,7 @@ final readonly class IngredientManifestCheck
             }
             $manifest = $store->manifests[$label];
             $mine = $this->hash($manifest, $ingredient);
-            $mine = [...$mine, ...$this->manifest($manifest, $ingredient->url, $settings, ActionsCheck::claimLabels($store->manifests), $assertions, $responses)];
+            $mine = [...$mine, ...$this->manifest($manifest, $ingredient->url, $settings, ActionsCheck::claimLabels($store->manifests), $assertions, $responses, $now, $clock)];
             $statuses = [...$statuses, ...$mine];
         }
 
@@ -14748,20 +15765,21 @@ final readonly class IngredientManifestCheck
      * @param  list<array{0: string, 1: string}>  $responses  the store's certificate-status responses (SPEC-066)
      * @return list<ValidationStatus>
      */
-    private function manifest(Manifest $manifest, string $scope, ?TrustSettings $settings, array $storeLabels, ?TimestampAssertions $assertions = null, array $responses = []): array
+    private function manifest(Manifest $manifest, string $scope, ?TrustSettings $settings, array $storeLabels, ?TimestampAssertions $assertions = null, array $responses = [], ?int $now = null, ?int $clock = null): array
     {
         $timestamp = $this->timestamp->forManifest($manifest, $settings, $assertions ?? TimestampAssertions::none());
         $statuses = $timestamp->present ? $timestamp->statuses : [];
         $statuses = [...$statuses, ...$this->signature->check($manifest)];
 
-        $at = $timestamp->trustedTime();
+        $trusted = $timestamp->trustedTime();
+        $at = $trusted ?? $now ?? $clock;   // SPEC-073: a given validation time stands in for now; the clock read once (amendment 1)
         $reason = match (true) {
-            $at !== null => 'from the trusted timestamp',
+            $trusted !== null => 'from the trusted timestamp',
             ! $timestamp->present => 'no timestamp',
             $timestamp->time === null => 'the timestamp did not validate',
             default => "the timestamp's TSA is not trusted",
         };
-        $statuses = [...$statuses, ...$this->certificate->check($manifest, $settings, $at, $reason)];
+        $statuses = [...$statuses, ...$this->certificate->check($manifest, $settings, $at, $reason, $trusted === null ? ($now !== null ? 'the given validation time' : 'now') : null)];
 
         $trustSettings = $settings ?? new TrustSettings([], []);
         if ($trustSettings->verifyTrust) {
@@ -14809,20 +15827,26 @@ final readonly class IngredientManifestCheck
      * assertion's \`validationResults\` carries the parent's two \`ingredient.unknownProvenance\` entries,
      * and c2patool drops both). Only the active manifest and the manifests the graph reaches count
      * (amendment 6): a manifest nothing names is never validated, so what it recorded vouches for
-     * nothing.
+     * nothing. Each record carries the manifests that lie below the one holding it (amendment 3): a
+     * record speaks only for those, never for the manifest that holds it nor for one above or beside it
+     * (C2PA 2.4 §18.16.12.4: a statement by the manifest that takes the ingredient, about it).
      *
-     * @return list<string>
+     * @return list<array{key: string, below: list<string>}>
      */
     public static function recordedInStore(ManifestGraph $graph): array
     {
-        $keys = [];
+        $records = [];
         foreach ([$graph->active, ...array_map('strval', array_keys($graph->referenced))] as $label) {
+            $below = null;
             foreach ($graph->ingredients[$label] ?? [] as $ingredient) {
-                $keys = [...$keys, ...self::recorded($ingredient)];
+                foreach (self::recorded($ingredient) as $key) {
+                    $below ??= $graph->below($label);
+                    $records[$key."\\n".$label] = ['key' => $key, 'below' => $below];
+                }
             }
         }
 
-        return array_values(array_unique($keys));
+        return array_values($records);
     }
 
     /**
@@ -14898,6 +15922,27 @@ final readonly class IngredientManifestCheck
     }
 
     /**
+     * Whether a record matches the status and is held by a proper ancestor of the manifest the status is
+     * about (amendment 3). A status whose url names no manifest matches nothing.
+     *
+     * @param  list<array{key: string, below: list<string>}>  $recorded
+     */
+    private static function recordedBelow(ValidationStatus $status, array $recorded): bool
+    {
+        if (preg_match('#^self\\#jumbf=/?c2pa/([^/]+)#', $status->url, $m) !== 1) {
+            return false;
+        }
+        $key = $status->code->value.' '.$status->url;
+        foreach ($recorded as $record) {
+            if ($record['key'] === $key && in_array($m[1], $record['below'], true)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
      * Statuses with the failures the assertion recorded marked as acknowledged (SPEC-070; SPEC-021 AC4
      * dropped them, as c2pa-rs does): reported as informational, counted for nothing. A recorded success
      * or informational line is still dropped (SPEC-070 amendment 1): it hides nothing. Never one whose
@@ -14906,7 +15951,8 @@ final readonly class IngredientManifestCheck
      * record may excuse its fault. Those stay as they are.
      *
      * @param  list<ValidationStatus>  $statuses
-     * @param  list<string>  $recorded  the keys of self::recorded()
+     * @param  list<array{key: string, below: list<string>}>  $recorded  self::recordedInStore(): each record's key and the
+     *                                                                   manifests it may speak for (amendment 3)
      * @param  string|null  $bindingLabel  the binding manifest of an update manifest, null without one
      * @return list<ValidationStatus>
      */
@@ -14920,9 +15966,10 @@ final readonly class IngredientManifestCheck
             if ($status->ingredientUri === null
                 || $status->url === $active || str_starts_with($status->url, $active.'/')
                 || ($binding !== null && $status->code->isFailure() && ($status->url === $binding || str_starts_with($status->url, $binding.'/')))
-                || ! in_array($status->code->value.' '.$status->url, $recorded, true)) {
+                || ! self::recordedBelow($status, $recorded)) {
                 // the active manifest's own line; the guard (no ingredient assertion speaks for the manifest
-                // being verified, nor for the one that binds the asset in its stead); or nothing recorded it
+                // being verified, nor for the one that binds the asset in its stead); or nothing that may speak
+                // for the manifest it is about recorded it (amendment 3)
                 $out[] = $status;
 
                 continue;
@@ -14961,6 +16008,7 @@ final readonly class VerificationReport
     /**
      * @param  array{alg: string, issuer: ?string, common_name: string, cert_serial_number: string, time?: string}|null  $signatureInfo  the active manifest's signer as c2patool prints it (SPEC-015), with \`time\` when the timestamp validated (SPEC-017); null when the chain could not be read
      * @param  string|null  $remoteManifestUrl  a manifest declared by URL in the file's XMP, never fetched (SPEC-013 amendment 9)
+     * @param  \\DateTimeImmutable|null  $validationTime  the time judged at where no trusted timestamp gave one: SPEC-073's, or the clock when verify() started (SPEC-075)
      */
     public function __construct(
         public string $format,
@@ -14979,6 +16027,7 @@ final readonly class VerificationReport
         public ValidationResult $result,
         public ?array $signatureInfo = null,
         public ?string $remoteManifestUrl = null,
+        public ?\\DateTimeImmutable $validationTime = null,
     ) {}
 
     /** @return array<string, mixed> */
@@ -15006,6 +16055,12 @@ final readonly class VerificationReport
     public function toJson(): string
     {
         return json_encode($this->toArray(), JSON_THROW_ON_ERROR | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT);
+    }
+
+    /** The report as crJSON (C2PA 2.4 crJSON; SPEC-075): the same verdict, written for the conformance programme's harness. */
+    public function toCrJson(): string
+    {
+        return json_encode(CrJsonDocument::of($this), JSON_THROW_ON_ERROR | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT | JSON_PRESERVE_ZERO_FRACTION);
     }
 }
 `,"src/Verifier/Verifier.php":`<?php
@@ -15082,6 +16137,9 @@ final readonly class Verifier
 {
     public const STORE_URL = 'self#jumbf=/c2pa';
 
+    /** This package's version, SemVer 2.0, for crJSON's jsonGenerator (SPEC-075); the release commit sets it. */
+    public const string VERSION = '0.8.0';
+
     public function __construct(
         private FormatDetector $formats = new FormatDetector,
         private JpegManifestStoreExtractor $jpeg = new JpegManifestStoreExtractor,
@@ -15116,9 +16174,28 @@ final readonly class Verifier
     /**
      * @param  resource  $stream  the asset, readable and seekable
      * @param  TrustSettings|null  $settings  with settings the trust check runs (SPEC-014); without, the report says so in checks_performed
+     * @param  \\DateTimeInterface|null  $validationTime  the time to judge at where no trusted timestamp gives one; null is now (SPEC-073)
      */
-    public function verify($stream, ?TrustSettings $settings = null): VerificationReport
+    public function verify($stream, ?TrustSettings $settings = null, ?\\DateTimeInterface $validationTime = null): VerificationReport
     {
+        // SPEC-075: the report keeps the time it judged at, the given one or the clock; the clock is read
+        // once, so that every check and the record agree (SPEC-073 amendment 1)
+        $clock = time();
+        $judgedAt = new \\DateTimeImmutable('@'.($validationTime?->getTimestamp() ?? $clock));
+        $report = $this->inspect($stream, $settings, $validationTime, $clock);
+
+        return new VerificationReport($report->format, $report->hasManifest, $report->store, $report->result, $report->signatureInfo, $report->remoteManifestUrl, $judgedAt);
+    }
+
+    /**
+     * verify() without the time it judged at.
+     *
+     * @param  resource  $stream
+     */
+    private function inspect(mixed $stream, ?TrustSettings $settings, ?\\DateTimeInterface $validationTime, int $clock): VerificationReport
+    {
+        $now = $validationTime?->getTimestamp();   // SPEC-073: whole seconds, a fraction rounded down
+
         // 1. the format
         $format = $this->formats->detect($stream);
         if ($format === null && $this->text?->isText($stream) === true) {
@@ -15186,7 +16263,7 @@ final readonly class Verifier
 
         // the header's token, else a time-stamp assertion's from any manifest of the store (SPEC-064)
         $timestamp = $this->timestamp->forManifest($manifestStore->active, $settings, TimestampAssertions::collect($manifestStore));
-        $result = $this->check($manifestStore, $stream, $store, $settings, $timestamp, $graphStatuses, $graph, $format);
+        $result = $this->check($manifestStore, $stream, $store, $settings, $timestamp, $graphStatuses, $graph, $format, $now, $clock);
         $refusals = [];
         // a CAWG identity assertion carries a credential of its own that c2pa-rs validates; this verifier
         // does not yet, and will not call Trusted what it has not looked at (SPEC-013 amendment 7)
@@ -15260,8 +16337,10 @@ final readonly class Verifier
      * @param  list<ValidationStatus>  $graphStatuses  the ingredient graph's, each scoped (SPEC-020)
      * @param  ManifestGraph|null  $graph  null when the graph could not be built (a bound was exceeded)
      * @param  string  $format  the detected format, which says where an exclusion beyond the store may lie (SPEC-069)
+     * @param  int|null  $now  the given validation time, or null for the clock (SPEC-073)
+     * @param  int  $clock  the clock as verify() read it, once (SPEC-073 amendment 1)
      */
-    private function check(ManifestStore $manifestStore, $stream, ManifestStoreBytes $store, ?TrustSettings $settings, TimestampResult $timestamp, array $graphStatuses, ?ManifestGraph $graph, string $format): ValidationResult
+    private function check(ManifestStore $manifestStore, $stream, ManifestStoreBytes $store, ?TrustSettings $settings, TimestampResult $timestamp, array $graphStatuses, ?ManifestGraph $graph, string $format, ?int $now, int $clock): ValidationResult
     {
         $manifest = $manifestStore->active;
         // the timestamp first, as c2patool lists it; informational only, but it supplies the time below (SPEC-017)
@@ -15275,15 +16354,17 @@ final readonly class Verifier
         $checks[] = 'signature';
 
         // the certificate's profile, always: it is the signature's, not the operator's (SPEC-015);
-        // validity at a validated, trusted timestamp's time, else at now (C2PA 2.4 §15.8.2)
-        $at = $timestamp->trustedTime();
+        // validity at a validated, trusted timestamp's time, else at now (C2PA 2.4 §15.8.2);
+        // a given validation time stands in for now, never for the timestamp's (SPEC-073)
+        $trusted = $timestamp->trustedTime();
+        $at = $trusted ?? $now ?? $clock;
         $reason = match (true) {
-            $at !== null => 'from the trusted timestamp',
+            $trusted !== null => 'from the trusted timestamp',
             ! $timestamp->present => 'no timestamp',
             $timestamp->time === null => 'the timestamp did not validate',
             default => "the timestamp's TSA is not trusted",
         };
-        $statuses = [...$statuses, ...$this->certificate->check($manifest, $settings, $at, $reason)];
+        $statuses = [...$statuses, ...$this->certificate->check($manifest, $settings, $at, $reason, $trusted === null ? ($now !== null ? 'the given validation time' : 'now') : null)];
         $checks[] = 'certificate';
 
         // trust: without settings there are no anchors and the answer is untrusted, as c2patool's;
@@ -15356,7 +16437,7 @@ final readonly class Verifier
         // the manifests the graph found: their box hash and everything the active manifest gets
         // except the data hash, scoped to the assertion that named them (SPEC-021)
         if ($graph !== null && $graph->referenced !== []) {
-            $statuses = [...$statuses, ...$this->ingredients->check($manifestStore, $graph, $settings)];
+            $statuses = [...$statuses, ...$this->ingredients->check($manifestStore, $graph, $settings, $now, $clock)];
             $checks[] = 'ingredients';
         }
 
